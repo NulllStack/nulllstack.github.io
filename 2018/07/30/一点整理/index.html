@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>一点整理 | 囿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="对前面学习过程中感到疑惑的部分做了一些研究，在这里把这些东西记上一笔，加深印象同时便于日后查阅。 第3节基础工作中，对角色的移动通过给FlxSprite对象的velocity（继承自FlxObject类）属性进行赋值:velocity.set(speed,0)来实现，需要注意的是虽然FlxSprite对象的velocity属性是FlxPoint类型，但是它并不是用于表示当前FlxSprite对象的">
+<meta name="keywords" content="HaxeFlixel,学习记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一点整理">
+<meta property="og:url" content="https://nulllstack.github.io/2018/07/30/一点整理/index.html">
+<meta property="og:site_name" content="囿">
+<meta property="og:description" content="对前面学习过程中感到疑惑的部分做了一些研究，在这里把这些东西记上一笔，加深印象同时便于日后查阅。 第3节基础工作中，对角色的移动通过给FlxSprite对象的velocity（继承自FlxObject类）属性进行赋值:velocity.set(speed,0)来实现，需要注意的是虽然FlxSprite对象的velocity属性是FlxPoint类型，但是它并不是用于表示当前FlxSprite对象的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-30T10:33:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一点整理">
+<meta name="twitter:description" content="对前面学习过程中感到疑惑的部分做了一些研究，在这里把这些东西记上一笔，加深印象同时便于日后查阅。 第3节基础工作中，对角色的移动通过给FlxSprite对象的velocity（继承自FlxObject类）属性进行赋值:velocity.set(speed,0)来实现，需要注意的是虽然FlxSprite对象的velocity属性是FlxPoint类型，但是它并不是用于表示当前FlxSprite对象的">
+  
+    <link rel="alternate" href="/atom.xml" title="囿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">囿</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nulllstack.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-一点整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/30/一点整理/" class="article-date">
+  <time datetime="2018-07-29T16:58:48.000Z" itemprop="datePublished">2018-07-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      一点整理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对前面学习过程中感到疑惑的部分做了一些研究，在这里把这些东西记上一笔，加深印象同时便于日后查阅。</p>
+<p>第3节基础工作中，对角色的移动通过给<code>FlxSprite</code>对象的<code>velocity</code>（继承自<code>FlxObject</code>类）属性进行赋值:<code>velocity.set(speed,0)</code>来实现，需要注意的是虽然<code>FlxSprite</code>对象的<code>velocity</code>属性是<code>FlxPoint</code>类型，但是它并不是用于表示当前<code>FlxSprite</code>对象的坐标点。</p>
+<blockquote>
+<p>HaxeFlixl对<code>FlxPoint</code>类型的描述：Stores a 2D floating point coordinate.（存储一个以浮点数表示的二维坐标系内的点的坐标）</p>
+</blockquote>
+<p>当通过<code>velocity.set(speed,0)</code>对<code>velocity</code>进行赋值之后，<code>FlxSprite</code>对象会以<code>speed</code>值作为x轴的速度，以<code>0</code>为y轴的速度进行移动，之后我们通过<code>velocity.rotate(FlxPoint.weak(0,0),angle)</code>对<code>velocity</code>的<code>x</code>和<code>y</code>进行旋转，<code>rotate()</code>函数具有两个参数，<code>Pivot</code>和<code>Angle</code>；这个函数通过一个给定的旋转支点对该<code>FlxPoint</code>对象以给定角度进行旋转，这里需要再强调一次，<strong>记住:<code>FlxSprite</code>的<code>velocity</code>属性不用于表示其坐标！而是表示该<code>FlxSprite</code>对象当前的x轴与y轴的移动速度</strong>；事实上当使用<code>FlxSprite</code>的<code>velocity</code>实现sprite的匀速运动时，还需要配合<code>FlxSprite</code>的另一个属性<code>drag</code>使用，该属性继承自<code>FlxObject</code>类，对其赋一个合适的值来使<code>velocity</code>归零，归零的速率由<code>drag</code>的取值决定；所以<code>velocity</code>的<code>x</code>,<code>y</code>值归零状态下都是在游戏画布的左上角（也就是<code>(0,0)</code>坐标点）也就是<code>velocity</code>的起点，那么当我们对其进行旋转时为了方便我们需要让旋转中心与<code>velocity</code>的起点重合，所以在使用<code>velocity.rotate()</code>时我们对第一个参数传递一个处于<code>(0,0)</code>坐标的<code>FlxPoint</code>对象作为对其进行旋转的旋转中心。</p>
+<p>由于之前对<code>velocity</code>进行旋转操作时认为旋转中心应该位于sprite的中心位置，进而发现实验结果与期望不符，通过查阅官网的API文档有了以上的发现，下面让我们抛开<code>FlxSprite</code>的<code>velocity</code>属性，以一个普通的<code>FlxPoint</code>对象进行旋转操作加深理解：</p>
+<ol>
+<li><p>打开命令行窗口，输入<code>flixel template &quot;default&quot; -n &quot;FlxPointTest&quot;</code>之后<code>回车</code>，在当前目录下创建一个以默认模板生成并命名为“FlxPointTest”的HaxeFlixel项目。</p>
+<p>之后自己画一个16x16大小的方块以PNG格式保存至项目文件夹下的assets/image文件夹内，图方便的话可以用我这里做好的：</p>
+<div align="center">![](一点整理/Point.png)
+</div></li>
+<li><p>然后在source文件夹内创建一个新的haxe文件，命名为Player.hx。然后拷贝我下面的代码进去：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> flixel.FlxSprite;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span> <span class="keyword"><span class="keyword">extends</span> <span class="type">FlxSprite</span></span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">new</span></span>(?X:<span class="type">Float</span>,?Y:<span class="type">Float</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">super</span>(X,Y);</span><br><span class="line">        loadGraphic(AssetPaths.Point__png,<span class="literal">false</span>,<span class="number">16</span>,<span class="number">16</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span></span>(elapsed:<span class="type">Float</span>):<span class="type">Void</span></span><br><span class="line"><span class="type">    </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.update(elapsed);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接着修改source文件夹下的PlayState.hx：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> flixel.FlxState;</span><br><span class="line"><span class="keyword">import</span> flixel.FlxG;</span><br><span class="line"><span class="keyword">import</span> flixel.FlxGame;</span><br><span class="line"><span class="keyword">import</span> flixel.math.FlxPoint;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PlayState</span> <span class="keyword"><span class="keyword">extends</span> <span class="type">FlxState</span></span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> _player:<span class="type">Player</span>;</span><br><span class="line">	<span class="keyword">var</span> blockSet:<span class="type">Array</span>&lt;Player&gt; = <span class="keyword">new</span> <span class="type">Array</span>();</span><br><span class="line">	<span class="keyword">var</span> position:<span class="type">FlxPoint </span>= <span class="keyword">new</span> <span class="type">FlxPoint</span>(FlxG.width/<span class="number">2</span>,FlxG.height/<span class="number">2</span><span class="number">-64</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">create</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">0.</span>.<span class="number">.4</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			blockSet[i] = <span class="keyword">new</span> <span class="type">Player</span>(position.x,position.y);</span><br><span class="line">			position.rotate(FlxPoint.weak(FlxG.width/<span class="number">2</span>,FlxG.height/<span class="number">2</span>),<span class="number">90</span>);</span><br><span class="line">			<span class="built_in">trace</span>(i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">0.</span>.<span class="number">.4</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			add(blockSet[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">super</span>.create();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span></span>(elapsed:<span class="type">Float</span>):<span class="type">Void</span></span><br><span class="line"><span class="type">	</span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.update(elapsed);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>blockSet</code>数组用于存储<code>Player</code>类的实例，<code>position</code>是一个<code>FlxPoint</code>类的实例，用于实例化<code>Player</code>实例的时候传入<code>Player</code>实例的初始坐标。</p>
+<p>第一个循环体是这次实验的关键，创建四个<code>Player</code>实例，初始坐标使用<code>position</code>的<code>x</code>和<code>y</code>值，每个<code>Player</code>实例之间都以画布的中心位置为旋转点对position进行90度旋转。</p>
+</li>
+</ol>
+<p>以下为运行结果：</p>
+<div align="center">![](一点整理/results.png)</div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2018/07/30/一点整理/" data-id="ck0gsqf2m000jbswjm0og8xg0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习记录/">学习记录</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/31/HaxeFlixel官方教程5-创建Tilemap/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          HaxeFlixel官方教程5:创建Tilemap
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/27/HaxeFlixel官方教程4-精灵序列与动画/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">HaxeFlixel官方教程4:精灵序列与动画</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习记录/">学习记录</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HaxeFlixel/" style="font-size: 20px;">HaxeFlixel</a> <a href="/tags/学习记录/" style="font-size: 10px;">学习记录</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/05/HaxeFlixel官方教程12-音效与音乐/">HaxeFlixel官方教程12:音效与音乐</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/">HaxeFlixel官方教程11:游戏结束菜单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/">HaxeFlixel官方教程10:UI与战斗系统</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/08/HaxeFlixel官方教程9-敌人与基础AI/">HaxeFlixel官方教程9:敌人与基础AI</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/06/蛋疼的迁移过程/">蛋疼的迁移过程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

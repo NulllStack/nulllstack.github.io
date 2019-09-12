@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>HaxeFlixel官方教程7:摄像机与缩放 | 囿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原文 当你开始运行你的游戏，你将会看到，目前场景内的所有东西看起开都非常非常小，我们将要通过设置缩放来改变游戏内物体的能见度，以此让玩家得以看清角色每个细微的动作。要做到缩放很简单：  打开Main.hx文件，这个类用于游戏的初始化工作，如果你想要的话看看有哪些东西你需要修改的，但这里我们只需要改变其中的几个参数。  修改new FlxGame()的宽度与高度参数为320与240（原来的值的一半）">
+<meta name="keywords" content="HaxeFlixel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HaxeFlixel官方教程7:摄像机与缩放">
+<meta property="og:url" content="https://nulllstack.github.io/2018/08/02/HaxeFlixel官方教程7-摄像机与缩放/index.html">
+<meta property="og:site_name" content="囿">
+<meta property="og:description" content="原文 当你开始运行你的游戏，你将会看到，目前场景内的所有东西看起开都非常非常小，我们将要通过设置缩放来改变游戏内物体的能见度，以此让玩家得以看清角色每个细微的动作。要做到缩放很简单：  打开Main.hx文件，这个类用于游戏的初始化工作，如果你想要的话看看有哪些东西你需要修改的，但这里我们只需要改变其中的几个参数。  修改new FlxGame()的宽度与高度参数为320与240（原来的值的一半）">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-02T09:34:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HaxeFlixel官方教程7:摄像机与缩放">
+<meta name="twitter:description" content="原文 当你开始运行你的游戏，你将会看到，目前场景内的所有东西看起开都非常非常小，我们将要通过设置缩放来改变游戏内物体的能见度，以此让玩家得以看清角色每个细微的动作。要做到缩放很简单：  打开Main.hx文件，这个类用于游戏的初始化工作，如果你想要的话看看有哪些东西你需要修改的，但这里我们只需要改变其中的几个参数。  修改new FlxGame()的宽度与高度参数为320与240（原来的值的一半）">
+  
+    <link rel="alternate" href="/atom.xml" title="囿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">囿</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nulllstack.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-HaxeFlixel官方教程7-摄像机与缩放" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/02/HaxeFlixel官方教程7-摄像机与缩放/" class="article-date">
+  <time datetime="2018-08-02T09:33:46.000Z" itemprop="datePublished">2018-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HaxeFlixel官方教程7:摄像机与缩放
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://haxeflixel.com/documentation/zoom-and-cameras/" target="_blank" rel="noopener">原文</a></p>
+<p>当你开始运行你的游戏，你将会看到，目前场景内的所有东西看起开都非常非常小，我们将要通过设置缩放来改变游戏内物体的能见度，以此让玩家得以看清角色每个细微的动作。要做到缩放很简单：</p>
+<ol>
+<li><p>打开<code>Main.hx</code>文件，这个类用于游戏的初始化工作，如果你想要的话看看有哪些东西你需要修改的，但这里我们只需要改变其中的几个参数。</p>
+</li>
+<li><p>修改<code>new FlxGame()</code>的宽度与高度参数为<code>320</code>与<code>240</code>（原来的值的一半）。</p>
+</li>
+<li><p>如果你现在开始运行游戏，你将看到所有东西都被放大了，但是player会越出屏幕的可视范围，因此我们需要告诉摄像机紧跟player的当前位置，再一次打开<code>PlayState</code>文件。</p>
+</li>
+<li><p>在构造函数内，位于添加player之后，<code>super.create()</code>之前的位置添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FlxG.camera.follow(_player,TOPDOWN,<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这样做将会告诉摄像机以<code>TOPDOWN</code>视角跟踪player的位置，以1为取值赋给<code>lerp</code>参数（这样做将会让摄像机的移动更为平滑一些）</p>
+</li>
+</ol>
+<p>完事了！测试游戏的运行结果看看效果如何。</p>
+<div align="center">![](HaxeFlixel官方教程7-摄像机与缩放/results.png)
+
+<p>下一节，让我们为player添加一些可以在地图内拾起的东西。</p>
+</div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2018/08/02/HaxeFlixel官方教程7-摄像机与缩放/" data-id="ck0gsqf290008bswjv50fpc0w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/08/05/HaxeFlixel官方教程8-拾取物品/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          HaxeFlixel官方教程8:拾取物品
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/02/HaxeFlixel官方教程6-加载Tilemap/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">HaxeFlixel官方教程6:加载Tilemap</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习记录/">学习记录</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HaxeFlixel/" style="font-size: 20px;">HaxeFlixel</a> <a href="/tags/学习记录/" style="font-size: 10px;">学习记录</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/05/HaxeFlixel官方教程12-音效与音乐/">HaxeFlixel官方教程12:音效与音乐</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/">HaxeFlixel官方教程11:游戏结束菜单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/">HaxeFlixel官方教程10:UI与战斗系统</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/08/HaxeFlixel官方教程9-敌人与基础AI/">HaxeFlixel官方教程9:敌人与基础AI</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/06/蛋疼的迁移过程/">蛋疼的迁移过程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

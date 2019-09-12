@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>囿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="囿">
+<meta property="og:url" content="https://nulllstack.github.io/index.html">
+<meta property="og:site_name" content="囿">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="囿">
+  
+    <link rel="alternate" href="/atom.xml" title="囿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">囿</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nulllstack.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-HaxeFlixel官方教程12-音效与音乐" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/05/HaxeFlixel官方教程12-音效与音乐/" class="article-date">
+  <time datetime="2019-04-04T18:22:05.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/05/HaxeFlixel官方教程12-音效与音乐/">HaxeFlixel官方教程12:音效与音乐</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>打算一次翻译完剩下的部分之后去弄点别的事情，HaxeFlixel相关的东西很闲的时候再回来整理。</p>
+<p><a href="http://haxeflixel.com/documentation/sound-and-music/" target="_blank" rel="noopener">原文</a></p>
+<p>目前我们为游戏所做的各个部分已经整合起来了，不过它还缺少一点东西…它还没有声音。</p>
+<p>我们依然保持这个游戏简单化。我们将使用一个可循环的单音轨音频文件用于游戏运行时循环播放。我们也会为各种不同的动作添加一些简单的音效。在 HaxeFlixel 中播放音频文件是十分简单的事情。</p>
+<p>首先，你需要创建一段音乐还有其他音效。来自 <a href="http://fatbard.tumblr.com/" target="_blank" rel="noopener">FatBard</a> 的 Patrick Crecelius 为本教程提供了<a href="https://raw.githubusercontent.com/HaxeFlixel/flixel-demos/master/Tutorials/TurnBasedRPG/assets/music/HaxeFlixel_Tutorial_Game.mp3" target="_blank" rel="noopener">一段音乐</a>（建议在直接上<a href="https://github.com/HaxeFlixel/flixel-demos/tree/dev/Tutorials/TurnBasedRPG" target="_blank" rel="noopener">GitHub</a>从<code>asstes/music</code>文件夹内下载），你可以随意使用，或者可以自己做。</p>
+<p>我们还使用了 <a href="https://www.bfxr.net/" target="_blank" rel="noopener">Bfxr</a> 制作了一些音效，如果你喜欢的话可以使用这些音效文件或者自己做一套。</p>
+<p>如果你一步步跟着教程走下来的话那么在 “UI与战斗系统” 一节中你已经下载过这些音效文件了。以下列出这些文件确保你确实完整下载了这些文件：</p>
+<ul>
+<li>coin.wav - 用于玩家拾起硬币时使用的音效</li>
+<li>combat.wav - 战斗开始时使用的音效</li>
+<li>fled.wav - 当玩家成功逃离战斗时使用的音效</li>
+<li>hurt.wav - 玩家或敌人击中对方时使用的音效</li>
+<li>lose.wav - 玩家于战斗中死亡时使用的音效</li>
+<li>miss.wav - 玩家或敌人攻击miss时使用的音效</li>
+<li>select.wav - 用于按钮以及玩家于选项栏进行选择时使用的音效</li>
+<li>step.wav - 用于玩家以及敌人的脚步声的音效</li>
+<li>win.wav - 当玩家于战斗中获胜时使用的音效</li>
+</ul>
+<p>音效文件链接：<a href="https://github.com/HaxeFlixel/flixel-demos/tree/dev/Tutorials/TurnBasedRPG/assets/sounds" target="_blank" rel="noopener">GitHub</a></p>
+<p>当你准备完这些声音文件之后把<strong>音乐</strong>文件放置于<code>assets/music</code>文件夹下，把<strong>音效</strong>文件放置于<code>asstes/sounds</code>文件夹下。</p>
+<p>现在让我们修改代码来使用这些声音文件：</p>
+<ol>
+<li><p>首先打开<code>MenuState.hx</code>文件，由于我们需要让音乐从游戏启动那一刻开始并不管如何都不停循环，所以我们要从<code>create()</code>内添加它。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(FlxG.sound.music == <span class="literal">null</span>) <span class="comment">//如果音乐已经在播放了则不重放音乐</span></span><br><span class="line">&#123;</span><br><span class="line">    FlxG.sound.playMusic(AssetPaths.HaxeFlixel_Tutorial_Game__mp3, <span class="number">1</span>, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们同时还检查了音乐是否已经处于播放（比如玩家从<code>GameOver</code>状态切换至<code>MenuState</code>的时候音乐其实已经是在播放了），我们不希望在这个时候做不必要的重放。</p>
+<p>现在编译启动游戏之后它应该可以播放音乐了。</p>
+</li>
+<li><p>接下来我们需要让按钮被点击的时候播放一段音效。很简单，我们只需要告诉按钮的<code>onUP</code>属性（注）加载一段声音。在<code>MenuState</code>的<code>create()</code>函数中，开始按钮的初始化之后的位置添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_btnPlay.onUp.sound = FlxG.sound.load(AssetPaths.select__wav);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>现在你可以对选项按钮做同样的事情（将以上代码的<code>_btnPlay</code>替换为<code>_btnOptions</code>）。</p>
+<p>对于游戏中剩下的每一个按钮 - 位于<code>OptionsState</code>状态中的四个，以及位于<code>GameOver</code>状态中的那一个；它们的代码已经写好了，但作为课后练习你可以去这两个文件中看看是如何实现的。</p>
+<p><em>注：不知道什么原因，<code>FlxButton</code>的<code>onUp</code>等属性在官方API文档中是没有被列出来的，但是源码中能找到，还带注释，它们的类型为<code>FlxButtonEvent</code>，是<code>FlxButton</code><a href="https://www.kancloud.cn/simon_chang/haxe3manual/183601" target="_blank" rel="noopener">模块</a>中的私有类，该类为<code>FlxButton</code>的辅助类用于<code>FlxButton</code>的事件处理。两个类型的关系可参考：<a href="https://www.kancloud.cn/simon_chang/haxe3manual/186343" target="_blank" rel="noopener">模块子类型</a>。这里记上一笔日后回来整理需要注意一下。</em></p>
+</li>
+<li><p>下一步让我们为玩家添加脚步声，我们不想要每次需要播放同一个声音的时候都创建与销毁一个新的声音对象（sound object），所以我们要创建一个<code>FlxSound</code>对象以便复用。在<code>Player</code>类体的顶部添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _sndStep:<span class="type">FlxSound</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后我们需要在构造函数的某处加载脚步声文件。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndStep = FlxG.sound.load(AssetPaths.step__wav);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接着跳到<code>movement()</code>函数中，在检查玩家是否处于移动的条件语句（<code>if((velocity.x != 0 || velocity.y != 0) &amp;&amp; touching == FlxObject.NONE)</code>）中第一行位置添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndStep.play();</span><br></pre></td></tr></table></figure>
+
+<p><code>FlxSound</code>有一个灵活的小特性，如果你告诉它播放一个声音而它已经在播放了（并且你没有设置<code>forceRestart</code>flag为真）那么它不会再次播放。这意味着我们可以轻易地在玩家移动时按每一帧进行调用以播放声音，而且声音听起来就像是在不断循环。但当玩家不再移动时停止声音的播放，并处于静止状态时声音不会重放。</p>
+</li>
+<li><p>现在我们也为敌人创建脚步声，与上面不同的是我们现在不是一直以满格的音量重复播放脚步声，而是基于敌人与玩家间的距离来改变音量的高低，实际上实现起来比听起来简单得多，首先我们在<code>Enemy</code>类体的顶部添加一个变量：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _sndStep:<span class="type">FlxSound</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接着与对<code>Player</code>类的设置一样，添加以下代码到构造函数中：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_sndStep = FlxG.sound.load(AssetPaths.step__wav, <span class="number">.4</span>);</span><br><span class="line">_sndStep.proximity(x, y, FlxG.camera.target, FlxG.width * <span class="number">.6</span>);</span><br></pre></td></tr></table></figure>
+
+<p>你可能注意到了我们把声音设为<code>.4</code>（40%），这是由于地图中将会有多个敌人存在，而他们的脚步声可能会很吵闹（另外，怪物有可能是光着脚不穿鞋的，不是吗？）</p>
+</li>
+<li><p>加载所有文件之后我们为声音设置了邻近跟踪，传入了该敌人的<code>x</code>与<code>y</code>坐标并告诉它追踪的目标为<code>FlxG.camera.target</code>对象（也就是我们的玩家）。最后我们告诉它声音的传播半径稍微比屏幕一半宽度多一点点，这样我们就能够听到稍微越出屏幕的敌人的声音。如此一来我们就能够听到 基于敌人与摄像机目标之间的距离 计算出的或大或小的脚步声了。</p>
+</li>
+<li><p>接下来我们要在敌人的<code>update()</code>函数中，位于<code>super.update()</code>调用之后的位置检查敌人是否处于移动状态，并且没有撞到墙上去。如果他们处于移动状态，我们将把脚步声放到这个敌人所处的位置上（放置于其精灵（sprite）的底部，也就是它的脚上），之后开始播放脚步声。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>((velocity.x != <span class="number">0</span> || velocity.y != <span class="number">0</span>) &amp;&amp; toucing == FlxObject.NONE)</span><br><span class="line">&#123;</span><br><span class="line">    _sndStep.setPosition(x + frameWidth / <span class="number">2</span>, y + height);</span><br><span class="line">    _sndStep.play();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接下来我们跳到<code>PlayState</code>中，在<code>PlayState</code>中我们只需要一个声音文件，用于拾起硬币的时候播放，尽管你可以把它放到<code>Coin</code>类中，但是由于有可能一次会载入多枚硬币，并且我们实际上一次只能捡一枚硬币（所以音效不需要重叠（overlap）），把一个单独的硬币音效加载进<code>PlayState</code>可以为我们的性能节省一些开销。</p>
+<p>就像添加其他音效一样，初始化变量：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _sndCoin:<span class="type">FlxSound</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>create()</code>中加载音效：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndCoin = FlxG.sound.load(AssetPaths.coin__wav);</span><br></pre></td></tr></table></figure>
+
+<p>之后在<code>playerTouchCoin()</code>函数中，在<code>if</code>语句里添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndCoin.play(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这一次我们将使用<code>forceRestart</code>，这样当玩家拾起紧挨在一起的多枚硬币的时候新触发的声音会紧接而上。</p>
+</li>
+<li><p>剩下的音效由于都用于战斗阶段，所以会被放到<code>CombatHUD</code>类里面。</p>
+<p>假设你已经下载了<code>CombatHUD</code>类文件，那么这些音效的相关代码就已经在里面写好了，不过作为一种课后练习，去完整浏览一遍也是个好主意，这样做有助于你在下一个项目中更好的理解声音的工作方式。</p>
+<p>初始化变量：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _sndFled:<span class="type">FlxSound</span>;</span><br><span class="line"><span class="keyword">var</span> _sndHurt:<span class="type">FlxSound</span>;</span><br><span class="line"><span class="keyword">var</span> _sndLose:<span class="type">FlxSound</span>;</span><br><span class="line"><span class="keyword">var</span> _sndMiss:<span class="type">FlxSound</span>;</span><br><span class="line"><span class="keyword">var</span> _sndSelect:<span class="type">FlxSound</span>;</span><br><span class="line"><span class="keyword">var</span> _sndWin:<span class="type">FlxSound</span>;</span><br><span class="line"><span class="keyword">var</span> _sndCombat:<span class="type">FlxSound</span>;</span><br></pre></td></tr></table></figure>
+
+<p>加载音效：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">_sndFled = FlxG.sound.load(AssetPaths.fled__wav);</span><br><span class="line">_sndHurt = FlxG.sound.load(AssetPaths.hurt__wav);</span><br><span class="line">_sndLose = FlxG.sound.load(AssetPaths.lose__wav);</span><br><span class="line">_sndMiss = FlxG.sound.load(AssetPaths.miss__wav);</span><br><span class="line">_sndSelect = FlxG.sound.load(AssetPaths.select__wav);</span><br><span class="line">_sndWin = FlxG.sound.load(AssetPaths.win__wav);</span><br><span class="line">_sndCombat = FlxG.sound.load(AssetPaths.combat__wav);</span><br></pre></td></tr></table></figure>
+
+<p>也许你知道它们会被放在哪些地方使用了，但我还是要过一遍。</p>
+<p>于 initCombat 中：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndCombat.play();</span><br></pre></td></tr></table></figure>
+
+<p>于 finishFadeIn 中：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndSelect.play();</span><br></pre></td></tr></table></figure>
+
+<p>于<code>update()</code>函数中，位于三个按钮的按压判定相关的<code>if</code>语句（<code>if(_fire), else if(_up), else if(_down)</code>）中添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndSelect.play();</span><br></pre></td></tr></table></figure>
+
+<p>于 makeChoice 中，位于 “命中” 的逻辑代码（在<code>_damages[1].text = &quot;1&quot;;</code>之后）的位置添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndHurt.play();</span><br></pre></td></tr></table></figure>
+
+<p>于闪躲的逻辑代码中添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndHurt.play();</span><br></pre></td></tr></table></figure>
+
+<p>再往下，如果玩家逃脱（位于<code>cutcome = ESCAPE</code>之后的位置）添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndFled.play();</span><br></pre></td></tr></table></figure>
+
+<p>于<code>enemyAttack()</code>中敌人的攻击命中玩家时：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndHurt.play();</span><br></pre></td></tr></table></figure>
+
+<p>如果他们的攻击被miss了：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndMiss.play();</span><br></pre></td></tr></table></figure>
+
+<p>最后，在 <code>DoneDamageOut()</code> 中，位于 <code>outcome = DEFEAT</code> 之后的位置添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndLose.play();</span><br></pre></td></tr></table></figure>
+
+<p>位于 <code>outcome = VICTORY</code> 之后的位置添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndWin.play();</span><br></pre></td></tr></table></figure>
+
+<p>添加声音的工作到此就结束了，编译并运行你的游戏，现在你可以听到我们添加的所有音效了（确保你把系统的声音打开了）下一节我们将使游戏可以跨平台运行。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2019/04/05/HaxeFlixel官方教程12-音效与音乐/" data-id="ck0gsqf33000xbswjx3xqrqac" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HaxeFlixel官方教程11-游戏结束菜单" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/" class="article-date">
+  <time datetime="2019-03-29T08:39:03.000Z" itemprop="datePublished">2019-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/">HaxeFlixel官方教程11:游戏结束菜单</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这周情绪一天也没消停过，现在是 2019/3/29 15:06 我已经一周没去上课了，起床冲了咖啡，饭一顿也没吃，开始考虑是不是要去看医生。</p>
+<p><a href="http://haxeflixel.com/documentation/game-over-menu/" target="_blank" rel="noopener">原文</a></p>
+<p>我们的游戏现在开始最后的整合阶段，现在我们需要为其添加一个胜负功能使其更像一个完整的游戏，对于我们这个简单的游戏而言，我们想要让玩家如果在战斗阶段死亡，则游戏结束，或者是玩家击败了Boss即获胜，这两个情况下都会跳转至同一个<code>FlxState</code>状态下，它将显示最终得分并允许玩家从这里重新开始游戏。</p>
+<ol>
+<li><p>让我们从<code>PlayState</code>开始，我们需要设一个flag用于检查游戏是否结束，以及玩家是否获胜：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ending:<span class="type">Bool</span>;</span><br><span class="line"><span class="keyword">var</span> _won:<span class="type">Bool</span>;</span><br></pre></td></tr></table></figure>
+
+<p>两个变量添加于类体的顶部。</p>
+</li>
+<li><p>下一步，位于<code>update()</code>函数，<code>super.update(elapsed)</code>的调用后方的位置添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(_ending)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们在游戏结束时开始准备开始切换state，不需要做其他任何事情所以return。</p>
+</li>
+<li><p>下一步，依然在<code>update()</code>函数中，把原来的逻辑代码修改为如下：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!_combatHud.visible)</span><br><span class="line">&#123;</span><br><span class="line">    _health = _combatHud.playerHealth;</span><br><span class="line">    _hud.updateHUD(_health, _money);</span><br><span class="line">    <span class="keyword">if</span>(_combatHud.outcome == DEFEAT)</span><br><span class="line">    &#123;</span><br><span class="line">        _ending = <span class="literal">true</span>;</span><br><span class="line">        FlxG.camera.fade(FlxColor.BLACK, <span class="number">.33</span>, <span class="literal">false</span>, doneFadeOut);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(_combatHud.outcome == VICTORY)</span><br><span class="line">        &#123;</span><br><span class="line">            _combatHud.e.kill();</span><br><span class="line">            <span class="keyword">if</span>(_combatHud.e.etype == <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                _won = <span class="literal">true</span>;</span><br><span class="line">                _ending = <span class="literal">true</span>;</span><br><span class="line">                FlxG.camera.fade(FlxColor.BLACK, <span class="number">.33</span>, <span class="literal">false</span>, doneFadeOut);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            _combatHud.e.flicker();</span><br><span class="line">        &#125;</span><br><span class="line">        _inCombat = <span class="literal">false</span>;</span><br><span class="line">        _player.active = <span class="literal">true</span>;</span><br><span class="line">        _grpEnemies.active = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里所做的事情为检查结果是否为<code>DEFEAT</code>，如果是则设结束flag为真，并告诉摄像机开始渐隐（fading out），渐隐结束后调用<code>doneFadeOut()</code>。</p>
+<p>相似的，如果结果为<code>VICTORY</code>，并且被击败的敌人类型为1（也就是Boss），则设<code>won</code>flag为真，并开始渐隐。</p>
+</li>
+<li><p>当摄像机渐隐为黑色之后，我们将调用该函数，它用于切换状态至<code>GameOverState</code>（我们在之后添加该类），并传递玩家是否获胜的信息以及玩家收集了多少金币：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doneFadeOut</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    FlxG.switchState(<span class="keyword">new</span> <span class="type">GameOverState</span>(_won, _money));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们需要添加<code>GameOverState</code>类。它是一个十分简单的<code>FlxState</code>对象，用于显示一些信息： “Game Over” 或 “You Win!” （显示哪一个取决于获胜flag的当前值）、以及玩家收集了多少金币。这里我们还将使用flixel的保存/读取功能用以比较历史最高分，如果当前玩家收集的金币比历史记录更多，我们将对当前分数替换历史最高分进行保存，并显示当前最高分。</p>
+<p>最后我们会添加一个返回按钮使玩家可以退回至菜单界面。</p>
+<p>这里是该类的源码：</p>
+<p><a href="https://github.com/HaxeFlixel/flixel-demos/blob/dev/Tutorials/TurnBasedRPG/source/GameOverState.hx" target="_blank" rel="noopener">GameOverState.hx</a></p>
+</li>
+</ol>
+<p>如果你开始测试你的游戏，你将可以通过于战斗阶段死亡或击败Boss而触发<code>GameOverState</code>，接着点击<code>GameOverState</code>状态中的按钮返回至<code>MenuState</code>状态，这样你就可以再一次开始游戏。如果游戏能够如以上描述的正常工作表明你目前没有偏离正轨。不过…目前我们的<code>MenuState</code>看起来有些乏味，所以我们开始为它添加些东西。</p>
+<ol>
+<li><p>让我们为它添加一个标题以及一个选项按钮（于<code>MenuState.hx</code>中）：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _txtTitle:<span class="type">FlxText</span>;</span><br><span class="line"><span class="keyword">var</span> _btnOptions:<span class="type">FlxButton</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接着，在<code>create()</code>函数中，我们把它添加至状态中（并移动原来的开始游戏按钮）：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">_txtTitle = <span class="keyword">new</span> <span class="type">FlxText</span>(<span class="number">20</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="string">"HaxeFlixel\nTutorial\nGame"</span>, <span class="number">22</span>);</span><br><span class="line">_txtTitle.alignment = CENTER;</span><br><span class="line">_txtTitle.screenCenter(X);</span><br><span class="line">add(_txtTitle);</span><br><span class="line"></span><br><span class="line">_btnPlay = <span class="keyword">new</span> <span class="type">FlxButton</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="string">"Play"</span>, clickPlay);</span><br><span class="line">_btnPlay.x = (FlxG.width / <span class="number">2</span>) - _btnPlay.width - <span class="number">10</span>;</span><br><span class="line">_btnPlay.y = FlxG.height - _btnPlay.height - <span class="number">10</span>;</span><br><span class="line">add(_btnPlay);</span><br><span class="line"></span><br><span class="line">_btnOptions = <span class="keyword">new</span> <span class="type">FlxButton</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="string">"Options"</span>, clickOptins);</span><br><span class="line">_btnOptions.x = (FlxG.width / <span class="number">2</span>) + <span class="number">10</span>;</span><br><span class="line"> _btnOptions.y = FlxG.height - _btnOptions.height - <span class="number">10</span>;</span><br><span class="line"> add(_btnOptions);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加一个函数用于当选项按钮被点击时调用：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clickOptions</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    FlxG.switchState(<span class="keyword">new</span> <span class="type">OptionsState</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当选项按钮被点击后切换的<code>OptionState</code>状态类也相当简单，它将包含一个按钮用于使玩家可以清空以保存的数据（如 历史最高分），以及一个简单的<code>FlxBar</code>拉动条用于表示当前游戏的音量级数以及一组按钮用于调整音量级数的高低。它将会保存当前音量的值，所以当游戏开始时它将会记住最后音量级数的设置（我知道我们的游戏现在还没有声音 ;) ）。</p>
+<p>该类的源码：</p>
+<p><a href="https://github.com/HaxeFlixel/flixel-demos/blob/dev/Tutorials/TurnBasedRPG/source/OptionsState.hx" target="_blank" rel="noopener">OptionsState.hx</a></p>
+<p><code>OptionsState</code>类使用了一组精灵序列供音量调节按钮使用（因为他们需要比默认的按钮更小一些），该资源文件需要包含3个帧，分别表现出按钮的三个状态：<code>正常</code>、<code>高亮</code>、以及<code>被按下</code>。我们只需要按此顺序排列这个精灵序列的各个帧，<code>FlxButton</code>会为我们处理剩余的工作。</p>
+<p>再一次，你可以自己做一个，或者使用下面提供的图像资源。将其放置于<code>assets/images</code>文件夹内即可。</p>
+<p><img src="//nulllstack.github.io/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/button.png" alt></p>
+<p>最后，我们需要游戏每次开始时读取已保存的音量设置（如果当前有设置的话），跳转至<code>Main.hx</code>类，并在<code>addChild()</code>函数调用之后的位置添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _save:<span class="type">FlxSave </span>= <span class="keyword">new</span> <span class="type">FlxSave</span>();</span><br><span class="line">_save.bind(<span class="string">"flixel-tutorial"</span>);</span><br><span class="line"><span class="keyword">if</span>(_save.data.volume != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    FlxG.sound.volume = _save.data.volume;</span><br><span class="line">&#125;</span><br><span class="line">_save.close();</span><br></pre></td></tr></table></figure>
+
+<p>十分简单，它创建一个新的<code>FlxSave</code>对象，将其绑定至我们的<code>&quot;flixel-tutorial&quot;</code>并在之后检查是否有音量值被存储进来，如果有，则将游戏的音量设为该值，之后关闭保存。</p>
+</li>
+</ol>
+<p>测试游戏，确保正常工作，如果你在设置中修改了音量设置并退出游戏，它将会在下一次进入游戏时保留当前设置的音量值。</p>
+<p><img src="//nulllstack.github.io/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/0022.png" alt>看起来不错，下一节我们将添加一些音效与音乐。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/" data-id="ck0gsqf1y0001bswjowkym6kk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HaxeFlixel官方教程10-UI与战斗系统" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/" class="article-date">
+  <time datetime="2019-03-15T17:23:28.000Z" itemprop="datePublished">2019-03-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/">HaxeFlixel官方教程10:UI与战斗系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://haxeflixel.com/documentation/ui-and-combat/" target="_blank" rel="noopener">原文</a></p>
+<p>由于这次内容涉及比较多东西，估计摸索的时间会比较长，文本我先翻译完先放上来，之后摸索完整理些细节再另外po一篇作为补充。</p>
+<p>现在我们需要让玩家知道他们在游戏中的行为产生了哪些影响。所以我们需要在屏幕中显示一个HUD用于告诉玩家 当前/最大 血量为多少，以及目前收集了多少金币。表示生命值的图标你可以使用这个图形资源：<img src="//nulllstack.github.io/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/health.png" alt>,确保你将图像资源保存至<code>assets/images</code>文件夹下。</p>
+<ol>
+<li><p>我们首先新建一个<code>HUD</code>类，它用于保存所有的HUD元素。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> flixel.FlxSprite;</span><br><span class="line"><span class="keyword">import</span> flixel.text.FlxText;</span><br><span class="line"><span class="keyword">import</span> flixel.FlxSprite;</span><br><span class="line"><span class="keyword">import</span> flixel.group.FlxGroup.FlxTypedGroup;</span><br><span class="line"><span class="keyword">import</span> flixel.util.FlxColor;</span><br><span class="line"><span class="keyword">import</span> flixel.FlxG;</span><br><span class="line"><span class="keyword">using</span> flixel.util.FlxSpriteUtil;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HUD</span> <span class="keyword"><span class="keyword">extends</span> <span class="type">FlxTypedGroup</span></span>&lt;<span class="title">FlxSprite</span>&gt;</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _sprBack:<span class="type">FlxSprite</span>;</span><br><span class="line">    <span class="keyword">var</span> _txtHealth:<span class="type">FlxText</span>;</span><br><span class="line">    <span class="keyword">var</span> _txtMoney:<span class="type">FlxText</span>;</span><br><span class="line">    <span class="keyword">var</span> _sprHealth:<span class="type">FlxSprite</span>;</span><br><span class="line">    <span class="keyword">var</span> _sprMoney:<span class="type">FlxSprite</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">new</span></span>()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        _sprBack = <span class="keyword">new</span> <span class="type">FlxSprite</span>().makeGraphic(FlxG.width, <span class="number">20</span>, FlxColor.BLACK);</span><br><span class="line">        </span><br><span class="line">        _sprBack.drawRect(<span class="number">0</span>, <span class="number">19</span>, FlxG.width, <span class="number">1</span>, FlxColor.WHITE); </span><br><span class="line">        <span class="comment">/*此处技术细节参考：https://www.kancloud.cn/simon_chang/haxe3manual/183635*/</span></span><br><span class="line">        </span><br><span class="line">        _txtHealth = <span class="keyword">new</span> <span class="type">FlxText</span>(<span class="number">16</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="string">"3 / 3"</span>, <span class="number">8</span>);</span><br><span class="line">        _txtHealth.setBorderStyle(SHADOW, FlxColor.GRAY, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        _txtMoney = <span class="keyword">new</span> <span class="type">FlxText</span>(<span class="number">0</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="string">"0"</span>, <span class="number">8</span>);</span><br><span class="line">        _txtMoney.setBorderStyle(SHADOW, FlxColor.GRAY, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        _sprHealth = <span class="keyword">new</span> <span class="type">FlxSprite</span>(<span class="number">4</span>, _txtHealth.y + (_txtHealth.height/<span class="number">2</span>) - <span class="number">4</span>, AssetPaths.health__png);</span><br><span class="line">        _sprMoney = <span class="keyword">new</span> <span class="type">FlxSprite</span>(FlxG.width - <span class="number">12</span>, _txtMoney.y + (_txtMoney.height/<span class="number">2</span>) - <span class="number">4</span>, AssetPaths.coin__png);</span><br><span class="line">        _txtMoney.alignment = RIGHT;</span><br><span class="line">        _txtMoney.x = _sprMoney.x - _txtMoney.width - <span class="number">4</span>;</span><br><span class="line">        add(_sprBack);</span><br><span class="line">        add(_sprHealth);</span><br><span class="line">        add(_sprMoney);</span><br><span class="line">        add(_txtHealth);</span><br><span class="line">        add(_txtMoney);</span><br><span class="line">        </span><br><span class="line">        forEach(<span class="function"><span class="keyword">function</span></span>(spr:<span class="type">FlxSprite</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    spr.scrollFactor.<span class="keyword">set</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">                &#125;);</span><br><span class="line">        <span class="comment">/*注意此处的forEach()函数并非一个迭代语句（iterate statement)，它是声明于FlxGroup类中的一个函数具体细节参考官方API文档*/</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">updateHUD</span></span>(Health:<span class="type">Int </span>= <span class="number">0</span>, Money:<span class="type">Int </span>= <span class="number">0</span>):<span class="type">Void</span></span><br><span class="line"><span class="type">    </span>&#123;</span><br><span class="line">        _txtHealth.text = Std.string(Health) + <span class="string">" / 3"</span>;</span><br><span class="line">        _txtMoney.text = Std.string(Money);</span><br><span class="line">        _txtMoney.x = _sprMoney.x - _txtMoney.width - <span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个类继承自<code>FlxTypedGroup&lt;FlxSprite&gt;</code>类所以它可以用于保存我们所有的<code>FlxSprite</code>对象。它由5个部分组成：背景（黑色，底部有一条1像粗细的白色细线），两个<code>FlxText</code>对象（一个用于生命值，一个用于当前金币），两个<code>FlxSprite</code>对象（用于在<code>FlxText</code>对象旁边显示图标）。在构造函数的函数体最后几行里我们调用了<code>forEach()</code>遍历当前Group的所有成员并将它们的<code>scrollFactor.x</code>与<code>scrollFactor.y</code>都设为 0，这么做可以使得摄像机在滚动的时候这些对象的位置也会停留在原地（相对于显示屏幕）。</p>
+<p>最后我们声明了一个函数使得从任意位置调用时告诉<code>HUD</code>应该如何显示。</p>
+</li>
+<li><p>现在我们要让它开始实际工作并在玩家不论何时捡起硬币时更新数据。在<code>PlayState</code>类的顶部添加以下变量：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _hud:<span class="type">HUD</span>;</span><br><span class="line"><span class="keyword">var</span> _money:<span class="type">Int </span>= <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> _health:<span class="type">Int </span>= <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>create()</code>函数，于<code>super.create()</code>语句之前的位置添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_hud = <span class="keyword">new</span> <span class="type">HUD</span>();</span><br><span class="line">add(_hud);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最后，在<code>playerTouchCoin()</code>函数体中的<code>if</code>语句中任意位置添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_money++;</span><br><span class="line">_hud.updateHUD(_health, _money);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>接着测试你的游戏，HUD应该会在你每次拾起硬币的时候更新显示的内容。</p>
+<p><img src="//nulllstack.github.io/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/untitled.png" alt></p>
+<p>如果我们有一个使玩家的角色受到伤害的方式，那么我们也需要更新HUD显示的生命值，不过首先我们要确定玩家与敌人战斗的形式。</p>
+<p>现在让我们开始搭建我们的战斗系统。首先，在这里我们并不是要做一个如最终幻想那样庞大的战斗系统，这里只不过是对几个不同的元素如何工作做出一个基本演示。所以我想这里我们要做的是当玩家与敌人发生碰撞时，跳出一个界面，显示玩家与敌人当前的生命值（为了视觉上更为友好，数值显示于一管血条中），并为玩家提供两个选项：<code>战斗</code>或<code>逃跑</code>。</p>
+<p>如果玩家选择了战斗，我们将roll一个随机数用于判断玩家与敌人间的攻击是否击中了对方，如果击中了，将对对方造成一点伤害。如果敌人死亡玩家将脱离战斗状态。而如果玩家选择了逃跑，我们将以同样的方式判断玩家是否成功脱离，如果成功脱离战斗则关闭战斗界面，并使敌人在原地停顿几秒给玩家时间远离它。如果脱离失败了，敌人会乘机攻击玩家。我们还要在战斗界面显示当前攻击是否被闪躲或造成了多少伤害值。</p>
+<p>这些看起来很简单，但实际上这需要几个不同的部分相互协作来实现，他其实是我们到目前为止所作的最复杂的部分。</p>
+<ol>
+<li><p>第一个部分是<code>CombatHUD</code>类。这是一个庞大的类，战斗系统主要的逻辑代码都交由这个类完成。你可以在这里查看完整的源码：</p>
+<p><a href="https://github.com/HaxeFlixel/flixel-demos/blob/dev/Tutorials/TurnBasedRPG/source/CombatHUD.hx" target="_blank" rel="noopener">CombatHUD.hx</a></p>
+<p>花点时间完整的查看这个类的源码搞清楚它是如何工作的，之后再将它添加进你的项目里。</p>
+<p>我们现在已经有了供<code>CombatHUD</code>类使用的大部分资源文件，但是我们还需要一个图形文件，用于当玩家做选择时显示的箭头图形。你可以在<a href="https://github.com/HaxeFlixel/flixel-demos/blob/dev/Tutorials/TurnBasedRPG/assets/images/pointer.png" target="_blank" rel="noopener">这里下载</a>（点击download）（或者自己做一个），确保文件名为<code>pointer.png</code>并把它保存至项目文件夹内的<code>assets/images</code>文件夹内。</p>
+<p><code>CombatHUD</code>类中还使用了一些我们尚未讨论的东西：<em>声音</em>。我们将会在 “声音与音乐” 章节对此进行更深入的探讨，现在请先将以下这些文件下载<code>assets/sounds</code>文件夹下，这样才能让源码正确编译。</p>
+<p>这我就不单独罗列了，github上有，把链接里全部<code>wav</code>文件都下下来：<a href="https://github.com/HaxeFlixel/flixel-demos/tree/dev/Tutorials/TurnBasedRPG/assets/sounds" target="_blank" rel="noopener">链接</a></p>
+</li>
+<li><p>现在你需要为<code>Enemy</code>类添加一个简单的函数：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">changeEnemy</span></span>(EType:<span class="type">Int</span>):<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(etype != EType)</span><br><span class="line">    &#123;</span><br><span class="line">        etype = EType;</span><br><span class="line">        loadGraphic(<span class="string">"assets/images/enemy-"</span> + etype + <span class="string">".png"</span>, <span class="literal">true</span>, <span class="number">16</span>, <span class="number">16</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接着我们需要把<code>CombatHUD</code>对象添加进<code>PlayState</code>类中，把以下代码添加至<code>PlayState</code>类的顶部：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _inCombat:<span class="type">Bool </span>= <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> _combatHud:<span class="type">CombatHUD</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>移动到<code>create()</code>函数的位置，在函数体中，在我们添加（add）HUD之后，调用<code>super.create()</code>之前的位置添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_combatHud = <span class="keyword">new</span> <span class="type">CombatHUD</span>();</span><br><span class="line">add(_combatHud);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>移动到<code>update()</code>函数的位置，将其修改为<strong>仅当</strong>处于非战斗状态时才进行碰撞与重叠检测。位于<code>super.update()</code>调用之后的所有东西应该如以下代码所示：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!_inCombat)</span><br><span class="line">&#123;</span><br><span class="line">    FlxG.collide(_player, _mWalls);</span><br><span class="line">    FlxG.overlap(_player, _grpCoins, playerTouchCoin);</span><br><span class="line">    FlxG.collide(_grpEnemies, _mWalls);</span><br><span class="line">    _grpEnemies.forEachAlive(checkEnemyVision);</span><br><span class="line">    FlxG,overlap(_player, _grpEnmies, playerTouchEnemy);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(!_combatHud.visible)</span><br><span class="line">    &#123;</span><br><span class="line">        _health = _combatHud.playerHealth;</span><br><span class="line">        _hud.updateHUD(_health, _money);</span><br><span class="line">        <span class="keyword">if</span>(_combatHud.outcome == VICTORY)</span><br><span class="line">        &#123;</span><br><span class="line">            _combatHud.e.kill();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            _combatHud.e.flicker();</span><br><span class="line">        &#125;</span><br><span class="line">        _inCombat = <span class="literal">false</span>;</span><br><span class="line">        _player.active = <span class="literal">true</span>;</span><br><span class="line">        _grpEnemies.active = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里我们要添加一个条件检测，用于检查玩家是否碰到一个敌人，如果是则调用回调函数以查看我们是否应该开始战斗。</p>
+<p>如果我们处于战斗阶段，我们就持续检测HUD当前是否为可见的，当它为不可见时我们就知道战斗结束了，之后我们就可以对结果进行结算，当结果为<code>VICTORY</code>（我们的四个枚举值的其中一个）时，我们就杀掉敌人（<code>_combatHud.e.kill()</code>），而当玩家选择了逃跑，我们将使该敌人闪烁，用于表示玩家从这一刻起的一小段时间内将是安全的不会与该敌人再次触发战斗。</p>
+</li>
+<li><p>你可能已经发现了我们的<code>Enemy</code>类并没有<code>flicker()</code>函数（注），这是因为我们将使用<code>FlxSpriteUtil</code>类的一个函数来实现这个功能，Haxe提供了一个很nice的语法特性来帮我们完成这个工作。那么在<code>PlayState</code>类文件的顶部，位于其他导入语句（import）之后，添加一行代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> flixel.util.FlxSpriteUtil;</span><br></pre></td></tr></table></figure>
+
+<p>这将使得我们可以使用<code>FlxSpriteUtil</code>的APIs，如<code>flicker()</code>函数，它可以被用于任何<code>FlxObject</code>对象。具体技术细节参考<a href="https://haxe.org/manual/lf-static-extension.html" target="_blank" rel="noopener">官方文档-静态扩展</a>。</p>
+<p><strong>注：<code>_combatHud.e.flicker()</code>的调用使用了Haxe的语法特性-*<a href="https://www.kancloud.cn/simon_chang/haxe3manual/183635" target="_blank" rel="noopener">静态扩展</a>*，使得我们的<code>Enemy</code>类本身即使没有flicker()函数也可以通过外部类进行扩展。</strong></p>
+</li>
+<li><p>接下来让我们添加一个函数用于处理当玩家触碰到一个敌人的情况：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">playerTouchEnemy</span></span>(P:<span class="type">Player</span>, E:<span class="type">Enemy</span>):<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(P.alive &amp;&amp; P.exists &amp;&amp; E.alive &amp;&amp; E.exists &amp;&amp; !E.isFlickering())</span><br><span class="line">    &#123;</span><br><span class="line">        startCombat(E);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startCombat</span></span>(E:<span class="type">Enemy</span>):<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    _inCombat = <span class="literal">true</span>;</span><br><span class="line">    _player.active = <span class="literal">false</span>;</span><br><span class="line">    _grpEnemies.active = <span class="literal">false</span>;</span><br><span class="line">    _combatHud.initCombat(_health, E);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们在这里检查玩家与敌人的<code>alive</code>与<code>exists</code>属性是否都为<code>true</code>并且敌人不处于闪烁状态（闪烁状态下的敌人是那些我们刚刚脱离战斗状态的敌人）。如果条件都满足，我们就使之进入战斗状态。</p>
+<p><code>startCombat()</code>函数所做的事情是设置我们的<code>inCombat</code>flag进行赋值（这样做使得我们可以知道是否进行碰撞检测），并使玩家与敌人都进入非活动状态，这样它们将停止逻辑代码的更新（暂停<code>update()</code>的调用）。</p>
+<p>最后我们调用<code>initCombat()</code>函数，使得<code>CombatHUD</code>初始化并开始工作。</p>
+</li>
+<li><p>最后的最后，我们要使闪烁的敌人原地不动，它们应该在玩家逃跑后停顿几秒。</p>
+<p>在<code>Enemy</code>类中，于<code>update()</code>函数体内添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="built_in">this</span>.isFlickering())</span><br><span class="line">	<span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
+
+<p>把这段代码放在函数体的第一行的位置，优先于函数体内其他语句执行。</p>
+<p>注意<code>isFlickering()</code>函数同样来自<code>FlxSpriteUtil</code>类，所以如前面的做法，需要在<code>Enemy</code>类中添加一行<code>using</code>语句：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> flixel.util.FlxSpriteUtil;</span><br></pre></td></tr></table></figure>
+
+<p>这样就ok了，测试游戏确保能如期正常运行！</p>
+<p><img src="//nulllstack.github.io/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/0020.png" alt></p>
+<p>下一节我们将涉及获胜于失败状态（<code>PlayState</code>是游玩状态），并整合我们的所有状态（state）。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/" data-id="ck0gsqf32000wbswjjj72a5f8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HaxeFlixel官方教程9-敌人与基础AI" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/08/HaxeFlixel官方教程9-敌人与基础AI/" class="article-date">
+  <time datetime="2019-03-07T17:39:49.000Z" itemprop="datePublished">2019-03-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/08/HaxeFlixel官方教程9-敌人与基础AI/">HaxeFlixel官方教程9:敌人与基础AI</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://haxeflixel.com/documentation/enemies-and-basic-ai/" target="_blank" rel="noopener">原文</a></p>
+<p>如果地牢游戏里没有敌人的话就太名不副实了，所以现在我们来添加一些敌人进去！</p>
+<ol>
+<li><p>现在为你的 Ogmo 项目添加一个新的实体（entity）- 你很快就会习惯于这个工作流：</p>
+<p><img src="//nulllstack.github.io/2019/03/08/HaxeFlixel官方教程9-敌人与基础AI/1.png" alt></p>
+<p>确保你添加了<code>etype</code>值。</p>
+</li>
+<li><p>接着在地图里散布一些敌人，确保其中有且只有一个敌人的<code>etype</code>值为1，其余为0</p>
+<p><img src="//nulllstack.github.io/2019/03/08/HaxeFlixel官方教程9-敌人与基础AI/2.png" alt></p>
+</li>
+<li><p>那么我们想要游戏中存在两种类型的敌人，我们需要为它们提供两组精灵序列图，同样是16x16像素大小、与我们的player精灵序列图一样数量的动作帧。把它们命名为<code>enemy-0.png</code>与<code>enemy-1.png</code>，并保存至<code>assets/images</code>文件夹下，一下提供这两组精灵序列图给你使用（再次感谢 Vicky 为我们创作的图形资源！）：</p>
+<p><img src="//nulllstack.github.io/2019/03/08/HaxeFlixel官方教程9-敌人与基础AI/enemy-0.png" alt></p>
+<p><img src="//nulllstack.github.io/2019/03/08/HaxeFlixel官方教程9-敌人与基础AI/enemy-1.png" alt></p>
+<p>注意：确保你的两个精灵序列图以相同方式工作，它们在每个朝向上（facing）的动画都应该有相同数量的帧。</p>
+</li>
+<li><p>现在让我们来添加一个<code>Enemy</code>类，这个类整体上与我们的<code>Player</code>类十分相似，其中有几处改动：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Enemy</span> <span class="keyword"><span class="keyword">extends</span> <span class="type">FlxSprite</span></span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> speed:<span class="type">Float </span>= <span class="number">140</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> etype(<span class="keyword">default</span>, <span class="literal">null</span>):<span class="type">Int</span>;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">new</span></span>(X:<span class="type">Float</span>=<span class="number">0</span>, Y:<span class="type">Float</span>=<span class="number">0</span>, EType:<span class="type">Int</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">super</span>(X, Y);</span><br><span class="line">        etype = EType;</span><br><span class="line">        loadGraphic(<span class="string">"assets/images/enemy-"</span> + etype + <span class="string">".png"</span>, <span class="literal">true</span>, <span class="number">16</span>, <span class="number">16</span>);</span><br><span class="line">        setFacingFlip(FlxObject.LEFT, <span class="literal">false</span>, <span class="literal">false</span>);</span><br><span class="line">        setFacingFlip(FlxObject.RIGHT, <span class="literal">true</span>, <span class="literal">false</span>);</span><br><span class="line">        animation.add(<span class="string">"d"</span>, [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>], <span class="number">6</span>, <span class="literal">false</span>);</span><br><span class="line">        animation.add(<span class="string">"lr"</span>, [<span class="number">3</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">5</span>], <span class="number">6</span>, <span class="literal">false</span>);</span><br><span class="line">        animation.add(<span class="string">"u"</span>, [<span class="number">6</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">8</span>], <span class="number">6</span>, <span class="literal">false</span>);</span><br><span class="line">        drag.x = drag.y = <span class="number">10</span>;</span><br><span class="line">        width = <span class="number">8</span>;</span><br><span class="line">        height = <span class="number">14</span>;</span><br><span class="line">        offset.x = <span class="number">4</span>;</span><br><span class="line">        offset.y = <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">draw</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ((velocity.x != <span class="number">0</span> || velocity.y != <span class="number">0</span> ) &amp;&amp; touching == FlxObject.NONE)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (Math.abs(velocity.x) &gt; Math.abs(velocity.y))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (velocity.x &lt; <span class="number">0</span>)</span><br><span class="line">                    facing = FlxObject.LEFT;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    facing = FlxObject.RIGHT;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (velocity.y &lt; <span class="number">0</span>)</span><br><span class="line">                    facing = FlxObject.UP;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    facing = FlxObject.DOWN;</span><br><span class="line">            &#125;</span><br><span class="line">   </span><br><span class="line">            <span class="keyword">switch</span> (facing)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">case</span> FlxObject.LEFT, FlxObject.RIGHT:<span class="type"></span></span><br><span class="line"><span class="type">                    animation</span>.play(<span class="string">"lr"</span>);</span><br><span class="line">   </span><br><span class="line">                <span class="keyword">case</span> FlxObject.UP:<span class="type"></span></span><br><span class="line"><span class="type">                    animation</span>.play(<span class="string">"u"</span>);</span><br><span class="line">   </span><br><span class="line">                <span class="keyword">case</span> FlxObject.DOWN:<span class="type"></span></span><br><span class="line"><span class="type">                    animation</span>.play(<span class="string">"d"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">super</span>.draw();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>主要的不同点在于现在我们有一个新的<code>etype</code>变量，它被我们用于确定哪个enemy的精灵序列图将要被加载，以及我们将处理哪一个精灵等等。</p>
+</li>
+<li><p>接下来我们需要在<code>PlayState</code>中创建一个<code>FlxGroup</code>实例，用于保存我们的enemies对象并把他们加载进地图内，与前面章节对coin对象的操作极为相似。</p>
+<p>位于类的顶部添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _grpEnemies:<span class="type">FlxTypedGroup</span>&lt;Enemy&gt;;</span><br></pre></td></tr></table></figure>
+
+<p>在构造函数中，位于coin组的实例化之后的位置添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_grpEnemies = <span class="keyword">new</span> <span class="type">FlxTypedGroup</span>&lt;Enemy&gt;();</span><br><span class="line">add(_grpEnemies);</span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>placeEntities()</code>函数中位于 if/else 语句之后的位置添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(entityName == <span class="string">"enemy"</span>)</span><br><span class="line">&#123;</span><br><span class="line">    _grpEnemies.add(<span class="keyword">new</span> <span class="type">Enemy</span>(x + <span class="number">4</span>, y, Std.parseInt(EntityData.<span class="keyword">get</span>(<span class="string">"etype"</span>))));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着编译一下游戏测试一下敌人是不是被正确的添加至游戏中。</p>
+</li>
+</ol>
+<p>现在让我们给敌人创造一个大脑。</p>
+<p>为了让我们的敌人能够“思考”，我们将要应用一个简单的 有限状态机（<a href="http://en.wikipedia.org/wiki/Finite_state_machine" target="_blank" rel="noopener">Finite-state Machine(FSM)</a>）。</p>
+<p>简单来说，可以把一个FSM看成是一个一次只能表现一个状态的机器或实体，对应地我们将给予我们的 enemies 对象两种可能存在的状态：渡步（<code>Idle</code>）与追逐（<code>Chase</code>）。当它们看不到玩家时，它们将处于渡步状态下，即无目的的在四周徘徊。直到玩家出现在它们的视野范围内，它们将切换为追逐状态，朝玩家所处位置跑动。</p>
+<ol>
+<li><p>这应该不会很难，首先让我们来创建一个<code>FSM</code>类：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FSM</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> activeState:<span class="type">Void-&gt;Void</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">new</span></span>(?InitState:<span class="type">Void-&gt;Void</span>):<span class="type">Void</span></span><br><span class="line"><span class="type">    </span>&#123;</span><br><span class="line">        activeState = InitState;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(activeState != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            activeState();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接着我们稍微对<code>Enemy</code>类做一点修改。</p>
+<p>我们需要在类的顶部定义以下这些变量：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _brain:<span class="type">FSM</span>;</span><br><span class="line"><span class="keyword">var</span> _idleTmr:<span class="type">Float</span>;</span><br><span class="line"><span class="keyword">var</span> _moveDir:<span class="type">Float</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">var</span> seesPlayer:<span class="type">Bool </span>= <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">var</span> playerPos(<span class="keyword">default</span>, <span class="literal">null</span>):<span class="type">FlxPoint</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>并在位于构造函数的末尾处添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_brain = <span class="keyword">new</span> <span class="type">FSM</span>(idle);</span><br><span class="line">_idleTmr = <span class="number">0</span>;</span><br><span class="line">playerPos = FlxPoint.<span class="keyword">get</span>();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接着添加以下几个函数：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">idle</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(seesPlayer)</span><br><span class="line">    &#123;</span><br><span class="line">        _brain.activeState = chase;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(_idleTmr &lt;= <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(FlxG.random.bool(<span class="number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            _moveDir = <span class="number">-1</span>;</span><br><span class="line">            velocity.x = velocity.y = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            _moveDir = FlxG.random.int(<span class="number">0</span>, <span class="number">8</span>) * <span class="number">45</span>;</span><br><span class="line">            velocity.<span class="keyword">set</span>(speed * <span class="number">0.5</span>, <span class="number">0</span>);</span><br><span class="line">            velocity.rotate(FlxPoint.weak(), _moveDir);</span><br><span class="line">        &#125;</span><br><span class="line">        _idleTmr = FlxG.random.int(<span class="number">1</span>, <span class="number">4</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	_idleTmr -= FlxG.elapsed;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">chase</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!seesPlayer)</span><br><span class="line">        _brain.activeState = idle;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        FlxVelocity.moveTowardsPoint(<span class="built_in">this</span>, playerPos, Std.int(speed));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span></span>(elapsed:<span class="type">Float</span>):<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    _brain.update();</span><br><span class="line">    <span class="keyword">super</span>.update(elapsed);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其工作方式是这样的：每个敌人将以<code>Idle</code>也就是渡步状态生成，在<code>PlayState</code>中每一个敌人将时刻检查是否看到玩家，如果看到了，它将切换至<code>Chase</code>也就是追逐状态，直到不再能够看到玩家为止。当处于<code>Idle</code>状态下，通常（随机间隔内）选择一个随机的朝向移动（以及一个小概率的止步不前）。当处于<code>Chase</code>状态下时它们会朝玩家所处位置移动。</p>
+</li>
+<li><p>让我们跳回到<code>PlayState</code>类中，添加检测玩家的视野范围的逻辑代码。在<code>update()</code>函数中位于重叠与碰撞检测的代码之后的位置添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FlxG.collide(_grpEnemies, _mWalls);</span><br><span class="line">_grpEnemies.forEeachAlive(checkEnemyVision);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接着添加<code>checkEnemyVision()</code>函数：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkEnemyVision</span></span>(e:<span class="type">Enemy</span>):<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(_mWalls.ray(e.getMidpoint(), _player.getMidpoint()))</span><br><span class="line">    &#123;</span><br><span class="line">        e.seesPlayer = <span class="literal">true</span>;</span><br><span class="line">        e.playerPos.copyFrom(_player.getMidpoint());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	e.seesPlayer = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>至此就完成这一节的所有工作了，编译运行你的游戏确保它能正常工作！</p>
+<p><img src="//nulllstack.github.io/2019/03/08/HaxeFlixel官方教程9-敌人与基础AI/untitled.png" alt></p>
+<p>下一节，我们将为游戏添加一些UI，以及一个 RPG 类型的战斗系统，这样玩家就能够与敌人进行战斗了！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2019/03/08/HaxeFlixel官方教程9-敌人与基础AI/" data-id="ck0gsqf2i000fbswjvpbgkpk9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-蛋疼的迁移过程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/06/蛋疼的迁移过程/" class="article-date">
+  <time datetime="2019-03-05T17:28:15.000Z" itemprop="datePublished">2019-03-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/06/蛋疼的迁移过程/">蛋疼的迁移过程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>因为某些原因想要丢掉原来的GitHub账号还有博客，换身皮囊再继续。</p>
+<p>隔了一天的关系迁移过程有点模糊没什么头绪，我先罗列一下：</p>
+<ol>
+<li>更改本地的GitHub账号</li>
+<li>绑定SSH</li>
+<li>新建一个Repository</li>
+<li>重新部署博客（迁移博客配置文件、迁移博客主题配置文件、安装插件等）</li>
+</ol>
+<p>在我做完 1、2 、3 之后我新建了一个文件夹用于重新生成博客（<code>hexo init</code>），之后尝试进行第 4 步操作。结果大概如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">remote: Permission to myNewAccount.git denied to MY_OLD_GITHUB_ACCOUNT</span><br><span class="line">fatal: unable to access &apos;https://github.com/myNewAccount/myNewRepo&apos;: </span><br><span class="line">The requested URL returned error: 403`</span><br></pre></td></tr></table></figure>
+
+<p>似乎是由于部署博客的过程里往仓库 push 的时候被自动使用了旧账号进行操作，在这之后的2个小时里我不断更新 SSH key 、删掉博客的本地文件再 <code>hexo init</code> 反复折腾，最后发现只需要打开 GitHub Desktop 更新账号，把放博客的新 repo 给 clone 下来就行（重启电脑前不行，重启之后再尝试博客就成功部署上去了）</p>
+<p>部署完不算完，因为我以为每次迁移博客都需要重新 <code>hexo init</code> 所以新博客现在是空的，我原来旧的那些文章都还没放进去，虽然都是食之无味弃之可惜，但是。。。弃之可惜嘛。。。所以我把备份好的 <code>.md</code> 文件直接丢到新博客的 post 文件夹里生成。。。结果又出事了，只有靠前的两三篇文章标题正确显示，剩余的全是“no-title”；这个情况在之前也碰上过，但是由于每次码字都累爆，上传又遇上这种情况就会心烦气躁地 “备份-删除-重新上传、复制-粘贴-重新上传” 地折腾个三四十分钟，问题往往莫名其妙地就能解决。但是这次我怀疑的对象不再是文件本身，我怀疑是 hexo 生成的页面会根据 <code>hexo new &quot;article title&quot;</code> 时生成某个文件、保存文章标题来进行显示。然而事实是我想多了。</p>
+<p>事实上每一次的 <code>hexo new &quot;new article&quot;</code> 生成的 <code>.md</code> 文件里都会自动生成出如下内容：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: 蛋疼的迁移过程</span><br><span class="line">date: 2019-03-06 01:28:15</span><br><span class="line">tags:</span><br></pre></td></tr></table></figure>
+
+<p>估计 hexo 生成的页面就是通过这里的 title 获取文章标题进行显示的（我真的很不乐意学HTML之流，我甚至觉得它们比C++还麻烦 :P ），而我在云端备份的文章里都没把这一段内容放进去，所以生成的页面找不到标题就默认给了 no-title 。</p>
+<p>哦对了，想起来一个事儿，在我直接放 <code>.md</code> 文件生成博客之前我看了 hexo 官网的文档，里头提到迁移文章的一个插件“hexo-migrator-rss” ，需要通过<code>npm install hexo-migrator-rss --save</code> 安装之后使用，他可以从RSS迁移所有文章，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo migrate rss &lt;source&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>source</code> 可以是文件路径或网址，也就是指向某个“atom.xml”文件就行了，所以我试了一下，结果文章确实都被取回来了，但是都是根据<code>.xml</code>文件的内容生成的，文章内嵌入的图片资源都没能获取到，<strong>原因不明</strong>。似乎很麻烦所以很快就考虑其他解决办法。</p>
+<p>接着我意识到这一切都与是否生成一个新博客不相关的，你要做的只是在博客的配置文件里更改 url、root（可选）、deploy的参数，部署的时候 hexo 只看你的 deploy 参数而已，于是我滚回原来存放博客的文件夹里修改了配置文件，重新部署了一下。。。</p>
+<p>至此迁移工作就完事儿了，挺蛋疼的，30分钟的事情我弄了3个小时，尽管多多少少还是有所收获吧。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2019/03/06/蛋疼的迁移过程/" data-id="ck0gsqf2q000pbswjqh251fj9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习记录/">学习记录</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-作废，迁移" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/03/作废，迁移/" class="article-date">
+  <time datetime="2019-03-02T17:20:21.000Z" itemprop="datePublished">2019-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/03/作废，迁移/">作废，迁移</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>从原来的地方搬到这里来了，回头记录一下迁移过程（有点蛋疼），明天还有课已经凌晨两点半了，该睡觉了，晚安:)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2019/03/03/作废，迁移/" data-id="ck0gsqf2k000hbswjhpvtuk9i" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-时隔多日再水一篇" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/05/时隔多日再水一篇/" class="article-date">
+  <time datetime="2018-09-05T15:18:15.000Z" itemprop="datePublished">2018-09-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/05/时隔多日再水一篇/">时隔多日再水一篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这篇博客本该在几日前写完的，开学前应一老友所需码一篇关于HaxeFlixel开发环境搭建的文章，无奈开学这两天没太适应过来拖延到今晚才开始有心情码字，实际发布时间会晚于tag所标示的时间。</p>
+<p>以下是本次要安装的各种工具：</p>
+<ul>
+<li><a href="#first">Haxe工具集</a><ul>
+<li>Lime</li>
+<li>OpenFL</li>
+<li>Flixel</li>
+<li>Flixel Tools</li>
+</ul>
+</li>
+<li><a href="#second">VisualStudio</a></li>
+<li><a href="#third">VisualStudioCode</a></li>
+</ul>
+<p><a name="first"><h2>安装Haxe工具集与其他依赖项</h2></a></p>
+<p>首先，登陆Haxe的官网<a href="https://haxe.org/download/" target="_blank" rel="noopener">haxe.org</a>下载安装包，安装内容包括一个Haxe的跨平台编译器，一个标准库以及一个命令行工具“haxelib”，它是一个包管理工具，可以用于提交和检索可用的库，目前我只用它来安装一些依赖项而已，下面开始安装其他依赖项。</p>
+<p>打开PowerShell或者CMD，依次执行以下指令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">haxelib install lime</span><br><span class="line">haxelib install openfl</span><br><span class="line">haxelib install flixel</span><br></pre></td></tr></table></figure>
+
+<p>注意：如果下载过程报错中断显示超时，那么搭个梯子试试或者在命令中加入参数<code>haxelib -notimeout &lt;command&gt;</code>以取消超时。</p>
+<p>Lime是OpenFL用于跨平台编译的一个底层支持，主要用于给不同平台（如Flash，HTML5，C++）提供输入，音频，渲染上下文，网络访问提供统一的底层支持，具体的技术细节我也还没搞懂，所以就不多说了。</p>
+<p>Flixel原本是由<a href="http://www.adamatomic.com/" target="_blank" rel="noopener">Adam “Atomic” Saltsman</a>以ActionScript3.0写就的一套Flash平台的游戏开发框架，由于后来Flash平台日渐衰落，所以喜爱Flixel的人就开始考虑把它移植到其他平台去，正巧Haxe社区已经有人做了Flash整个API的移植版本——也就是OpenFL，于是Flixel就顺其自然的被移植到了Haxe平台上，这样既能做到原来Flash平台做不到的跨平台开发（Adobe在Flash衰落的日子里主动放弃了很多跨平台的支持），同时又能让原来Flash平台上的开发者通过熟悉的API快速上手，投入Haxe平台的怀抱。</p>
+<p>好了，一点点介绍说完了，当以上东西都下完之后再执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">haxelib run lime setup flixel</span><br></pre></td></tr></table></figure>
+
+<p>它会检查你的lime和opemfl是否为最新，以及其他Flixel相关的库（主要是插件，DEMO，UI，模板）。</p>
+<p>如果你跑了以上命令，那么Flixel Tools已经被安装了，但是我们需要启动它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">haxelib run flixel-tools setup</span><br></pre></td></tr></table></figure>
+
+<p>它将会询问你两个问题：</p>
+<p>是否使用命令别名（用于快捷输入，我都是启用的）：y/n</p>
+<p>使用的默认IDE（我们使用VSCode，设置之后通过命令创建模板后将自动通过所选择的编辑器打开）：这里我们选择VisualStudioCode。</p>
+<p>它同样也是一个命令行工具，之后我们新建项目或下载flixel相关的其他库都将通过它来完成。</p>
+<p>到这里先通过几条指令来检查所有东西是不是都安装正确了：</p>
+<p>依次执行以下指令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lime</span><br><span class="line">flixel</span><br></pre></td></tr></table></figure>
+
+<p>如果如下图所示则表明所需要的东西都安装完毕。</p>
+<div align="center">
+
+<p><img src="//nulllstack.github.io/2018/09/05/时隔多日再水一篇/command.jpg" alt></p>
+</div>
+
+
+
+<p><a name="second"><h2>安装VisualStudio</h2></a></p>
+<p>若想将游戏编译至C++平台上HaxeFlixel似乎只能用MSVC编译器，所以需要安装这个庞大的东西，那么上官网 <a href="https://visualstudio.microsoft.com/" target="_blank" rel="noopener">VisualStudo</a> ，目前推荐安装最新的 Community 2017 版。</p>
+<div align="center">
+
+<p><img src="//nulllstack.github.io/2018/09/05/时隔多日再水一篇/VS2017.jpg" alt></p>
+</div>
+
+<p>下载完打开，然后选中如下图所示的勾选项</p>
+<div align="center">
+
+<p><img src="//nulllstack.github.io/2018/09/05/时隔多日再水一篇/VSInstaller.jpg" alt></p>
+</div>
+
+<p>但其实我们需要的是VC++的编译器，所以也可以只勾选VC++ 2017 工具</p>
+<div align="center">
+
+<p><img src="//nulllstack.github.io/2018/09/05/时隔多日再水一篇/VSInstaller2.jpg" alt></p>
+</div>
+
+<p>安装完直接把VS关掉就行。</p>
+<p><a name="third"><h2>安装VisualStudioCode</h2></a></p>
+<p>我们使用VisualStudioCode（VSCode）作为我们的代码编辑环境，同样登陆<a href="https://visualstudio.microsoft.com/zh-hans/" target="_blank" rel="noopener">VS官网</a>，点击如下图所示下载VSCode：</p>
+<div align="center">
+
+<p><img src="//nulllstack.github.io/2018/09/05/时隔多日再水一篇/VSCode.jpg" alt></p>
+</div>
+
+<p>安装完成后打开VSCode打开左侧边栏中的扩展：</p>
+<div align="center">
+
+<p><img src="//nulllstack.github.io/2018/09/05/时隔多日再水一篇/VSCodeExtension.jpg" alt></p>
+</div>
+
+<p>如图所示搜索Haxe，选中Haxe Extension Pack并安装，之后再搜索Lime并安装Lime插件：</p>
+<div align="center">
+
+<p><img src="//nulllstack.github.io/2018/09/05/时隔多日再水一篇/Lime.jpg" alt></p>
+</div>
+
+<p>完成后重启VSCode。</p>
+<h2>测试项目</h2>
+
+<p>至此万事俱备，我们再次打开PowerShell，输入以下指令新建一个HaxeFlixel项目：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flixel tpl &quot;default&quot; -n &quot;HelloWorld&quot;</span><br></pre></td></tr></table></figure>
+
+<p>这里使用默认模板，并以”HelloWorld”命名在当前目录创建一个新的项目。命令<code>tpl</code>是<code>template</code>的别名，如果在<code>haxelib run flixel-tools setup</code>时启用了别名则可以使用<code>tpl</code>作为缩写快捷输入，default模板在我们执行<code>haxelib run lime setup</code>的时候下载好了，通过它我们可以在使用Flixel命令行工具创建项目时自动生成所需的配置文件，VSCode的配置文件存放于<code>.vscode</code>文件夹下，具体了解看官网文档，同样模板的自定义我自己也没研究过在这里就不讲了，官网资料或者论坛或者StackOverflow或其他什么方式，<strong>自己动手丰衣足食</strong>。</p>
+<div align="center">
+
+<p><img src="//nulllstack.github.io/2018/09/05/时隔多日再水一篇/Complete.jpg" alt></p>
+</div>
+
+<p>动手检查一下Haxe插件是不是工作正常，主要是看看代码提示和补全，随便在那一行哪一个位置<code>Ctrl+Space</code>可以激活VSCode的IntelliSense，如果出现没有提示的情况，看看界面左下角是不是显示Building Cache，如果是这样的话参考我的上一篇博文。</p>
+<p>到这里应该没什么问题了，如果我什么时候想起来要补充点什么再回来更新，晚安 :)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2018/09/05/时隔多日再水一篇/" data-id="ck0gsqf2p000obswjfjtpalbw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-摸鱼一把" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/16/摸鱼一把/" class="article-date">
+  <time datetime="2018-08-16T14:33:13.000Z" itemprop="datePublished">2018-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/16/摸鱼一把/">摸鱼一把</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>解决了VSCode的Haxe插件时不时卡死building cache，导致代码提示功能无法正常工作的问题。</p>
+<p>打开VSCode<code>文件 -&gt; 首选项 -&gt; 设置</code>在右边窗口用户设置内添加:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "haxe.buildCompletionCache" = false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以覆盖默认设置，一个不知所云的热修复，问题暂时得到解决。</p>
+<p>再就是搭建了一个Haxe的学习环境，<code>.vscode</code>文件夹下配置文件为：</p>
+<p>task.json:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // See https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">    // for the documentation about the tasks.json format</span><br><span class="line">    "version": "2.0.0",</span><br><span class="line">    "tasks": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"compile"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"haxe"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [</span><br><span class="line">                <span class="string">"-main"</span>, <span class="string">"Main"</span>, <span class="string">"-cpp"</span>, <span class="string">"output"</span>, <span class="string">"-debug"</span>, <span class="string">"-lib"</span>, <span class="string">"hxcpp-debug-server"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"promptOnClose"</span>: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>launch.json:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 使用 IntelliSense 了解相关属性。 </span><br><span class="line">    // 悬停以查看现有属性的描述。</span><br><span class="line">    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">    "version": "0.2.0",</span><br><span class="line">    "configurations": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"preLaunchTask"</span>: <span class="string">"compile"</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Hxcpp"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"hxcpp"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"$&#123;workspaceRoot&#125;/output/Main-debug.exe"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后，博客的关于页上分享了我的邮箱地址，有兴趣交流的朋友可以通过邮箱地址联系我，其实只是想知道到底有多少人在看 = =</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2018/08/16/摸鱼一把/" data-id="ck0gsqf2n000lbswj68k2ddug" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习记录/">学习记录</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HaxeFlixel官方教程8-拾取物品" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/05/HaxeFlixel官方教程8-拾取物品/" class="article-date">
+  <time datetime="2018-08-04T17:22:54.000Z" itemprop="datePublished">2018-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/05/HaxeFlixel官方教程8-拾取物品/">HaxeFlixel官方教程8:拾取物品</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://haxeflixel.com/documentation/pickups/" target="_blank" rel="noopener">原文</a></p>
+<p>目前我们有一个小家伙可以在地图内自由行走，让我们为它添加一些可以拾取的东西。我们将要添加一些硬币，当玩家拾起的时候会计入分数。</p>
+<ol>
+<li><p>再一次打开你的Ogmo项目，然后打开<code>Project &gt; Edit Project</code>选项卡。</p>
+</li>
+<li><p>在‘Entities’选项卡内添加一个新的实体。</p>
+<div align="center">![](HaxeFlixel官方教程8-拾取物品/0014.png)
+</div></li>
+<li><p>选中 ‘entities’ 图层，在地图中散布一些硬币：</p>
+<div align="center">![](HaxeFlixel官方教程8-拾取物品/0015.png)
+</div></li>
+<li><p>我们将使用8x8像素作为硬币的大小，硬币的图像资源你可以使用这个<img src="//nulllstack.github.io/2018/08/05/HaxeFlixel官方教程8-拾取物品/coin.png" alt>,或者是你自己画一个，然后保存至<code>assets/images</code>文件夹下。</p>
+</li>
+<li><p>回到VSCode，新建一个新的类：</p>
+<div align="center">![](HaxeFlixel官方教程8-拾取物品/VSCode1.png)
+
+<div align="center">![](HaxeFlixel官方教程8-拾取物品/VSCode2.png)
+</div></div></li>
+<li><p>Coin类十分简单，我们只需要修改一下构造函数：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span>;</span><br><span class="line"><span class="keyword">import</span> flixel.FlxSprite;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Coin</span> <span class="keyword"><span class="keyword">extends</span> <span class="type">FlxSprite</span></span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">new</span></span>(X:<span class="type">Float</span>,Y:<span class="type">Float</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">super</span>(X,Y);</span><br><span class="line">        loadGraphic(AssetPaths.coin__png,<span class="literal">false</span>,<span class="number">8</span>,<span class="number">8</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>现在回到<code>PlayState</code>类中，我们需要修改一下地图加载的逻辑代码，让它从Ogmo文件中加载实体时如果发现coin将会把<code>Coin</code>对象加入当前状态（state）。</p>
+</li>
+<li><p>首先让我们创建一个<code>FlxGroup</code>对象用于存储所有的硬币，在类中定义所有全局变量的地方添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _grpCoins:<span class="type">FlxTypedGroup</span>&lt;Coin&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>FlxGroup</code>类似一个存储Flixel对象（Flixel Object）的数组，以供在许多需要的情况下使用，在这里我们用它来存储所有的硬币所以以<code>FlxTypedGroup&lt;Coin&gt;</code>形式声明。</p>
+<p>在<code>create()</code>函数中位于初始化player之前，添加墙体之后的位置，我们从这里初始化硬币组（coin group）并将其添加至当前状态：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_grpCoins = <span class="keyword">new</span> <span class="type">FlxTypedGroup</span>&lt;Coin&gt;();</span><br><span class="line">add(_grpCoins);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接下来我们需要修改<code>placeEntities()</code>函数，让其从Ogmo文件中读取到”coin“实体时将其添加进组中，位于我们的if语句的末尾添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(entityName == <span class="string">"coin"</span>)</span><br><span class="line">&#123;</span><br><span class="line">    _grpCoins.add(<span class="keyword">new</span> <span class="type">Coin</span>(x+<span class="number">4</span>,y+<span class="number">4</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样做将告诉程序创建一个coin对象，将其放置于Ogmo文件中所定义的位置（对其<code>x</code>值+4，<code>y</code>值+4，使得硬币位于瓦砖的居中位置），之后将这个coin对象添加进组。</p>
+</li>
+<li><p>现在我们需要player能够拾取这些硬币，我们将通过检查重叠情况（overlap）的方式来实现，在<code>update()</code>函数中位于<code>FlxG.collide()</code>调用之后的位置添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FlxG.overlap(_player,_grpCoins,playerTouchCoin);</span><br></pre></td></tr></table></figure>
+
+<p>这么做是告诉程序：在每一帧检查player与硬币组之间的重叠情况，如果发生重叠，则调用<code>playerTouchCoin()</code>函数。</p>
+</li>
+<li><p>现在我们来实现<code>playerTouchCoin()</code>回调函数：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">playerTouchCoin</span></span>(P:<span class="type">Player</span>,C:<span class="type">Coin</span>):<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(P.alive &amp;&amp; P.exists &amp;&amp; C.alive &amp;&amp; C.exists)</span><br><span class="line">    &#123;</span><br><span class="line">        C.kill();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个函数检查player与硬币之间是否发生重叠且两者之间的alive与exists属性皆为true，如果是，则对硬币调用<code>kill()</code>函数（我们稍后会添加计分功能）。</p>
+<p>如果你现在运行游戏，当你在地图内行走时触碰到的硬币将会消失。很好，但是有点无趣，让我们为其添加一点小样式。</p>
+</li>
+<li><p>回到<code>Coin</code>类中添加以下几个函数：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">kill</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    alive = <span class="literal">false</span>;</span><br><span class="line">    FlxTween.tween(<span class="built_in">this</span>,&#123;alpha: <span class="type">0</span>, y: <span class="type">y - 16</span>&#125;,<span class="number">.33</span>,&#123;ease: <span class="type">FlxEase</span>.circOut, onComplete: <span class="type">finishKill</span>&#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">finishKill</span></span>(<span class="literal">_</span>):<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    exists = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<hr>
+<p>目前为止遇到一些Haxe语法上的问题待解决暂时先翻译到这里，我先去看看Haxe官方的文档。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2018/08/05/HaxeFlixel官方教程8-拾取物品/" data-id="ck0gsqf2b000abswjq4bxyssa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HaxeFlixel官方教程7-摄像机与缩放" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/02/HaxeFlixel官方教程7-摄像机与缩放/" class="article-date">
+  <time datetime="2018-08-02T09:33:46.000Z" itemprop="datePublished">2018-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/02/HaxeFlixel官方教程7-摄像机与缩放/">HaxeFlixel官方教程7:摄像机与缩放</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://haxeflixel.com/documentation/zoom-and-cameras/" target="_blank" rel="noopener">原文</a></p>
+<p>当你开始运行你的游戏，你将会看到，目前场景内的所有东西看起开都非常非常小，我们将要通过设置缩放来改变游戏内物体的能见度，以此让玩家得以看清角色每个细微的动作。要做到缩放很简单：</p>
+<ol>
+<li><p>打开<code>Main.hx</code>文件，这个类用于游戏的初始化工作，如果你想要的话看看有哪些东西你需要修改的，但这里我们只需要改变其中的几个参数。</p>
+</li>
+<li><p>修改<code>new FlxGame()</code>的宽度与高度参数为<code>320</code>与<code>240</code>（原来的值的一半）。</p>
+</li>
+<li><p>如果你现在开始运行游戏，你将看到所有东西都被放大了，但是player会越出屏幕的可视范围，因此我们需要告诉摄像机紧跟player的当前位置，再一次打开<code>PlayState</code>文件。</p>
+</li>
+<li><p>在构造函数内，位于添加player之后，<code>super.create()</code>之前的位置添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FlxG.camera.follow(_player,TOPDOWN,<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这样做将会告诉摄像机以<code>TOPDOWN</code>视角跟踪player的位置，以1为取值赋给<code>lerp</code>参数（这样做将会让摄像机的移动更为平滑一些）</p>
+</li>
+</ol>
+<p>完事了！测试游戏的运行结果看看效果如何。</p>
+<div align="center">![](HaxeFlixel官方教程7-摄像机与缩放/results.png)
+
+<p>下一节，让我们为player添加一些可以在地图内拾起的东西。</p>
+</div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2018/08/02/HaxeFlixel官方教程7-摄像机与缩放/" data-id="ck0gsqf290008bswjv50fpc0w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习记录/">学习记录</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HaxeFlixel/" style="font-size: 20px;">HaxeFlixel</a> <a href="/tags/学习记录/" style="font-size: 10px;">学习记录</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/05/HaxeFlixel官方教程12-音效与音乐/">HaxeFlixel官方教程12:音效与音乐</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/">HaxeFlixel官方教程11:游戏结束菜单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/">HaxeFlixel官方教程10:UI与战斗系统</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/08/HaxeFlixel官方教程9-敌人与基础AI/">HaxeFlixel官方教程9:敌人与基础AI</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/06/蛋疼的迁移过程/">蛋疼的迁移过程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

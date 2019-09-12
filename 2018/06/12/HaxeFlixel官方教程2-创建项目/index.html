@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>HaxeFlixel官方教程2:创建项目 | 囿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="由于官网教程使用的环境是 HaxeDevelop/FlashDevelop IDE 作为代码的编辑，调试环境，而我是使用 VSCode ，所以环境的搭建我打算另外做一篇教程，并且在必要的时候对系列教程的原文稍作修改以适应我所使用的环境，而官网的教程我就直接从创建项目的部分开始搬运。  原文 2-创建一个新的项目现在我们要确定我们需要的东西都安装妥当，并为我们的游戏建立所需的框架。所以我们首先创建">
+<meta name="keywords" content="HaxeFlixel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HaxeFlixel官方教程2:创建项目">
+<meta property="og:url" content="https://nulllstack.github.io/2018/06/12/HaxeFlixel官方教程2-创建项目/index.html">
+<meta property="og:site_name" content="囿">
+<meta property="og:description" content="由于官网教程使用的环境是 HaxeDevelop/FlashDevelop IDE 作为代码的编辑，调试环境，而我是使用 VSCode ，所以环境的搭建我打算另外做一篇教程，并且在必要的时候对系列教程的原文稍作修改以适应我所使用的环境，而官网的教程我就直接从创建项目的部分开始搬运。  原文 2-创建一个新的项目现在我们要确定我们需要的东西都安装妥当，并为我们的游戏建立所需的框架。所以我们首先创建">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://nulllstack.github.io/2018/06/12/HaxeFlixel官方教程2-创建项目/img1.JPG">
+<meta property="og:image" content="https://nulllstack.github.io/2018/06/12/HaxeFlixel官方教程2-创建项目/img2.jpg">
+<meta property="og:image" content="https://nulllstack.github.io/2018/06/12/HaxeFlixel官方教程2-创建项目/img3.jpg">
+<meta property="og:updated_time" content="2018-06-12T15:45:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HaxeFlixel官方教程2:创建项目">
+<meta name="twitter:description" content="由于官网教程使用的环境是 HaxeDevelop/FlashDevelop IDE 作为代码的编辑，调试环境，而我是使用 VSCode ，所以环境的搭建我打算另外做一篇教程，并且在必要的时候对系列教程的原文稍作修改以适应我所使用的环境，而官网的教程我就直接从创建项目的部分开始搬运。  原文 2-创建一个新的项目现在我们要确定我们需要的东西都安装妥当，并为我们的游戏建立所需的框架。所以我们首先创建">
+<meta name="twitter:image" content="https://nulllstack.github.io/2018/06/12/HaxeFlixel官方教程2-创建项目/img1.JPG">
+  
+    <link rel="alternate" href="/atom.xml" title="囿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">囿</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nulllstack.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-HaxeFlixel官方教程2-创建项目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/12/HaxeFlixel官方教程2-创建项目/" class="article-date">
+  <time datetime="2018-06-12T05:22:13.000Z" itemprop="datePublished">2018-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HaxeFlixel官方教程2:创建项目
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>由于官网教程使用的环境是 HaxeDevelop/FlashDevelop IDE 作为代码的编辑，调试环境，而我是使用 VSCode ，所以环境的搭建我打算另外做一篇教程，并且在必要的时候对系列教程的原文稍作修改以适应我所使用的环境，而官网的教程我就直接从创建项目的部分开始搬运。</p>
+</blockquote>
+<p><a href="http://haxeflixel.com/documentation/creating-a-new-project/" target="_blank" rel="noopener">原文</a></p>
+<h3 id="2-创建一个新的项目"><a href="#2-创建一个新的项目" class="headerlink" title="2-创建一个新的项目"></a>2-创建一个新的项目</h3><p>现在我们要确定我们需要的东西都安装妥当，并为我们的游戏建立所需的框架。所以我们首先创建一个新的项目，使用 VSCode 打开项目并测试它是否正常构建并运行程序。</p>
+<ol>
+<li><p>在命令行窗口（<code>开始-运行-cmd-回车</code>）敲入以下指令：</p>
+<p><code>flixel tpl -n &quot;FlixelTut&quot;</code></p>
+<p>这个指令会在当前目录使用一个空白的模板创建一个新的 Flixel 项目并放置于 FlixelTut 文件夹内（因为我们以 FlixelTut 命名了该项目）</p>
+</li>
+<li><p>如果你跟我一样使用 VSCode 作为开发环境，并且在 <code>haxelib run flixel-tools setup</code> 的时候配置了 VSCode 作为 flixel 创建项目的默认编辑器，并设置为创建新模板或 Demo 时自动启动，那么现在 VSCode 会自动启动并打开该项目。</p>
+</li>
+<li><p>打开 VSCode 的资源管理器。</p>
+</li>
+<li><p>在资源管理器里，你能够看到项目的结构，包含了模板为我们生成的所有文件。</p>
+<p><img src="//nulllstack.github.io/2018/06/12/HaxeFlixel官方教程2-创建项目/img1.JPG" alt></p>
+</li>
+<li><p>接下来我们要确定我们的项目能够正确的构建与运行。默认情况下，一个崭新的 Flixel 模板项目会从 PlayState 启动游戏。所以从资源管理器双击打开 source 文件夹下的 PlayState 文件。这是一个十分基础的 FlxState 子类的实例。你可以设想一下把 FlxState 看作是一个 “场景（scenes）” 。当你的游戏开始运行时有且只有一个 “状态（state）” 处于活动状态。玩家看得见摸得着的东西都是被“添加（added）”进该状态的，并且通常会把不共享资源的状态相互隔离。</p>
+<p>通常相互隔离的状态负责游戏的不同部分，比如游戏的开始菜单（MenuState）与游戏状态（PlayState），这些状态之间的关系有点像一个个泡泡（这个实在不知道如何翻译）</p>
+<blockquote>
+<p>They are great for having different sections of your game that are sort of in a bubble from one another, such as a <code>MenuState</code> (which we will add later) and the <code>PlayState</code> (where the game is actually played).</p>
+</blockquote>
+<p>稍后你将会看到，但目前为止 PlayState 只有包含了两个函数：<code>create()</code> 与 <code>update()</code>函数。当一个状态被加载进来，他的<code>create()</code>函数会立即被调用。你应该在这里对状态做一些初始化工作。</p>
+<p><code>update()</code> 是所有奇妙的事物发生的地方，他会在游戏运行时按每帧一次的频率调用（默认情况下游戏是 每秒60帧 - 60fps）。当一个 <code>FlxState</code> 对象的 <code>update()</code> 被调用时，它也会调用被添加进该状态的对象的 <code>update()</code> 函数。这基本上就是你的游戏背后的工作原理。稍后我们会更详细的讨论。现在，我们只是想看看我们搭建的东西是不是能够正常运行，所以接下来让我们添加一个简单的 <code>FlxText</code> 对象到这个状态里。</p>
+</li>
+<li><p>在文件的最上方，位于 <code>import flixel.FlxState;</code> 这一行下方添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> flixel.text.FlxText;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="7">
+<li><p>在 <code>create()</code> 函数里，位于 <code>super.create();</code> 的前一行的位置添加以下代码:</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add(<span class="keyword">new</span> <span class="type">FlxText</span>(<span class="number">10</span>,<span class="number">10</span>,<span class="number">100</span>,<span class="string">"Hello, World!"</span>));</span><br></pre></td></tr></table></figure>
+
+<p>然后保存你的修改（<code>Ctrl + s</code>）</p>
+</li>
+<li><p>The Moment of Truth! 点击 VSCode 左侧的小虫子图标打开调试窗口，然后点击绿色小箭头。</p>
+<p><img src="//nulllstack.github.io/2018/06/12/HaxeFlixel官方教程2-创建项目/img2.jpg" alt></p>
+<p>如果你看到以下结果那么一切都很顺利：</p>
+<p><img src="//nulllstack.github.io/2018/06/12/HaxeFlixel官方教程2-创建项目/img3.jpg" alt></p>
+<p>行了！你成功构建并运行了你的第一个 HaxeFlixel 项目！</p>
+<blockquote>
+<p>“Big things have small beginnings.”  —— 《Prometheus》</p>
+</blockquote>
+<p>下一节，我们将正式为我们的游戏做一些设计，并开始把每个设想实现整合。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2018/06/12/HaxeFlixel官方教程2-创建项目/" data-id="ck0gsqf220003bswjxo4au3gm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/14/HaxeFlixel官方教程3-基础工作/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          HaxeFlixel官方教程3:基础工作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/11/HaxeFlixel官方教程-开篇/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">HaxeFlixel官方教程:开篇</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习记录/">学习记录</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HaxeFlixel/" style="font-size: 20px;">HaxeFlixel</a> <a href="/tags/学习记录/" style="font-size: 10px;">学习记录</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/05/HaxeFlixel官方教程12-音效与音乐/">HaxeFlixel官方教程12:音效与音乐</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/">HaxeFlixel官方教程11:游戏结束菜单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/">HaxeFlixel官方教程10:UI与战斗系统</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/08/HaxeFlixel官方教程9-敌人与基础AI/">HaxeFlixel官方教程9:敌人与基础AI</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/06/蛋疼的迁移过程/">蛋疼的迁移过程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

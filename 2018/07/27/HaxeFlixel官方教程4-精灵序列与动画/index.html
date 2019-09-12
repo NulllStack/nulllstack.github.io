@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>HaxeFlixel官方教程4:精灵序列与动画 | 囿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原文 目前，我们有了一个可以在屏幕中自由走动的 player 了，这很好，但是我们不希望它看起来只是一块蓝色方块，所以让我们为它添加一些图像。 首先选择一个你希望使用的图像编辑器（我用的是 Aseprite 在steam上可以购买）；你可以画任何你想要画的东西，然后把它保存为带透明通道的.png格式。我们的精灵序列将由16x16像素大小每帧组成，角色面朝四个可能的方向上都有两个不同的帧（面朝左和右">
+<meta name="keywords" content="HaxeFlixel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HaxeFlixel官方教程4:精灵序列与动画">
+<meta property="og:url" content="https://nulllstack.github.io/2018/07/27/HaxeFlixel官方教程4-精灵序列与动画/index.html">
+<meta property="og:site_name" content="囿">
+<meta property="og:description" content="原文 目前，我们有了一个可以在屏幕中自由走动的 player 了，这很好，但是我们不希望它看起来只是一块蓝色方块，所以让我们为它添加一些图像。 首先选择一个你希望使用的图像编辑器（我用的是 Aseprite 在steam上可以购买）；你可以画任何你想要画的东西，然后把它保存为带透明通道的.png格式。我们的精灵序列将由16x16像素大小每帧组成，角色面朝四个可能的方向上都有两个不同的帧（面朝左和右">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://nulllstack.github.io/2018/07/27/HaxeFlixel官方教程4-精灵序列与动画/player.png">
+<meta property="og:image" content="https://nulllstack.github.io/2018/07/27/HaxeFlixel官方教程4-精灵序列与动画/untitled.png">
+<meta property="og:updated_time" content="2018-12-23T13:44:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HaxeFlixel官方教程4:精灵序列与动画">
+<meta name="twitter:description" content="原文 目前，我们有了一个可以在屏幕中自由走动的 player 了，这很好，但是我们不希望它看起来只是一块蓝色方块，所以让我们为它添加一些图像。 首先选择一个你希望使用的图像编辑器（我用的是 Aseprite 在steam上可以购买）；你可以画任何你想要画的东西，然后把它保存为带透明通道的.png格式。我们的精灵序列将由16x16像素大小每帧组成，角色面朝四个可能的方向上都有两个不同的帧（面朝左和右">
+<meta name="twitter:image" content="https://nulllstack.github.io/2018/07/27/HaxeFlixel官方教程4-精灵序列与动画/player.png">
+  
+    <link rel="alternate" href="/atom.xml" title="囿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">囿</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nulllstack.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-HaxeFlixel官方教程4-精灵序列与动画" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/27/HaxeFlixel官方教程4-精灵序列与动画/" class="article-date">
+  <time datetime="2018-07-27T09:19:10.000Z" itemprop="datePublished">2018-07-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HaxeFlixel官方教程4:精灵序列与动画
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://haxeflixel.com/documentation/sprites-and-animation/" target="_blank" rel="noopener">原文</a></p>
+<p>目前，我们有了一个可以在屏幕中自由走动的 player 了，这很好，但是我们不希望它看起来只是一块蓝色方块，所以让我们为它添加一些图像。</p>
+<p>首先选择一个你希望使用的图像编辑器（我用的是 <a href="https://www.aseprite.org/" target="_blank" rel="noopener">Aseprite</a> 在steam上可以购买）；你可以画任何你想要画的东西，然后把它保存为带透明通道的<code>.png</code>格式。我们的精灵序列将由16x16像素大小每帧组成，角色面朝四个可能的方向上都有两个不同的帧（面朝左和右我们将使用相同的两个帧，因为我们稍后会翻转它们）</p>
+<p>你可以自己画，或者使用我朋友 Vicky Hedgecock 为这个教程创建的图像文件：</p>
+<p><img src="//nulllstack.github.io/2018/07/27/HaxeFlixel官方教程4-精灵序列与动画/player.png" alt></p>
+<p>将你的文件保存至<code>assets/images</code>文件夹下。</p>
+<p>现在我们需要把 player 的图像文件加载进 sprite。所以再一次打开你的<code>Player</code>类。</p>
+<ol>
+<li><p>从构造函数中删掉<code>makeGraphic()</code>函数的调用，用以下代码取而代之：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadGraphic(AssetPaths.player_png,<span class="literal">true</span>,<span class="number">16</span>,<span class="number">16</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这样做将会告诉你的 sprite 使用<code>player.png</code>文件作为其显示用的图像，而且是带动画效果的，长和高为16像素。<strong>AssetPaths是一个由整洁的Haxe宏生成的类，它根据Project.xml的assets标签的内容构建变量。（由谷歌翻译，原句放下面）</strong>。宏稍微有些复杂，但是在某个节点上值得深入研究一下，但在这里我们先只是将<code>AssetPaths</code>视为一个便于在代码中引用我们资源文件的手段。</p>
+<blockquote>
+<p>原句：<code>AssetPaths</code> is a class generated by a neat <a href="http://haxe.org/manual/macro.html" target="_blank" rel="noopener">Haxe macro</a> which builds its variables from the contents of your <code>Project.xml</code>‘s assets tag.</p>
+</blockquote>
+</li>
+<li><p>接下来，我们需要允许 sprite 基于其朝向进行翻转。这样做便于精灵序列节省一组朝向（只需要朝左）的帧，而不需要两组（既有朝左又有朝右）。</p>
+<p>添加如下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setFacingFlip(FlxObject.LEFT,<span class="literal">false</span>,<span class="literal">false</span>);</span><br><span class="line">setFacingFlip(FlxObject.RIGHT,<span class="literal">true</span>,<span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这两行代码意思是当 player 面朝左侧时不做任何翻转（因为我们的精灵序列里已经有面朝左侧的状态了），当 player 面朝右侧时进行水平翻转；如果我们想要的话，可以用相同的方式进行上下翻转。</p>
+</li>
+<li><p>现在我们需要基于精灵序列定义一组动画，在此例中我们要每个动画都以一个过渡动作（精灵序列中双脚平行的那一帧）结束动画序列的播放。因此需要在 player 每一段动画结束时都会返回至正确的帧。<br>添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">animation.add(<span class="string">"lr"</span>,[<span class="number">3</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">5</span>],<span class="number">6</span>,<span class="literal">false</span>);</span><br><span class="line">animation.add(<span class="string">"u"</span>,[<span class="number">6</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">8</span>],<span class="number">6</span>,<span class="literal">false</span>);</span><br><span class="line">animation.add(<span class="string">"d"</span>,[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>],<span class="number">6</span>,<span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<p> 对构造函数的修改到此就完成了，还有最后一步，修改<code>movement()</code>函数告诉 player sprite 作何朝向。所以，让我们对设置 player 角度的那节代码稍作修改，修改之后看起来如下所示：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mA:<span class="type">Float </span>= <span class="number">0</span>; <span class="comment">// 一个临时变量用于表示角度</span></span><br><span class="line"><span class="keyword">if</span> (_up)  <span class="comment">// 玩家按下UP键</span></span><br><span class="line">&#123;</span><br><span class="line">    mA = <span class="number">-90</span>; <span class="comment">// 将角度设为-90度 (时针12点的位置)</span></span><br><span class="line">    <span class="keyword">if</span> (_left)</span><br><span class="line">        mA -= <span class="number">45</span>; <span class="comment">// 如果玩家同时还按下了LEFT键, 则从目前的角度减去45度 - 这将会朝左上角移动</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (_right)</span><br><span class="line">        mA += <span class="number">45</span>; <span class="comment">// 同上, 如果玩家同时还按下了RIGHT键, 则加45度 (往右上角移动)</span></span><br><span class="line">    facing = FlxObject.UP; <span class="comment">// sprite应该朝向上方</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (_down) <span class="comment">// 玩家按下DOWN键</span></span><br><span class="line">&#123;</span><br><span class="line">    mA = <span class="number">90</span>; <span class="comment">// 将角度设为90度 (时针6点的位置)</span></span><br><span class="line">    <span class="keyword">if</span> (_left)</span><br><span class="line">        mA += <span class="number">45</span>; <span class="comment">// 当玩家同时按下LEFT按键则增加45度</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (_right)</span><br><span class="line">        mA -= <span class="number">45</span>; <span class="comment">// 或者当玩家按下RIGHT的话则减去45度</span></span><br><span class="line">    facing = FlxObject.DOWN; <span class="comment">// sprite朝向下方</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (_left) <span class="comment">// 当玩家按下LEFT但没有按下UP或者DOWN时</span></span><br><span class="line">&#123;</span><br><span class="line">    mA = <span class="number">180</span>; <span class="comment">// 将角度设为180度 (时针9点钟位置)</span></span><br><span class="line">    facing = FlxObject.LEFT; <span class="comment">// sprite朝向左方</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (_right) <span class="comment">// 玩家按下RIGHT但没有按下UP或DOWN时</span></span><br><span class="line">&#123;</span><br><span class="line">    mA = <span class="number">0</span>; <span class="comment">// 设角度为0度 (时钟3点钟位置)</span></span><br><span class="line">    facing = FlxObject.RIGHT; <span class="comment">// 设 sprite 朝向右方 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// determine our velocity based on angle and speed</span></span><br><span class="line"><span class="comment">// 基于angle与speed的值决定player的速度</span></span><br><span class="line">velocity.<span class="keyword">set</span>(speed, <span class="number">0</span>);</span><br><span class="line">velocity.rotate(FlxPoint.weak(<span class="number">0</span>, <span class="number">0</span>), mA);</span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> ((velocity.x != <span class="number">0</span> || velocity.y != <span class="number">0</span>) &amp;&amp; touching == FlxObject.NONE) <span class="comment">// 如果 player 是在移动的 (在任一坐标轴上的速度不为0), 我们需要改变 Player 的动画以契合它目前的朝向</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">switch</span> (facing)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">case</span> FlxObject.LEFT, FlxObject.RIGHT:<span class="type"></span></span><br><span class="line"><span class="type">            animation</span>.play(<span class="string">"lr"</span>);</span><br><span class="line">        <span class="keyword">case</span> FlxObject.UP:<span class="type"></span></span><br><span class="line"><span class="type">            animation</span>.play(<span class="string">"u"</span>);</span><br><span class="line">        <span class="keyword">case</span> FlxObject.DOWN:<span class="type"></span></span><br><span class="line"><span class="type">            animation</span>.play(<span class="string">"d"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 每当这个函数被调用，它将会检查当前哪一个方向的按键被玩家按下，并基于判断决定 sprite 目前应该是哪个朝向，应该使用哪段动画。</p>
+</li>
+<li><p>保存修改，然后运行项目你将看到你的 player 在运动时有了动画而且动画朝向正确。</p>
+<p><img src="//nulllstack.github.io/2018/07/27/HaxeFlixel官方教程4-精灵序列与动画/untitled.png" alt></p>
+</li>
+</ol>
+<p>下一节，我们将对地图与碰撞进行讨论。</p>
+<hr>
+<h3 id="次日更新"><a href="#次日更新" class="headerlink" title="次日更新"></a>次日更新</h3><p>补充：昨晚检查运行结果发现sprite的动画实际与教程中所述有出入，事实上在<code>animation.add()</code>添加动画时，若传递的<code>Looped</code>参数值为<code>false</code>那么当调用<code>animation.play()</code>时动画序列会根据<code>Frames</code>参数传入的值，定义动画序列，逐帧播放一次，最后止于最后一帧的位置，如教程中角色朝向左右两方时使用的是<code>animation.add(&quot;lr&quot;,[3,4,3,5],6,false)</code>这样的调用，其<code>Frames</code>参数传递的是一个<code>Array</code>类型的值：<code>[3,4,3,5]</code>，用于表示角色朝向左右两方时使用的动画序列，且<code>Looped</code>值为<code>false</code>这意味着动画不循环播放，那么当玩家按压左右方向键时sprite会按精灵序列图的第3，4，3，5帧顺序播放，当玩家松开按键时动画会从当前帧继续播放至第5帧后停止，再举个例子当player朝向上方时根据教程给出的定义，<code>animation.add(&quot;u&quot;,[6,7,6,8],6,false)</code>如此<code>Frame</code>值为<code>[6,7,6,8]</code>那么当玩家释放上方向键时sprite的动画会播放至第8帧的位置停止；player面朝下方时定义的动画序列为<code>[0,1,0,2]</code>，当玩家松开按键时动画播放至第2帧位置后停止。</p>
+<p>为解决这个问题我翻找了一下原教程的项目源码，发现不知道是原作者疏忽还是在教程后续才补充的原因，总之在这一节教程中漏了一段代码，这段代码用于实现这一节教程所说的 <strong>“我们要每个动画都以一个过渡动作（精灵序列中双脚平行的那一帧）结束动画序列的播放。因此需要在 player 每一段动画结束时都会返回至正确的帧。”</strong>，那么下面给出解决这个小bug的方法：</p>
+<p>在<code>Player</code>类中判定用户输入的那条条件语句<code>if(_up || _down || _left || _right)</code>之后的位置添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(animation.curAnim != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    animation.curAnim.curFrame = <span class="number">0</span>;</span><br><span class="line">    animation.curAnim.pause();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>curAnim</code>表示当前使用的是那一段动画序列（此节教程中定义了三段动画序列分别是 “lr”，”u”，”l”），<code>curFrame</code>表示当前动画序列的哪一帧（动画序列的帧索引从0开始）。</p>
+<p>注意：<code>curFrame</code>并不表示整个精灵序列的帧索引，而是通过<code>animation.add()</code>定义的动画序列的帧索引，比如通过<code>animation.add(&quot;lr&quot;,[3,4,3,5],6,false</code>添加的动画序列有4帧，那么当sprite使用<code>lr</code>这段动画序列时对<code>animation.curAnim.curFrame</code>赋值为0，sprite实际上显示的是整张精灵序列的第3帧的图像。</p>
+<p>所以这段代码的意思就是当玩家不按压任何移动按键时则判断当前动画序列是否<strong>不为</strong><code>null</code>，是则将当前动画序列的当前帧设为0，并暂停动画序列的播放。由于三段动画序列的第一帧位置分别是：3，6，0 ，也就是精灵序列中角色立定状态的图像，所以当玩家不进行任何移动操作时，sprite的动画都能返回至正确的帧（立定状态）。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2018/07/27/HaxeFlixel官方教程4-精灵序列与动画/" data-id="ck0gsqf360011bswjlywrjk0y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/30/一点整理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          一点整理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/14/HaxeFlixel官方教程3-基础工作/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">HaxeFlixel官方教程3:基础工作</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习记录/">学习记录</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HaxeFlixel/" style="font-size: 20px;">HaxeFlixel</a> <a href="/tags/学习记录/" style="font-size: 10px;">学习记录</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/05/HaxeFlixel官方教程12-音效与音乐/">HaxeFlixel官方教程12:音效与音乐</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/">HaxeFlixel官方教程11:游戏结束菜单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/">HaxeFlixel官方教程10:UI与战斗系统</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/08/HaxeFlixel官方教程9-敌人与基础AI/">HaxeFlixel官方教程9:敌人与基础AI</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/06/蛋疼的迁移过程/">蛋疼的迁移过程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

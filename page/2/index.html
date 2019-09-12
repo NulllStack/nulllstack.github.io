@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>囿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="囿">
+<meta property="og:url" content="https://nulllstack.github.io/page/2/index.html">
+<meta property="og:site_name" content="囿">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="囿">
+  
+    <link rel="alternate" href="/atom.xml" title="囿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">囿</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nulllstack.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-HaxeFlixel官方教程6-加载Tilemap" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/02/HaxeFlixel官方教程6-加载Tilemap/" class="article-date">
+  <time datetime="2018-08-02T08:07:00.000Z" itemprop="datePublished">2018-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/02/HaxeFlixel官方教程6-加载Tilemap/">HaxeFlixel官方教程6:加载Tilemap</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://haxeflixel.com/documentation/loading-the-tilemap/" target="_blank" rel="noopener">原文</a></p>
+<p>搭配Ogmo与HaxeFlixel框架一起使用的其中一大好处就是它内置了一些类用于加载与使用tilemap，这些类并不是来自HaxeFlixel框架的标准库，所以我们需要安装 flixel-addons 库才能访问到这些类。</p>
+<ol>
+<li><p>打开命令提示符键入以下命令：</p>
+<p><code>haxelib install flixel-addons</code></p>
+<p>正确运行后haxelib命令行工具将会开始安装一个新的库，下载安装后关闭命令提示符。</p>
+</li>
+<li><p>回到 VisualStudio Code 中打开<code>Project.xml</code>文件，我们需要告诉我们的项目引入 flixel-addons 库。</p>
+</li>
+<li><p>查看如下所示的那一行（VSCode中可以按<code>F3</code>打开查找框，键入关键字符合条件的行会高亮显示）：</p>
+<p><code>&lt;!--&lt;haxelib name=&quot;flixel-addons&quot; /&gt;--&gt;</code></p>
+<p>修改为以下所示：</p>
+<p><code>&lt;haxelib name=&quot;flixel-addons&quot; /&gt;</code></p>
+<p>保存修改，现在你已经可以使用 flixel-addons 库了（在我这边最近VSCode的Haxe插件有点问题需要重启VSCode）。</p>
+</li>
+<li><p>回到<code>PlayState</code>类中，在<code>_player</code>变量的定义下方添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _map:<span class="type">FlxOgmoLoader</span>;</span><br><span class="line"><span class="keyword">var</span> _mWalls:<span class="type">FlxTilemap</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>备注：需要<code>import flixel.tile.FlxTilemap;</code>以及<code>import  flixel.addons.editor.ogmo.FlxOgmoLoader;</code>，从现在开始需要<code>import</code>新类的地方我不再提示，若自己动手的过程里出现找不到类之类的问题，检查是否忘记<code>import</code>了，不知道某个类在哪个包下就看看<a href="https://api.haxeflixel.com/flixel/addons/editors/tiled/TiledMap.html" target="_blank" rel="noopener">官方API文档</a>，搜索栏里找一下相关的类。</strong></p>
+<p>这里我们告诉程序创建一个用于存储我们的 Ogmo map 的对象，然后再创建一个将从 Ogmo map 生成的<code>FlxTilemap</code>对象。</p>
+<p>如果你现在使用的是Tiled作为创建地图的编辑器，把<code>_map</code>变量的类型改为<code>TileMap</code>。</p>
+</li>
+<li><p>在<code>create()</code>函数里，建立player对象之前的位置添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">_map = <span class="keyword">new</span> <span class="type">FlxOgmoLoader</span>(AssetPaths.room_001__oel);</span><br><span class="line">_mWalls = _map.loadTilemap(AssetPaths.tiles__png,<span class="number">16</span>,<span class="number">16</span>,<span class="string">"walls"</span>);</span><br><span class="line">_mWalls.follow();</span><br><span class="line">_mWalls.setTileProperties(<span class="number">1</span>,FlxObject.NONE);</span><br><span class="line">_mWalls.setTileProperties(<span class="number">2</span>,FlxObject.ANY);</span><br><span class="line">add(_mWalls);</span><br></pre></td></tr></table></figure>
+
+<p>这里将我们上一节中创建的地图文件加载进<code>FlxOgmoLoader</code>对象里，之后从它的 ‘walls’ 图层生成我们的<code>FlxTilemap</code>对象并设置其第1块瓦砖（序列图中表示地板的那一块）为不进行碰撞检测，第2块瓦砖（序列图中表示墙体的那块瓦砖）为从任意方向进行碰撞检测。接着将我们的 tilemap 添加进当前状态（PlayState）。</p>
+<p>如果你使用的是Tiled，替换为以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">_map = <span class="keyword">new</span> <span class="type">TiledMap</span>(AssetPaths.room_001__tmx)</span><br><span class="line">_mWalls = <span class="keyword">new</span> <span class="type">FlxTilemap</span>();</span><br><span class="line">_mWalls.loadMapFromArray(<span class="keyword">cast</span>(_map.getLayer(<span class="string">"walls"</span>), TiledTileLayer).tileArray, _map.width, _map.height, AssetPaths.tiles__png, _map.tileWidth, _map.tileHeight, FlxTilemapAutoTiling.OFF, <span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>);</span><br><span class="line">_mWalls.follow();</span><br><span class="line">_mWalls.setTileProperties(<span class="number">2</span>, FlxObject.NONE);</span><br><span class="line">_mWalls.setTileProperties(<span class="number">3</span>, FlxObject.ANY);</span><br><span class="line">add(_mWalls);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>现在，我们需要把我们的player放置于地图中正确的位置上，所以下面把对player实例化的代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_player = <span class="keyword">new</span> <span class="type">Player</span>(<span class="number">20</span>,<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+
+<p>替换为：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_player = <span class="keyword">new</span> <span class="type">Player</span>();</span><br><span class="line">_map.loadEntities(placeEntities,<span class="string">"entities"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>我们告诉<code>_map</code>对象遍历其‘entities’图层，并从中调用回调函数<code>placeEntities()</code>（我们稍后将实现这个函数）。</p>
+<p><code>TiledMap</code>没有内置的<code>loadEntities()</code>函数，所以我们需要自己实现一个：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tmpMap:<span class="type">TiledObjectLayer </span>= <span class="keyword">cast</span> _map.getLayer(<span class="string">"entities"</span>);</span><br><span class="line"><span class="keyword">for</span>(e <span class="keyword">in</span> tmpMap.object)</span><br><span class="line">&#123;</span><br><span class="line">    placeEntities(e.type,e.xmlData.x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>现在我们开始实现<code>placeEntities()</code>函数，当我们对地图调用<code>loadEntities()</code>函数的时候，它会传递一个实体的名字以及该实体的 XML 数据到某个我们需要的函数中。在我们的函数中我们需要利用这些信息做一些工作，代码如下：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">placeEntities</span></span>(entityName:<span class="type">String</span>,entityData:<span class="type">Xml</span>):<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x:<span class="type">Int </span>= Std.parseInt(entityData.<span class="keyword">get</span>(<span class="string">"x"</span>));</span><br><span class="line">    <span class="keyword">var</span> y:<span class="type">Int </span>= Std.parseInt(entityData.<span class="keyword">get</span>(<span class="string">"y"</span>));</span><br><span class="line">    <span class="keyword">if</span>(entityName == <span class="string">"player"</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        _player.x = x;</span><br><span class="line">        _player.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当这个函数被传递进一个实体的名字为“player”的时候，它会把player对象的<code>x</code>和<code>y</code>值设为该实体的<code>x</code>与<code>y</code>值（将他们的值从<code>String</code>类型转换为<code>Int</code>类型）。</p>
+</li>
+<li><p>现在我们需要为当前状态添加碰撞，以此让player遇到墙体的时候会一头撞上而不是穿行而过。在<code>update()</code>函数中，位于<code>super.update(elapsed);</code>的后一行的位置添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FlxG.collide(_player,_mWalls);</span><br></pre></td></tr></table></figure>
+
+<p>这行代码所做的事是在<code>update()</code>中不断检查player与墙体之间的重叠状态，如果当前两者有任何重叠的情况发生，那么两个对象将会自动分离开。</p>
+</li>
+<li><p>最后，我们需要对player进行一些微小的调整，让玩家以更好的时机越过大门是个好点子；默认情况下，我们的player sprite是与其瓦砖大小相同的（16x16像素），这会让player越过大门的时候仿佛需要挤过如针缝大小的门，我们通过改变sprite的大小与偏移量（offset）来补救这一问题。这么做并不会改变player实际显示的图像，只会改变其碰撞盒（hitbox）的大小。</p>
+<p>在<code>Player</code>类的构造函数构造函数里，位于设置<code>drag</code>值的代码下方，添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setSize(<span class="number">8</span>,<span class="number">14</span>);</span><br><span class="line">offset.<span class="keyword">set</span>(<span class="number">4</span>,<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>备注：依我的结果来看以上代码需要在<code>loadGraphic()</code>之后添加才能正确设置碰撞盒。由于我的<code>drag</code>放置的位置先与<code>loadGraphic()</code>所以按教程的步骤结果碰撞盒的位置并不正确</strong></p>
+</li>
+<li><p>现在运行你的项目，你已经能够控制player在地图内走动了。</p>
+<div align="center">![](HaxeFlixel官方教程6-加载Tilemap/results.png)
+
+</div></li>
+</ol>
+<p>下一节，我们将对摄像机（camera）进行一些微调。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2018/08/02/HaxeFlixel官方教程6-加载Tilemap/" data-id="ck0gsqf260005bswjgmm9f6zq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HaxeFlixel官方教程5-创建Tilemap" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/31/HaxeFlixel官方教程5-创建Tilemap/" class="article-date">
+  <time datetime="2018-07-31T09:23:09.000Z" itemprop="datePublished">2018-07-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/31/HaxeFlixel官方教程5-创建Tilemap/">HaxeFlixel官方教程5:创建Tilemap</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://haxeflixel.com/documentation/creating-a-tilemap/" target="_blank" rel="noopener">原文</a></p>
+<p>现在，是时候为player创建一个可供活动的环境地图了！我们将使用一个叫 <em>Ogmo Editor</em> 的工具来创建 Tilemap；Ogmo是一个免费的 Tilemap编辑器，可以非常完美的与HaxeFlixel框架协作，对于这节教程而言，我们将创建一个只有 2块瓦砖 的 Tilesheet，用于表示墙体和地板。</p>
+<p>你可以自己画一个16x16大小每块瓦砖的序列图，或者使用这里的图形资源：</p>
+<p><img src="//nulllstack.github.io/2018/07/31/HaxeFlixel官方教程5-创建Tilemap/untitled.png" alt></p>
+<p>（注意：该序列一共有3块tile，第一块tile应该是透明的）</p>
+<ol>
+<li><p>首先访问此链接：<a href="http://www.ogmoeditor.com/" target="_blank" rel="noopener">http://www.ogmoeditor.com/</a> 下载安装并运行编辑器。</p>
+<p>注意：Ogmo 只有Windows版本，如果你想使用其他的编辑器，你可以试试<a href="http://www.mapeditor.org/" target="_blank" rel="noopener">Tile</a>，他也是一个免费的编辑器，但是功能稍微复杂一些。</p>
+</li>
+<li><p>从<code>Project &gt; New Project</code>创建并选择一个名称命名一个项目，保存至<code>assets/data</code>文件夹下。</p>
+</li>
+<li><p>按以下所示对每一个选项卡进行设置：</p>
+<div align="center">![](HaxeFlixel官方教程5-创建Tilemap/1.png)
+
+<div align="center">![](HaxeFlixel官方教程5-创建Tilemap/2.png)
+
+<div align="center">![](HaxeFlixel官方教程5-创建Tilemap/3.png)
+
+<div align="center">![](HaxeFlixel官方教程5-创建Tilemap/4.png)
+
+<div align="center">![](HaxeFlixel官方教程5-创建Tilemap/5.png)
+</div></div></div></div></div></li>
+<li><p>点击Apply保存你的修改，目前窗口应该如下所示：</p>
+<div align="center">![](HaxeFlixel官方教程5-创建Tilemap/6.png)
+</div></li>
+<li><p>确保你已选中“walls”图层，然后通过右边工具栏选择所需工具来绘制一个简单的地图。确保地图以walls瓦砖闭合（这样player就不能越出墙体的范围），并且以floor瓦砖将其填满。最后的地图应该如下所示：</p>
+<div align="center">![](HaxeFlixel官方教程5-创建Tilemap/7.png)
+</div></li>
+<li><p>现在切换至“entities”图层，然后将player瓦砖放置其中一个房间的某处：</p>
+<div align="center">![](HaxeFlixel官方教程5-创建Tilemap/8.png)
+</div></li>
+<li><p>通过<code>Level &gt; Save Level</code>保存，以<code>room-001.oel</code>命名，保存至<code>assets/data</code>文件夹内。</p>
+</li>
+<li><p>地图的创建工作到此就完成了，确保你已经保存修改，然后退出。</p>
+</li>
+</ol>
+<p>下一节，我们将学习如何加载一个新创建的tilemap到游戏里。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2018/07/31/HaxeFlixel官方教程5-创建Tilemap/" data-id="ck0gsqf240004bswj2j8juuaf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-一点整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/30/一点整理/" class="article-date">
+  <time datetime="2018-07-29T16:58:48.000Z" itemprop="datePublished">2018-07-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/一点整理/">一点整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对前面学习过程中感到疑惑的部分做了一些研究，在这里把这些东西记上一笔，加深印象同时便于日后查阅。</p>
+<p>第3节基础工作中，对角色的移动通过给<code>FlxSprite</code>对象的<code>velocity</code>（继承自<code>FlxObject</code>类）属性进行赋值:<code>velocity.set(speed,0)</code>来实现，需要注意的是虽然<code>FlxSprite</code>对象的<code>velocity</code>属性是<code>FlxPoint</code>类型，但是它并不是用于表示当前<code>FlxSprite</code>对象的坐标点。</p>
+<blockquote>
+<p>HaxeFlixl对<code>FlxPoint</code>类型的描述：Stores a 2D floating point coordinate.（存储一个以浮点数表示的二维坐标系内的点的坐标）</p>
+</blockquote>
+<p>当通过<code>velocity.set(speed,0)</code>对<code>velocity</code>进行赋值之后，<code>FlxSprite</code>对象会以<code>speed</code>值作为x轴的速度，以<code>0</code>为y轴的速度进行移动，之后我们通过<code>velocity.rotate(FlxPoint.weak(0,0),angle)</code>对<code>velocity</code>的<code>x</code>和<code>y</code>进行旋转，<code>rotate()</code>函数具有两个参数，<code>Pivot</code>和<code>Angle</code>；这个函数通过一个给定的旋转支点对该<code>FlxPoint</code>对象以给定角度进行旋转，这里需要再强调一次，<strong>记住:<code>FlxSprite</code>的<code>velocity</code>属性不用于表示其坐标！而是表示该<code>FlxSprite</code>对象当前的x轴与y轴的移动速度</strong>；事实上当使用<code>FlxSprite</code>的<code>velocity</code>实现sprite的匀速运动时，还需要配合<code>FlxSprite</code>的另一个属性<code>drag</code>使用，该属性继承自<code>FlxObject</code>类，对其赋一个合适的值来使<code>velocity</code>归零，归零的速率由<code>drag</code>的取值决定；所以<code>velocity</code>的<code>x</code>,<code>y</code>值归零状态下都是在游戏画布的左上角（也就是<code>(0,0)</code>坐标点）也就是<code>velocity</code>的起点，那么当我们对其进行旋转时为了方便我们需要让旋转中心与<code>velocity</code>的起点重合，所以在使用<code>velocity.rotate()</code>时我们对第一个参数传递一个处于<code>(0,0)</code>坐标的<code>FlxPoint</code>对象作为对其进行旋转的旋转中心。</p>
+<p>由于之前对<code>velocity</code>进行旋转操作时认为旋转中心应该位于sprite的中心位置，进而发现实验结果与期望不符，通过查阅官网的API文档有了以上的发现，下面让我们抛开<code>FlxSprite</code>的<code>velocity</code>属性，以一个普通的<code>FlxPoint</code>对象进行旋转操作加深理解：</p>
+<ol>
+<li><p>打开命令行窗口，输入<code>flixel template &quot;default&quot; -n &quot;FlxPointTest&quot;</code>之后<code>回车</code>，在当前目录下创建一个以默认模板生成并命名为“FlxPointTest”的HaxeFlixel项目。</p>
+<p>之后自己画一个16x16大小的方块以PNG格式保存至项目文件夹下的assets/image文件夹内，图方便的话可以用我这里做好的：</p>
+<div align="center">![](一点整理/Point.png)
+</div></li>
+<li><p>然后在source文件夹内创建一个新的haxe文件，命名为Player.hx。然后拷贝我下面的代码进去：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> flixel.FlxSprite;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span> <span class="keyword"><span class="keyword">extends</span> <span class="type">FlxSprite</span></span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">new</span></span>(?X:<span class="type">Float</span>,?Y:<span class="type">Float</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">super</span>(X,Y);</span><br><span class="line">        loadGraphic(AssetPaths.Point__png,<span class="literal">false</span>,<span class="number">16</span>,<span class="number">16</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span></span>(elapsed:<span class="type">Float</span>):<span class="type">Void</span></span><br><span class="line"><span class="type">    </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.update(elapsed);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接着修改source文件夹下的PlayState.hx：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> flixel.FlxState;</span><br><span class="line"><span class="keyword">import</span> flixel.FlxG;</span><br><span class="line"><span class="keyword">import</span> flixel.FlxGame;</span><br><span class="line"><span class="keyword">import</span> flixel.math.FlxPoint;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PlayState</span> <span class="keyword"><span class="keyword">extends</span> <span class="type">FlxState</span></span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> _player:<span class="type">Player</span>;</span><br><span class="line">	<span class="keyword">var</span> blockSet:<span class="type">Array</span>&lt;Player&gt; = <span class="keyword">new</span> <span class="type">Array</span>();</span><br><span class="line">	<span class="keyword">var</span> position:<span class="type">FlxPoint </span>= <span class="keyword">new</span> <span class="type">FlxPoint</span>(FlxG.width/<span class="number">2</span>,FlxG.height/<span class="number">2</span><span class="number">-64</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">create</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">0.</span>.<span class="number">.4</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			blockSet[i] = <span class="keyword">new</span> <span class="type">Player</span>(position.x,position.y);</span><br><span class="line">			position.rotate(FlxPoint.weak(FlxG.width/<span class="number">2</span>,FlxG.height/<span class="number">2</span>),<span class="number">90</span>);</span><br><span class="line">			<span class="built_in">trace</span>(i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">0.</span>.<span class="number">.4</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			add(blockSet[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">super</span>.create();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span></span>(elapsed:<span class="type">Float</span>):<span class="type">Void</span></span><br><span class="line"><span class="type">	</span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.update(elapsed);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>blockSet</code>数组用于存储<code>Player</code>类的实例，<code>position</code>是一个<code>FlxPoint</code>类的实例，用于实例化<code>Player</code>实例的时候传入<code>Player</code>实例的初始坐标。</p>
+<p>第一个循环体是这次实验的关键，创建四个<code>Player</code>实例，初始坐标使用<code>position</code>的<code>x</code>和<code>y</code>值，每个<code>Player</code>实例之间都以画布的中心位置为旋转点对position进行90度旋转。</p>
+</li>
+</ol>
+<p>以下为运行结果：</p>
+<div align="center">![](一点整理/results.png)</div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2018/07/30/一点整理/" data-id="ck0gsqf2m000jbswjm0og8xg0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习记录/">学习记录</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HaxeFlixel官方教程4-精灵序列与动画" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/27/HaxeFlixel官方教程4-精灵序列与动画/" class="article-date">
+  <time datetime="2018-07-27T09:19:10.000Z" itemprop="datePublished">2018-07-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/27/HaxeFlixel官方教程4-精灵序列与动画/">HaxeFlixel官方教程4:精灵序列与动画</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://haxeflixel.com/documentation/sprites-and-animation/" target="_blank" rel="noopener">原文</a></p>
+<p>目前，我们有了一个可以在屏幕中自由走动的 player 了，这很好，但是我们不希望它看起来只是一块蓝色方块，所以让我们为它添加一些图像。</p>
+<p>首先选择一个你希望使用的图像编辑器（我用的是 <a href="https://www.aseprite.org/" target="_blank" rel="noopener">Aseprite</a> 在steam上可以购买）；你可以画任何你想要画的东西，然后把它保存为带透明通道的<code>.png</code>格式。我们的精灵序列将由16x16像素大小每帧组成，角色面朝四个可能的方向上都有两个不同的帧（面朝左和右我们将使用相同的两个帧，因为我们稍后会翻转它们）</p>
+<p>你可以自己画，或者使用我朋友 Vicky Hedgecock 为这个教程创建的图像文件：</p>
+<p><img src="//nulllstack.github.io/2018/07/27/HaxeFlixel官方教程4-精灵序列与动画/player.png" alt></p>
+<p>将你的文件保存至<code>assets/images</code>文件夹下。</p>
+<p>现在我们需要把 player 的图像文件加载进 sprite。所以再一次打开你的<code>Player</code>类。</p>
+<ol>
+<li><p>从构造函数中删掉<code>makeGraphic()</code>函数的调用，用以下代码取而代之：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadGraphic(AssetPaths.player_png,<span class="literal">true</span>,<span class="number">16</span>,<span class="number">16</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这样做将会告诉你的 sprite 使用<code>player.png</code>文件作为其显示用的图像，而且是带动画效果的，长和高为16像素。<strong>AssetPaths是一个由整洁的Haxe宏生成的类，它根据Project.xml的assets标签的内容构建变量。（由谷歌翻译，原句放下面）</strong>。宏稍微有些复杂，但是在某个节点上值得深入研究一下，但在这里我们先只是将<code>AssetPaths</code>视为一个便于在代码中引用我们资源文件的手段。</p>
+<blockquote>
+<p>原句：<code>AssetPaths</code> is a class generated by a neat <a href="http://haxe.org/manual/macro.html" target="_blank" rel="noopener">Haxe macro</a> which builds its variables from the contents of your <code>Project.xml</code>‘s assets tag.</p>
+</blockquote>
+</li>
+<li><p>接下来，我们需要允许 sprite 基于其朝向进行翻转。这样做便于精灵序列节省一组朝向（只需要朝左）的帧，而不需要两组（既有朝左又有朝右）。</p>
+<p>添加如下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setFacingFlip(FlxObject.LEFT,<span class="literal">false</span>,<span class="literal">false</span>);</span><br><span class="line">setFacingFlip(FlxObject.RIGHT,<span class="literal">true</span>,<span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这两行代码意思是当 player 面朝左侧时不做任何翻转（因为我们的精灵序列里已经有面朝左侧的状态了），当 player 面朝右侧时进行水平翻转；如果我们想要的话，可以用相同的方式进行上下翻转。</p>
+</li>
+<li><p>现在我们需要基于精灵序列定义一组动画，在此例中我们要每个动画都以一个过渡动作（精灵序列中双脚平行的那一帧）结束动画序列的播放。因此需要在 player 每一段动画结束时都会返回至正确的帧。<br>添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">animation.add(<span class="string">"lr"</span>,[<span class="number">3</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">5</span>],<span class="number">6</span>,<span class="literal">false</span>);</span><br><span class="line">animation.add(<span class="string">"u"</span>,[<span class="number">6</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">8</span>],<span class="number">6</span>,<span class="literal">false</span>);</span><br><span class="line">animation.add(<span class="string">"d"</span>,[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>],<span class="number">6</span>,<span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<p> 对构造函数的修改到此就完成了，还有最后一步，修改<code>movement()</code>函数告诉 player sprite 作何朝向。所以，让我们对设置 player 角度的那节代码稍作修改，修改之后看起来如下所示：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mA:<span class="type">Float </span>= <span class="number">0</span>; <span class="comment">// 一个临时变量用于表示角度</span></span><br><span class="line"><span class="keyword">if</span> (_up)  <span class="comment">// 玩家按下UP键</span></span><br><span class="line">&#123;</span><br><span class="line">    mA = <span class="number">-90</span>; <span class="comment">// 将角度设为-90度 (时针12点的位置)</span></span><br><span class="line">    <span class="keyword">if</span> (_left)</span><br><span class="line">        mA -= <span class="number">45</span>; <span class="comment">// 如果玩家同时还按下了LEFT键, 则从目前的角度减去45度 - 这将会朝左上角移动</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (_right)</span><br><span class="line">        mA += <span class="number">45</span>; <span class="comment">// 同上, 如果玩家同时还按下了RIGHT键, 则加45度 (往右上角移动)</span></span><br><span class="line">    facing = FlxObject.UP; <span class="comment">// sprite应该朝向上方</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (_down) <span class="comment">// 玩家按下DOWN键</span></span><br><span class="line">&#123;</span><br><span class="line">    mA = <span class="number">90</span>; <span class="comment">// 将角度设为90度 (时针6点的位置)</span></span><br><span class="line">    <span class="keyword">if</span> (_left)</span><br><span class="line">        mA += <span class="number">45</span>; <span class="comment">// 当玩家同时按下LEFT按键则增加45度</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (_right)</span><br><span class="line">        mA -= <span class="number">45</span>; <span class="comment">// 或者当玩家按下RIGHT的话则减去45度</span></span><br><span class="line">    facing = FlxObject.DOWN; <span class="comment">// sprite朝向下方</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (_left) <span class="comment">// 当玩家按下LEFT但没有按下UP或者DOWN时</span></span><br><span class="line">&#123;</span><br><span class="line">    mA = <span class="number">180</span>; <span class="comment">// 将角度设为180度 (时针9点钟位置)</span></span><br><span class="line">    facing = FlxObject.LEFT; <span class="comment">// sprite朝向左方</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (_right) <span class="comment">// 玩家按下RIGHT但没有按下UP或DOWN时</span></span><br><span class="line">&#123;</span><br><span class="line">    mA = <span class="number">0</span>; <span class="comment">// 设角度为0度 (时钟3点钟位置)</span></span><br><span class="line">    facing = FlxObject.RIGHT; <span class="comment">// 设 sprite 朝向右方 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// determine our velocity based on angle and speed</span></span><br><span class="line"><span class="comment">// 基于angle与speed的值决定player的速度</span></span><br><span class="line">velocity.<span class="keyword">set</span>(speed, <span class="number">0</span>);</span><br><span class="line">velocity.rotate(FlxPoint.weak(<span class="number">0</span>, <span class="number">0</span>), mA);</span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> ((velocity.x != <span class="number">0</span> || velocity.y != <span class="number">0</span>) &amp;&amp; touching == FlxObject.NONE) <span class="comment">// 如果 player 是在移动的 (在任一坐标轴上的速度不为0), 我们需要改变 Player 的动画以契合它目前的朝向</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">switch</span> (facing)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">case</span> FlxObject.LEFT, FlxObject.RIGHT:<span class="type"></span></span><br><span class="line"><span class="type">            animation</span>.play(<span class="string">"lr"</span>);</span><br><span class="line">        <span class="keyword">case</span> FlxObject.UP:<span class="type"></span></span><br><span class="line"><span class="type">            animation</span>.play(<span class="string">"u"</span>);</span><br><span class="line">        <span class="keyword">case</span> FlxObject.DOWN:<span class="type"></span></span><br><span class="line"><span class="type">            animation</span>.play(<span class="string">"d"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 每当这个函数被调用，它将会检查当前哪一个方向的按键被玩家按下，并基于判断决定 sprite 目前应该是哪个朝向，应该使用哪段动画。</p>
+</li>
+<li><p>保存修改，然后运行项目你将看到你的 player 在运动时有了动画而且动画朝向正确。</p>
+<p><img src="//nulllstack.github.io/2018/07/27/HaxeFlixel官方教程4-精灵序列与动画/untitled.png" alt></p>
+</li>
+</ol>
+<p>下一节，我们将对地图与碰撞进行讨论。</p>
+<hr>
+<h3 id="次日更新"><a href="#次日更新" class="headerlink" title="次日更新"></a>次日更新</h3><p>补充：昨晚检查运行结果发现sprite的动画实际与教程中所述有出入，事实上在<code>animation.add()</code>添加动画时，若传递的<code>Looped</code>参数值为<code>false</code>那么当调用<code>animation.play()</code>时动画序列会根据<code>Frames</code>参数传入的值，定义动画序列，逐帧播放一次，最后止于最后一帧的位置，如教程中角色朝向左右两方时使用的是<code>animation.add(&quot;lr&quot;,[3,4,3,5],6,false)</code>这样的调用，其<code>Frames</code>参数传递的是一个<code>Array</code>类型的值：<code>[3,4,3,5]</code>，用于表示角色朝向左右两方时使用的动画序列，且<code>Looped</code>值为<code>false</code>这意味着动画不循环播放，那么当玩家按压左右方向键时sprite会按精灵序列图的第3，4，3，5帧顺序播放，当玩家松开按键时动画会从当前帧继续播放至第5帧后停止，再举个例子当player朝向上方时根据教程给出的定义，<code>animation.add(&quot;u&quot;,[6,7,6,8],6,false)</code>如此<code>Frame</code>值为<code>[6,7,6,8]</code>那么当玩家释放上方向键时sprite的动画会播放至第8帧的位置停止；player面朝下方时定义的动画序列为<code>[0,1,0,2]</code>，当玩家松开按键时动画播放至第2帧位置后停止。</p>
+<p>为解决这个问题我翻找了一下原教程的项目源码，发现不知道是原作者疏忽还是在教程后续才补充的原因，总之在这一节教程中漏了一段代码，这段代码用于实现这一节教程所说的 <strong>“我们要每个动画都以一个过渡动作（精灵序列中双脚平行的那一帧）结束动画序列的播放。因此需要在 player 每一段动画结束时都会返回至正确的帧。”</strong>，那么下面给出解决这个小bug的方法：</p>
+<p>在<code>Player</code>类中判定用户输入的那条条件语句<code>if(_up || _down || _left || _right)</code>之后的位置添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(animation.curAnim != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    animation.curAnim.curFrame = <span class="number">0</span>;</span><br><span class="line">    animation.curAnim.pause();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>curAnim</code>表示当前使用的是那一段动画序列（此节教程中定义了三段动画序列分别是 “lr”，”u”，”l”），<code>curFrame</code>表示当前动画序列的哪一帧（动画序列的帧索引从0开始）。</p>
+<p>注意：<code>curFrame</code>并不表示整个精灵序列的帧索引，而是通过<code>animation.add()</code>定义的动画序列的帧索引，比如通过<code>animation.add(&quot;lr&quot;,[3,4,3,5],6,false</code>添加的动画序列有4帧，那么当sprite使用<code>lr</code>这段动画序列时对<code>animation.curAnim.curFrame</code>赋值为0，sprite实际上显示的是整张精灵序列的第3帧的图像。</p>
+<p>所以这段代码的意思就是当玩家不按压任何移动按键时则判断当前动画序列是否<strong>不为</strong><code>null</code>，是则将当前动画序列的当前帧设为0，并暂停动画序列的播放。由于三段动画序列的第一帧位置分别是：3，6，0 ，也就是精灵序列中角色立定状态的图像，所以当玩家不进行任何移动操作时，sprite的动画都能返回至正确的帧（立定状态）。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2018/07/27/HaxeFlixel官方教程4-精灵序列与动画/" data-id="ck0gsqf360011bswjlywrjk0y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HaxeFlixel官方教程3-基础工作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/14/HaxeFlixel官方教程3-基础工作/" class="article-date">
+  <time datetime="2018-06-13T17:11:48.000Z" itemprop="datePublished">2018-06-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/14/HaxeFlixel官方教程3-基础工作/">HaxeFlixel官方教程3:基础工作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://haxeflixel.com/documentation/groundwork/" target="_blank" rel="noopener">原文</a></p>
+<p>现在，是时候思考一下我们要做什么样的游戏，以及我们要如何去实现。</p>
+<p>我们将要做一个十分简单的回合制的“地牢行者（dungeon crawler）”小游戏，玩家将控制一个角色在地图内自由行走，与敌人战斗并收集金币。</p>
+<p>所以，我们要如何将这些设计转换到 HaxeFlixel 中实现？</p>
+<ul>
+<li>首先，我们需要我们需要为我们的游戏建立一个“世界” - 也就是说我们需要一个<code>FlxState</code>对象作为一个容纳游戏内容的容器。</li>
+<li>接着是地牢的设计，我们将使用<code>FlxTilemap</code>对象来表示地牢，地牢的地图我们会使用另一个工具来绘制</li>
+<li>我们将使用一个<code>FlxSprite</code>对象来表示玩家的角色，他是一个被玩家控制的精灵序列（sprite）。</li>
+<li>敌人也是使用<code>FlxSprite</code>对象来表示，而且我们将会用一种特别的方式实现几种不同类型的敌人。</li>
+<li>我们当然还需要一套 HUD/界面接口 用于方便玩家知道自己做了哪些事情产生了哪些结果。我们将通过组合<code>FlxGroup</code>，<code>FlxSprite</code>，<code>FlxText</code>，<code>FlxButton</code>对象与其他一些东西来实现。</li>
+</ul>
+<p>我们将会把以上这些工作一个一个实现。</p>
+<p>首先，让我们先来创建一个简单的菜单，在最后我们会实现一个复杂的<code>MenuState</code>提供按钮以实现更多选项，但是目前我们只需要一个显式“Play”的按钮其功能将实现从菜单切换至<code>PlayState</code>。</p>
+<ol>
+<li><p>删除我们前面为<code>PlayState</code>添加的”Hello World”测试的代码。</p>
+<p>现在在<code>PlayState.hx</code>文件所在的同一个文件夹下创建一个新的文件命名为<code>MenuState.hx</code>（<strong>未填写</strong>）。然后你只需要把<code>PlayState.hx</code>中的代码拷贝进这个文件里（但是把类名改为<code>MenuState</code>）：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MenuState</span> <span class="keyword"><span class="keyword">extends</span> <span class="type">FlxState</span></span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br></pre></td></tr></table></figure>
+
+<p>在类声明之后，我们要定义一个新的变量，你在想要在这个类的任何位置中使用的变量都应该在这个地方定义，我们现在要定义一个<code>FlxButton</code>类型的变量，作为我们的“Play”按钮，所以在这个位置输入：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _btnPlay:<span class="type">FlxButton</span>;</span><br></pre></td></tr></table></figure>
+
+<p>注意：如果你使用的是 FlashDevelop ，那么现在IDE会因为你的<code>FlxButton</code>变量的定义而自动在类声明的上方加入一段 import 代码（<code>import flixel.ui.FlxButton;</code>），如果跟我一样是用 VSCode 的话那就自己手动码一下吧。</p>
+</li>
+<li><p>现在，在<code>create()</code>函数里位于<code>super.create()</code>的前一行敲入以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_btnPlay = <span class="keyword">new</span> <span class="type">FlxButton</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="string">"play"</span>,clickPlay);</span><br><span class="line">add(_btnPlay);</span><br></pre></td></tr></table></figure>
+
+<p>这将会创建一个<code>FlxButton</code>对象并赋值给<code>_btnPlay</code>变量，我们告诉他要在<code>(0,0)</code>坐标位置（在游戏画面的左上角）处创建一个按钮，并在其上显示 “Play” ，当玩家点击它时，调用<code>clickPlay()</code>函数（我们暂时还没有实现<code>clickPlay()</code>函数），然后将这个对象添加到舞台上以显示与交互。暂时不要担心按钮的位置，我们稍后将会调整。</p>
+</li>
+<li><p>接下来我们需要定义<code>clickPlay()</code>函数，在类体内那个地方都行，但不要位于其他函数体内的位置，敲入以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clickPlay</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    FlxG.switchState(<span class="keyword">new</span> <span class="type">PlayState</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个函数里它调用了<code>FlxG.switchState()</code>，它的工作是从当前的状态（目前而言也就是<code>MenuState</code>）切换状态至一个新的<code>PlayState</code>实例。</p>
+</li>
+<li><p>从技术上讲，目前为止我们所要实现的功能已经能正常工作了，你可以运行游戏并且会按我们的预期工作，但是我们还差几件事情没有做。首先，我们的按钮需要放置在一个更合理的位置，我们当然可以在创建按钮对象的时候通过传递 x 和 y 坐标值的方式来定义它的位置，但是这里有一个更简单的方法，回到<code>create()</code>函数里，在我们创建<code>FlxButton</code>对象之后，<code>super.create()</code>之前的位置（我会放在按钮对象被到舞台上之前的位置，但是这行代码放在其之后结果也是一样的）添加一行新的代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_btnPlay.screenCenter();</span><br></pre></td></tr></table></figure>
+
+<p><code>screenCenter()</code>函数的功能是将对象的坐标放在水平或垂直抑或（默认的）这两个方向上的中心位置。调用我们的按钮对象上的这个函数，它将会被放置于游戏画面的中心位置。</p>
+</li>
+<li><p>然后我们需要确保游戏是从<code>MenuState</code>状态启动的。打开<code>Main.hx</code>文件，把对<code>PlayState</code>的引用替换成<code>MenuState</code>。</p>
+</li>
+<li><p>如果你开始启动调试，它会显示一个黑色画面，其中间是我们的 “Play” 按钮，点击它会跳转到另一个黑色画面。如果你的结果如上所述，那么就表示一切正常！GREAT！</p>
+</li>
+</ol>
+<p>之后我们还需要创建一个能够在画面里自由行走的简单的 player 精灵（player sprite)。</p>
+<p>首先，我们需要创建一个新的<code>Player</code>类，你可以把类理解为一个容纳了一系列函数的模板，你可以在项目中使用它们，而且还能够通过继承（extend）变为一个新的版本，你可以把继承理解成描摹纸（小时候描画的那种几乎透明的很薄的纸），当你要对一个类进行继承的时候，就类似于你铺了一张新的描摹纸在它上面 - 你依然可以看到上一张纸的内容并且能够描下来，而且你还能在其上添加更多新的东西。</p>
+<p>我们将要通过继承<code>FlxSprite</code>类来创建我们自己的<code>Player</code>类。</p>
+<ol>
+<li><p>在资源管理器里，右键点选 source 文件夹然后点击创建文件：</p>
+<p><img src="//nulllstack.github.io/2018/06/14/HaxeFlixel官方教程3-基础工作/img1.jpg" alt></p>
+<p>新文件命名为<code>Player.hx</code>然后双击打开。</p>
+</li>
+<li><p>由于 VSCode 环境下目前我还不知道有什么方法可以通过UI界面选择一个文件的父类再自动生成文件，所以下面需要手动敲码。</p>
+</li>
+<li><p>正确添加之后界面大概会像这样：</p>
+<p><img src="//nulllstack.github.io/2018/06/14/HaxeFlixel官方教程3-基础工作/img2.jpg" alt></p>
+</li>
+<li><p>然后在<code>Player.hx</code>文件里敲入以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> flixel.FlxSprite;</span><br><span class="line"><span class="keyword">import</span> flixel.system.FlxAssets.FlxGraphicAsset;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span> <span class="keyword"><span class="keyword">extends</span> <span class="type">FlxSprite</span></span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">new</span></span>(?X:<span class="type">Float</span>=<span class="number">0</span>, ?Y:<span class="type">Float</span>=<span class="number">0</span>, ?SimpleGraphic:<span class="type">FlxGraphicAsset</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">super</span>(X,Y,SimpleGraphic);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是一个标准的<code>FlxSprite</code>子类的结构，我们为了使用需要稍微修改一下。</p>
+</li>
+<li><p>首先，去掉构造函数的<code>SimpleGraphic</code>参数，我们的<code>Player</code>精灵用不着这个参数。</p>
+<p>所以：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">new</span></span>(?X:<span class="type">Float</span>=<span class="number">0</span>, ?Y:<span class="type">Float</span>=<span class="number">0</span>, ?SimpleGraphic:<span class="type">FlxGraphicAsset</span>)</span><br></pre></td></tr></table></figure>
+
+<p>改写成：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">new</span></span>(?X:<span class="type">Float</span>=<span class="number">0</span>, ?Y:<span class="type">Float</span>=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>还有：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">super</span>(X,Y,SimpleGraphic);</span><br></pre></td></tr></table></figure>
+
+<p>改写成：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">super</span>(X,Y);</span><br></pre></td></tr></table></figure>
+
+<p>在类里面，我们使用 “super” 关键字来引用父类。所以在我们的 <code>new()</code>/构造函数 中，通过调用<code>super(X,Y)</code>我们是表示将它关联至父类，此例中也就是<code>FlxSprite</code>类，并调用父类构造函数，把传递给我们的 <code>X</code> 和 <code>y</code> 也传递给父类构造函数。</p>
+<p>这里有点细节：<a href="https://www.kancloud.cn/simon_chang/haxe3manual/184189" target="_blank" rel="noopener">Haxe中的继承</a></p>
+</li>
+<li><p>然后我们为了知道我们的精灵在哪我们为它创建一个 占位符图像（placeholder image），所以在<code>super(X,Y)</code>之后添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">makeGraphic(<span class="number">16</span>,<span class="number">16</span>,FlxColor.BLUE);</span><br></pre></td></tr></table></figure>
+
+<p>（注意添加<code>import</code>代码导入<code>FlxColor</code>类：<code>import flixel.util.FlxColor;</code>）</p>
+<p>我们这里所做的事情是把这个对象创建为一个 16x16 大小的蓝色放块。</p>
+</li>
+<li><p>现在我们要创建<code>Player</code>对象的实例确保这个对象能够正常工作，并把它添加到<code>PlayState</code>状态里。它暂时还不能移动或做其他任何事情，这个我们稍后会实现它，现在先保存<code>Player.hx</code>文件（<code>Ctrl+S</code>），然后回到<code>PlayState</code>文件里，我们要定义一个<code>Player</code>类的变量，在类体第一行位置添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _player:<span class="type">Player</span>;</span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>creat()</code>函数里<code>super.create()；</code>之前：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_player = <span class="keyword">new</span> <span class="type">Player</span>(<span class="number">20</span>,<span class="number">20</span>);</span><br><span class="line">add(_player);</span><br></pre></td></tr></table></figure>
+
+<p>这里所做的事情很简单，为我们的<code>_player</code>变量赋值了一个<code>Player</code>类的实例，告诉他放在<code>(20,20)</code>坐标位置处，并把它添加进<code>PlayState</code>状态里。</p>
+</li>
+<li><p>如果你现在开始调试（可以通过<code>F5</code>打开调试），点击“Play”按钮你应该能看到以下运行结果：</p>
+<p><img src="//nulllstack.github.io/2018/06/14/HaxeFlixel官方教程3-基础工作/img3.jpg" alt></p>
+<p>接下来我们来实现移动功能！</p>
+</li>
+</ol>
+<p>我们要如何实现player在画面中自由走动的功能？我们要同时支持方向键与 WASD 键实现8个方向上的移动：上，下，左，右以及对角方向。玩家会以一个相对固定的速度移动，但是在停下来的时候会有一个轻微的减速效果来丰富交互体验。</p>
+<p>首先，我们先为 player 定义一个移动速度以及一个减速度量：</p>
+<ol>
+<li><p>在<code>Player</code>类里面，构造函数的上一行添加：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">var</span> speed:<span class="type">Float </span>= <span class="number">200</span>;</span><br></pre></td></tr></table></figure>
+
+<p>接着在构造函数里，位于<code>makeGraphic()</code>的调用之前的位置，我们需要加入一点<code>drag</code>（这是一个<code>FlxSprite</code>对象的属性，我不知道怎样翻译比较准确，大概就是可以产生一个拖曳效果）：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drag.x = drag.y = <span class="number">1600</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在 HaxeFlixel 中<code>drag</code>是实现当对象停止移动时产生减速运动的方式之一。它可以帮助我们当玩家停止按压任何移动按键时，阻止 player 精灵一直朝某个方向移动，我们稍后会调整<code>drag</code>的数值。</p>
+</li>
+<li><p>尽管处理 player 运动的方式有多种多样，但我们可以简单的把处理运动的功能放在 player 类里边；我们要添加几个函数用于跟踪玩家的输入并给予反馈，敲入代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">movement</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>在这个函数里，我们将定义一组辅助变量用于在之后的代码里表示当前哪个按键被玩家按压：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _up:<span class="type">Bool </span>= <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> _down:<span class="type">Bool </span>= <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> _left:<span class="type">Bool </span>= <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> _right:<span class="type">Bool </span>= <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接下来我们要知道玩家希望朝哪个方向移动，我们通过检查当前处于按压状态的按键来获知：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">_up = FlxG.keys.anyPressed([UP,W]);</span><br><span class="line">_down = FlxG.keys.anyPressed([DOWN,S]);</span><br><span class="line">_left = FlxG.keys.anyPressed([LEFT,A]);</span><br><span class="line">_right = FlxG.keys.anyPressed([RIGHT,D]);</span><br></pre></td></tr></table></figure>
+
+<p><code>anyPressed()</code>函数可以获取列表中的按键目前是否处于按压状态；通过传递一个键值数组（数组元素就是按键的名字）当数组中任何一个按键被按压时它会返回<code>true</code>。稍后我们还会使用其他几个类似的函数来检查其他的按键状态。</p>
+</li>
+<li><p>接下来我们需要处理方向冲突的情况，比如当玩家同时按下上和下时，player 会原地不动：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(_up &amp;&amp; _down)</span><br><span class="line">&#123;</span><br><span class="line">    _up = _down = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(_left &amp;&amp; _right)</span><br><span class="line">&#123;</span><br><span class="line">    _left = _right = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接下来我们要完善真正实现 player 移动的代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(_up || _down || _left || _right)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后我们要确定 player 以多快的速度朝哪个方向移动，通常很多第一次实现此类功能的人会下意识的觉得这里开始应该这样实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">velocity.x = speed;</span><br><span class="line">velocity.y = speed;</span><br></pre></td></tr></table></figure>
+
+<p>尽管技术上讲这样做确实能够使某个物体实现上下左右方向的移动，但是这样做会使得对角方向的移动比上下左右的移动速度更快；可以试想一下矩形的对角线肯定比矩形的任何一条单边更长。这里我们应该使用一点三角函数的知识来计算每个方向的移动速度。</p>
+<p>我们首先需要知道当玩家按下按键时 player 朝向哪个方位角，对于<code>FlxSprite</code>对象而言，0度角朝向右边，而 -90度（或 270度） 则是朝向上（也就是说正角是顺时针方向的，这一点与数学上的定义有些出入）。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mA:<span class="type">Float </span>= <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span>(_up)</span><br><span class="line">&#123;</span><br><span class="line">    mA = <span class="number">-90</span>;</span><br><span class="line">    <span class="keyword">if</span>(_left)</span><br><span class="line">    	mA -= <span class="number">45</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(_right)</span><br><span class="line">    	mA += <span class="number">45</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(_down)</span><br><span class="line">&#123;</span><br><span class="line">    mA = <span class="number">90</span>;</span><br><span class="line">    <span class="keyword">if</span>(_left)</span><br><span class="line">    	mA += <span class="number">45</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(_right)</span><br><span class="line">    	mA -= <span class="number">45</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(_left)</span><br><span class="line">	mA = <span class="number">180</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(_right)</span><br><span class="line">	mA = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这里所做的事情是创建了一个临时变量用于保存我们的角度，然后基于玩家当前按压的按键改变其角度值。</p>
+</li>
+<li><p>现在我们知道了 player 应该朝哪个方位角移动，之后我们还需要知道以多少速率（velocity）朝这个方向移动，我们通过为<code>velocity.x</code>赋值<code>speed</code>与<code>velocity.y</code>赋值<code>0</code>，然后围绕<code>(0,0)</code>坐标对这个点（point：<code>velocity</code>是一个<code>FlxPoint</code>对象）进行<code>mA</code>度的旋转来实现。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">velocity.<span class="keyword">set</span>(speed,<span class="number">0</span>);</span><br><span class="line">velocity.rotate(FlxPoint.weak(<span class="number">0</span>,<span class="number">0</span>),mA);</span><br></pre></td></tr></table></figure>
+
+<p>最后闭合<code>if</code>语句的花括号，然后…这就是<code>movement()</code>函数的所有逻辑代码了。</p>
+</li>
+<li><p>最后剩下的一件事情就是<code>override</code>重写<code>update()</code>函数，在里面调用我们的<code>movement()</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">override public function update(elapsed:Float):Void</span><br><span class="line">&#123;</span><br><span class="line">    movement();</span><br><span class="line">    super.update(elapsed);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>你要记住，<code>update()</code>函数在游戏运行中是每帧调用一次的，所以每当<code>PlayState</code>的<code>update()</code>被调用时，也会调用它所有成员的<code>update()</code>函数这其中包括我们的 player 对象的<code>update()</code>函数。如此一来也会调用我们的<code>movement()</code>逻辑，相应地调整player的<code>velocity</code>属性值，接着他会调用<code>super.update()</code>，这会将刚刚修改过的<code>velocity</code>的值用于计算精灵（player sprite）的下一个位置。</p>
+</li>
+</ol>
+<p>哇哦~ 看起来似乎步骤比实际功能要更繁琐一些。如果你现在尝试运行游戏看看结果如何，你将发现你能够使用方向键和WASD键控制 player 在屏幕中游走了。</p>
+<p>下一节我们将开始创建一个 精灵序列（sprite sheet） 让 player 看起来更地道一些！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2018/06/14/HaxeFlixel官方教程3-基础工作/" data-id="ck0gsqf34000zbswj1qsf9i24" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HaxeFlixel官方教程2-创建项目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/12/HaxeFlixel官方教程2-创建项目/" class="article-date">
+  <time datetime="2018-06-12T05:22:13.000Z" itemprop="datePublished">2018-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/12/HaxeFlixel官方教程2-创建项目/">HaxeFlixel官方教程2:创建项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>由于官网教程使用的环境是 HaxeDevelop/FlashDevelop IDE 作为代码的编辑，调试环境，而我是使用 VSCode ，所以环境的搭建我打算另外做一篇教程，并且在必要的时候对系列教程的原文稍作修改以适应我所使用的环境，而官网的教程我就直接从创建项目的部分开始搬运。</p>
+</blockquote>
+<p><a href="http://haxeflixel.com/documentation/creating-a-new-project/" target="_blank" rel="noopener">原文</a></p>
+<h3 id="2-创建一个新的项目"><a href="#2-创建一个新的项目" class="headerlink" title="2-创建一个新的项目"></a>2-创建一个新的项目</h3><p>现在我们要确定我们需要的东西都安装妥当，并为我们的游戏建立所需的框架。所以我们首先创建一个新的项目，使用 VSCode 打开项目并测试它是否正常构建并运行程序。</p>
+<ol>
+<li><p>在命令行窗口（<code>开始-运行-cmd-回车</code>）敲入以下指令：</p>
+<p><code>flixel tpl -n &quot;FlixelTut&quot;</code></p>
+<p>这个指令会在当前目录使用一个空白的模板创建一个新的 Flixel 项目并放置于 FlixelTut 文件夹内（因为我们以 FlixelTut 命名了该项目）</p>
+</li>
+<li><p>如果你跟我一样使用 VSCode 作为开发环境，并且在 <code>haxelib run flixel-tools setup</code> 的时候配置了 VSCode 作为 flixel 创建项目的默认编辑器，并设置为创建新模板或 Demo 时自动启动，那么现在 VSCode 会自动启动并打开该项目。</p>
+</li>
+<li><p>打开 VSCode 的资源管理器。</p>
+</li>
+<li><p>在资源管理器里，你能够看到项目的结构，包含了模板为我们生成的所有文件。</p>
+<p><img src="//nulllstack.github.io/2018/06/12/HaxeFlixel官方教程2-创建项目/img1.JPG" alt></p>
+</li>
+<li><p>接下来我们要确定我们的项目能够正确的构建与运行。默认情况下，一个崭新的 Flixel 模板项目会从 PlayState 启动游戏。所以从资源管理器双击打开 source 文件夹下的 PlayState 文件。这是一个十分基础的 FlxState 子类的实例。你可以设想一下把 FlxState 看作是一个 “场景（scenes）” 。当你的游戏开始运行时有且只有一个 “状态（state）” 处于活动状态。玩家看得见摸得着的东西都是被“添加（added）”进该状态的，并且通常会把不共享资源的状态相互隔离。</p>
+<p>通常相互隔离的状态负责游戏的不同部分，比如游戏的开始菜单（MenuState）与游戏状态（PlayState），这些状态之间的关系有点像一个个泡泡（这个实在不知道如何翻译）</p>
+<blockquote>
+<p>They are great for having different sections of your game that are sort of in a bubble from one another, such as a <code>MenuState</code> (which we will add later) and the <code>PlayState</code> (where the game is actually played).</p>
+</blockquote>
+<p>稍后你将会看到，但目前为止 PlayState 只有包含了两个函数：<code>create()</code> 与 <code>update()</code>函数。当一个状态被加载进来，他的<code>create()</code>函数会立即被调用。你应该在这里对状态做一些初始化工作。</p>
+<p><code>update()</code> 是所有奇妙的事物发生的地方，他会在游戏运行时按每帧一次的频率调用（默认情况下游戏是 每秒60帧 - 60fps）。当一个 <code>FlxState</code> 对象的 <code>update()</code> 被调用时，它也会调用被添加进该状态的对象的 <code>update()</code> 函数。这基本上就是你的游戏背后的工作原理。稍后我们会更详细的讨论。现在，我们只是想看看我们搭建的东西是不是能够正常运行，所以接下来让我们添加一个简单的 <code>FlxText</code> 对象到这个状态里。</p>
+</li>
+<li><p>在文件的最上方，位于 <code>import flixel.FlxState;</code> 这一行下方添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> flixel.text.FlxText;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="7">
+<li><p>在 <code>create()</code> 函数里，位于 <code>super.create();</code> 的前一行的位置添加以下代码:</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add(<span class="keyword">new</span> <span class="type">FlxText</span>(<span class="number">10</span>,<span class="number">10</span>,<span class="number">100</span>,<span class="string">"Hello, World!"</span>));</span><br></pre></td></tr></table></figure>
+
+<p>然后保存你的修改（<code>Ctrl + s</code>）</p>
+</li>
+<li><p>The Moment of Truth! 点击 VSCode 左侧的小虫子图标打开调试窗口，然后点击绿色小箭头。</p>
+<p><img src="//nulllstack.github.io/2018/06/12/HaxeFlixel官方教程2-创建项目/img2.jpg" alt></p>
+<p>如果你看到以下结果那么一切都很顺利：</p>
+<p><img src="//nulllstack.github.io/2018/06/12/HaxeFlixel官方教程2-创建项目/img3.jpg" alt></p>
+<p>行了！你成功构建并运行了你的第一个 HaxeFlixel 项目！</p>
+<blockquote>
+<p>“Big things have small beginnings.”  —— 《Prometheus》</p>
+</blockquote>
+<p>下一节，我们将正式为我们的游戏做一些设计，并开始把每个设想实现整合。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2018/06/12/HaxeFlixel官方教程2-创建项目/" data-id="ck0gsqf220003bswjxo4au3gm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HaxeFlixel官方教程-开篇" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/11/HaxeFlixel官方教程-开篇/" class="article-date">
+  <time datetime="2018-06-11T15:39:01.000Z" itemprop="datePublished">2018-06-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/11/HaxeFlixel官方教程-开篇/">HaxeFlixel官方教程:开篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://haxeflixel.com/documentation/tutorial/" target="_blank" rel="noopener">原文</a></p>
+<p>欢迎来到 HaxeFlixel ！在这系列教程中，你将学习如何使用 HaxeFlixel 从头到尾创建一个完整的游戏，每一步骤都会被打碎成小片段以帮助你度过难关。</p>
+<p>这一系列教程可以面向 Flash，Windows，Aandroid 进行构建。但我们多数时候是编译到 Flash 平台。</p>
+<p>我们将要搭建一个 <strong>dungen crawler</strong> 小游戏。</p>
+<p>首先，让我聊一点关于为何你应该选择 HaxeFlixel :</p>
+<p>HaxeFlixel 的由来要追溯到由 <a href="http://www.adamatomic.com/" target="_blank" rel="noopener">Adam ‘Atomic’ Saltsman</a> 开发的 <a href="http://flixel.org/" target="_blank" rel="noopener">AS3 Flixel 框架</a>。如果你有玩过 <a href="http://www.adamatomic.com/canabalt/" target="_blank" rel="noopener">Canabalt</a>，那么你就见过过了这个框架的早期版本。HaxeFlixel 继承了 Flixel 的一般结构，从 Flash 平台分离出来并整合进强大的开源多平台语言 <a href="http://haxe.org/" target="_blank" rel="noopener">Haxe</a> 中，所以你编写的游戏就可以简单的发布到各个平台上（Windows，Flash，iOS，Android等）。</p>
+<p>当你使用 HaxeFlixel 编写代码时尽管有些变化但与编写 AS3 代码没有太多差别。此外它拥有大量的内置特性 - 类，实用程序，以及函数 - 当你碰上一些常见或复杂的事情时它们可以帮你解决。并且因为 HaxeFlixel 是开源的，当你发现某些事情它做不到，那你可以修改它的源码，同时如果你的修改对其他人是有帮助的，可以把它们<a href="http://haxeflixel.com/documentation/contributing/" target="_blank" rel="noopener">添加进 library</a>。</p>
+<p>它是一个简单易用的代码库（library），而且给予了你足够的自由去实现你能够想到的任何事情，却不会被死板的接口而限制住。</p>
+<p>你可以从这里了解到更多有关于 HaxeFlixel ：<a href="http://haxeflixel.com/documentation/about/" target="_blank" rel="noopener">链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2018/06/11/HaxeFlixel官方教程-开篇/" data-id="ck0gsqf1p0000bswjj2xjghil" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HelloWorld" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/10/HelloWorld/" class="article-date">
+  <time datetime="2018-06-10T14:06:04.000Z" itemprop="datePublished">2018-06-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/10/HelloWorld/">HelloWorld!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>折腾了两天，总算是把博客重新部署回来了，博客的订阅源算是可以用了，欢迎视奸 :) 。</p>
+</blockquote>
+<p>由于最近在研究一个2D游戏框架——<a href="http://haxeflixel.com/" target="_blank" rel="noopener">HaxeFlixel</a>，为了自己回顾每天的学习进程，打算在学习过程里把一些东西整理一下放到博客上来，日后也可以分享给其他感兴趣的人学习。目前在跟HaxeFlixel官网的教程走一遍，由于还没有看到与这个框架有关的中文资料，接下来一段时间我跟到哪就顺便翻译到博客上来。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nulllstack.github.io/2018/06/10/HelloWorld/" data-id="ck0gsqf2f000dbswj79od45q1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HaxeFlixel/">HaxeFlixel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习记录/">学习记录</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HaxeFlixel/" style="font-size: 20px;">HaxeFlixel</a> <a href="/tags/学习记录/" style="font-size: 10px;">学习记录</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/05/HaxeFlixel官方教程12-音效与音乐/">HaxeFlixel官方教程12:音效与音乐</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/">HaxeFlixel官方教程11:游戏结束菜单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/">HaxeFlixel官方教程10:UI与战斗系统</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/08/HaxeFlixel官方教程9-敌人与基础AI/">HaxeFlixel官方教程9:敌人与基础AI</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/06/蛋疼的迁移过程/">蛋疼的迁移过程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
