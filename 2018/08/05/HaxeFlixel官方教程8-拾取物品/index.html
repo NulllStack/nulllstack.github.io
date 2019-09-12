@@ -270,7 +270,7 @@ window.oldVersion = [
     },
     
     "datePublished": "2018-08-04T17:22:54.000Z",
-    "dateModified": "2019-09-12T17:50:02.328Z",
+    "dateModified": "2019-09-12T17:52:57.679Z",
     "author": {
         "@type": "Person",
         "name": "John",
@@ -395,13 +395,17 @@ window.oldVersion = [
 </li>
 </ol>
 <div align="center">
-![](HaxeFlixel官方教程8-拾取物品/0014.png)
+
+<p><img src="//nulllstack.github.io/2018/08/05/HaxeFlixel官方教程8-拾取物品/0014.png" alt></p>
 </div>
 
 <ol start="3">
 <li>选中 ‘entities’ 图层，在地图中散布一些硬币：</li>
 </ol>
-<div align="center">![](HaxeFlixel官方教程8-拾取物品/0015.png)</div>
+<div align="center">
+
+<p><img src="//nulllstack.github.io/2018/08/05/HaxeFlixel官方教程8-拾取物品/0015.png" alt></p>
+</div>
 
 <ol start="4">
 <li><p>我们将使用8x8像素作为硬币的大小，硬币的图像资源你可以使用这个<img src="//nulllstack.github.io/2018/08/05/HaxeFlixel官方教程8-拾取物品/coin.png" alt>,或者是你自己画一个，然后保存至<code>assets/images</code>文件夹下。</p>
@@ -409,14 +413,19 @@ window.oldVersion = [
 <li><p>回到VSCode，新建一个新的类：</p>
 </li>
 </ol>
-<div align="center">![](HaxeFlixel官方教程8-拾取物品/VSCode1.png)</div>
+<div align="center">
 
-<div align="center">![](HaxeFlixel官方教程8-拾取物品/VSCode2.png)</div>
+<p><img src="//nulllstack.github.io/2018/08/05/HaxeFlixel官方教程8-拾取物品/VSCode1.png" alt></p>
+</div>
+<div align="center">
 
-<ol start="6">
-<li><p>Coin类十分简单，我们只需要修改一下构造函数：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span>;</span><br><span class="line"><span class="keyword">import</span> flixel.FlxSprite;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Coin</span> <span class="keyword"><span class="keyword">extends</span> <span class="type">FlxSprite</span></span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">new</span></span>(X:<span class="type">Float</span>,Y:<span class="type">Float</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">super</span>(X,Y);</span><br><span class="line">        loadGraphic(AssetPaths.coin__png,<span class="literal">false</span>,<span class="number">8</span>,<span class="number">8</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<p><img src="//nulllstack.github.io/2018/08/05/HaxeFlixel官方教程8-拾取物品/VSCode2.png" alt></p>
+</div>
+6. Coin类十分简单，我们只需要修改一下构造函数：
+
+   <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span>;</span><br><span class="line"><span class="keyword">import</span> flixel.FlxSprite;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Coin</span> <span class="keyword"><span class="keyword">extends</span> <span class="type">FlxSprite</span></span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">new</span></span>(X:<span class="type">Float</span>,Y:<span class="type">Float</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">super</span>(X,Y);</span><br><span class="line">        loadGraphic(AssetPaths.coin__png,<span class="literal">false</span>,<span class="number">8</span>,<span class="number">8</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
 <li><p>现在回到<code>PlayState</code>类中，我们需要修改一下地图加载的逻辑代码，让它从Ogmo文件中加载实体时如果发现coin将会把<code>Coin</code>对象加入当前状态（state）。</p>
 </li>
 <li><p>首先让我们创建一个<code>FlxGroup</code>对象用于存储所有的硬币，在类中定义所有全局变量的地方添加以下代码：</p>
@@ -473,7 +482,7 @@ window.oldVersion = [
 
 <p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2018-08-04T17:22:54.000Z" itemprop="datePublished">2018-08-05</time>
 
-    , 最后修改于&nbsp;<time datetime="2019-09-12T17:50:02.328Z" itemprop="dateModified">2019-09-13</time>
+    , 最后修改于&nbsp;<time datetime="2019-09-12T17:52:57.679Z" itemprop="dateModified">2019-09-13</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
