@@ -270,7 +270,7 @@ window.oldVersion = [
     },
     
     "datePublished": "2019-03-29T08:39:03.000Z",
-    "dateModified": "2019-09-12T14:16:45.227Z",
+    "dateModified": "2019-09-12T18:02:43.783Z",
     "author": {
         "@type": "Person",
         "name": "John",
@@ -431,15 +431,24 @@ window.oldVersion = [
 <p><a href="https://github.com/HaxeFlixel/flixel-demos/blob/dev/Tutorials/TurnBasedRPG/source/OptionsState.hx" target="_blank" rel="noopener">OptionsState.hx</a></p>
 <p><code>OptionsState</code>类使用了一组精灵序列供音量调节按钮使用（因为他们需要比默认的按钮更小一些），该资源文件需要包含3个帧，分别表现出按钮的三个状态：<code>正常</code>、<code>高亮</code>、以及<code>被按下</code>。我们只需要按此顺序排列这个精灵序列的各个帧，<code>FlxButton</code>会为我们处理剩余的工作。</p>
 <p>再一次，你可以自己做一个，或者使用下面提供的图像资源。将其放置于<code>assets/images</code>文件夹内即可。</p>
-<p><img src="//nulllstack.github.io/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/button.png" alt></p>
-<p>最后，我们需要游戏每次开始时读取已保存的音量设置（如果当前有设置的话），跳转至<code>Main.hx</code>类，并在<code>addChild()</code>函数调用之后的位置添加以下代码：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _save:<span class="type">FlxSave </span>= <span class="keyword">new</span> <span class="type">FlxSave</span>();</span><br><span class="line">_save.bind(<span class="string">"flixel-tutorial"</span>);</span><br><span class="line"><span class="keyword">if</span>(_save.data.volume != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    FlxG.sound.volume = _save.data.volume;</span><br><span class="line">&#125;</span><br><span class="line">_save.close();</span><br></pre></td></tr></table></figure>
-
-<p>十分简单，它创建一个新的<code>FlxSave</code>对象，将其绑定至我们的<code>&quot;flixel-tutorial&quot;</code>并在之后检查是否有音量值被存储进来，如果有，则将游戏的音量设为该值，之后关闭保存。</p>
 </li>
 </ol>
+<div align="center">
+
+<p><img src="//nulllstack.github.io/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/button.png" alt></p>
+</div>
+
+<p>   最后，我们需要游戏每次开始时读取已保存的音量设置（如果当前有设置的话），跳转至<code>Main.hx</code>类，并在<code>addChild()</code>函数调用之后的位置添加以下代码：</p>
+   <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _save:<span class="type">FlxSave </span>= <span class="keyword">new</span> <span class="type">FlxSave</span>();</span><br><span class="line">_save.bind(<span class="string">"flixel-tutorial"</span>);</span><br><span class="line"><span class="keyword">if</span>(_save.data.volume != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    FlxG.sound.volume = _save.data.volume;</span><br><span class="line">&#125;</span><br><span class="line">_save.close();</span><br></pre></td></tr></table></figure>
+
+<p>   十分简单，它创建一个新的<code>FlxSave</code>对象，将其绑定至我们的<code>&quot;flixel-tutorial&quot;</code>并在之后检查是否有音量值被存储进来，如果有，则将游戏的音量设为该值，之后关闭保存。</p>
 <p>测试游戏，确保正常工作，如果你在设置中修改了音量设置并退出游戏，它将会在下一次进入游戏时保留当前设置的音量值。</p>
-<p><img src="//nulllstack.github.io/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/0022.png" alt>看起来不错，下一节我们将添加一些音效与音乐。</p>
+<div align="center">
+
+<p><img src="//nulllstack.github.io/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/0022.png" alt></p>
+</div>
+
+<p>看起来不错，下一节我们将添加一些音效与音乐。</p>
 
                     </article>
                     
@@ -447,7 +456,7 @@ window.oldVersion = [
 
     <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
     <script>
-        var dateUpdate = Date.parse("2019-09-12");
+        var dateUpdate = Date.parse("2019-09-13");
         var nowDate = new Date();
         var a = nowDate.getTime();
         var b = a - dateUpdate;
@@ -462,7 +471,7 @@ window.oldVersion = [
 
 <p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-03-29T08:39:03.000Z" itemprop="datePublished">2019-03-29</time>
 
-    , 最后修改于&nbsp;<time datetime="2019-09-12T14:16:45.227Z" itemprop="dateModified">2019-09-12</time>
+    , 最后修改于&nbsp;<time datetime="2019-09-12T18:02:43.783Z" itemprop="dateModified">2019-09-13</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
