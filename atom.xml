@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://nulllstack.github.io/"/>
-  <updated>2019-12-29T18:56:36.388Z</updated>
+  <updated>2019-12-29T19:02:32.686Z</updated>
   <id>https://nulllstack.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>openFrameworks Philosophy</title>
+    <link href="https://nulllstack.github.io/2019/12/30/openFrameworks-Philosophy/"/>
+    <id>https://nulllstack.github.io/2019/12/30/openFrameworks-Philosophy/</id>
+    <published>2019-12-29T18:59:30.000Z</published>
+    <updated>2019-12-29T19:02:32.686Z</updated>
+    
+    <content type="html"><![CDATA[<p>po 完上一篇博客之后那个垃圾排版恶心到我了，甚至开始考虑是否继续使用博客，反正主要是给自己看的，何必如此折腾煞费苦心 :(</p><hr><p>openFrameworks 的发展尝试遵循以下几个目标：它应该是合作性（Collaborative）的，简单易用的，连贯且直观的，跨平台的，强大且可扩展的。以上目标也由 “与人协作” （”do it with others – DIWO”）的哲学观所驱动。</p><hr><h3 id="合作性（Collaborative）"><a href="#合作性（Collaborative）" class="headerlink" title="合作性（Collaborative）"></a>合作性（Collaborative）</h3><p>openFrameworks 的开发是协作完成的，它的蓬勃发展得益于许多经常参与讨论、在插件与项目中完成协作的人的贡献。我们鼓励大家使用oF并为社区的生态环境做出贡献。</p><p>我们使用了分布式版本控制系统 “git”，这意味着大家可以提出建议，为项目添加新的 branch、做一些实验性的扩展；如果你看过 <a href="https://github.com/openframeworks/openFrameworks" target="_blank" rel="noopener">GitHub</a> 上的网络图（network diagram）便不难发现它呈现出一种奇怪的图示，四处编织着新的分支，某个部分的代码被拆分后又在另一头重组。整个社区遍布全球各地，共同维护着oF的核心代码：他们修补BUG，提交新请求以及构建他们所需的新的工具，这是一个 全球性的项目，如果你在美国一觉醒来并开始查看电子邮件，发现邮箱里充满着来自亚洲与欧洲的程序员提交的新的需求或者 issue 是很常见的事情。有超过70人为核心代码做出直接的贡献，还有数百人以fork或其他形式为社区做出贡献。</p><h3 id="简单性（Simplicity）"><a href="#简单性（Simplicity）" class="headerlink" title="简单性（Simplicity）"></a>简单性（Simplicity）</h3><p>openFrameworks尝试在<strong>有用（usability）</strong>与 <strong>简单（Simplicity）</strong>之间寻找平衡，最早期的oF核心库被用于教授C++与<a href="https://en.wikipedia.org/wiki/OpenGL" target="_blank" rel="noopener">OpenGL</a>，后由时间的推移其核心库的例程随着更多高级功能的加入变为了最适合学习的途径，因此我们随着oF的发布创建了更多的例程，为实验提供更多简单、易于拆解的学习起点。</p><p>我们希望oF可以尽可能的简单，特别是为那些从其他语言或开发环境入坑的朋友，C++是一门“庞杂”的语言，它的庞杂还意味着每个人使用C++编写的规范可以很不一样。如果你去书店你会发现C++相关的书可以有数百本之多。我们希望创建一个你只需要一两本书来入门而不需要成为一名专家就能够使用的代码库，其代码规范、编程模式及编程范式（the patterns, approaches and style of the code）是简单且直观的。我们刻意在某种程度上与<a href="http://www.processing.org/" target="_blank" rel="noopener">Processing</a>对齐，两者的某些函数都是相似的，为的是能够让大家在两个框架间的使用能够更自然的过渡。</p><h3 id="连贯且直观（Consistent-and-Intuitive）"><a href="#连贯且直观（Consistent-and-Intuitive）" class="headerlink" title="连贯且直观（Consistent and Intuitive）"></a>连贯且直观（Consistent and Intuitive）</h3><p>openFrameworks是连贯且直观的：它运转于一些常规（least surprise）的原则之上，所以你从oF中的所学也可以在其他领域有所用。初学者可以从oF中学习到常见的编程模式（programming patterns）而高级用户在其他语言或工具集中所学的知识也在oF中也有用武之地。</p><p>oF的箴言是“学生排在第一位”，许多关于oF的发展的指导方针是基于 “在5或10年以前我会喜欢什么样的工具” 这样的思考的。我们希望代码的模式（pattern）尽可能简单地易于输入。这意味着有如在视频播放器中使用“play”与“stop”命名的具“自我阐释性（self-exlanatory)” 的函数命名法以及类似的变量的命名法会更直观。我们就直观方面有过许多讨论，都是为了让代码尽可能的简洁明了，使得你可以在输入代码的过程中，在自动补全的帮助下也能够学习oF。</p><h3 id="跨平台（Cross-platfiorm）"><a href="#跨平台（Cross-platfiorm）" class="headerlink" title="跨平台（Cross-platfiorm）"></a>跨平台（Cross-platfiorm）</h3><p>openFrameworks是一个跨平台的工具包，它尽可能多的支持各种开发环境与操作系统，当你下载好oF之后你可以选择你需要的开发环境与目标平台进行开发，oF已经包含了相关的项目与例程供学习与使用。难以移植（Difficult-to-port）的部分代码被提供于插件（addons）中而不是核心代码中。</p><p>oF被设计为可工作于多个平台：OSX，Windows，Linux， iOS，Android，嵌入式ARM Linux系统，以及如BlackBerry和PlayBook这样的处于实验性阶段的平台。openFrameworks的开发人员已经想出了一些聪明的方法使得oF可以访问其他语言的接口如Android平台下的Java以及iOS平台下的Ojective-C。</p><p>跨平台库的一个喜闻乐见的点在于你可以将你的想法从一个平台导出至另一个平台，你可以在笔记本上迭代原型并快速地在你的手机上检验运行结果。它使得你的想法能够先落地而不需要担心冗余的跨平台工作。</p><h3 id="功能强大的（Powerful）"><a href="#功能强大的（Powerful）" class="headerlink" title="功能强大的（Powerful）"></a>功能强大的（Powerful）</h3><p>openFrameworks功能强大，它使你能够借助如<a href="http://opencv.org/" target="_blank" rel="noopener">OpenCV</a>之类的高级库，访问你的硬件如显卡进行加速，或者连接摄像头之类的外设。</p><p>我们选择使用C++编写oF是因为它是一门足够“低级”的语言同时又可以以现代高级语言的方式进行编程。由于它可以认为是C语言的扩展，所以它可以编写一些很底层的东西，可以以老式C语言的方式编写，也可以以现代C++的形式编写。我们试图在oF中以简单、清晰、但功能强大的形式接纳这两种编程方法。同时，使用C++也使得我们能够直接访问许多已由C或C++编写的库的接口而不需要依赖其他语言的包装器（wrapper）。</p><p>openFrameworks本质上包装（wrap）了其他库如：OpenGL、<a href="http://cairographics.org/" target="_blank" rel="noopener">Cairo</a>、<a href="http://freetype.org/" target="_blank" rel="noopener">FreeType</a>、<a href="http://freeimage.sourceforge.net/" target="_blank" rel="noopener">FreeImage</a>、以及OpenCV，你可以把oF设想为一层介于用户代码（由你编写的代码）与这些库之间的代码层。由于不同库的使用上，编程方法与风格各不相同所以我们把各个库进行了统一的包装并提供一个更为连贯且直观的形式。</p><h3 id="可扩展的（Extensible）"><a href="#可扩展的（Extensible）" class="headerlink" title="可扩展的（Extensible）"></a>可扩展的（Extensible）</h3><p>openFrameworks是可扩展的。如果你发现它缺少某些你需要的东西你可以简单地通过创建一个插件来扩展它。oF的核心插件通常包装了其他的库而不是直接以加入新功能的形式来解决问题。当oF包装了新的库的同时这些库也为进一步的扩展提供了新的途径。</p><p>oF的愿景是成为你开发过程中的一个可靠的臂膀或脚手架。能够使得oF的核心库更轻量化的一点是避免尽可能多的往里纳入所有新的东西，取而代之的是oF有一个插件体系允许用户之间共享额外的代码，库以及方法使得在必要时可以将其 “编织” 进项目里。</p><p>oF的插件可以是一段代码片段，或是更为复杂的库如OpenNI、Tesseract或Box2d的一个封装。插件名字的前缀通常是“ofx”，为的是可以使你方便的区分oF的核心与非核心代码，另外，我们为oF纳入了“核心插件（core addons）”，这些插件是我们认为大家通常会需要但并不是每一个项目都会需要用到的插件比如 ofxOpenCv 插件。</p><p>我们试图通过 <a href="http://ofxaddons.com" target="_blank" rel="noopener">http://ofxaddons.com</a> 网站组织与支持社区开发插件，该网站通过自动检索Github中标题包含 “ofx” 一词的仓库（repos）收集插件目录，目前已有超过1500个插件收录在册。</p><h3 id="与他人协作（Do-it-with-others-–-DIWO）"><a href="#与他人协作（Do-it-with-others-–-DIWO）" class="headerlink" title="与他人协作（Do it with others – DIWO）"></a>与他人协作（Do it with others – DIWO）</h3><p>这个部分有点懒得翻了，大概就是鼓励大家多合作多分享，共同探索 creative coding 的乐趣。（完 :D）</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;po 完上一篇博客之后那个垃圾排版恶心到我了，甚至开始考虑是否继续使用博客，反正主要是给自己看的，何必如此折腾煞费苦心 :(&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;openFrameworks 的发展尝试遵循以下几个目标：它应该是合作性（Collaborative）的，简单易用的，连贯且
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>我又准备开坑了</title>
