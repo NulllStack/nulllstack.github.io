@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://nulllstack.github.io/"/>
-  <updated>2019-12-29T19:04:09.092Z</updated>
+  <updated>2019-12-31T17:10:23.238Z</updated>
   <id>https://nulllstack.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>openFrameworks文件结构</title>
+    <link href="https://nulllstack.github.io/2020/01/01/openFrameworks%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"/>
+    <id>https://nulllstack.github.io/2020/01/01/openFrameworks文件结构/</id>
+    <published>2019-12-31T17:09:44.000Z</published>
+    <updated>2019-12-31T17:10:23.238Z</updated>
+    
+    <content type="html"><![CDATA[<p>把下好的oF解压，从现在开始我们将以该文件夹作为 oF 根目录，你可以把 oF 的根目录放置于任何位置。但是有一件事需要强调，oF 已经被设计为一个 “独立的（self-contained）” 结构，所有依赖项都被整合好放在同一个文件夹里了，也就是说你可以把这整个文件夹移动到任何磁盘下使用，甚至可以打包带走带去机房上课的时候写着玩 :P。<strong>如果你有其他版本的 oF 那么请保持他们之间的相互独立，不要尝试把两个版本的文件混在一起。</strong></p><p>打开解压出来的文件夹，它包含了一些其他文件夹，我们将在下面给出详细解释。现在我们先找到 examples 文件夹并尝试编译其中的项目。examples/graphics/graphicsExample。如果你使用的是OS X操作系统，那么打开graphicsExample.xcodeproj。如果你使用的是 Visual Studio，那么选择打开 “.sln” 文件。</p><p><em>注：由于我一直是使用 Windows ，从现在开始其它系统相关的内容我都不再区分，只讲 Windows 相关的部分。</em></p><p>现在你的 IDE 将自动打开并加载该例子，找到“运行” 按钮或选项并点击它，例子源码将会开始被编译（首次编译因为因为需要编译 oF 库，可能需要多花一点时间）。你会看到许多文件开始被编译，放心，大部份文件只会在 oF 库被重构或首次编译时需要编译。</p><p>如果以上工作进行顺利的话，将会弹出一个窗口并显示你刚刚所编译的例子中的内容。</p><p>如果图形例程能够正常工作的话，花点时间看一遍其他 oF 实例并尝试运行他们；通常来讲在你打开一个新的项目之前先把当前的 项目/工作目录 完全关闭会是一个好习惯。一旦 oF 库完成了首次编译，之后项目的编译速度会快很多！</p><h2 id="openFrameworks-文件结构"><a href="#openFrameworks-文件结构" class="headerlink" title="openFrameworks 文件结构"></a>openFrameworks 文件结构</h2><p>在 oF 根目录中你可以找到以下这些文件夹：</p><h3 id="Addons"><a href="#Addons" class="headerlink" title="Addons"></a>Addons</h3><p>“addons”文件夹中包含了已内置的“核心”插件。插件是一些额外的扩展了 oF 功能的代码片段，插件通常由第三方用户编写并分享出来。而“核心”插件是那些被用户频繁使用的插件于是被选择作为官方 oF 库的内置插件。他们被 oF 的核心开发者维护与编写。<br>访问该链接：<a href="http://ofxaddons.com/" target="_blank" rel="noopener">ofxAddons</a> 可以找到由社区贡献的大量额外的插件。</p><h3 id="Apps"><a href="#Apps" class="headerlink" title="Apps"></a>Apps</h3><p>该文件夹用于存放你新建的项目；你当前的 oF 中默认存放了一个名为 “myApps” 的文件夹于 “apps” 文件夹内，当你新建项目的时候项目生成器会默认使用该文件夹（注1）。还有重要的一点需要注意，项目对 libs 文件夹的引用是使用相对路径来定位的；需要注意的点是你的项目应该一直位于相对路径所指从当前文件夹开始到 libs 文件夹之间的深度中（如<code>../../../libs</code>即 表示项目文件夹所在的路径应该类似<code>oF根目录/apps/myApps/mySketch</code>这样），如果你随便更改了项目文件夹的存放路径它们将找不到编译所需的其他部分内容（注2）。</p><p><em>注1：推荐使用 projectGenerator 来管理项目，理由后面会给出解释。</em></p><p><em>注2：如果你尝试用文本编辑器打开项目文件（.sln以及.vcxproj）你会看到其中有些地方有一段相对地址如<code>../../../libs</code>把这一段的路径改为绝对地址你就可以把这个项目文件夹放在硬盘上的任何一个位置也能确保正确编译，但不推荐这么做。</em></p><h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>该文件夹用于存放例程，其中的例程按主题分类排序，几乎涵盖了 oF 的各个方面，每个实例都以保持简单并专注于解决特定主题的问题为主，因此当你需要在你的项目中完成某些类似的工作，这里的例程会相对简单且易于理解，可以作为你着手解决问题的一个起点。</p><h3 id="libs"><a href="#libs" class="headerlink" title="libs"></a>libs</h3><p>这里面存放了 oF 用于编译你的项目时使用的各种库文件，其中包含的库有如 FreeType 库用于平面设计（Typography）的支持、FreeImage 库用于图像加载、glfw 库用于窗体实现（Windowing 不知道翻译对不对，没用过）；以及其他用于编译 oF 项目的依赖项还有 oF 的源码也都在这个文件夹内，如果你想看源码的话就在这里面翻找吧。</p><h3 id="other"><a href="#other" class="headerlink" title="other"></a>other</h3><p>这里面存放了 Arduino 相关的例程，在 <code>examples/communication</code> 文件夹下你可以找到串口（serial）例程，当你的项目使用了 Arduino 的时候可以用这里的例程检查 Arduino 是否正确连接并正常工作。</p><h3 id="projectGenerator"><a href="#projectGenerator" class="headerlink" title="projectGenerator"></a>projectGenerator</h3><p>现在 oF 附加了一个简单的项目生成器用于简化项目的创建流程。这个工具使用了一个项目模板（位于 scripts 文件夹下）用于项目的创建与修改（项目名称、使用的插件等）。同时用项目生成器创建的项目可以被存放于磁盘的任意目录下（实际上已存在的项目若存放路径发生变动，需使用生成器导入该项目并点击 Update ”刷新“ 项目依赖项的引用信息）。</p><p>最后，原文罗列了 oF 的 API 以及可用的插件与相关用途，我就不在这里罗列了，直接丢两个链接更具 “时效性” 毕竟这些东西随时可能更新随时可能发生变动，<strong>最重要的是：码字真的很麻烦。</strong> :P</p><p>API 文档：<a href="https://openframeworks.cc/documentation/" target="_blank" rel="noopener">openFrameworks Doc</a></p><p>插件目录：<a href="http://ofxaddons.com/" target="_blank" rel="noopener">ofxAddons</a>（其实前文以及给过了）</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;把下好的oF解压，从现在开始我们将以该文件夹作为 oF 根目录，你可以把 oF 的根目录放置于任何位置。但是有一件事需要强调，oF 已经被设计为一个 “独立的（self-contained）” 结构，所有依赖项都被整合好放在同一个文件夹里了，也就是说你可以把这整个文件夹移动
+      
+    
+    </summary>
+    
+    
+    
+      <category term="openFrameworks" scheme="https://nulllstack.github.io/tags/openFrameworks/"/>
+    
+  </entry>
   
   <entry>
     <title>openFrameworks Philosophy</title>
@@ -491,31 +515,6 @@
     
     
       <category term="HaxeFlixel" scheme="https://nulllstack.github.io/tags/HaxeFlixel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HelloWorld!</title>
-    <link href="https://nulllstack.github.io/2018/06/10/HelloWorld/"/>
-    <id>https://nulllstack.github.io/2018/06/10/HelloWorld/</id>
-    <published>2018-06-10T14:06:04.000Z</published>
-    <updated>2018-06-10T14:43:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>折腾了两天，总算是把博客重新部署回来了，博客的订阅源算是可以用了，欢迎视奸 :) 。</p></blockquote><p>由于最近在研究一个2D游戏框架——<a href="http://haxeflixel.com/" target="_blank" rel="noopener">HaxeFlixel</a>，为了自己回顾每天的学习进程，打算在学习过程里把一些东西整理一下放到博客上来，日后也可以分享给其他感兴趣的人学习。目前在跟HaxeFlixel官网的教程走一遍，由于还没有看到与这个框架有关的中文资料，接下来一段时间我跟到哪就顺便翻译到博客上来。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;折腾了两天，总算是把博客重新部署回来了，博客的订阅源算是可以用了，欢迎视奸 :) 。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;由于最近在研究一个2D游戏框架——&lt;a href=&quot;http://haxeflixel.com/&quot; target=&quot;_b
-      
-    
-    </summary>
-    
-    
     
   </entry>
   

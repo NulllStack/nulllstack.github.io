@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <!--
+        © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+        Version: 1.3.3
+    -->
+    <script>
+window.lsVersion = "1.3.3",
+window.oldVersion = [
+    
+        
+            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0","1.3.2"
+        
+    
+]
+</script>
+
+    <!-- ### DNS Prefetch ### -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+
+    <!-- ### Preload ### -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- Title -->
+<title>openFrameworks文件结构 | 囿</title>
+
+<!-- favicon -->
+<!-- Favicons -->
+
+    <link rel="icon" type="image/ico" href="/img/suka-favicon.ico">
+
+
+
+
+
+
+<!-- Android Chrome Color -->
+
+
+
+<meta name="format-detection" content="telephone=no">
+
+<!-- Description -->
+<meta name="description" content="把下好的oF解压，从现在开始我们将以该文件夹作为 oF 根目录，你可以把 oF 的根目录放置于任何位置。但是有一件事需要强调，oF 已经被设计为一个 “独立的（self-contained）” 结构，所有依赖项都被整合好放在同一...">
+
+<!-- Keywords -->
+<meta name="keywords" content=", openFrameworks">
+
+<!-- Disable Fucking Bloody Baidu Tranformation -->
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!-- ### Import File ### -->
+    
+        <!-- spectre.css -->
+
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style>
+
+<!-- style.css -->
+
+    <link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/github.min.css">
+    
+
+
+
+    
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <!-- ### RSS ### -->
+    
+    
+        <link rel="alternate" type="application/atom+xml" href="/atom.xml">
+    
+
+
+    <!-- ### WebApp ### -->
+    <meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="囿">
+<meta name="msapplication-starturl" content="https://nulllstack.github.io">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="囿">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Manifest Import -->
+
+<!-- Open Search -->
+
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="openFrameworks文件结构 | 囿">
+<meta property="og:site_name" content="囿">
+
+<meta property="og:locale" content="zh-CN">
+
+<meta property="og:url" content="https://nulllstack.github.io/2020/01/01/openFrameworks文件结构/">
+<meta property="og:image" content="https://nulllstack.github.io/img/suka-favicon.ico">
+
+<meta property="og:description" content="把下好的oF解压，从现在开始我们将以该文件夹作为 oF 根目录，你可以把 oF 的根目录放置于任何位置。但是有一件事需要强调，oF 已经被设计为一个 “独立的（self-contained）” 结构，所有依赖项都被整合好放在同一...">
+
+<meta name="twitter:card" content="summary">
+
+
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2019-12-31T17:09:44.000Z">
+    <meta property="article:modified_time" content="2019-12-31T17:09:44.000Z">
+    <meta property="article:author" content="John">
+    <meta property="og:article:tag" content=", openFrameworks"> 
+
+
+
+
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://nulllstack.github.io/2020/01/01/openFrameworks文件结构/">
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://nulllstack.github.io/2020/01/01/openFrameworks文件结构/",
+    "@type": "BlogPosting",
+    "logo": "https://nulllstack.github.io/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://nulllstack.github.io/2020/01/01/openFrameworks文件结构/"
+    },
+    "headline": "openFrameworks文件结构 | 囿",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://nulllstack.github.io/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2019-12-31T17:09:44.000Z",
+    "dateModified": "2019-12-31T17:10:23.238Z",
+    "author": {
+        "@type": "Person",
+        "name": "John",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://nulllstack.github.io/img/avatar.png"
+        },
+        "description": ""
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "囿",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://nulllstack.github.io/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://nulllstack.github.io/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": ", openFrameworks",
+    "description": "把下好的oF解压，从现在开始我们将以该文件夹作为 oF 根目录，你可以把 oF 的根目录放置于任何位置。但是有一件事需要强调，oF 已经被设计为一个 “独立的（self-contained）” 结构，所有依赖项都被整合好放在同一..."
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+
+
+</head>
+
+    <body>
+        
+
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">囿</a></h1>
+
+    <p class="text-center header-slogan">
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+    
+        <a href="/About/" class="navbar-link">关于</a>
+    
+    
+    
+        <a href="/atom.xml" target="_blank" class="navbar-link">RSS</a>
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    
+    
+
+
+<div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">openFrameworks文件结构</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/avatar.png" src="/img/suka-lazyload.gif" alt="John's Avatar">
+        <span>2020-01-01</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                            <div id="post-toc">
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#openFrameworks-文件结构"><span class="post-toc-number">1.</span> <span class="post-toc-text">openFrameworks 文件结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Addons"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Addons</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Apps"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Apps</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Examples"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Examples</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#libs"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">libs</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#other"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">other</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#projectGenerator"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">projectGenerator</span></a></li></ol></li></ol>
+                            </div>
+                        
+                    
+                    <article id="post-content">
+                        <p>把下好的oF解压，从现在开始我们将以该文件夹作为 oF 根目录，你可以把 oF 的根目录放置于任何位置。但是有一件事需要强调，oF 已经被设计为一个 “独立的（self-contained）” 结构，所有依赖项都被整合好放在同一个文件夹里了，也就是说你可以把这整个文件夹移动到任何磁盘下使用，甚至可以打包带走带去机房上课的时候写着玩 :P。<strong>如果你有其他版本的 oF 那么请保持他们之间的相互独立，不要尝试把两个版本的文件混在一起。</strong></p>
+<p>打开解压出来的文件夹，它包含了一些其他文件夹，我们将在下面给出详细解释。现在我们先找到 examples 文件夹并尝试编译其中的项目。examples/graphics/graphicsExample。如果你使用的是OS X操作系统，那么打开graphicsExample.xcodeproj。如果你使用的是 Visual Studio，那么选择打开 “.sln” 文件。</p>
+<p><em>注：由于我一直是使用 Windows ，从现在开始其它系统相关的内容我都不再区分，只讲 Windows 相关的部分。</em></p>
+<p>现在你的 IDE 将自动打开并加载该例子，找到“运行” 按钮或选项并点击它，例子源码将会开始被编译（首次编译因为因为需要编译 oF 库，可能需要多花一点时间）。你会看到许多文件开始被编译，放心，大部份文件只会在 oF 库被重构或首次编译时需要编译。</p>
+<p>如果以上工作进行顺利的话，将会弹出一个窗口并显示你刚刚所编译的例子中的内容。</p>
+<p>如果图形例程能够正常工作的话，花点时间看一遍其他 oF 实例并尝试运行他们；通常来讲在你打开一个新的项目之前先把当前的 项目/工作目录 完全关闭会是一个好习惯。一旦 oF 库完成了首次编译，之后项目的编译速度会快很多！</p>
+<h2 id="openFrameworks-文件结构"><a href="#openFrameworks-文件结构" class="headerlink" title="openFrameworks 文件结构"></a>openFrameworks 文件结构</h2><p>在 oF 根目录中你可以找到以下这些文件夹：</p>
+<h3 id="Addons"><a href="#Addons" class="headerlink" title="Addons"></a>Addons</h3><p>“addons”文件夹中包含了已内置的“核心”插件。插件是一些额外的扩展了 oF 功能的代码片段，插件通常由第三方用户编写并分享出来。而“核心”插件是那些被用户频繁使用的插件于是被选择作为官方 oF 库的内置插件。他们被 oF 的核心开发者维护与编写。<br>访问该链接：<a href="http://ofxaddons.com/" target="_blank" rel="noopener">ofxAddons</a> 可以找到由社区贡献的大量额外的插件。</p>
+<h3 id="Apps"><a href="#Apps" class="headerlink" title="Apps"></a>Apps</h3><p>该文件夹用于存放你新建的项目；你当前的 oF 中默认存放了一个名为 “myApps” 的文件夹于 “apps” 文件夹内，当你新建项目的时候项目生成器会默认使用该文件夹（注1）。还有重要的一点需要注意，项目对 libs 文件夹的引用是使用相对路径来定位的；需要注意的点是你的项目应该一直位于相对路径所指从当前文件夹开始到 libs 文件夹之间的深度中（如<code>../../../libs</code>即 表示项目文件夹所在的路径应该类似<code>oF根目录/apps/myApps/mySketch</code>这样），如果你随便更改了项目文件夹的存放路径它们将找不到编译所需的其他部分内容（注2）。</p>
+<p><em>注1：推荐使用 projectGenerator 来管理项目，理由后面会给出解释。</em></p>
+<p><em>注2：如果你尝试用文本编辑器打开项目文件（.sln以及.vcxproj）你会看到其中有些地方有一段相对地址如<code>../../../libs</code>把这一段的路径改为绝对地址你就可以把这个项目文件夹放在硬盘上的任何一个位置也能确保正确编译，但不推荐这么做。</em></p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>该文件夹用于存放例程，其中的例程按主题分类排序，几乎涵盖了 oF 的各个方面，每个实例都以保持简单并专注于解决特定主题的问题为主，因此当你需要在你的项目中完成某些类似的工作，这里的例程会相对简单且易于理解，可以作为你着手解决问题的一个起点。</p>
+<h3 id="libs"><a href="#libs" class="headerlink" title="libs"></a>libs</h3><p>这里面存放了 oF 用于编译你的项目时使用的各种库文件，其中包含的库有如 FreeType 库用于平面设计（Typography）的支持、FreeImage 库用于图像加载、glfw 库用于窗体实现（Windowing 不知道翻译对不对，没用过）；以及其他用于编译 oF 项目的依赖项还有 oF 的源码也都在这个文件夹内，如果你想看源码的话就在这里面翻找吧。</p>
+<h3 id="other"><a href="#other" class="headerlink" title="other"></a>other</h3><p>这里面存放了 Arduino 相关的例程，在 <code>examples/communication</code> 文件夹下你可以找到串口（serial）例程，当你的项目使用了 Arduino 的时候可以用这里的例程检查 Arduino 是否正确连接并正常工作。</p>
+<h3 id="projectGenerator"><a href="#projectGenerator" class="headerlink" title="projectGenerator"></a>projectGenerator</h3><p>现在 oF 附加了一个简单的项目生成器用于简化项目的创建流程。这个工具使用了一个项目模板（位于 scripts 文件夹下）用于项目的创建与修改（项目名称、使用的插件等）。同时用项目生成器创建的项目可以被存放于磁盘的任意目录下（实际上已存在的项目若存放路径发生变动，需使用生成器导入该项目并点击 Update ”刷新“ 项目依赖项的引用信息）。</p>
+<p>最后，原文罗列了 oF 的 API 以及可用的插件与相关用途，我就不在这里罗列了，直接丢两个链接更具 “时效性” 毕竟这些东西随时可能更新随时可能发生变动，<strong>最重要的是：码字真的很麻烦。</strong> :P</p>
+<p>API 文档：<a href="https://openframeworks.cc/documentation/" target="_blank" rel="noopener">openFrameworks Doc</a></p>
+<p>插件目录：<a href="http://ofxaddons.com/" target="_blank" rel="noopener">ofxAddons</a>（其实前文以及给过了）</p>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+        var dateUpdate = Date.parse("2020-01-01");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-12-31T17:09:44.000Z" itemprop="datePublished">2020-01-01</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+<span class="post-tags-list mt-2">
+
+
+<a class="post-tags-list-item" href="/tags/openFrameworks/" rel="tag">#&nbsp;openFrameworks</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                
+<div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2019/12/30/openFrameworks-Philosophy/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">openFrameworks Philosophy</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
+        <a class="footer-copyright-a" href="https://nulllstack.github.io">囿</a>
+    </p>
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+            
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+        
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+        
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+
+
+    /* Copyright */
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.querySelector('span[data-year]')
+    
+        copyrightContent.textContent = copyrightNow
+    
+
+
+
+/* Cnosole Log */
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+</script>
+
+<!-- vanilla-lazyload -->
+
+    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+
+
+
+    <!-- Busuanzi -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+
+
+
+<!-- gallery.js -->
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+
+    </body>
+
+</html>
