@@ -272,7 +272,7 @@ window.oldVersion = [
     },
     
     "datePublished": "2020-01-10T14:45:34.000Z",
-    "dateModified": "2020-01-10T19:08:02.133Z",
+    "dateModified": "2020-01-10T19:14:04.831Z",
     "author": {
         "@type": "Person",
         "name": "John",
@@ -422,7 +422,8 @@ window.oldVersion = [
 <p>ok，这个问题我现在还是很懵，就在我写这篇博客，尝试复现问题并给予描述的时候。</p>
 <p>尽管这个问题可以通过换一个编译器解决（从MinGW换到MSVC），下面我尝试一下能不能描述明白问题。</p>
 <p>首先，我们先来看一下 <a href="https://zh.cppreference.com/w/cpp/io/basic_istream/tellg" target="_blank" rel="noopener">cppreference.com 对 tellg() 函数的描述</a>：</p>
-<p><img src="//nulllstack.github.io/2020/01/10/C-C-文件读写的一点事儿/C-C-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E7%9A%84%E4%B8%80%E7%82%B9%E4%BA%8B%E5%84%BF%5Ctellg.png" alt></p>
+<img src="//nulllstack.github.io/2020/01/10/C-C-文件读写的一点事儿/tellg.png" style="zoom:80%;">
+
 <p>简单来说就是用于获取一个值，获取失败时返回 -1 ，成功则返回当前指针的位置。</p>
 <p>行吧，看起来很好理解，由于<code>ifstream</code>对象进行读入的时候是按字节读入的，指针位置也会随之后移，读到哪移动到哪，每读一个字节后移一位。在前面的问题中我们也通过 tellg() 来获取指针位置的状态。</p>
 <p>然而那是在我换了MSVC编译器之后 tellg() 的行为才符合我的预期，那么在MinGW环境下编译的结果如何呢，下面还是例子来说明：</p>
@@ -484,7 +485,7 @@ window.oldVersion = [
 
 <p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-01-10T14:45:34.000Z" itemprop="datePublished">2020-01-10</time>
 
-    , 最后修改于&nbsp;<time datetime="2020-01-10T19:08:02.133Z" itemprop="dateModified">2020-01-11</time>
+    , 最后修改于&nbsp;<time datetime="2020-01-10T19:14:04.831Z" itemprop="dateModified">2020-01-11</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
