@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://nulllstack.github.io/"/>
-  <updated>2020-03-19T12:40:18.399Z</updated>
+  <updated>2020-03-19T12:44:22.675Z</updated>
   <id>https://nulllstack.github.io/</id>
   
   <author>
@@ -21,16 +21,16 @@
     <link href="https://nulllstack.github.io/2020/03/19/%E4%B8%80%E4%B8%AA%E5%B8%B8%E9%87%8F%E5%BC%95%E7%94%A8%E6%9C%AA%E5%AE%9A%E4%B9%89%E6%93%8D%E4%BD%9C%E5%BC%95%E5%8F%91%E7%9A%84Bug/"/>
     <id>https://nulllstack.github.io/2020/03/19/一个常量引用未定义操作引发的Bug/</id>
     <published>2020-03-19T12:35:46.000Z</published>
-    <updated>2020-03-19T12:40:18.399Z</updated>
+    <updated>2020-03-19T12:44:22.675Z</updated>
     
-    <content type="html"><![CDATA[<p>最近逛贴吧碰上一个灵魂提问，随后请教了几位大佬给出了很详细的解答，但是囿于知识面不全暂时还不是很通透，遂在此记上一笔，日后回来补充详细信息。</p><p>事情是这样的，声明一个指向常量的引用，创建一个指针指向该常量，随后对该指针进行强制类型转换并赋值；这样一番操作之后会引发一个bug，以下是代码片段：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> c = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;re = c;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *p = &amp;re;</span><br><span class="line">*((<span class="keyword">int</span>*)p) = <span class="number">30</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"*p = "</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"re = "</span> &lt;&lt; re &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//但常量引用re变成30了</span></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"c = "</span> &lt;&lt; c &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//常量c没变还是10</span></span><br></pre></td></tr></table></figure><p>以下是反汇编后汇编代码：</p><p><img src="//nulllstack.github.io/2020/03/19/一个常量引用未定义操作引发的Bug/%E4%B8%80%E4%B8%AA%E5%B8%B8%E9%87%8F%E5%BC%95%E7%94%A8%E6%9C%AA%E5%AE%9A%E4%B9%89%E6%93%8D%E4%BD%9C%E5%BC%95%E5%8F%91%E7%9A%84Bug%5Cresult.png" alt></p><p>一个简单的解释是由于 c 为常量，编译器会为 c 的调用提供一个固定的值（该常量定义时的初始值）进行替换，所以当对常量 c 所在内存地址的内容进行修改的时候，除对 c 的间接访问会被修改外，对 c 的直接访问都保持原值不变。</p><p>例子中对 c 的内存区域进行修改的操作是一种 “未定义操作”。</p>]]></content>
+    <content type="html"><![CDATA[<p>最近逛贴吧碰上一个灵魂提问，随后请教了几位大佬给出了很详细的解答，但是囿于知识面不全暂时还不是很通透，遂在此记上一笔，日后回来补充详细信息。</p><p>事情是这样的，声明一个常量引用并绑定至一常量，创建一个指针指向该引用，随后对该指针进行强制类型转换并赋值；这样一番操作之后会引发一个bug，指针与引用的访问的值已经被修改，但同时被间接访问的常量本身值却保持不变；以下是代码片段：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> c = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;re = c;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *p = &amp;re;</span><br><span class="line">*((<span class="keyword">int</span>*)p) = <span class="number">30</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"*p = "</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"re = "</span> &lt;&lt; re &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//但常量引用re变成30了</span></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"c = "</span> &lt;&lt; c &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//常量c没变还是10</span></span><br></pre></td></tr></table></figure><p>以下是反汇编后汇编代码：</p><p><img src="//nulllstack.github.io/2020/03/19/一个常量引用未定义操作引发的Bug/%E4%B8%80%E4%B8%AA%E5%B8%B8%E9%87%8F%E5%BC%95%E7%94%A8%E6%9C%AA%E5%AE%9A%E4%B9%89%E6%93%8D%E4%BD%9C%E5%BC%95%E5%8F%91%E7%9A%84Bug%5Cresult.png" alt></p><p>一个简单的解释是由于 c 为常量，编译器会为 c 的调用提供一个固定的值（该常量定义时的初始值）进行替换，所以当对常量 c 所在内存地址的内容进行修改的时候，除对 c 的间接访问会被修改外，对 c 的直接访问都保持原值不变。</p><p>例子中对 c 的内存区域进行修改的操作是一种 “未定义操作”。</p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;p&gt;最近逛贴吧碰上一个灵魂提问，随后请教了几位大佬给出了很详细的解答，但是囿于知识面不全暂时还不是很通透，遂在此记上一笔，日后回来补充详细信息。&lt;/p&gt;
-&lt;p&gt;事情是这样的，声明一个指向常量的引用，创建一个指针指向该常量，随后对该指针进行强制类型转换并赋值；这样一番操作之后会引
+&lt;p&gt;事情是这样的，声明一个常量引用并绑定至一常量，创建一个指针指向该引用，随后对该指针进行强制类型转换并赋值；这样一番操作
       
     
     </summary>

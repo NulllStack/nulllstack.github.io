@@ -81,7 +81,7 @@ window.oldVersion = [
 
 <!-- Description -->
 <meta name="description" content="最近逛贴吧碰上一个灵魂提问，随后请教了几位大佬给出了很详细的解答，但是囿于知识面不全暂时还不是很通透，遂在此记上一笔，日后回来补充详细信息。
-事情是这样的，声明一个指向常量的引用，创建一个指针指向该常量，随后对该指...">
+事情是这样的，声明一个常量引用并绑定至一常量，创建一个指针指向该引用，随...">
 
 <!-- Keywords -->
 <meta name="keywords" content>
@@ -219,7 +219,7 @@ window.oldVersion = [
 <meta property="og:image" content="https://nulllstack.github.io/img/suka-favicon.ico">
 
 <meta property="og:description" content="最近逛贴吧碰上一个灵魂提问，随后请教了几位大佬给出了很详细的解答，但是囿于知识面不全暂时还不是很通透，遂在此记上一笔，日后回来补充详细信息。
-事情是这样的，声明一个指向常量的引用，创建一个指针指向该常量，随后对该指...">
+事情是这样的，声明一个常量引用并绑定至一常量，创建一个指针指向该引用，随...">
 
 <meta name="twitter:card" content="summary">
 
@@ -270,7 +270,7 @@ window.oldVersion = [
     },
     
     "datePublished": "2020-03-19T12:35:46.000Z",
-    "dateModified": "2020-03-19T12:40:18.399Z",
+    "dateModified": "2020-03-19T12:44:22.675Z",
     "author": {
         "@type": "Person",
         "name": "John",
@@ -297,7 +297,7 @@ window.oldVersion = [
     
     "keywords": "",
     "description": "最近逛贴吧碰上一个灵魂提问，随后请教了几位大佬给出了很详细的解答，但是囿于知识面不全暂时还不是很通透，遂在此记上一笔，日后回来补充详细信息。
-事情是这样的，声明一个指向常量的引用，创建一个指针指向该常量，随后对该指..."
+事情是这样的，声明一个常量引用并绑定至一常量，创建一个指针指向该引用，随..."
 }
 </script>
 
@@ -387,7 +387,7 @@ window.oldVersion = [
                     
                     <article id="post-content">
                         <p>最近逛贴吧碰上一个灵魂提问，随后请教了几位大佬给出了很详细的解答，但是囿于知识面不全暂时还不是很通透，遂在此记上一笔，日后回来补充详细信息。</p>
-<p>事情是这样的，声明一个指向常量的引用，创建一个指针指向该常量，随后对该指针进行强制类型转换并赋值；这样一番操作之后会引发一个bug，以下是代码片段：</p>
+<p>事情是这样的，声明一个常量引用并绑定至一常量，创建一个指针指向该引用，随后对该指针进行强制类型转换并赋值；这样一番操作之后会引发一个bug，指针与引用的访问的值已经被修改，但同时被间接访问的常量本身值却保持不变；以下是代码片段：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> c = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;re = c;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *p = &amp;re;</span><br><span class="line">*((<span class="keyword">int</span>*)p) = <span class="number">30</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"*p = "</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"re = "</span> &lt;&lt; re &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//但常量引用re变成30了</span></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"c = "</span> &lt;&lt; c &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//常量c没变还是10</span></span><br></pre></td></tr></table></figure>
 
 <p>以下是反汇编后汇编代码：</p>
