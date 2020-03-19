@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://nulllstack.github.io/"/>
-  <updated>2020-01-10T19:50:40.117Z</updated>
+  <updated>2020-03-19T12:40:18.399Z</updated>
   <id>https://nulllstack.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一个常量引用未定义操作引发的Bug</title>
+    <link href="https://nulllstack.github.io/2020/03/19/%E4%B8%80%E4%B8%AA%E5%B8%B8%E9%87%8F%E5%BC%95%E7%94%A8%E6%9C%AA%E5%AE%9A%E4%B9%89%E6%93%8D%E4%BD%9C%E5%BC%95%E5%8F%91%E7%9A%84Bug/"/>
+    <id>https://nulllstack.github.io/2020/03/19/一个常量引用未定义操作引发的Bug/</id>
+    <published>2020-03-19T12:35:46.000Z</published>
+    <updated>2020-03-19T12:40:18.399Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近逛贴吧碰上一个灵魂提问，随后请教了几位大佬给出了很详细的解答，但是囿于知识面不全暂时还不是很通透，遂在此记上一笔，日后回来补充详细信息。</p><p>事情是这样的，声明一个指向常量的引用，创建一个指针指向该常量，随后对该指针进行强制类型转换并赋值；这样一番操作之后会引发一个bug，以下是代码片段：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> c = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;re = c;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *p = &amp;re;</span><br><span class="line">*((<span class="keyword">int</span>*)p) = <span class="number">30</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"*p = "</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"re = "</span> &lt;&lt; re &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//但常量引用re变成30了</span></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"c = "</span> &lt;&lt; c &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//常量c没变还是10</span></span><br></pre></td></tr></table></figure><p>以下是反汇编后汇编代码：</p><p><img src="//nulllstack.github.io/2020/03/19/一个常量引用未定义操作引发的Bug/%E4%B8%80%E4%B8%AA%E5%B8%B8%E9%87%8F%E5%BC%95%E7%94%A8%E6%9C%AA%E5%AE%9A%E4%B9%89%E6%93%8D%E4%BD%9C%E5%BC%95%E5%8F%91%E7%9A%84Bug%5Cresult.png" alt></p><p>一个简单的解释是由于 c 为常量，编译器会为 c 的调用提供一个固定的值（该常量定义时的初始值）进行替换，所以当对常量 c 所在内存地址的内容进行修改的时候，除对 c 的间接访问会被修改外，对 c 的直接访问都保持原值不变。</p><p>例子中对 c 的内存区域进行修改的操作是一种 “未定义操作”。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近逛贴吧碰上一个灵魂提问，随后请教了几位大佬给出了很详细的解答，但是囿于知识面不全暂时还不是很通透，遂在此记上一笔，日后回来补充详细信息。&lt;/p&gt;
+&lt;p&gt;事情是这样的，声明一个指向常量的引用，创建一个指针指向该常量，随后对该指针进行强制类型转换并赋值；这样一番操作之后会引
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>C/C++文件读写的一点事儿</title>
@@ -487,31 +510,6 @@
       
         &lt;blockquote&gt;
 &lt;p&gt;由于官网教程使用的环境是 HaxeDevelop/FlashDevelop IDE 作为代码的编辑，调试环境，而我是使用 VSCode ，所以环境的搭建我打算另外做一篇教程，并且在必要的时候对系列教程的原文稍作修改以适应我所使用的环境，而官网的教程
-      
-    
-    </summary>
-    
-    
-    
-      <category term="HaxeFlixel" scheme="https://nulllstack.github.io/tags/HaxeFlixel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HaxeFlixel官方教程:开篇</title>
-    <link href="https://nulllstack.github.io/2018/06/11/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B-%E5%BC%80%E7%AF%87/"/>
-    <id>https://nulllstack.github.io/2018/06/11/HaxeFlixel官方教程-开篇/</id>
-    <published>2018-06-11T15:39:01.000Z</published>
-    <updated>2018-06-11T15:42:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="http://haxeflixel.com/documentation/tutorial/" target="_blank" rel="noopener">原文</a></p><p>欢迎来到 HaxeFlixel ！在这系列教程中，你将学习如何使用 HaxeFlixel 从头到尾创建一个完整的游戏，每一步骤都会被打碎成小片段以帮助你度过难关。</p><p>这一系列教程可以面向 Flash，Windows，Aandroid 进行构建。但我们多数时候是编译到 Flash 平台。</p><p>我们将要搭建一个 <strong>dungen crawler</strong> 小游戏。</p><p>首先，让我聊一点关于为何你应该选择 HaxeFlixel :</p><p>HaxeFlixel 的由来要追溯到由 <a href="http://www.adamatomic.com/" target="_blank" rel="noopener">Adam ‘Atomic’ Saltsman</a> 开发的 <a href="http://flixel.org/" target="_blank" rel="noopener">AS3 Flixel 框架</a>。如果你有玩过 <a href="http://www.adamatomic.com/canabalt/" target="_blank" rel="noopener">Canabalt</a>，那么你就见过过了这个框架的早期版本。HaxeFlixel 继承了 Flixel 的一般结构，从 Flash 平台分离出来并整合进强大的开源多平台语言 <a href="http://haxe.org/" target="_blank" rel="noopener">Haxe</a> 中，所以你编写的游戏就可以简单的发布到各个平台上（Windows，Flash，iOS，Android等）。</p><p>当你使用 HaxeFlixel 编写代码时尽管有些变化但与编写 AS3 代码没有太多差别。此外它拥有大量的内置特性 - 类，实用程序，以及函数 - 当你碰上一些常见或复杂的事情时它们可以帮你解决。并且因为 HaxeFlixel 是开源的，当你发现某些事情它做不到，那你可以修改它的源码，同时如果你的修改对其他人是有帮助的，可以把它们<a href="http://haxeflixel.com/documentation/contributing/" target="_blank" rel="noopener">添加进 library</a>。</p><p>它是一个简单易用的代码库（library），而且给予了你足够的自由去实现你能够想到的任何事情，却不会被死板的接口而限制住。</p><p>你可以从这里了解到更多有关于 HaxeFlixel ：<a href="http://haxeflixel.com/documentation/about/" target="_blank" rel="noopener">链接</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;http://haxeflixel.com/documentation/tutorial/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原文&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;欢迎来到 HaxeFlixel ！在这系列教程中，你将学习如何使用 Ha
       
     
     </summary>
