@@ -270,7 +270,7 @@ window.oldVersion = [
     },
     
     "datePublished": "2020-03-19T12:35:46.000Z",
-    "dateModified": "2020-03-19T12:47:01.815Z",
+    "dateModified": "2020-03-20T06:40:15.218Z",
     "author": {
         "@type": "Person",
         "name": "John",
@@ -394,6 +394,9 @@ window.oldVersion = [
 <p><img src="//nulllstack.github.io/2020/03/19/一个常量引用未定义操作引发的Bug/result.png" alt></p>
 <p>一个简单的解释是由于 c 为常量，编译器会为 c 的调用提供一个固定的值（该常量定义时的初始值）进行替换，所以当对常量 c 所在内存地址的内容进行修改的时候，除对 c 的间接访问会被修改外，对 c 的直接访问都保持原值不变。</p>
 <p>例子中对 c 的内存区域进行修改的操作是一种 “未定义操作”。</p>
+<hr>
+<p>补充：<a href="https://blog.csdn.net/wue1206/article/details/81007787" target="_blank" rel="noopener">CSDN</a></p>
+<p>文章中对编译过程中，编译器处理常量的工作有较为详细的解释。</p>
 
                     </article>
                     
@@ -401,7 +404,7 @@ window.oldVersion = [
 
     <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
     <script>
-        var dateUpdate = Date.parse("2020-03-19");
+        var dateUpdate = Date.parse("2020-03-20");
         var nowDate = new Date();
         var a = nowDate.getTime();
         var b = a - dateUpdate;
@@ -415,6 +418,8 @@ window.oldVersion = [
 
 
 <p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-03-19T12:35:46.000Z" itemprop="datePublished">2020-03-19</time>
+
+    , 最后修改于&nbsp;<time datetime="2020-03-20T06:40:15.218Z" itemprop="dateModified">2020-03-20</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
