@@ -61,7 +61,7 @@ window.oldVersion = [
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 
 <!-- Title -->
-<title>HaxeFlixel官方教程5-创建Tilemap(更新) | 囿</title>
+<title>HaxeFlixel官方教程6-加载Tilemap(更新) | 囿</title>
 
 <!-- favicon -->
 <!-- Favicons -->
@@ -80,9 +80,8 @@ window.oldVersion = [
 <meta name="format-detection" content="telephone=no">
 
 <!-- Description -->
-<meta name="description" content="最近官方更新了新一代 Ogmo 编辑器 —— Ogmo3 的支持，于官方教程中更替了旧版的教程，所以顺便也翻译过来吧。
-
-现在，是时候为我们的玩家创建一个可供活动的地图了，首先我们需要使用一个叫做 ...">
+<meta name="description" content="原文
+使...">
 
 <!-- Keywords -->
 <meta name="keywords" content=", HaxeFlixel">
@@ -211,24 +210,23 @@ window.oldVersion = [
 
 
     <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="HaxeFlixel官方教程5-创建Tilemap(更新) | 囿">
+    <meta property="og:title" content="HaxeFlixel官方教程6-加载Tilemap(更新) | 囿">
 <meta property="og:site_name" content="囿">
 
 <meta property="og:locale" content="zh-CN">
 
-<meta property="og:url" content="https://nulllstack.github.io/2020/04/29/HaxeFlixel官方教程5-创建Tilemap-更新/">
+<meta property="og:url" content="https://nulllstack.github.io/2020/04/29/HaxeFlixel官方教程6-加载Tilemap-更新/">
 <meta property="og:image" content="https://nulllstack.github.io/img/suka-favicon.ico">
 
-<meta property="og:description" content="最近官方更新了新一代 Ogmo 编辑器 —— Ogmo3 的支持，于官方教程中更替了旧版的教程，所以顺便也翻译过来吧。
-
-现在，是时候为我们的玩家创建一个可供活动的地图了，首先我们需要使用一个叫做 ...">
+<meta property="og:description" content="原文
+使...">
 
 <meta name="twitter:card" content="summary">
 
 
     <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2020-04-29T08:57:26.000Z">
-    <meta property="article:modified_time" content="2020-04-29T08:57:26.000Z">
+    <meta property="article:published_time" content="2020-04-29T09:48:36.000Z">
+    <meta property="article:modified_time" content="2020-04-29T09:48:36.000Z">
     <meta property="article:author" content="John">
     <meta property="og:article:tag" content=", HaxeFlixel"> 
 
@@ -247,7 +245,7 @@ window.oldVersion = [
 
 
     <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://nulllstack.github.io/2020/04/29/HaxeFlixel官方教程5-创建Tilemap-更新/">
+    <link rel="canonical" href="https://nulllstack.github.io/2020/04/29/HaxeFlixel官方教程6-加载Tilemap-更新/">
 
     <!-- ### Structured Data ### -->
     
@@ -257,22 +255,22 @@ window.oldVersion = [
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "url": "https://nulllstack.github.io/2020/04/29/HaxeFlixel官方教程5-创建Tilemap-更新/",
+    "url": "https://nulllstack.github.io/2020/04/29/HaxeFlixel官方教程6-加载Tilemap-更新/",
     "@type": "BlogPosting",
     "logo": "https://nulllstack.github.io/img/suka-favicon.ico",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://nulllstack.github.io/2020/04/29/HaxeFlixel官方教程5-创建Tilemap-更新/"
+        "@id": "https://nulllstack.github.io/2020/04/29/HaxeFlixel官方教程6-加载Tilemap-更新/"
     },
-    "headline": "HaxeFlixel官方教程5-创建Tilemap(更新) | 囿",
+    "headline": "HaxeFlixel官方教程6-加载Tilemap(更新) | 囿",
     
     "image": {
         "@type": "ImageObject",
         "url": "https://nulllstack.github.io/img/suka-favicon.ico"
     },
     
-    "datePublished": "2020-04-29T08:57:26.000Z",
-    "dateModified": "2020-04-29T09:32:48.356Z",
+    "datePublished": "2020-04-29T09:48:36.000Z",
+    "dateModified": "2020-04-29T10:45:43.766Z",
     "author": {
         "@type": "Person",
         "name": "John",
@@ -298,9 +296,8 @@ window.oldVersion = [
     },
     
     "keywords": ", HaxeFlixel",
-    "description": "最近官方更新了新一代 Ogmo 编辑器 —— Ogmo3 的支持，于官方教程中更替了旧版的教程，所以顺便也翻译过来吧。
-
-现在，是时候为我们的玩家创建一个可供活动的地图了，首先我们需要使用一个叫做 ..."
+    "description": "原文
+使..."
 }
 </script>
 
@@ -358,7 +355,7 @@ window.oldVersion = [
                 <!-- # Post Header Info # -->
                 <div class="card-header">
                     
-    <h1 class="card-title h3 mb-2">HaxeFlixel官方教程5-创建Tilemap(更新)</h1>
+    <h1 class="card-title h3 mb-2">HaxeFlixel官方教程6-加载Tilemap(更新)</h1>
 
 
 
@@ -389,44 +386,62 @@ window.oldVersion = [
                         
                     
                     <article id="post-content">
-                        <p>最近官方更新了新一代 Ogmo 编辑器 —— Ogmo3 的支持，于官方教程中更替了旧版的教程，所以顺便也翻译过来吧。</p>
-<hr>
-<p>现在，是时候为我们的玩家创建一个可供活动的地图了，首先我们需要使用一个叫做 <em>Ogmo编辑器</em> 的工具，Ogmo是一个免费的 Tilemap 编辑器，可以很完美的融入 Haxeflixel 的工作流。在这部分教程中我们将使用一个 “两瓦片（2-tile)” 的 tile序列图（tilesheet）用于分别表示墙面与地面。</p>
-<p>你可以自己做一个 16x16(加注*) 大小的 tile序列 或者使用下面提供的这组序列图：</p>
-<p><img src="//nulllstack.github.io/2020/04/29/HaxeFlixel官方教程5-创建Tilemap-更新/tiles.png" alt></p>
-<p>（注意：序列图的第一块“瓦片”其实是透明的）</p>
-<p>（加注*：实际自己做序列图的时候尺寸应该是24x16，因为实际序列图由三块瓦片组成，第一片是透明的）</p>
+                        <p><a href="https://haxeflixel.com/documentation/loading-the-tilemap/" target="_blank" rel="noopener">原文</a></p>
+<p>使用 Ogmo 编辑器配合 HaxeFlixel 的一大好处是框架已经内置了一组类（class）用于方便的加载 Ogmo 创建的地图。不过这组类并不是以 HaxeFlixel 的标准库形式提供的，所以我们需要先安装 flixel-addons 库用于访问这组类。</p>
 <ol>
-<li><p>下载并安装 Ogmo Editor 3，并启动。</p>
+<li><p>首先打开命令行窗口并键入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">haxelib install flixel-addons</span><br></pre></td></tr></table></figure>
+
+<p>该命令用于安装 HaxeFlixel 的插件库，安装完成后关闭命令行窗口。</p>
 </li>
-<li><p>点击 <code>New Project</code> 并定位至 <code>assets/data</code> 文件夹下（你的游戏工程里的文件夹）并保存为 <code>turnBasedRPG.ogmo</code>。</p>
+<li><p>回到 VSCode 并打开工程中的 <code>Project.xml</code> 文件，我们需要告诉我们的项目我们要导入 flixel-addons 库至我们的项目中。</p>
 </li>
-<li><p>在 <code>General</code> 选项卡下，你可以重命名项目、设置关卡（level）的默认大小等。把其中的选项按如下图中所示设置：</p>
-<p><img src="//nulllstack.github.io/2020/04/29/HaxeFlixel官方教程5-创建Tilemap-更新/ogmo_project_general.png" alt></p>
+<li><p>找到以下这行代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--&lt;haxelib name="flixel-addons" /&gt;--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>将其修改为：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">haxelib</span> <span class="attr">name</span>=<span class="string">"flixel-addons"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>保存修改，现在你可以开始使用 flixel-addons 库提供的接口了！</p>
 </li>
-<li><p>在<code>Layer</code>选项卡下，创建一个实体层（Entity Layer）并命名为 <code>entities</code> 以及一个瓦片层（Tile Layer）并命名为 <code>walls</code> ：</p>
-<p><img src="//nulllstack.github.io/2020/04/29/HaxeFlixel官方教程5-创建Tilemap-更新/ogmo_project_layers.png" alt></p>
+<li><p>回到我们的 <code>PlayState</code> 类中，位于 <code>player</code> 变量的定义下方添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map:<span class="type">FlxOgmo3Loader</span>;</span><br><span class="line"><span class="keyword">var</span> walls:<span class="type">FlxTilemap</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这里我们首先创建了一个对象用于存储我们的 Ogmo 地图，之后又创建了另外一个对象用于保存从 Ogmo 地图中生成的 <code>FlxTilemap</code> 。</p>
 </li>
-<li><p>在 <code>Entities</code> 选项卡下，创建一个名为 <code>player</code> 的实体（Entity）：</p>
-<p><img src="//nulllstack.github.io/2020/04/29/HaxeFlixel官方教程5-创建Tilemap-更新/ogmo_project_entities.png" alt></p>
+<li><p>在 <code>create()</code> 中，位于 player 对象的设置之前的位置添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">map = <span class="keyword">new</span> <span class="type">FlxOgmo3Loader</span>(AssetPaths.turnBasedRPG__ogmo, AssetPaths.room_001__json);</span><br><span class="line">walls = map.loadTilemap(AssetPaths.tiles__png, <span class="string">"walls"</span>);</span><br><span class="line">walls.follow();</span><br><span class="line">walls.setTileProperties(<span class="number">1</span>, FlxObject.NONE);</span><br><span class="line">walls.setTileProperties(<span class="number">2</span>, FlxObject.ANY);</span><br><span class="line">add(walls);</span><br></pre></td></tr></table></figure>
+
+<p>这里我们从关卡文件中加载数据至我们的 <code>FlxOgmo3Loader</code> 对象、从 <code>walls</code> 图层中生成 <code>FlxTilemap</code> 并设置 瓦片1（表示地面的瓦片）的碰撞为无碰撞，瓦片2（表示墙面的瓦片）的碰撞为从任意方向发生碰撞。最后将 tilemap 添加至当前的 状态（state）中。</p>
 </li>
-<li><p>最后，在 <code>Tilesets</code> 选项卡下创建一个名为 <code>tiles</code> 的瓦片集（tileset）并加载先前创建好的瓦片序列图：</p>
-<p><img src="//nulllstack.github.io/2020/04/29/HaxeFlixel官方教程5-创建Tilemap-更新/ogmo_project_tilesets.png" alt></p>
+<li><p>现在我们需要将我们的 player 对象放置于地图中正确的位置上，所以修改我们初始化 player 的代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">player = <span class="keyword">new</span> <span class="type">Player</span>(<span class="number">20</span>,<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+
+<p>修改为：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">player = <span class="keyword">new</span> <span class="type">Player</span>();</span><br><span class="line">map.loadEntities(placeEntities,<span class="string">"entities"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这里我们告诉 <code>map</code> 对象遍历所有 <code>entities</code> 图层中的实体，并对其调用 <code>placeEntities()</code> 函数（我们下面就来实现该函数）。</p>
 </li>
-<li><p>完成以上工作之后点击 <code>Save</code> ，接着你会被带至如下窗口：</p>
-<p><img src="//nulllstack.github.io/2020/04/29/HaxeFlixel官方教程5-创建Tilemap-更新/ogmo_editor_blank.png" alt></p>
+<li><p>当我们调用地图的 <code>loadEntities()</code> 函数时，它会传递所有以放置的实体的数据至一个我们所需要接收数据的函数中。在我们的函数中，我们需要获取这组数据并利用它们做某些事情。这里我们的函数如下所示：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">placeEntities</span></span>(entity:<span class="type">EntityData</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(entity.name == <span class="string">"player"</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		player.setPosition(entity.x, entity.y);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个函数如果获取到了传递进来的实体名为 “player” ，它将会设 player 对象的<code>x</code>与<code>y</code>坐标至对应实体的<code>x</code>与<code>y</code>坐标的值的位置上。</p>
 </li>
-<li><p>确保你目前位于 <code>walls</code> 图层，并且已正确选择屏幕上方的对应工具，然后开始绘制你的地图吧。</p>
-<p>确保你的地图由墙面形成一个闭环（这样玩家就不能跑出地图以外的区域），并且其内由地面完全填充，最后绘制完的地图应该类似下面这样：</p>
-<p><img src="//nulllstack.github.io/2020/04/29/HaxeFlixel官方教程5-创建Tilemap-更新/ogmo_editor_tiles.png" alt></p>
+<li><p>现在我们需要为我们的状态添加碰撞检测，这样 player 碰到到墙面时就会一头撞上而不是穿行而过。所以位于<code>update()</code>中，<code>super.update(elapsed)</code>之后的位置添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FlxG.collide(player, walls);</span><br></pre></td></tr></table></figure>
+
+<p>这里所做的工作是每一次 <code>update()</code> 的迭代都会检测 player 与 walls 之间的重叠情况，如果发生重叠则两个对象之间会自动分离。</p>
 </li>
-<li><p>现在，切换至 <code>entities</code> 图层并将 <code>player</code> 实体放置于地图中的某一个位置：</p>
-<p><img src="//nulllstack.github.io/2020/04/29/HaxeFlixel官方教程5-创建Tilemap-更新/ogmo_editor_entities.png" alt></p>
+<li><p>最后我们需要适当调整一下 player 的属性。由于默认情况下 player sprite 的大小与瓦片的大小是一致的（16x16) ，这导致 player 在穿越与自身大小一致的门口时犹如 “穿针引线” ，往往会由于一点点的偏差卡在门口动弹不得。所以我们需要适当的修改player sprite的大小 与 <code>offset</code> ，这样做不会改变精灵序列实际显示的效果，只会对其碰撞盒的大小产生影响。</p>
+<p>所以在 <code>Player</code> 类的构造函数中，位于 <code>drag</code> 属性的设置下方添加以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setSize(<span class="number">8</span>,<span class="number">8</span>);</span><br><span class="line">offset.<span class="keyword">set</span>(<span class="number">4</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>最后的最后， Ctrl+S 将关卡保存为 <code>room-001.json</code> 至 <code>assets/data</code> 文件夹下。</p>
+<li><p>修改了 player 的碰撞盒之后，为了便于确定其修改后的大小，我们可以将其可视化，以<code>Debug</code>模式编译并运行项目之后，你可以通过 <code>F2</code> 功能键唤起 HaxeFlixel 自带的 <a href="https://haxeflixel.com/documentation/debugger/" target="_blank" rel="noopener">Debugging 工具</a></p>
+<p>点击右上角那个立方体图示的按钮即可渲染出游戏中出现的碰撞盒：</p>
+<p><img src="//nulllstack.github.io/2020/04/29/HaxeFlixel官方教程6-加载Tilemap-更新/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B6-%E5%8A%A0%E8%BD%BDTilemap-%E6%9B%B4%E6%96%B0%5Cbrowser_map_debugger.png" alt></p>
 </li>
 </ol>
-<p>到这里 Ogmo 的基本使用就介绍完了，下一节我们将介绍如何将我们创建好的关卡加载至我们的游戏中。</p>
+<p>凑近点看你可以通过碰撞盒的发现现在player的大小要比瓦砖更小一点了。</p>
 
                     </article>
                     
@@ -447,7 +462,7 @@ window.oldVersion = [
     </script>
 
 
-<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-04-29T08:57:26.000Z" itemprop="datePublished">2020-04-29</time>
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-04-29T09:48:36.000Z" itemprop="datePublished">2020-04-29</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
@@ -470,20 +485,13 @@ window.oldVersion = [
 <ul class="pagination">
     <!-- Prev Nav -->
     
-        <li class="page-item page-prev">
-            <a href="/2020/04/29/HaxeFlixel官方教程6-加载Tilemap-更新/" rel="prev">
-                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
-                <div class="page-item-subtitle">HaxeFlixel官方教程6-加载Tilemap(更新)</div>
-            </a>
-        </li>
-    
 
     <!-- Next Nav -->
     
         <li class="page-item page-next">
-            <a href="/2020/04/11/No-organism-Except-myself/" rel="next">
+            <a href="/2020/04/29/HaxeFlixel官方教程5-创建Tilemap-更新/" rel="next">
                 <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
-                <div class="page-item-subtitle">No organism Except myself</div>
+                <div class="page-item-subtitle">HaxeFlixel官方教程5-创建Tilemap(更新)</div>
             </a>
         </li>
     
