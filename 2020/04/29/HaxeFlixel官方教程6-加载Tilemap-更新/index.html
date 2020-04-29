@@ -270,7 +270,7 @@ window.oldVersion = [
     },
     
     "datePublished": "2020-04-29T09:48:36.000Z",
-    "dateModified": "2020-04-29T10:47:44.296Z",
+    "dateModified": "2020-04-29T12:11:09.216Z",
     "author": {
         "@type": "Person",
         "name": "John",
@@ -422,7 +422,7 @@ window.oldVersion = [
 
 <p>这里我们告诉 <code>map</code> 对象遍历所有 <code>entities</code> 图层中的实体，并对其调用 <code>placeEntities()</code> 函数（我们下面就来实现该函数）。</p>
 </li>
-<li><p>当我们调用地图的 <code>loadEntities()</code> 函数时，它会传递所有以放置的实体的数据至一个我们所需要接收数据的函数中。在我们的函数中，我们需要获取这组数据并利用它们做某些事情。这里我们的函数如下所示：</p>
+<li><p>当我们调用地图的 <code>loadEntities()</code> 函数时，它会传递所有已放置的实体的数据至一个我们所需要接收数据的函数中。在我们的函数中，我们需要获取这组数据并利用它们做某些事情。这里我们的函数如下所示：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">placeEntities</span></span>(entity:<span class="type">EntityData</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(entity.name == <span class="string">"player"</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		player.setPosition(entity.x, entity.y);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这个函数如果获取到了传递进来的实体名为 “player” ，它将会设 player 对象的<code>x</code>与<code>y</code>坐标至对应实体的<code>x</code>与<code>y</code>坐标的值的位置上。</p>
@@ -441,7 +441,7 @@ window.oldVersion = [
 <p><img src="//nulllstack.github.io/2020/04/29/HaxeFlixel官方教程6-加载Tilemap-更新/browser_map_debugger.png" alt></p>
 </li>
 </ol>
-<p>凑近点看你可以通过碰撞盒的发现现在player的大小要比瓦砖更小一点了。</p>
+<p>凑近点看你可以通过碰撞盒发现现在player的大小要比瓦砖更小一点了。</p>
 
                     </article>
                     
