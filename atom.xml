@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://nulllstack.github.io/"/>
-  <updated>2020-04-29T12:11:09.216Z</updated>
+  <updated>2020-05-02T20:16:09.902Z</updated>
   <id>https://nulllstack.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>20200503</title>
+    <link href="https://nulllstack.github.io/2020/05/03/20200503/"/>
+    <id>https://nulllstack.github.io/2020/05/03/20200503/</id>
+    <published>2020-05-02T20:15:05.000Z</published>
+    <updated>2020-05-02T20:16:09.902Z</updated>
+    
+    <content type="html"><![CDATA[<p>Trying to learn how to love myself before love some one else.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Trying to learn how to love myself before love some one else.&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>HaxeFlixel官方教程6-加载Tilemap(更新)</title>
@@ -483,31 +506,6 @@
       
         &lt;p&gt;&lt;a href=&quot;http://haxeflixel.com/documentation/loading-the-tilemap/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原文&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;搭配Ogmo与HaxeFlixel框架一起使用的其
-      
-    
-    </summary>
-    
-    
-    
-      <category term="HaxeFlixel" scheme="https://nulllstack.github.io/tags/HaxeFlixel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HaxeFlixel官方教程5:创建Tilemap</title>
-    <link href="https://nulllstack.github.io/2018/07/31/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B5-%E5%88%9B%E5%BB%BATilemap/"/>
-    <id>https://nulllstack.github.io/2018/07/31/HaxeFlixel官方教程5-创建Tilemap/</id>
-    <published>2018-07-31T09:23:09.000Z</published>
-    <updated>2018-07-31T11:00:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="http://haxeflixel.com/documentation/creating-a-tilemap/" target="_blank" rel="noopener">原文</a></p><p>现在，是时候为player创建一个可供活动的环境地图了！我们将使用一个叫 <em>Ogmo Editor</em> 的工具来创建 Tilemap；Ogmo是一个免费的 Tilemap编辑器，可以非常完美的与HaxeFlixel框架协作，对于这节教程而言，我们将创建一个只有 2块瓦砖 的 Tilesheet，用于表示墙体和地板。</p><p>你可以自己画一个16x16大小每块瓦砖的序列图，或者使用这里的图形资源：</p><p><img src="//nulllstack.github.io/2018/07/31/HaxeFlixel官方教程5-创建Tilemap/untitled.png" alt></p><p>（注意：该序列一共有3块tile，第一块tile应该是透明的）</p><ol><li><p>首先访问此链接：<a href="http://www.ogmoeditor.com/" target="_blank" rel="noopener">http://www.ogmoeditor.com/</a> 下载安装并运行编辑器。</p><p>注意：Ogmo 只有Windows版本，如果你想使用其他的编辑器，你可以试试<a href="http://www.mapeditor.org/" target="_blank" rel="noopener">Tile</a>，他也是一个免费的编辑器，但是功能稍微复杂一些。</p></li><li><p>从<code>Project &gt; New Project</code>创建并选择一个名称命名一个项目，保存至<code>assets/data</code>文件夹下。</p></li><li><p>按以下所示对每一个选项卡进行设置：</p><div align="center">![](HaxeFlixel官方教程5-创建Tilemap/1.png)<div align="center">![](HaxeFlixel官方教程5-创建Tilemap/2.png)<div align="center">![](HaxeFlixel官方教程5-创建Tilemap/3.png)<div align="center">![](HaxeFlixel官方教程5-创建Tilemap/4.png)<div align="center">![](HaxeFlixel官方教程5-创建Tilemap/5.png)</div></div></div></div></div></li><li><p>点击Apply保存你的修改，目前窗口应该如下所示：</p><div align="center">![](HaxeFlixel官方教程5-创建Tilemap/6.png)</div></li><li><p>确保你已选中“walls”图层，然后通过右边工具栏选择所需工具来绘制一个简单的地图。确保地图以walls瓦砖闭合（这样player就不能越出墙体的范围），并且以floor瓦砖将其填满。最后的地图应该如下所示：</p><div align="center">![](HaxeFlixel官方教程5-创建Tilemap/7.png)</div></li><li><p>现在切换至“entities”图层，然后将player瓦砖放置其中一个房间的某处：</p><div align="center">![](HaxeFlixel官方教程5-创建Tilemap/8.png)</div></li><li><p>通过<code>Level &gt; Save Level</code>保存，以<code>room-001.oel</code>命名，保存至<code>assets/data</code>文件夹内。</p></li><li><p>地图的创建工作到此就完成了，确保你已经保存修改，然后退出。</p></li></ol><p>下一节，我们将学习如何加载一个新创建的tilemap到游戏里。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;http://haxeflixel.com/documentation/creating-a-tilemap/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原文&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;现在，是时候为player创建一个可供活动的环境地图
       
     
     </summary>
