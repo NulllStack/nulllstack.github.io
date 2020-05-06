@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://nulllstack.github.io/"/>
-  <updated>2020-05-03T17:51:39.072Z</updated>
+  <updated>2020-05-06T19:22:06.346Z</updated>
   <id>https://nulllstack.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Haxe学习笔记:函数可选参数与可空类型</title>
+    <link href="https://nulllstack.github.io/2020/05/07/Haxe%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%87%BD%E6%95%B0%E5%8F%AF%E9%80%89%E5%8F%82%E6%95%B0%E4%B8%8E%E5%8F%AF%E7%A9%BA%E7%B1%BB%E5%9E%8B/"/>
+    <id>https://nulllstack.github.io/2020/05/07/Haxe学习笔记-函数可选参数与可空类型/</id>
+    <published>2020-05-06T18:51:45.000Z</published>
+    <updated>2020-05-06T19:22:06.346Z</updated>
+    
+    <content type="html"><![CDATA[<p>一点小记</p><p>haxe中的函数声明允许修饰参数为可选参数，通过于 <strong>参数签名</strong> 前方加上<code>?</code>来表示该参数是可选的</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">func</span></span>(?opVar:<span class="type">Int</span>, str:<span class="type">String</span>)&#123;&#125;</span><br></pre></td></tr></table></figure><p>但是有一点需要稍微注意，因为 haxe 的无平台特性，考虑到编译至静态目标平台（如：C++、Flash、Java、C#）不支持基本类型值为空 <code>null</code> 的情况，可选参数会被隐式包装为可空类型 <code>Null&lt;T&gt;</code> 。如上例子中的函数<code>func</code>类型为 <code>Null&lt;Int&gt; -&gt; String -&gt; Void</code> （为了满足函数式编程，Haxe 中的函数具有类型），在静态目标平台下可选参数会根据对应平台默认赋值，以下引用自官方手册：</p><blockquote><p><strong>定义</strong>：默认值</p><p>静态目标语言中，基本类型的默认值如下：<br>Int —— <code>0</code>；<br>Float —— Flash 中为 <code>NaN</code>，其它静态目标语言中为 <code>0.0</code> ；<br>Bool —— <code>false</code> 。</p></blockquote><p>注意：实际上 Haxe 官方手册中定义的基本数据类型就只有这三种，String 不属于基本类型。</p><p>且没有被包装为 <code>Null&lt;T&gt;</code> 类型的基本类型，也不可与 <code>null</code> 值进行比较（静态语言平台下），同时如果有一个 <code>null</code> 值被隐藏于某个 <code>Null&lt;T&gt;</code> 类型或 <code>Dynamic</code> 类型中赋值给一个基本类型，则会使用默认值赋值给该基本类型变量。</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//var i:Int = 0;</span></span><br><span class="line"><span class="comment">//trace(i == null); 静态目标下会出现编译时错误，因为 i 不是可空类型 Null&lt;Int&gt;</span></span><br><span class="line"><span class="comment">//编译期错误：On static platforms, null can't be used as basic type Int</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> i:<span class="type">Null</span>&lt;<span class="keyword">Int</span>&gt; = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">trace</span>(i == <span class="literal">null</span>);<span class="comment">// C++下输出: true，Eval解释器下输出：true</span></span><br><span class="line"><span class="keyword">var</span> v:<span class="type">Int </span>= i;<span class="comment">// null值被隐藏于Null&lt;Int&gt;类型中赋值给Int基本类型变量 v </span></span><br><span class="line"><span class="built_in">trace</span>(v);<span class="comment">// 经尝试 C++ 目标下输出：0，Eval解释器下输出：null</span></span><br></pre></td></tr></table></figure><p>另外，<code>Null&lt;String&gt;</code> 类型在C++平台下（暂时还没尝试其他静态目标平台）的表现有个有意思的点想提一下：</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str:<span class="type">String </span>= <span class="literal">null</span>; <span class="comment">//不像基本类型，null值可以赋值给字符串</span></span><br><span class="line"><span class="keyword">var</span> nulableStr:<span class="type">Null</span>&lt;<span class="keyword">String</span>&gt; = <span class="literal">null</span>; <span class="comment">//此时声明为Null&lt;T&gt;类型仅是为了让阅读源码的人了解null可以作为一个有效值</span></span><br><span class="line">str = <span class="string">"now this is not a null string!"</span>;</span><br><span class="line"><span class="built_in">trace</span>(str == nulableStr); <span class="comment">//非基本类型与null值进行比较没有问题</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//下面这个比较有意思</span></span><br><span class="line"><span class="built_in">trace</span>(nulableStr); <span class="comment">//C++下会输出该字符串值为 null</span></span><br><span class="line"><span class="built_in">trace</span>(nulableStr.length); <span class="comment">//输出其长度为：0，意味着实际上它并没有存储一个叫"null"的字符串</span></span><br></pre></td></tr></table></figure><p>顺便地，因为 Haxe 中一切皆表达式，在上面的例子里判断函数 <code>func</code> 的表达式类型时需注意，如果是函数调用 <code>func()</code> ，即一个函数名后跟一对圆括号<code>()</code> 的形式的表达式，其值直接解释为其返回值的类型。</p><p>可通过 <code>$type()</code> 直观的找出其区别：</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$type(func); <span class="comment">//输出 (?nullableVar : Null&lt;Int&gt;, i : String) -&gt; Void</span></span><br><span class="line">             <span class="comment">//即表示其类型为：Null&lt;Int&gt; -&gt; String -&gt; Void</span></span><br><span class="line">$type(func(<span class="string">'sth'</span>)); <span class="comment">//输出 Void</span></span><br></pre></td></tr></table></figure><p>最后提醒一下自己，需要稍微研究一下 Haxe 的函数重载机制，似乎和我以前写过的不太一样。。。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一点小记&lt;/p&gt;
+&lt;p&gt;haxe中的函数声明允许修饰参数为可选参数，通过于 &lt;strong&gt;参数签名&lt;/strong&gt; 前方加上&lt;code&gt;?&lt;/code&gt;来表示该参数是可选的&lt;/p&gt;
+&lt;figure class=&quot;highlight haxe&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;t
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Haxe" scheme="https://nulllstack.github.io/tags/Haxe/"/>
+    
+  </entry>
   
   <entry>
     <title>Haxe编程入门</title>
@@ -480,31 +506,6 @@
       
         &lt;p&gt;&lt;a href=&quot;http://haxeflixel.com/documentation/pickups/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原文&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;目前我们有一个小家伙可以在地图内自由行走，让我们为它添加一些可以拾取的东西
-      
-    
-    </summary>
-    
-    
-    
-      <category term="HaxeFlixel" scheme="https://nulllstack.github.io/tags/HaxeFlixel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HaxeFlixel官方教程7:摄像机与缩放</title>
-    <link href="https://nulllstack.github.io/2018/08/02/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B7-%E6%91%84%E5%83%8F%E6%9C%BA%E4%B8%8E%E7%BC%A9%E6%94%BE/"/>
-    <id>https://nulllstack.github.io/2018/08/02/HaxeFlixel官方教程7-摄像机与缩放/</id>
-    <published>2018-08-02T09:33:46.000Z</published>
-    <updated>2019-09-12T17:43:48.224Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="http://haxeflixel.com/documentation/zoom-and-cameras/" target="_blank" rel="noopener">原文</a></p><p>当你开始运行你的游戏，你将会看到，目前场景内的所有东西看起开都非常非常小，我们将要通过设置缩放来改变游戏内物体的能见度，以此让玩家得以看清角色每个细微的动作。要做到缩放很简单：</p><ol><li><p>打开<code>Main.hx</code>文件，这个类用于游戏的初始化工作，如果你想要的话看看有哪些东西你需要修改的，但这里我们只需要改变其中的几个参数。</p></li><li><p>修改<code>new FlxGame()</code>的宽度与高度参数为<code>320</code>与<code>240</code>（原来的值的一半）。</p></li><li><p>如果你现在开始运行游戏，你将看到所有东西都被放大了，但是player会越出屏幕的可视范围，因此我们需要告诉摄像机紧跟player的当前位置，再一次打开<code>PlayState</code>文件。</p></li><li><p>在构造函数内，位于添加player之后，<code>super.create()</code>之前的位置添加以下代码：</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FlxG.camera.follow(_player,TOPDOWN,<span class="number">1</span>);</span><br></pre></td></tr></table></figure><p>这样做将会告诉摄像机以<code>TOPDOWN</code>视角跟踪player的位置，以1为取值赋给<code>lerp</code>参数（这样做将会让摄像机的移动更为平滑一些）</p></li></ol><p>完事了！测试游戏的运行结果看看效果如何。</p><div align="center"><p><img src="//nulllstack.github.io/2018/08/02/HaxeFlixel官方教程7-摄像机与缩放/results.png" alt></p><p>下一节，让我们为player添加一些可以在地图内拾起的东西。</p></div>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;http://haxeflixel.com/documentation/zoom-and-cameras/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原文&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;当你开始运行你的游戏，你将会看到，目前场景内的所有东西看
       
     
     </summary>
