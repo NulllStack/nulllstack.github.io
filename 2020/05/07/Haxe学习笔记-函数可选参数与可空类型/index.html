@@ -274,7 +274,7 @@ haxe中的函数声明允许修饰参数为可选参数，通过于 参数签名
     },
     
     "datePublished": "2020-05-06T18:51:45.000Z",
-    "dateModified": "2020-05-06T19:44:03.645Z",
+    "dateModified": "2020-05-08T09:29:24.267Z",
     "author": {
         "@type": "Person",
         "name": "John",
@@ -407,7 +407,7 @@ haxe中的函数声明允许修饰参数为可选参数，通过于 参数签名
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//var i:Int = 0;</span></span><br><span class="line"><span class="comment">//trace(i == null); 静态目标下会出现编译时错误，因为 i 不是可空类型 Null&lt;Int&gt;</span></span><br><span class="line"><span class="comment">//编译期错误：On static platforms, null can't be used as basic type Int</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> i:<span class="type">Null</span>&lt;<span class="keyword">Int</span>&gt; = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">trace</span>(i == <span class="literal">null</span>);<span class="comment">// C++下输出: true，Eval 解释器下输出：true</span></span><br><span class="line"><span class="keyword">var</span> v:<span class="type">Int </span>= i;<span class="comment">// null值被隐藏于 Null&lt;Int&gt; 类型中赋值给 Int 基本类型变量 v </span></span><br><span class="line"><span class="built_in">trace</span>(v);<span class="comment">// 经尝试 C++ 目标下输出：0，Eval 解释器下输出：null</span></span><br></pre></td></tr></table></figure>
 
 <p>另外，<code>Null&lt;String&gt;</code> 类型在C++平台下（暂时还没尝试其他静态目标平台）的表现有个有意思的点想提一下：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str:<span class="type">String </span>= <span class="literal">null</span>; <span class="comment">//不像基本类型，null值可以赋值给字符串</span></span><br><span class="line"><span class="keyword">var</span> nulableStr:<span class="type">Null</span>&lt;<span class="keyword">String</span>&gt; = <span class="literal">null</span>; <span class="comment">//此时声明为 Null&lt;T&gt; 类型仅是为了让阅读源码的人了解 null 可以作为一个有效值</span></span><br><span class="line">str = <span class="string">"now this is not an null string!"</span>;</span><br><span class="line"><span class="built_in">trace</span>(str == nulableStr); <span class="comment">//非基本类型与 null 值进行比较没有问题，输出：false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//下面这个比较有意思</span></span><br><span class="line"><span class="built_in">trace</span>(nulableStr); <span class="comment">//C++下会输出该字符串值为 null</span></span><br><span class="line"><span class="built_in">trace</span>(nulableStr.length); <span class="comment">//输出其长度为：0，意味着实际上它并没有存储一个叫 "null" 的字符串</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str:<span class="type">String </span>= <span class="literal">null</span>; <span class="comment">//不像基本类型，null值可以赋值给字符串</span></span><br><span class="line"><span class="keyword">var</span> nulableStr:<span class="type">Null</span>&lt;<span class="keyword">String</span>&gt; = <span class="literal">null</span>; <span class="comment">//此时声明为 Null&lt;T&gt; 类型仅是为了让阅读源码的人了解 null 可以作为一个有效值</span></span><br><span class="line">str = <span class="string">"now this is not an null string!"</span>;</span><br><span class="line"><span class="built_in">trace</span>(str == nulableStr); <span class="comment">//非基本类型与 null 值进行比较没有问题，输出：false</span></span><br><span class="line"></span><br><span class="line">nulableStr = <span class="literal">null</span>;<span class="comment">// 设回 null</span></span><br><span class="line"><span class="comment">//下面这个比较有意思</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">trace</span>(nulableStr); </span><br><span class="line"><span class="comment">//C++下会输出该字符串值为 null</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">trace</span>(nulableStr.length); </span><br><span class="line"><span class="comment">//输出其长度为：0，意味着实际上它并没有存储一个叫 "null" 的字符串</span></span><br><span class="line"><span class="comment">//但如果你是在Eval解释器下会出现异常：</span></span><br><span class="line"><span class="comment">//Uncaught exception field access on null</span></span><br><span class="line"><span class="comment">//没用过js之类的不清楚是不是所有动态类型语言下都会这样</span></span><br></pre></td></tr></table></figure>
 
 <p>以下引用自官方手册：</p>
 <blockquote>
@@ -427,7 +427,7 @@ haxe中的函数声明允许修饰参数为可选参数，通过于 参数签名
 
     <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
     <script>
-        var dateUpdate = Date.parse("2020-05-07");
+        var dateUpdate = Date.parse("2020-05-08");
         var nowDate = new Date();
         var a = nowDate.getTime();
         var b = a - dateUpdate;
@@ -441,6 +441,8 @@ haxe中的函数声明允许修饰参数为可选参数，通过于 参数签名
 
 
 <p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-05-06T18:51:45.000Z" itemprop="datePublished">2020-05-07</time>
+
+    , 最后修改于&nbsp;<time datetime="2020-05-08T09:29:24.267Z" itemprop="dateModified">2020-05-08</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
