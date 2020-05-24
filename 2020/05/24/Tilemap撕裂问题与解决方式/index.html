@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <!--
+        © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+        Version: 1.3.3
+    -->
+    <script>
+window.lsVersion = "1.3.3",
+window.oldVersion = [
+    
+        
+            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0","1.3.2"
+        
+    
+]
+</script>
+
+    <!-- ### DNS Prefetch ### -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+
+    <!-- ### Preload ### -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- Title -->
+<title>Tilemap撕裂问题与解决方式 | 囿</title>
+
+<!-- favicon -->
+<!-- Favicons -->
+
+    <link rel="icon" type="image/ico" href="/img/suka-favicon.ico">
+
+
+
+
+
+
+<!-- Android Chrome Color -->
+
+
+
+<meta name="format-detection" content="telephone=no">
+
+<!-- Description -->
+<meta name="description" content="一点小记，自用，没什么逻辑。
+
+最近在看 Discover ...">
+
+<!-- Keywords -->
+<meta name="keywords" content=", HaxeFlixel">
+
+<!-- Disable Fucking Bloody Baidu Tranformation -->
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!-- ### Import File ### -->
+    
+        <!-- spectre.css -->
+
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style>
+
+<!-- style.css -->
+
+    <link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/github.min.css">
+    
+
+
+
+    
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <!-- ### RSS ### -->
+    
+    
+        <link rel="alternate" type="application/atom+xml" href="/atom.xml">
+    
+
+
+    <!-- ### WebApp ### -->
+    <meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="囿">
+<meta name="msapplication-starturl" content="https://nulllstack.github.io">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="囿">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Manifest Import -->
+
+<!-- Open Search -->
+
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="Tilemap撕裂问题与解决方式 | 囿">
+<meta property="og:site_name" content="囿">
+
+<meta property="og:locale" content="zh-CN">
+
+<meta property="og:url" content="https://nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/">
+<meta property="og:image" content="https://nulllstack.github.io/img/suka-favicon.ico">
+
+<meta property="og:description" content="一点小记，自用，没什么逻辑。
+
+最近在看 Discover ...">
+
+<meta name="twitter:card" content="summary">
+
+
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2020-05-24T12:53:11.000Z">
+    <meta property="article:modified_time" content="2020-05-24T12:53:11.000Z">
+    <meta property="article:author" content="John">
+    <meta property="og:article:tag" content=", HaxeFlixel"> 
+
+
+
+
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/">
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/",
+    "@type": "BlogPosting",
+    "logo": "https://nulllstack.github.io/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/"
+    },
+    "headline": "Tilemap撕裂问题与解决方式 | 囿",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://nulllstack.github.io/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2020-05-24T12:53:11.000Z",
+    "dateModified": "2020-05-24T12:54:12.472Z",
+    "author": {
+        "@type": "Person",
+        "name": "John",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://nulllstack.github.io/img/avatar.png"
+        },
+        "description": ""
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "囿",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://nulllstack.github.io/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://nulllstack.github.io/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": ", HaxeFlixel",
+    "description": "一点小记，自用，没什么逻辑。
+
+最近在看 Discover ..."
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+
+
+</head>
+
+    <body>
+        
+
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">囿</a></h1>
+
+    <p class="text-center header-slogan">
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+    
+        <a href="/About/" class="navbar-link">关于</a>
+    
+    
+    
+        <a href="/atom.xml" target="_blank" class="navbar-link">RSS</a>
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    
+    
+
+
+<div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">Tilemap撕裂问题与解决方式</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/avatar.png" src="/img/suka-lazyload.gif" alt="John's Avatar">
+        <span>2020-05-24</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                    
+                    <article id="post-content">
+                        <p>一点小记，自用，没什么逻辑。</p>
+<hr>
+<p>最近在看 <a href="http://discover-haxeflixel.com/" target="_blank" rel="noopener">Discover HaxeFlixel</a>， 期间碰上 Tilemap 背景图像撕裂的问题，经过一番检索之后发现似乎是框架本身的老问题了，用蹩脚的英语向社区大佬一番请教之后也没理明白问题的根源，但是大概也许可能是由于框架底层依赖项的浮点运算的问题导致的。而且似乎 Platformer 类的游戏出现这个问题的概率会更高，随后大佬也给了解决方案，一番折腾下来要是不记上一笔的话感觉这趟就白忙活了，所以趁热。</p>
+<p><a href="http://discover-haxeflixel.com/" target="_blank" rel="noopener">Discover HaxeFlixel</a> 一书中作者使用了 Tiled 创建 Tilemap，但是我改用 Ogmo3 了。</p>
+<p>所以，书中使用的 Tileset ：</p>
+<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/book_tiles.png" alt></p>
+<p>为了兼容 Ogmo 的工作流，需要在 Tileset 的第一块瓦片位置放置空白瓦片：</p>
+<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/tiles.png" alt></p>
+<p>随后于 FlxState 中对编辑好的关卡进行加载：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mapLoader:<span class="type">FlxOgmo3Loader</span>;</span><br><span class="line"><span class="keyword">var</span> map:<span class="type">FlxTilemap</span>;</span><br><span class="line"><span class="keyword">var</span> background:<span class="type">FlxTilemap</span>;</span><br><span class="line"><span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">create</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;	</span><br><span class="line">	mapLoader = <span class="keyword">new</span> <span class="type">FlxOgmo3Loader</span>(AssetPaths.Map__ogmo, AssetPaths.level1__json);</span><br><span class="line">	map = mapLoader.loadTilemap(AssetPaths.tiles__png, <span class="string">"tiles"</span>);</span><br><span class="line">	background = mapLoader.loadTilemap(AssetPaths.tiles__png, <span class="string">"background"</span>);</span><br><span class="line">	background.solid = <span class="literal">false</span>;<span class="comment">//设置 background 的 tilemap 的碰撞盒为无碰撞</span></span><br><span class="line">	add(background);<span class="comment">//add()的调用有先后顺序的区别</span></span><br><span class="line">	add(map);<span class="comment">//被随后 add() 进 state 的对象会遮挡先前 add() 进 state 的对象</span></span><br><span class="line">	map.follow();<span class="comment">//刷新碰撞四叉树的大小以匹配当前 tilemap 的大小</span></span><br><span class="line">		</span><br><span class="line">	player = <span class="keyword">new</span> <span class="type">Player</span>(<span class="number">16</span>, <span class="number">16</span>);</span><br><span class="line">	add(player);</span><br><span class="line">	FlxG.camera.follow(player, FlxCameraFollowStyle.PLATFORMER);</span><br><span class="line">	<span class="keyword">super</span>.create();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里关于 <code>map.follow()</code> 还想记一笔，默认情况下 Flixel 的碰撞检测只会作用于屏幕大小范围里的对象，比如我的游戏现在以 <code>320px * 180px</code> 的分辨率运行，但是我的 Tilemap 大小为 <code>864px * 240px</code> ，那么 Flixel 的碰撞四叉树只会从坐标原点 <code>(-10,-10)</code> 到坐标 <code>(340,200)</code> 的范围内产生作用（碰撞四叉树高宽默认比游戏分辨率大一圈（10像素）），如图所示：</p>
+<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/gif1.gif" alt></p>
+<p>可以从游戏内置的 debugger 工具的 Log 窗口看到当前输出的碰撞四叉树的状态：原点位于<code>(-10,-10)</code>处，宽度与高度分别是 <code>340px</code> 与 <code>200px</code> ，可以从下方的调试控制台看到 player 在大概位于 x 轴方向 340 像素处无视了所有地面 Tile 的碰撞检测往下掉落。 </p>
+<p>所以通过外部 Tilemap 编辑器创建的 <code>FlxTilemap</code> 对象我们需要对它调用 <code>follow()</code> 函数来重置碰撞四叉树以匹配其地图的大小，该函数同时还会把摄像机的移动范围限制在 Tilemap 的边界处。</p>
+<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/gif2.gif" alt></p>
+<p>通过以下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FlxG.redirectTraces = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">trace</span>(FlxG.worldBounds);</span><br><span class="line">map.follow();</span><br><span class="line"><span class="built_in">trace</span>(FlxG.worldBounds);</span><br></pre></td></tr></table></figure>
+
+<p>可以查看 <code>follow()</code> 调用前后的碰撞四叉树状态的对比：</p>
+<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/Log.png" alt></p>
+<p>ok, 下面才是正题。</p>
+<p>如果游戏是编译至 Flash 平台，那么运行结果很正常，但是如果是编译至 Windows 平台，那么会出现问题：</p>
+<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/gif3.gif" alt></p>
+<p>如动图所示，当画面垂直移动的时候背景图像会随机出现黑色条纹，这可能是由于底层依赖项的浮点运算出现错误，导致在渲染 Tilemap 的时候瓦片的位置没有被正确渲染。</p>
+<p>有一个很简单有效的方式可以解决这个问题，我们可以为 Tileset 的每一块瓦片的边缘多延伸出一圈像素，使得出现撕裂的时候，裂缝会被瓦片多延伸出来的部分遮挡，如下图所示:</p>
+<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/PaddedTiles.png" alt></p>
+<p>上方是对边缘进行延伸之前的 Tileset 下方为对边缘进行延伸之后的 Tileset。</p>
+<p>Flixel 的 <code>FlxTileFrames</code> 类里面有一个函数 <code>fromBitmapAddSpacesAndBorders()</code> 可以帮我们简化工作，通过调用并传递一个序列图以及其他对应参数，它会为我们返回一个修改好的序列图，这里我们只需要给它传递 4 个参数：</p>
+<ul>
+<li>source: FlxGraphicAsset - 用于表示一组帧的图像序列图</li>
+<li>tileSize: FlxPoint - 这组序列图中每一个单独的帧的像素大小</li>
+<li>tileSpacing: FlxPoint - 序列图中每一个单独的帧之间的间隔多少像素</li>
+<li>tileBorder: FlxPoint - 序列图中每一个单独的帧延伸多少像素的边缘</li>
+</ul>
+<p>所以我们可以这样写：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FlxTileFrames.fromBitmapAddSpacesAndBorders</span><br><span class="line">(</span><br><span class="line">	AssetPaths.tiles__png, <span class="comment">//这是我们的 Tileset 序列图</span></span><br><span class="line">	FlxPoint.<span class="keyword">get</span>(<span class="number">16</span>, <span class="number">16</span>);<span class="comment">//序列图中我们需要每个帧以 16*16 进行显示</span></span><br><span class="line">	FlxPoint.<span class="keyword">get</span>(<span class="number">0</span>, <span class="number">0</span>);<span class="comment">//但是我们并不需要为每个帧创建间隔</span></span><br><span class="line">	FlxPoint.<span class="keyword">get</span>(<span class="number">2</span>, <span class="number">2</span>);<span class="comment">//这里我们需要为每个帧的边缘分别延伸 2 个像素</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>但是为了方便使用，我们把它包装进一个函数通过调用来使用：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPaddedTiles</span></span>(path:<span class="type">flixel</span>.system.FlxAssets.FlxGraphicAsset, padding = <span class="number">2</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> FlxTileFrames.fromBitmapAddSpacesAndBorders</span><br><span class="line">	(</span><br><span class="line">		path,</span><br><span class="line">		FlxPoint.<span class="keyword">get</span>(<span class="number">16</span>, <span class="number">16</span>),</span><br><span class="line">		FlxPoint.<span class="keyword">get</span>(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">		FlxPoint.<span class="keyword">get</span>(padding, padding)</span><br><span class="line">	);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后修改一下 FlxState 的 <code>create()</code> ：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">create</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">	mapLoader = <span class="keyword">new</span> <span class="type">FlxOgmo3Loader</span>(AssetPaths.Map__ogmo, AssetPaths.level1__json);</span><br><span class="line">	</span><br><span class="line">    <span class="comment">//因为刚体 Tilemap 显示正常所以我想直接传递原始序列进行使用</span></span><br><span class="line">    map = mapLoader.loadTilemap(AssetPaths.tiles__png, <span class="string">"tiles"</span>);</span><br><span class="line">	</span><br><span class="line">    <span class="comment">//这是 Flixel 自带的一个对图像撕裂进行补救的一个小功能，原理和我们使用的差不多，默认是打开的，但是显然不够用，这里我们还是直接禁用掉</span></span><br><span class="line">    map.useScaleHack = <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//作为背景的 Tilemap 有撕裂现象，所以调用 gePaddedTiles() 对原始序列进行修改后加载进背景</span></span><br><span class="line">	background = mapLoader.loadTilemap(getPaddedTiles(AssetPaths.tiles__png), <span class="string">"background"</span>);</span><br><span class="line">    </span><br><span class="line">	background.useScaleHack = <span class="literal">false</span>;</span><br><span class="line">	background.solid = <span class="literal">false</span>;</span><br><span class="line">	add(background);</span><br><span class="line">	add(map);</span><br><span class="line">	map.follow();</span><br><span class="line">		</span><br><span class="line">	player = <span class="keyword">new</span> <span class="type">Player</span>(<span class="number">16</span>, <span class="number">16</span>);</span><br><span class="line">	add(player);</span><br><span class="line">	FlxG.camera.follow(player, FlxCameraFollowStyle.PLATFORMER);</span><br><span class="line">	<span class="keyword">super</span>.create();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样一来问题就解决了。</p>
+<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/gif4.gif" alt></p>
+<p>我们还可以通过内置的 debugger 工具输入命令 <code>viewCache</code> 从缓存里取回修改后的 Tileset 序列进行查看，下图为了便于区分，我修改了参数，为每一帧之间创建了 1 个像素的间距：</p>
+<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/viewCache.png" alt></p>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+        var dateUpdate = Date.parse("2020-05-24");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-05-24T12:53:11.000Z" itemprop="datePublished">2020-05-24</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+<span class="post-tags-list mt-2">
+
+
+<a class="post-tags-list-item" href="/tags/HaxeFlixel/" rel="tag">#&nbsp;HaxeFlixel</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                
+<div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2020/05/07/Haxe学习笔记-函数可选参数与可空类型/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">Haxe学习笔记:函数可选参数与可空类型</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
+        <a class="footer-copyright-a" href="https://nulllstack.github.io">囿</a>
+    </p>
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+            
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+        
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+        
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+
+
+    /* Copyright */
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.querySelector('span[data-year]')
+    
+        copyrightContent.textContent = copyrightNow
+    
+
+
+
+/* Cnosole Log */
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+</script>
+
+<!-- vanilla-lazyload -->
+
+    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+
+
+
+    <!-- Busuanzi -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+
+
+
+<!-- gallery.js -->
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+
+    </body>
+
+</html>
