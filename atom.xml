@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://nulllstack.github.io/"/>
-  <updated>2020-05-25T03:15:32.067Z</updated>
+  <updated>2020-07-01T13:33:46.747Z</updated>
   <id>https://nulllstack.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>苦难不值得追求</title>
+    <link href="https://nulllstack.github.io/2020/07/01/%E8%8B%A6%E9%9A%BE%E4%B8%8D%E5%80%BC%E5%BE%97%E8%BF%BD%E6%B1%82/"/>
+    <id>https://nulllstack.github.io/2020/07/01/苦难不值得追求/</id>
+    <published>2020-07-01T13:33:06.000Z</published>
+    <updated>2020-07-01T13:33:46.747Z</updated>
+    
+    <content type="html"><![CDATA[<p>如果有人告诉你，这屎很香很好吃，你最好能给他一巴掌。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;如果有人告诉你，这屎很香很好吃，你最好能给他一巴掌。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Tilemap撕裂问题与解决方式</title>
@@ -489,32 +512,6 @@
     
     
       <category term="HaxeFlixel" scheme="https://nulllstack.github.io/tags/HaxeFlixel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>摸鱼一把</title>
-    <link href="https://nulllstack.github.io/2018/08/16/%E6%91%B8%E9%B1%BC%E4%B8%80%E6%8A%8A/"/>
-    <id>https://nulllstack.github.io/2018/08/16/摸鱼一把/</id>
-    <published>2018-08-16T14:33:13.000Z</published>
-    <updated>2018-08-16T14:55:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>解决了VSCode的Haxe插件时不时卡死building cache，导致代码提示功能无法正常工作的问题。</p><p>打开VSCode<code>文件 -&gt; 首选项 -&gt; 设置</code>在右边窗口用户设置内添加:</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "haxe.buildCompletionCache" = false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>以覆盖默认设置，一个不知所云的热修复，问题暂时得到解决。</p><p>再就是搭建了一个Haxe的学习环境，<code>.vscode</code>文件夹下配置文件为：</p><p>task.json:</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // See https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">    // for the documentation about the tasks.json format</span><br><span class="line">    "version": "2.0.0",</span><br><span class="line">    "tasks": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"compile"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"haxe"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [</span><br><span class="line">                <span class="string">"-main"</span>, <span class="string">"Main"</span>, <span class="string">"-cpp"</span>, <span class="string">"output"</span>, <span class="string">"-debug"</span>, <span class="string">"-lib"</span>, <span class="string">"hxcpp-debug-server"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"promptOnClose"</span>: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>launch.json:</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 使用 IntelliSense 了解相关属性。 </span><br><span class="line">    // 悬停以查看现有属性的描述。</span><br><span class="line">    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">    "version": "0.2.0",</span><br><span class="line">    "configurations": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"preLaunchTask"</span>: <span class="string">"compile"</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Hxcpp"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"hxcpp"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"$&#123;workspaceRoot&#125;/output/Main-debug.exe"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>最后，博客的关于页上分享了我的邮箱地址，有兴趣交流的朋友可以通过邮箱地址联系我，其实只是想知道到底有多少人在看 = =</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;解决了VSCode的Haxe插件时不时卡死building cache，导致代码提示功能无法正常工作的问题。&lt;/p&gt;
-&lt;p&gt;打开VSCode&lt;code&gt;文件 -&amp;gt; 首选项 -&amp;gt; 设置&lt;/code&gt;在右边窗口用户设置内添加:&lt;/p&gt;
-&lt;figure class=&quot;
-      
-    
-    </summary>
-    
-    
-    
-      <category term="学习记录" scheme="https://nulllstack.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
