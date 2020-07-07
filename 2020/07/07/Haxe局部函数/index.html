@@ -61,7 +61,7 @@ window.oldVersion = [
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 
 <!-- Title -->
-<title>苦难不值得追求 | 囿</title>
+<title>Haxe局部函数 | 囿</title>
 
 <!-- favicon -->
 <!-- Favicons -->
@@ -80,11 +80,10 @@ window.oldVersion = [
 <meta name="format-detection" content="telephone=no">
 
 <!-- Description -->
-<meta name="description" content="如果有人告诉你，这屎很香很好吃，你最好能给他一巴掌。
-">
+<meta name="description" content="前些天刚在 Codecad...">
 
 <!-- Keywords -->
-<meta name="keywords" content>
+<meta name="keywords" content=", Haxe">
 
 <!-- Disable Fucking Bloody Baidu Tranformation -->
 <meta http-equiv="Cache-Control" content="no-transform">
@@ -210,25 +209,24 @@ window.oldVersion = [
 
 
     <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="苦难不值得追求 | 囿">
+    <meta property="og:title" content="Haxe局部函数 | 囿">
 <meta property="og:site_name" content="囿">
 
 <meta property="og:locale" content="zh-CN">
 
-<meta property="og:url" content="https://nulllstack.github.io/2020/07/01/苦难不值得追求/">
+<meta property="og:url" content="https://nulllstack.github.io/2020/07/07/Haxe局部函数/">
 <meta property="og:image" content="https://nulllstack.github.io/img/suka-favicon.ico">
 
-<meta property="og:description" content="如果有人告诉你，这屎很香很好吃，你最好能给他一巴掌。
-">
+<meta property="og:description" content="前些天刚在 Codecad...">
 
 <meta name="twitter:card" content="summary">
 
 
     <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2020-07-01T13:33:06.000Z">
-    <meta property="article:modified_time" content="2020-07-01T13:33:06.000Z">
+    <meta property="article:published_time" content="2020-07-07T15:43:57.000Z">
+    <meta property="article:modified_time" content="2020-07-07T15:43:57.000Z">
     <meta property="article:author" content="John">
-    <meta property="og:article:tag" content> 
+    <meta property="og:article:tag" content=", Haxe"> 
 
 
 
@@ -245,7 +243,7 @@ window.oldVersion = [
 
 
     <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://nulllstack.github.io/2020/07/01/苦难不值得追求/">
+    <link rel="canonical" href="https://nulllstack.github.io/2020/07/07/Haxe局部函数/">
 
     <!-- ### Structured Data ### -->
     
@@ -255,22 +253,22 @@ window.oldVersion = [
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "url": "https://nulllstack.github.io/2020/07/01/苦难不值得追求/",
+    "url": "https://nulllstack.github.io/2020/07/07/Haxe局部函数/",
     "@type": "BlogPosting",
     "logo": "https://nulllstack.github.io/img/suka-favicon.ico",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://nulllstack.github.io/2020/07/01/苦难不值得追求/"
+        "@id": "https://nulllstack.github.io/2020/07/07/Haxe局部函数/"
     },
-    "headline": "苦难不值得追求 | 囿",
+    "headline": "Haxe局部函数 | 囿",
     
     "image": {
         "@type": "ImageObject",
         "url": "https://nulllstack.github.io/img/suka-favicon.ico"
     },
     
-    "datePublished": "2020-07-01T13:33:06.000Z",
-    "dateModified": "2020-07-01T13:33:46.747Z",
+    "datePublished": "2020-07-07T15:43:57.000Z",
+    "dateModified": "2020-07-07T15:44:36.332Z",
     "author": {
         "@type": "Person",
         "name": "John",
@@ -295,9 +293,8 @@ window.oldVersion = [
         "query-input": "required name=search_term_string"
     },
     
-    "keywords": "",
-    "description": "如果有人告诉你，这屎很香很好吃，你最好能给他一巴掌。
-"
+    "keywords": ", Haxe",
+    "description": "前些天刚在 Codecad..."
 }
 </script>
 
@@ -355,7 +352,7 @@ window.oldVersion = [
                 <!-- # Post Header Info # -->
                 <div class="card-header">
                     
-    <h1 class="card-title h3 mb-2">苦难不值得追求</h1>
+    <h1 class="card-title h3 mb-2">Haxe局部函数</h1>
 
 
 
@@ -363,7 +360,7 @@ window.oldVersion = [
 <div class="post-header-info">
     <p class="post-header-info-left text-gray">
         <img class="author-thumb lazyload" data-src="/img/avatar.png" src="/img/suka-lazyload.gif" alt="John's Avatar">
-        <span>2020-07-01</span>
+        <span>2020-07-07</span>
         
         
             <!-- Busuanzi Post Views -->
@@ -386,7 +383,43 @@ window.oldVersion = [
                         
                     
                     <article id="post-content">
-                        <p>如果有人告诉你，这屎很香很好吃，你最好能给他一巴掌。</p>
+                        <p>前些天刚在 <a href="https://www.codecademy.com/learn/introduction-to-javascript" target="_blank" rel="noopener">Codecademy</a> 完成了一套 JS 的入门课，算是第一次上手 JS 吧，今晚就闲着翻看了一下 Haxe 的局部函数。比较类似 JS 的匿名函数，所以趁热记录一下。</p>
+<p>首先引用一个官网的例子：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123; </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">main</span></span>() &#123; </span><br><span class="line">        <span class="keyword">var</span> value = <span class="number">1</span>; </span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">myLocalFunction</span></span>(i) &#123; </span><br><span class="line">            <span class="keyword">return</span> value + i; </span><br><span class="line">        &#125; </span><br><span class="line">        <span class="built_in">trace</span>(myLocalFunction(<span class="number">2</span>)); <span class="comment">// 3 </span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里我们位于 <code>Main</code> 的类字段 <code>main</code> 的块语句中声明了一个局部函数 <code>myLocalFunction()</code> ，其语法与我们声明函数时无异，同时如果以这种方式声明局部函数时，可以被看作是把一个匿名函数赋值给了一个名为 <code>myLocalFunction</code> 的变量：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myLocalFunction = <span class="function"><span class="keyword">function</span></span>(i)&#123; <span class="keyword">return</span> value + i;&#125; <span class="comment">// 此时 myLocalFunction 是一个 rvalue 函数，详细看下面解释。</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，当涉及 类型参数（Type Parameter）时需要注意，Haxe 分 lvalue 函数 与 rvalue 函数。一个简单的解释是：<strong>当一个函数被声明时，如果它没有被赋值到任何变量上</strong>，则称其为 lvalue 函数，反之则是 rvalue 函数。</p>
+<p>同时</p>
+<ul>
+<li>lvalue 函数必须有名字，rvalue 则不一定需要名字。</li>
+<li>lvalue 函数可以具有类型参数，rvalue 函数则不行。</li>
+</ul>
+<p>比如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myFunc = <span class="function"><span class="keyword">function</span></span>()&#123;&#125;; <span class="comment">// 这是一个 rvalue 函数，因为赋值给了 myFunc 所以它有名字。</span></span><br><span class="line"><span class="function"><span class="keyword">function</span></span>()&#123;&#125;; <span class="comment">// 这也是 rvalue 函数，但是它是个孤儿，他没有名字，但是需要注意除非作为某个函数参数，否则这种形式的声明单独放置于语句块时会报错。</span></span><br><span class="line">function hasName&lt;T&gt;&#123;&#125;; // 这是一个 lvalue 函数，可以有类型参数</span><br></pre></td></tr></table></figure>
+
+<p>但是如果出现以下情况时：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var funFact = function gotNamed&lt;T&gt;(x:T)&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译器怎么处理呢，如前面提到过的，<strong>当函数声明时被赋值到一个变量上</strong>，那么这个函数就是 rvalue 函数，所以这样的语法是不通过的，因为 <code>gotNamed()</code> 被认为是一个 rvalue 但是它带了一个类型参数。</p>
+<p>不过下面的语法可以行得通：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function gotNamed&lt;T&gt;(x:T)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">trace</span>(<span class="string">'x current state: <span class="subst">$&#123;x&#125;</span>'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">var</span> funFact = gotNamed;</span><br></pre></td></tr></table></figure>
+
+<p>此时相当于 lvalue 函数 <code>gotNamed()</code> 有了一个别名 <code>funFact()</code> 。</p>
+<p>至于为什么要提这个事儿是因为，假设我们现在有一个函数名为 <code>loadSomething()</code> 我们需要给它传递一个函数作为其内部实现的回调函数。</p>
+<p>有时候我们会使用这种方式：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">loadSomeThing(</span><br><span class="line">    <span class="function"><span class="keyword">function</span></span>()&#123;</span><br><span class="line">        <span class="comment">// do something while callback</span></span><br><span class="line">    &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>此时我们是通过一个不带命名的 rvalue 函数（或者说是匿名函数）来传递的</p>
+<p>但是如果你尝试使用以下方式：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">loadSomeThing(</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">gotNamed</span></span>()&lt;T&gt;&#123;</span><br><span class="line">    	<span class="comment">// do something with Type Parameter while callback</span></span><br><span class="line">    &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>那么编译器会报错，这可能是因为 <code>gotNamed</code> 实际上是作为 <code>loadSomeThing()</code> 的参数的值被传递，也就是会被赋值到形式参数上，因此编译器认为这是一个 rvalue，那当我们需要这个函数带有类型参数从而满足某些需要时怎么做？</p>
+<p>我们可以这样：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gotNamed</span></span>()&lt;T&gt;&#123;</span><br><span class="line">    <span class="comment">// do something with Type Parameter while callback</span></span><br><span class="line">&#125;</span><br><span class="line">loadSomeThing(gotNamed);</span><br></pre></td></tr></table></figure>
+
+<p>so… it seems pretty odd right?</p>
 
                     </article>
                     
@@ -394,7 +427,7 @@ window.oldVersion = [
 
     <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
     <script>
-        var dateUpdate = Date.parse("2020-07-01");
+        var dateUpdate = Date.parse("2020-07-07");
         var nowDate = new Date();
         var a = nowDate.getTime();
         var b = a - dateUpdate;
@@ -407,12 +440,19 @@ window.oldVersion = [
     </script>
 
 
-<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-07-01T13:33:06.000Z" itemprop="datePublished">2020-07-01</time>
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-07-07T15:43:57.000Z" itemprop="datePublished">2020-07-07</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
 
 
+
+<span class="post-tags-list mt-2">
+
+
+<a class="post-tags-list-item" href="/tags/Haxe/" rel="tag">#&nbsp;Haxe</a>
+
+</span>
 
 
 </p>
@@ -423,20 +463,13 @@ window.oldVersion = [
 <ul class="pagination">
     <!-- Prev Nav -->
     
-        <li class="page-item page-prev">
-            <a href="/2020/07/07/Haxe局部函数/" rel="prev">
-                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
-                <div class="page-item-subtitle">Haxe局部函数</div>
-            </a>
-        </li>
-    
 
     <!-- Next Nav -->
     
         <li class="page-item page-next">
-            <a href="/2020/05/24/Tilemap撕裂问题与解决方式/" rel="next">
+            <a href="/2020/07/01/苦难不值得追求/" rel="next">
                 <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
-                <div class="page-item-subtitle">Tilemap撕裂问题与解决方式</div>
+                <div class="page-item-subtitle">苦难不值得追求</div>
             </a>
         </li>
     
