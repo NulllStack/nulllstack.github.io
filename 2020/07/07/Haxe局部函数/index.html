@@ -268,7 +268,7 @@ window.oldVersion = [
     },
     
     "datePublished": "2020-07-07T15:43:57.000Z",
-    "dateModified": "2020-07-07T15:44:36.332Z",
+    "dateModified": "2020-07-07T15:47:36.847Z",
     "author": {
         "@type": "Person",
         "name": "John",
@@ -391,7 +391,6 @@ window.oldVersion = [
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myLocalFunction = <span class="function"><span class="keyword">function</span></span>(i)&#123; <span class="keyword">return</span> value + i;&#125; <span class="comment">// 此时 myLocalFunction 是一个 rvalue 函数，详细看下面解释。</span></span><br></pre></td></tr></table></figure>
 
 <p>但是，当涉及 类型参数（Type Parameter）时需要注意，Haxe 分 lvalue 函数 与 rvalue 函数。一个简单的解释是：<strong>当一个函数被声明时，如果它没有被赋值到任何变量上</strong>，则称其为 lvalue 函数，反之则是 rvalue 函数。</p>
-<p>同时</p>
 <ul>
 <li>lvalue 函数必须有名字，rvalue 则不一定需要名字。</li>
 <li>lvalue 函数可以具有类型参数，rvalue 函数则不行。</li>
