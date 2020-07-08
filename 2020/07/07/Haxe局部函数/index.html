@@ -268,7 +268,7 @@ window.oldVersion = [
     },
     
     "datePublished": "2020-07-07T15:43:57.000Z",
-    "dateModified": "2020-07-07T15:47:36.847Z",
+    "dateModified": "2020-07-08T16:00:36.539Z",
     "author": {
         "@type": "Person",
         "name": "John",
@@ -412,11 +412,11 @@ window.oldVersion = [
 
 <p>此时我们是通过一个不带命名的 rvalue 函数（或者说是匿名函数）来传递的</p>
 <p>但是如果你尝试使用以下方式：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">loadSomeThing(</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">gotNamed</span></span>()&lt;T&gt;&#123;</span><br><span class="line">    	<span class="comment">// do something with Type Parameter while callback</span></span><br><span class="line">    &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">loadSomeThing(</span><br><span class="line">    function gotNamed&lt;T&gt;()&#123;</span><br><span class="line">    	<span class="comment">// do something with Type Parameter while callback</span></span><br><span class="line">    &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
 <p>那么编译器会报错，这可能是因为 <code>gotNamed</code> 实际上是作为 <code>loadSomeThing()</code> 的参数的值被传递，也就是会被赋值到形式参数上，因此编译器认为这是一个 rvalue，那当我们需要这个函数带有类型参数从而满足某些需要时怎么做？</p>
 <p>我们可以这样：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gotNamed</span></span>()&lt;T&gt;&#123;</span><br><span class="line">    <span class="comment">// do something with Type Parameter while callback</span></span><br><span class="line">&#125;</span><br><span class="line">loadSomeThing(gotNamed);</span><br></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function gotNamed&lt;T&gt;()&#123;</span><br><span class="line">    <span class="comment">// do something with Type Parameter while callback</span></span><br><span class="line">&#125;</span><br><span class="line">loadSomeThing(gotNamed);</span><br></pre></td></tr></table></figure>
 
 <p>so… it seems pretty odd right?</p>
 
@@ -426,7 +426,7 @@ window.oldVersion = [
 
     <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
     <script>
-        var dateUpdate = Date.parse("2020-07-07");
+        var dateUpdate = Date.parse("2020-07-09");
         var nowDate = new Date();
         var a = nowDate.getTime();
         var b = a - dateUpdate;
@@ -440,6 +440,8 @@ window.oldVersion = [
 
 
 <p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-07-07T15:43:57.000Z" itemprop="datePublished">2020-07-07</time>
+
+    , 最后修改于&nbsp;<time datetime="2020-07-08T16:00:36.539Z" itemprop="dateModified">2020-07-09</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
