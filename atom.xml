@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://nulllstack.github.io/"/>
-  <updated>2020-07-08T16:00:36.539Z</updated>
+  <updated>2020-07-09T09:21:46.823Z</updated>
   <id>https://nulllstack.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一个页内跳转测试</title>
+    <link href="https://nulllstack.github.io/2020/07/09/%E4%B8%80%E4%B8%AA%E9%A1%B5%E5%86%85%E8%B7%B3%E8%BD%AC%E6%B5%8B%E8%AF%95/"/>
+    <id>https://nulllstack.github.io/2020/07/09/一个页内跳转测试/</id>
+    <published>2020-07-09T09:17:34.000Z</published>
+    <updated>2020-07-09T09:21:46.823Z</updated>
+    
+    <content type="html"><![CDATA[<p>如题，<a href="/2020/07/07/Haxe局部函数/" title="点击此处跳转至上一篇博客">点击此处跳转至上一篇博客</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;如题，&lt;a href=&quot;/2020/07/07/Haxe局部函数/&quot; title=&quot;点击此处跳转至上一篇博客&quot;&gt;点击此处跳转至上一篇博客&lt;/a&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Haxe局部函数</title>
@@ -486,29 +509,6 @@
     
     
       <category term="学习记录" scheme="https://nulllstack.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>作废，迁移</title>
-    <link href="https://nulllstack.github.io/2019/03/03/%E4%BD%9C%E5%BA%9F%EF%BC%8C%E8%BF%81%E7%A7%BB/"/>
-    <id>https://nulllstack.github.io/2019/03/03/作废，迁移/</id>
-    <published>2019-03-02T17:20:21.000Z</published>
-    <updated>2019-03-03T18:39:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>从原来的地方搬到这里来了，回头记录一下迁移过程（有点蛋疼），明天还有课已经凌晨两点半了，该睡觉了，晚安:)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;从原来的地方搬到这里来了，回头记录一下迁移过程（有点蛋疼），明天还有课已经凌晨两点半了，该睡觉了，晚安:)&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
     
   </entry>
   
