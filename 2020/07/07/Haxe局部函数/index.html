@@ -268,7 +268,7 @@ window.oldVersion = [
     },
     
     "datePublished": "2020-07-07T15:43:57.000Z",
-    "dateModified": "2020-07-08T16:00:36.539Z",
+    "dateModified": "2020-08-25T12:38:13.662Z",
     "author": {
         "@type": "Person",
         "name": "John",
@@ -388,37 +388,23 @@ window.oldVersion = [
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123; </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">main</span></span>() &#123; </span><br><span class="line">        <span class="keyword">var</span> value = <span class="number">1</span>; </span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">myLocalFunction</span></span>(i) &#123; </span><br><span class="line">            <span class="keyword">return</span> value + i; </span><br><span class="line">        &#125; </span><br><span class="line">        <span class="built_in">trace</span>(myLocalFunction(<span class="number">2</span>)); <span class="comment">// 3 </span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这里我们位于 <code>Main</code> 的类字段 <code>main</code> 的块语句中声明了一个局部函数 <code>myLocalFunction()</code> ，其语法与我们声明函数时无异，同时如果以这种方式声明局部函数时，可以被看作是把一个匿名函数赋值给了一个名为 <code>myLocalFunction</code> 的变量：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myLocalFunction = <span class="function"><span class="keyword">function</span></span>(i)&#123; <span class="keyword">return</span> value + i;&#125; <span class="comment">// 此时 myLocalFunction 是一个 rvalue 函数，详细看下面解释。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myLocalFunction = <span class="function"><span class="keyword">function</span></span>(i)&#123; <span class="keyword">return</span> value + i;&#125; </span><br><span class="line"><span class="comment">// 此时匿名函数是一个 rvalue 函数，详细看下面解释。</span></span><br></pre></td></tr></table></figure>
 
-<p>但是，当涉及 类型参数（Type Parameter）时需要注意，Haxe 分 lvalue 函数 与 rvalue 函数。一个简单的解释是：<strong>当一个函数被声明时，如果它没有被赋值到任何变量上</strong>，则称其为 lvalue 函数，反之则是 rvalue 函数。</p>
+<p>但是，当涉及 类型参数（Type Parameter）时需要注意，Haxe 分 lvalue 函数 与 rvalue 函数。我们称：当一个函数被声明时<strong>没有</strong>被赋值到任何变量上时为 lvalue 函数，反之则是 rvalue 函数。</p>
 <ul>
-<li>lvalue 函数必须有名字，rvalue 则不一定需要名字。</li>
-<li>lvalue 函数可以具有类型参数，rvalue 函数则不行。</li>
+<li>lvalue 函数<strong>必须</strong>有名字，rvalue 则<strong>不一定</strong>有名字。</li>
+<li>lvalue 函数<strong>可以具有</strong>类型参数，rvalue 函数则<strong>不行</strong>。</li>
 </ul>
 <p>比如：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myFunc = <span class="function"><span class="keyword">function</span></span>()&#123;&#125;; <span class="comment">// 这是一个 rvalue 函数，因为赋值给了 myFunc 所以它有名字。</span></span><br><span class="line"><span class="function"><span class="keyword">function</span></span>()&#123;&#125;; <span class="comment">// 这也是 rvalue 函数，但是它是个孤儿，他没有名字，但是需要注意除非作为某个函数参数，否则这种形式的声明单独放置于语句块时会报错。</span></span><br><span class="line">function hasName&lt;T&gt;&#123;&#125;; // 这是一个 lvalue 函数，可以有类型参数</span><br></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="function"><span class="keyword">function</span></span>()&#123;&#125;; <span class="comment">//这是一个 lvalue 函数,不过匿名的 lvalue 函数声明编译器是不给通过的</span></span><br><span class="line"><span class="keyword">var</span> <span class="function"><span class="keyword">function</span> <span class="title">gotNamed</span></span>()&#123;&#125;; <span class="comment">//这是一个合法的 lvalue 函数</span></span><br><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span></span>()&#123;&#125;; <span class="comment">//匿名函数声明并赋值给变量 fun, 此时匿名函数可以看作是 rvalue</span></span><br><span class="line"><span class="keyword">var</span> funfunfun = <span class="function"><span class="keyword">function</span> <span class="title">hasName</span></span>()&#123;&#125;; <span class="comment">//hasName是 rvalue 函数</span></span><br></pre></td></tr></table></figure>
 
-<p>但是如果出现以下情况时：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var funFact = function gotNamed&lt;T&gt;(x:T)&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>因此：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">loadSomeThing(</span><br><span class="line">    function rvalueFun&lt;T&gt;(p:T)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//do something while callback</span></span><br><span class="line">    &#125;</span><br><span class="line">);</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">loadSomeThing(</span><br><span class="line">    function&lt;T&gt;(p:T)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//do something while callback</span></span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
-<p>编译器怎么处理呢，如前面提到过的，<strong>当函数声明时被赋值到一个变量上</strong>，那么这个函数就是 rvalue 函数，所以这样的语法是不通过的，因为 <code>gotNamed()</code> 被认为是一个 rvalue 但是它带了一个类型参数。</p>
-<p>不过下面的语法可以行得通：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function gotNamed&lt;T&gt;(x:T)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">trace</span>(<span class="string">'x current state: <span class="subst">$&#123;x&#125;</span>'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">var</span> funFact = gotNamed;</span><br></pre></td></tr></table></figure>
+<p>假设有一个函数 <code>loadSomeThing()</code> 用于加载某些东西，加载完成之后调用回调函数 <code>rvalueFun()</code>，那么以上例子编译是不通过的，因为第一例中的 <code>rvalueFun()</code> 和第二例中的匿名函数都是一个 rvalue 函数但是使用了类型参数。</p>
+<p>不过下面的语法可以：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function lvalueFun&lt;T&gt;(p:T)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//do something while call back</span></span><br><span class="line">&#125;</span><br><span class="line">loadSomeThing(lvalueFun);</span><br></pre></td></tr></table></figure>
 
-<p>此时相当于 lvalue 函数 <code>gotNamed()</code> 有了一个别名 <code>funFact()</code> 。</p>
-<p>至于为什么要提这个事儿是因为，假设我们现在有一个函数名为 <code>loadSomething()</code> 我们需要给它传递一个函数作为其内部实现的回调函数。</p>
-<p>有时候我们会使用这种方式：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">loadSomeThing(</span><br><span class="line">    <span class="function"><span class="keyword">function</span></span>()&#123;</span><br><span class="line">        <span class="comment">// do something while callback</span></span><br><span class="line">    &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>此时我们是通过一个不带命名的 rvalue 函数（或者说是匿名函数）来传递的</p>
-<p>但是如果你尝试使用以下方式：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">loadSomeThing(</span><br><span class="line">    function gotNamed&lt;T&gt;()&#123;</span><br><span class="line">    	<span class="comment">// do something with Type Parameter while callback</span></span><br><span class="line">    &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>那么编译器会报错，这可能是因为 <code>gotNamed</code> 实际上是作为 <code>loadSomeThing()</code> 的参数的值被传递，也就是会被赋值到形式参数上，因此编译器认为这是一个 rvalue，那当我们需要这个函数带有类型参数从而满足某些需要时怎么做？</p>
-<p>我们可以这样：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function gotNamed&lt;T&gt;()&#123;</span><br><span class="line">    <span class="comment">// do something with Type Parameter while callback</span></span><br><span class="line">&#125;</span><br><span class="line">loadSomeThing(gotNamed);</span><br></pre></td></tr></table></figure>
-
-<p>so… it seems pretty odd right?</p>
 
                     </article>
                     
@@ -426,7 +412,7 @@ window.oldVersion = [
 
     <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
     <script>
-        var dateUpdate = Date.parse("2020-07-09");
+        var dateUpdate = Date.parse("2020-08-25");
         var nowDate = new Date();
         var a = nowDate.getTime();
         var b = a - dateUpdate;
@@ -441,7 +427,7 @@ window.oldVersion = [
 
 <p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-07-07T15:43:57.000Z" itemprop="datePublished">2020-07-07</time>
 
-    , 最后修改于&nbsp;<time datetime="2020-07-08T16:00:36.539Z" itemprop="dateModified">2020-07-09</time>
+    , 最后修改于&nbsp;<time datetime="2020-08-25T12:38:13.662Z" itemprop="dateModified">2020-08-25</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
