@@ -268,7 +268,7 @@ window.oldVersion = [
     },
     
     "datePublished": "2020-07-07T15:43:57.000Z",
-    "dateModified": "2020-08-25T12:38:13.662Z",
+    "dateModified": "2020-08-25T12:54:53.391Z",
     "author": {
         "@type": "Person",
         "name": "John",
@@ -388,7 +388,7 @@ window.oldVersion = [
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123; </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">main</span></span>() &#123; </span><br><span class="line">        <span class="keyword">var</span> value = <span class="number">1</span>; </span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">myLocalFunction</span></span>(i) &#123; </span><br><span class="line">            <span class="keyword">return</span> value + i; </span><br><span class="line">        &#125; </span><br><span class="line">        <span class="built_in">trace</span>(myLocalFunction(<span class="number">2</span>)); <span class="comment">// 3 </span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这里我们位于 <code>Main</code> 的类字段 <code>main</code> 的块语句中声明了一个局部函数 <code>myLocalFunction()</code> ，其语法与我们声明函数时无异，同时如果以这种方式声明局部函数时，可以被看作是把一个匿名函数赋值给了一个名为 <code>myLocalFunction</code> 的变量：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myLocalFunction = <span class="function"><span class="keyword">function</span></span>(i)&#123; <span class="keyword">return</span> value + i;&#125; </span><br><span class="line"><span class="comment">// 此时匿名函数是一个 rvalue 函数，详细看下面解释。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myLocalFunction = <span class="function"><span class="keyword">function</span></span>(i)&#123; <span class="keyword">return</span> value + i;&#125; </span><br><span class="line"><span class="comment">// 此时匿名函数是一个 rvalue 函数，而 myLocalFunction 则是 lvalue 函数，</span></span><br><span class="line"><span class="comment">// 详细看下面解释。</span></span><br></pre></td></tr></table></figure>
 
 <p>但是，当涉及 类型参数（Type Parameter）时需要注意，Haxe 分 lvalue 函数 与 rvalue 函数。我们称：当一个函数被声明时<strong>没有</strong>被赋值到任何变量上时为 lvalue 函数，反之则是 rvalue 函数。</p>
 <ul>
@@ -427,7 +427,7 @@ window.oldVersion = [
 
 <p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-07-07T15:43:57.000Z" itemprop="datePublished">2020-07-07</time>
 
-    , 最后修改于&nbsp;<time datetime="2020-08-25T12:38:13.662Z" itemprop="dateModified">2020-08-25</time>
+    , 最后修改于&nbsp;<time datetime="2020-08-25T12:54:53.391Z" itemprop="dateModified">2020-08-25</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
