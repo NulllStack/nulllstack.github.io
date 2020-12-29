@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="zh-CN">
-    <head><meta name="generator" content="Hexo 3.9.0">
+    <head>
     <meta charset="utf-8">
     <!--
         © SukkaW
@@ -81,14 +81,14 @@ window.oldVersion = [
 
 <!-- Description -->
 <meta name="description" content="原文
-现在，...">
+现在，是时候为player创建一个可供活动的环境地图了！我们将使用一...">
 
 <!-- Keywords -->
 <meta name="keywords" content=", HaxeFlixel">
 
 <!-- Disable Fucking Bloody Baidu Tranformation -->
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
     <!-- ### Import File ### -->
     
@@ -215,11 +215,11 @@ window.oldVersion = [
 
 <meta property="og:locale" content="zh-CN">
 
-<meta property="og:url" content="https://nulllstack.github.io/2018/07/31/HaxeFlixel官方教程5-创建Tilemap/">
+<meta property="og:url" content="https://nulllstack.github.io/2018/07/31/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B5-%E5%88%9B%E5%BB%BATilemap/">
 <meta property="og:image" content="https://nulllstack.github.io/img/suka-favicon.ico">
 
 <meta property="og:description" content="原文
-现在，...">
+现在，是时候为player创建一个可供活动的环境地图了！我们将使用一...">
 
 <meta name="twitter:card" content="summary">
 
@@ -245,7 +245,7 @@ window.oldVersion = [
 
 
     <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://nulllstack.github.io/2018/07/31/HaxeFlixel官方教程5-创建Tilemap/">
+    <link rel="canonical" href="https://nulllstack.github.io/2018/07/31/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B5-%E5%88%9B%E5%BB%BATilemap/">
 
     <!-- ### Structured Data ### -->
     
@@ -255,12 +255,12 @@ window.oldVersion = [
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "url": "https://nulllstack.github.io/2018/07/31/HaxeFlixel官方教程5-创建Tilemap/",
+    "url": "https://nulllstack.github.io/2018/07/31/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B5-%E5%88%9B%E5%BB%BATilemap/",
     "@type": "BlogPosting",
     "logo": "https://nulllstack.github.io/img/suka-favicon.ico",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://nulllstack.github.io/2018/07/31/HaxeFlixel官方教程5-创建Tilemap/"
+        "@id": "https://nulllstack.github.io/2018/07/31/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B5-%E5%88%9B%E5%BB%BATilemap/"
     },
     "headline": "HaxeFlixel官方教程5:创建Tilemap | 囿",
     
@@ -297,7 +297,7 @@ window.oldVersion = [
     
     "keywords": ", HaxeFlixel",
     "description": "原文
-现在，..."
+现在，是时候为player创建一个可供活动的环境地图了！我们将使用一..."
 }
 </script>
 
@@ -307,7 +307,7 @@ window.oldVersion = [
     
 
 
-</head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
     <body>
         
@@ -386,14 +386,14 @@ window.oldVersion = [
                         
                     
                     <article id="post-content">
-                        <p><a href="http://haxeflixel.com/documentation/creating-a-tilemap/" target="_blank" rel="noopener">原文</a></p>
+                        <p><a target="_blank" rel="noopener" href="http://haxeflixel.com/documentation/creating-a-tilemap/">原文</a></p>
 <p>现在，是时候为player创建一个可供活动的环境地图了！我们将使用一个叫 <em>Ogmo Editor</em> 的工具来创建 Tilemap；Ogmo是一个免费的 Tilemap编辑器，可以非常完美的与HaxeFlixel框架协作，对于这节教程而言，我们将创建一个只有 2块瓦砖 的 Tilesheet，用于表示墙体和地板。</p>
 <p>你可以自己画一个16x16大小每块瓦砖的序列图，或者使用这里的图形资源：</p>
-<p><img src="//nulllstack.github.io/2018/07/31/HaxeFlixel官方教程5-创建Tilemap/untitled.png" alt></p>
+<p><img src="/2018/07/31/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B5-%E5%88%9B%E5%BB%BATilemap/untitled.png" alt></p>
 <p>（注意：该序列一共有3块tile，第一块tile应该是透明的）</p>
 <ol>
-<li><p>首先访问此链接：<a href="http://www.ogmoeditor.com/" target="_blank" rel="noopener">http://www.ogmoeditor.com/</a> 下载安装并运行编辑器。</p>
-<p>注意：Ogmo 只有Windows版本，如果你想使用其他的编辑器，你可以试试<a href="http://www.mapeditor.org/" target="_blank" rel="noopener">Tile</a>，他也是一个免费的编辑器，但是功能稍微复杂一些。</p>
+<li><p>首先访问此链接：<a target="_blank" rel="noopener" href="http://www.ogmoeditor.com/">http://www.ogmoeditor.com/</a> 下载安装并运行编辑器。</p>
+<p>注意：Ogmo 只有Windows版本，如果你想使用其他的编辑器，你可以试试<a target="_blank" rel="noopener" href="http://www.mapeditor.org/">Tile</a>，他也是一个免费的编辑器，但是功能稍微复杂一些。</p>
 </li>
 <li><p>从<code>Project &gt; New Project</code>创建并选择一个名称命名一个项目，保存至<code>assets/data</code>文件夹下。</p>
 </li>
@@ -467,7 +467,7 @@ window.oldVersion = [
     <!-- Prev Nav -->
     
         <li class="page-item page-prev">
-            <a href="/2018/08/02/HaxeFlixel官方教程6-加载Tilemap/" rel="prev">
+            <a href="/2018/08/02/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B6-%E5%8A%A0%E8%BD%BDTilemap/" rel="prev">
                 <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">HaxeFlixel官方教程6:加载Tilemap</div>
             </a>
@@ -477,7 +477,7 @@ window.oldVersion = [
     <!-- Next Nav -->
     
         <li class="page-item page-next">
-            <a href="/2018/07/30/一点整理/" rel="next">
+            <a href="/2018/07/30/%E4%B8%80%E7%82%B9%E6%95%B4%E7%90%86/" rel="next">
                 <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">一点整理</div>
             </a>

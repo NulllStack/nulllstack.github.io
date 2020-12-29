@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="zh-CN">
-    <head><meta name="generator" content="Hexo 3.9.0">
+    <head>
     <meta charset="utf-8">
     <!--
         © SukkaW
@@ -86,8 +86,8 @@ window.oldVersion = [
 <meta name="keywords" content=", openFrameworks">
 
 <!-- Disable Fucking Bloody Baidu Tranformation -->
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
     <!-- ### Import File ### -->
     
@@ -214,7 +214,7 @@ window.oldVersion = [
 
 <meta property="og:locale" content="zh-CN">
 
-<meta property="og:url" content="https://nulllstack.github.io/2020/01/01/openFrameworks文件结构/">
+<meta property="og:url" content="https://nulllstack.github.io/2020/01/01/openFrameworks%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">
 <meta property="og:image" content="https://nulllstack.github.io/img/suka-favicon.ico">
 
 <meta property="og:description" content="把下好的oF解压，从现在开始我们将以该文件夹作为 oF 根目录，你可以把 oF 的根目录放置于任何位置。但是有一件事需要强调，oF 已经被设计为一个 “独立的（self-contained）” 结构，所有依赖项都被整合好放在同一...">
@@ -243,7 +243,7 @@ window.oldVersion = [
 
 
     <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://nulllstack.github.io/2020/01/01/openFrameworks文件结构/">
+    <link rel="canonical" href="https://nulllstack.github.io/2020/01/01/openFrameworks%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">
 
     <!-- ### Structured Data ### -->
     
@@ -253,12 +253,12 @@ window.oldVersion = [
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "url": "https://nulllstack.github.io/2020/01/01/openFrameworks文件结构/",
+    "url": "https://nulllstack.github.io/2020/01/01/openFrameworks%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/",
     "@type": "BlogPosting",
     "logo": "https://nulllstack.github.io/img/suka-favicon.ico",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://nulllstack.github.io/2020/01/01/openFrameworks文件结构/"
+        "@id": "https://nulllstack.github.io/2020/01/01/openFrameworks%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"
     },
     "headline": "openFrameworks文件结构 | 囿",
     
@@ -304,7 +304,7 @@ window.oldVersion = [
     
 
 
-</head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
     <body>
         
@@ -382,7 +382,7 @@ window.oldVersion = [
                     
                         
                             <div id="post-toc">
-                                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#openFrameworks-文件结构"><span class="post-toc-number">1.</span> <span class="post-toc-text">openFrameworks 文件结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Addons"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Addons</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Apps"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Apps</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Examples"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Examples</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#libs"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">libs</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#other"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">other</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#projectGenerator"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">projectGenerator</span></a></li></ol></li></ol>
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#openFrameworks-%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="post-toc-number">1.</span> <span class="post-toc-text">openFrameworks 文件结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Addons"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Addons</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Apps"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Apps</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Examples"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Examples</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#libs"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">libs</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#other"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">other</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#projectGenerator"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">projectGenerator</span></a></li></ol></li></ol>
                             </div>
                         
                     
@@ -394,7 +394,7 @@ window.oldVersion = [
 <p>如果以上工作进行顺利的话，将会弹出一个窗口并显示你刚刚所编译的例子中的内容。</p>
 <p>如果图形例程能够正常工作的话，花点时间看一遍其他 oF 实例并尝试运行他们；通常来讲在你打开一个新的项目之前先把当前的 项目/工作目录 完全关闭会是一个好习惯。一旦 oF 库完成了首次编译，之后项目的编译速度会快很多！</p>
 <h2 id="openFrameworks-文件结构"><a href="#openFrameworks-文件结构" class="headerlink" title="openFrameworks 文件结构"></a>openFrameworks 文件结构</h2><p>在 oF 根目录中你可以找到以下这些文件夹：</p>
-<h3 id="Addons"><a href="#Addons" class="headerlink" title="Addons"></a>Addons</h3><p>“addons”文件夹中包含了已内置的“核心”插件。插件是一些额外的扩展了 oF 功能的代码片段，插件通常由第三方用户编写并分享出来。而“核心”插件是那些被用户频繁使用的插件于是被选择作为官方 oF 库的内置插件。他们被 oF 的核心开发者维护与编写。<br>访问该链接：<a href="http://ofxaddons.com/" target="_blank" rel="noopener">ofxAddons</a> 可以找到由社区贡献的大量额外的插件。</p>
+<h3 id="Addons"><a href="#Addons" class="headerlink" title="Addons"></a>Addons</h3><p>“addons”文件夹中包含了已内置的“核心”插件。插件是一些额外的扩展了 oF 功能的代码片段，插件通常由第三方用户编写并分享出来。而“核心”插件是那些被用户频繁使用的插件于是被选择作为官方 oF 库的内置插件。他们被 oF 的核心开发者维护与编写。<br>访问该链接：<a target="_blank" rel="noopener" href="http://ofxaddons.com/">ofxAddons</a> 可以找到由社区贡献的大量额外的插件。</p>
 <h3 id="Apps"><a href="#Apps" class="headerlink" title="Apps"></a>Apps</h3><p>该文件夹用于存放你新建的项目；你当前的 oF 中默认存放了一个名为 “myApps” 的文件夹于 “apps” 文件夹内，当你新建项目的时候项目生成器会默认使用该文件夹（注1）。还有重要的一点需要注意，项目对 libs 文件夹的引用是使用相对路径来定位的；需要注意的点是你的项目应该一直位于相对路径所指从当前文件夹开始到 libs 文件夹之间的深度中（如<code>../../../libs</code>即 表示项目文件夹所在的路径应该类似<code>oF根目录/apps/myApps/mySketch</code>这样），如果你随便更改了项目文件夹的存放路径它们将找不到编译所需的其他部分内容（注2）。</p>
 <p><em>注1：推荐使用 projectGenerator 来管理项目，理由后面会给出解释。</em></p>
 <p><em>注2：如果你尝试用文本编辑器打开项目文件（.sln以及.vcxproj）你会看到其中有些地方有一段相对地址如<code>../../../libs</code>把这一段的路径改为绝对地址你就可以把这个项目文件夹放在硬盘上的任何一个位置也能确保正确编译，但不推荐这么做。</em></p>
@@ -403,8 +403,8 @@ window.oldVersion = [
 <h3 id="other"><a href="#other" class="headerlink" title="other"></a>other</h3><p>这里面存放了 Arduino 相关的例程，在 <code>examples/communication</code> 文件夹下你可以找到串口（serial）例程，当你的项目使用了 Arduino 的时候可以用这里的例程检查 Arduino 是否正确连接并正常工作。</p>
 <h3 id="projectGenerator"><a href="#projectGenerator" class="headerlink" title="projectGenerator"></a>projectGenerator</h3><p>现在 oF 附加了一个简单的项目生成器用于简化项目的创建流程。这个工具使用了一个项目模板（位于 scripts 文件夹下）用于项目的创建与修改（项目名称、使用的插件等）。同时用项目生成器创建的项目可以被存放于磁盘的任意目录下（实际上已存在的项目若存放路径发生变动，需使用生成器导入该项目并点击 Update ”刷新“ 项目依赖项的引用信息）。</p>
 <p>最后，原文罗列了 oF 的 API 以及可用的插件与相关用途，我就不在这里罗列了，直接丢两个链接更具 “时效性” 毕竟这些东西随时可能更新随时可能发生变动，<strong>最重要的是：码字真的很麻烦。</strong> :P</p>
-<p>API 文档：<a href="https://openframeworks.cc/documentation/" target="_blank" rel="noopener">openFrameworks Doc</a></p>
-<p>插件目录：<a href="http://ofxaddons.com/" target="_blank" rel="noopener">ofxAddons</a>（其实前文以及给过了）</p>
+<p>API 文档：<a target="_blank" rel="noopener" href="https://openframeworks.cc/documentation/">openFrameworks Doc</a></p>
+<p>插件目录：<a target="_blank" rel="noopener" href="http://ofxaddons.com/">ofxAddons</a>（其实前文以及给过了）</p>
 <p>emmm…再就是在豆瓣上发现官方文档的 ofBook 已经有大佬翻译了我后面想要翻译的部分了，虽然后半段机翻成分较多，但是也足够我看了….没必要重复劳动，加上我写这些东西目的也是出于方便自己查阅，所以….后面我再更新就是整理与总结向的内容了，翻译的文章视情况更新把。</p>
 <p>Farewell</p>
 
@@ -451,7 +451,7 @@ window.oldVersion = [
     <!-- Prev Nav -->
     
         <li class="page-item page-prev">
-            <a href="/2020/01/10/C-C-文件读写的一点事儿/" rel="prev">
+            <a href="/2020/01/10/C-C-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E7%9A%84%E4%B8%80%E7%82%B9%E4%BA%8B%E5%84%BF/" rel="prev">
                 <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">C/C++文件读写的一点事儿</div>
             </a>

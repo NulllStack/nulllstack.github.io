@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="zh-CN">
-    <head><meta name="generator" content="Hexo 3.9.0">
+    <head>
     <meta charset="utf-8">
     <!--
         © SukkaW
@@ -87,8 +87,8 @@ window.oldVersion = [
 <meta name="keywords" content=", HaxeFlixel">
 
 <!-- Disable Fucking Bloody Baidu Tranformation -->
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
     <!-- ### Import File ### -->
     
@@ -215,7 +215,7 @@ window.oldVersion = [
 
 <meta property="og:locale" content="zh-CN">
 
-<meta property="og:url" content="https://nulllstack.github.io/2019/04/05/HaxeFlixel官方教程12-音效与音乐/">
+<meta property="og:url" content="https://nulllstack.github.io/2019/04/05/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B12-%E9%9F%B3%E6%95%88%E4%B8%8E%E9%9F%B3%E4%B9%90/">
 <meta property="og:image" content="https://nulllstack.github.io/img/suka-favicon.ico">
 
 <meta property="og:description" content="打算一次翻译完剩下的部分之后去弄点别的事情，HaxeFlixel相关的东西很闲的时候再回来整理。
@@ -245,7 +245,7 @@ window.oldVersion = [
 
 
     <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://nulllstack.github.io/2019/04/05/HaxeFlixel官方教程12-音效与音乐/">
+    <link rel="canonical" href="https://nulllstack.github.io/2019/04/05/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B12-%E9%9F%B3%E6%95%88%E4%B8%8E%E9%9F%B3%E4%B9%90/">
 
     <!-- ### Structured Data ### -->
     
@@ -255,12 +255,12 @@ window.oldVersion = [
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "url": "https://nulllstack.github.io/2019/04/05/HaxeFlixel官方教程12-音效与音乐/",
+    "url": "https://nulllstack.github.io/2019/04/05/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B12-%E9%9F%B3%E6%95%88%E4%B8%8E%E9%9F%B3%E4%B9%90/",
     "@type": "BlogPosting",
     "logo": "https://nulllstack.github.io/img/suka-favicon.ico",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://nulllstack.github.io/2019/04/05/HaxeFlixel官方教程12-音效与音乐/"
+        "@id": "https://nulllstack.github.io/2019/04/05/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B12-%E9%9F%B3%E6%95%88%E4%B8%8E%E9%9F%B3%E4%B9%90/"
     },
     "headline": "HaxeFlixel官方教程12:音效与音乐 | 囿",
     
@@ -307,7 +307,7 @@ window.oldVersion = [
     
 
 
-</head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
     <body>
         
@@ -387,11 +387,11 @@ window.oldVersion = [
                     
                     <article id="post-content">
                         <p>打算一次翻译完剩下的部分之后去弄点别的事情，HaxeFlixel相关的东西很闲的时候再回来整理。</p>
-<p><a href="http://haxeflixel.com/documentation/sound-and-music/" target="_blank" rel="noopener">原文</a></p>
+<p><a target="_blank" rel="noopener" href="http://haxeflixel.com/documentation/sound-and-music/">原文</a></p>
 <p>目前我们为游戏所做的各个部分已经整合起来了，不过它还缺少一点东西…它还没有声音。</p>
 <p>我们依然保持这个游戏简单化。我们将使用一个可循环的单音轨音频文件用于游戏运行时循环播放。我们也会为各种不同的动作添加一些简单的音效。在 HaxeFlixel 中播放音频文件是十分简单的事情。</p>
-<p>首先，你需要创建一段音乐还有其他音效。来自 <a href="http://fatbard.tumblr.com/" target="_blank" rel="noopener">FatBard</a> 的 Patrick Crecelius 为本教程提供了<a href="https://raw.githubusercontent.com/HaxeFlixel/flixel-demos/master/Tutorials/TurnBasedRPG/assets/music/HaxeFlixel_Tutorial_Game.mp3" target="_blank" rel="noopener">一段音乐</a>（建议在直接上<a href="https://github.com/HaxeFlixel/flixel-demos/tree/dev/Tutorials/TurnBasedRPG" target="_blank" rel="noopener">GitHub</a>从<code>asstes/music</code>文件夹内下载），你可以随意使用，或者可以自己做。</p>
-<p>我们还使用了 <a href="https://www.bfxr.net/" target="_blank" rel="noopener">Bfxr</a> 制作了一些音效，如果你喜欢的话可以使用这些音效文件或者自己做一套。</p>
+<p>首先，你需要创建一段音乐还有其他音效。来自 <a target="_blank" rel="noopener" href="http://fatbard.tumblr.com/">FatBard</a> 的 Patrick Crecelius 为本教程提供了<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/HaxeFlixel/flixel-demos/master/Tutorials/TurnBasedRPG/assets/music/HaxeFlixel_Tutorial_Game.mp3">一段音乐</a>（建议在直接上<a target="_blank" rel="noopener" href="https://github.com/HaxeFlixel/flixel-demos/tree/dev/Tutorials/TurnBasedRPG">GitHub</a>从<code>asstes/music</code>文件夹内下载），你可以随意使用，或者可以自己做。</p>
+<p>我们还使用了 <a target="_blank" rel="noopener" href="https://www.bfxr.net/">Bfxr</a> 制作了一些音效，如果你喜欢的话可以使用这些音效文件或者自己做一套。</p>
 <p>如果你一步步跟着教程走下来的话那么在 “UI与战斗系统” 一节中你已经下载过这些音效文件了。以下列出这些文件确保你确实完整下载了这些文件：</p>
 <ul>
 <li>coin.wav - 用于玩家拾起硬币时使用的音效</li>
@@ -404,98 +404,75 @@ window.oldVersion = [
 <li>step.wav - 用于玩家以及敌人的脚步声的音效</li>
 <li>win.wav - 当玩家于战斗中获胜时使用的音效</li>
 </ul>
-<p>音效文件链接：<a href="https://github.com/HaxeFlixel/flixel-demos/tree/dev/Tutorials/TurnBasedRPG/assets/sounds" target="_blank" rel="noopener">GitHub</a></p>
+<p>音效文件链接：<a target="_blank" rel="noopener" href="https://github.com/HaxeFlixel/flixel-demos/tree/dev/Tutorials/TurnBasedRPG/assets/sounds">GitHub</a></p>
 <p>当你准备完这些声音文件之后把<strong>音乐</strong>文件放置于<code>assets/music</code>文件夹下，把<strong>音效</strong>文件放置于<code>asstes/sounds</code>文件夹下。</p>
 <p>现在让我们修改代码来使用这些声音文件：</p>
 <ol>
 <li><p>首先打开<code>MenuState.hx</code>文件，由于我们需要让音乐从游戏启动那一刻开始并不管如何都不停循环，所以我们要从<code>create()</code>内添加它。</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(FlxG.sound.music == <span class="literal">null</span>) <span class="comment">//如果音乐已经在播放了则不重放音乐</span></span><br><span class="line">&#123;</span><br><span class="line">    FlxG.sound.playMusic(AssetPaths.HaxeFlixel_Tutorial_Game__mp3, <span class="number">1</span>, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>我们同时还检查了音乐是否已经处于播放（比如玩家从<code>GameOver</code>状态切换至<code>MenuState</code>的时候音乐其实已经是在播放了），我们不希望在这个时候做不必要的重放。</p>
 <p>现在编译启动游戏之后它应该可以播放音乐了。</p>
 </li>
 <li><p>接下来我们需要让按钮被点击的时候播放一段音效。很简单，我们只需要告诉按钮的<code>onUP</code>属性（注）加载一段声音。在<code>MenuState</code>的<code>create()</code>函数中，开始按钮的初始化之后的位置添加：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_btnPlay.onUp.sound = FlxG.sound.load(AssetPaths.select__wav);</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_btnPlay.onUp.sound = FlxG.sound.load(AssetPaths.select__wav);</span><br></pre></td></tr></table></figure></li>
 <li><p>现在你可以对选项按钮做同样的事情（将以上代码的<code>_btnPlay</code>替换为<code>_btnOptions</code>）。</p>
 <p>对于游戏中剩下的每一个按钮 - 位于<code>OptionsState</code>状态中的四个，以及位于<code>GameOver</code>状态中的那一个；它们的代码已经写好了，但作为课后练习你可以去这两个文件中看看是如何实现的。</p>
-<p><em>注：不知道什么原因，<code>FlxButton</code>的<code>onUp</code>等属性在官方API文档中是没有被列出来的，但是源码中能找到，还带注释，它们的类型为<code>FlxButtonEvent</code>，是<code>FlxButton</code><a href="https://www.kancloud.cn/simon_chang/haxe3manual/183601" target="_blank" rel="noopener">模块</a>中的私有类，该类为<code>FlxButton</code>的辅助类用于<code>FlxButton</code>的事件处理。两个类型的关系可参考：<a href="https://www.kancloud.cn/simon_chang/haxe3manual/186343" target="_blank" rel="noopener">模块子类型</a>。这里记上一笔日后回来整理需要注意一下。</em></p>
+<p><em>注：不知道什么原因，<code>FlxButton</code>的<code>onUp</code>等属性在官方API文档中是没有被列出来的，但是源码中能找到，还带注释，它们的类型为<code>FlxButtonEvent</code>，是<code>FlxButton</code><a target="_blank" rel="noopener" href="https://www.kancloud.cn/simon_chang/haxe3manual/183601">模块</a>中的私有类，该类为<code>FlxButton</code>的辅助类用于<code>FlxButton</code>的事件处理。两个类型的关系可参考：<a target="_blank" rel="noopener" href="https://www.kancloud.cn/simon_chang/haxe3manual/186343">模块子类型</a>。这里记上一笔日后回来整理需要注意一下。</em></p>
 </li>
 <li><p>下一步让我们为玩家添加脚步声，我们不想要每次需要播放同一个声音的时候都创建与销毁一个新的声音对象（sound object），所以我们要创建一个<code>FlxSound</code>对象以便复用。在<code>Player</code>类体的顶部添加：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _sndStep:<span class="type">FlxSound</span>;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _sndStep:<span class="type">FlxSound</span>;</span><br></pre></td></tr></table></figure></li>
 <li><p>然后我们需要在构造函数的某处加载脚步声文件。</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndStep = FlxG.sound.load(AssetPaths.step__wav);</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndStep = FlxG.sound.load(AssetPaths.step__wav);</span><br></pre></td></tr></table></figure></li>
 <li><p>接着跳到<code>movement()</code>函数中，在检查玩家是否处于移动的条件语句（<code>if((velocity.x != 0 || velocity.y != 0) &amp;&amp; touching == FlxObject.NONE)</code>）中第一行位置添加：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndStep.play();</span><br></pre></td></tr></table></figure>
-
 <p><code>FlxSound</code>有一个灵活的小特性，如果你告诉它播放一个声音而它已经在播放了（并且你没有设置<code>forceRestart</code>flag为真）那么它不会再次播放。这意味着我们可以轻易地在玩家移动时按每一帧进行调用以播放声音，而且声音听起来就像是在不断循环。但当玩家不再移动时停止声音的播放，并处于静止状态时声音不会重放。</p>
 </li>
 <li><p>现在我们也为敌人创建脚步声，与上面不同的是我们现在不是一直以满格的音量重复播放脚步声，而是基于敌人与玩家间的距离来改变音量的高低，实际上实现起来比听起来简单得多，首先我们在<code>Enemy</code>类体的顶部添加一个变量：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _sndStep:<span class="type">FlxSound</span>;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _sndStep:<span class="type">FlxSound</span>;</span><br></pre></td></tr></table></figure></li>
 <li><p>接着与对<code>Player</code>类的设置一样，添加以下代码到构造函数中：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_sndStep = FlxG.sound.load(AssetPaths.step__wav, <span class="number">.4</span>);</span><br><span class="line">_sndStep.proximity(x, y, FlxG.camera.target, FlxG.width * <span class="number">.6</span>);</span><br></pre></td></tr></table></figure>
-
 <p>你可能注意到了我们把声音设为<code>.4</code>（40%），这是由于地图中将会有多个敌人存在，而他们的脚步声可能会很吵闹（另外，怪物有可能是光着脚不穿鞋的，不是吗？）</p>
 </li>
 <li><p>加载所有文件之后我们为声音设置了邻近跟踪，传入了该敌人的<code>x</code>与<code>y</code>坐标并告诉它追踪的目标为<code>FlxG.camera.target</code>对象（也就是我们的玩家）。最后我们告诉它声音的传播半径稍微比屏幕一半宽度多一点点，这样我们就能够听到稍微越出屏幕的敌人的声音。如此一来我们就能够听到 基于敌人与摄像机目标之间的距离 计算出的或大或小的脚步声了。</p>
 </li>
 <li><p>接下来我们要在敌人的<code>update()</code>函数中，位于<code>super.update()</code>调用之后的位置检查敌人是否处于移动状态，并且没有撞到墙上去。如果他们处于移动状态，我们将把脚步声放到这个敌人所处的位置上（放置于其精灵（sprite）的底部，也就是它的脚上），之后开始播放脚步声。</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>((velocity.x != <span class="number">0</span> || velocity.y != <span class="number">0</span>) &amp;&amp; toucing == FlxObject.NONE)</span><br><span class="line">&#123;</span><br><span class="line">    _sndStep.setPosition(x + frameWidth / <span class="number">2</span>, y + height);</span><br><span class="line">    _sndStep.play();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>((velocity.x != <span class="number">0</span> || velocity.y != <span class="number">0</span>) &amp;&amp; toucing == FlxObject.NONE)</span><br><span class="line">&#123;</span><br><span class="line">    _sndStep.setPosition(x + frameWidth / <span class="number">2</span>, y + height);</span><br><span class="line">    _sndStep.play();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>接下来我们跳到<code>PlayState</code>中，在<code>PlayState</code>中我们只需要一个声音文件，用于拾起硬币的时候播放，尽管你可以把它放到<code>Coin</code>类中，但是由于有可能一次会载入多枚硬币，并且我们实际上一次只能捡一枚硬币（所以音效不需要重叠（overlap）），把一个单独的硬币音效加载进<code>PlayState</code>可以为我们的性能节省一些开销。</p>
 <p>就像添加其他音效一样，初始化变量：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _sndCoin:<span class="type">FlxSound</span>;</span><br></pre></td></tr></table></figure>
-
 <p>在<code>create()</code>中加载音效：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndCoin = FlxG.sound.load(AssetPaths.coin__wav);</span><br></pre></td></tr></table></figure>
-
 <p>之后在<code>playerTouchCoin()</code>函数中，在<code>if</code>语句里添加：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndCoin.play(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
-
 <p>这一次我们将使用<code>forceRestart</code>，这样当玩家拾起紧挨在一起的多枚硬币的时候新触发的声音会紧接而上。</p>
 </li>
 <li><p>剩下的音效由于都用于战斗阶段，所以会被放到<code>CombatHUD</code>类里面。</p>
 <p>假设你已经下载了<code>CombatHUD</code>类文件，那么这些音效的相关代码就已经在里面写好了，不过作为一种课后练习，去完整浏览一遍也是个好主意，这样做有助于你在下一个项目中更好的理解声音的工作方式。</p>
 <p>初始化变量：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _sndFled:<span class="type">FlxSound</span>;</span><br><span class="line"><span class="keyword">var</span> _sndHurt:<span class="type">FlxSound</span>;</span><br><span class="line"><span class="keyword">var</span> _sndLose:<span class="type">FlxSound</span>;</span><br><span class="line"><span class="keyword">var</span> _sndMiss:<span class="type">FlxSound</span>;</span><br><span class="line"><span class="keyword">var</span> _sndSelect:<span class="type">FlxSound</span>;</span><br><span class="line"><span class="keyword">var</span> _sndWin:<span class="type">FlxSound</span>;</span><br><span class="line"><span class="keyword">var</span> _sndCombat:<span class="type">FlxSound</span>;</span><br></pre></td></tr></table></figure>
-
 <p>加载音效：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">_sndFled = FlxG.sound.load(AssetPaths.fled__wav);</span><br><span class="line">_sndHurt = FlxG.sound.load(AssetPaths.hurt__wav);</span><br><span class="line">_sndLose = FlxG.sound.load(AssetPaths.lose__wav);</span><br><span class="line">_sndMiss = FlxG.sound.load(AssetPaths.miss__wav);</span><br><span class="line">_sndSelect = FlxG.sound.load(AssetPaths.select__wav);</span><br><span class="line">_sndWin = FlxG.sound.load(AssetPaths.win__wav);</span><br><span class="line">_sndCombat = FlxG.sound.load(AssetPaths.combat__wav);</span><br></pre></td></tr></table></figure>
-
 <p>也许你知道它们会被放在哪些地方使用了，但我还是要过一遍。</p>
 <p>于 initCombat 中：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndCombat.play();</span><br></pre></td></tr></table></figure>
-
 <p>于 finishFadeIn 中：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndSelect.play();</span><br></pre></td></tr></table></figure>
-
 <p>于<code>update()</code>函数中，位于三个按钮的按压判定相关的<code>if</code>语句（<code>if(_fire), else if(_up), else if(_down)</code>）中添加：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndSelect.play();</span><br></pre></td></tr></table></figure>
-
 <p>于 makeChoice 中，位于 “命中” 的逻辑代码（在<code>_damages[1].text = &quot;1&quot;;</code>之后）的位置添加：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndHurt.play();</span><br></pre></td></tr></table></figure>
-
 <p>于闪躲的逻辑代码中添加：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndHurt.play();</span><br></pre></td></tr></table></figure>
-
 <p>再往下，如果玩家逃脱（位于<code>cutcome = ESCAPE</code>之后的位置）添加：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndFled.play();</span><br></pre></td></tr></table></figure>
-
 <p>于<code>enemyAttack()</code>中敌人的攻击命中玩家时：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndHurt.play();</span><br></pre></td></tr></table></figure>
-
 <p>如果他们的攻击被miss了：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndMiss.play();</span><br></pre></td></tr></table></figure>
-
 <p>最后，在 <code>DoneDamageOut()</code> 中，位于 <code>outcome = DEFEAT</code> 之后的位置添加：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndLose.play();</span><br></pre></td></tr></table></figure>
-
 <p>位于 <code>outcome = VICTORY</code> 之后的位置添加：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_sndWin.play();</span><br></pre></td></tr></table></figure>
-
 <p>添加声音的工作到此就结束了，编译并运行你的游戏，现在你可以听到我们添加的所有音效了（确保你把系统的声音打开了）下一节我们将使游戏可以跨平台运行。</p>
 </li>
 </ol>
@@ -553,7 +530,7 @@ window.oldVersion = [
     <!-- Next Nav -->
     
         <li class="page-item page-next">
-            <a href="/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/" rel="next">
+            <a href="/2019/03/29/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B11-%E6%B8%B8%E6%88%8F%E7%BB%93%E6%9D%9F%E8%8F%9C%E5%8D%95/" rel="next">
                 <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">HaxeFlixel官方教程11:游戏结束菜单</div>
             </a>

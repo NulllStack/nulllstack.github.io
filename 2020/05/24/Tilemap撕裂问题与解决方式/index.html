@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="zh-CN">
-    <head><meta name="generator" content="Hexo 3.9.0">
+    <head>
     <meta charset="utf-8">
     <!--
         © SukkaW
@@ -82,14 +82,14 @@ window.oldVersion = [
 <!-- Description -->
 <meta name="description" content="一点小记，自用，没什么逻辑。
 
-最近在看 Discover ...">
+最近在看 Discover HaxeFlixel， 期间碰上 Tilemap 背景...">
 
 <!-- Keywords -->
 <meta name="keywords" content=", HaxeFlixel">
 
 <!-- Disable Fucking Bloody Baidu Tranformation -->
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
     <!-- ### Import File ### -->
     
@@ -216,12 +216,12 @@ window.oldVersion = [
 
 <meta property="og:locale" content="zh-CN">
 
-<meta property="og:url" content="https://nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/">
+<meta property="og:url" content="https://nulllstack.github.io/2020/05/24/Tilemap%E6%92%95%E8%A3%82%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/">
 <meta property="og:image" content="https://nulllstack.github.io/img/suka-favicon.ico">
 
 <meta property="og:description" content="一点小记，自用，没什么逻辑。
 
-最近在看 Discover ...">
+最近在看 Discover HaxeFlixel， 期间碰上 Tilemap 背景...">
 
 <meta name="twitter:card" content="summary">
 
@@ -247,7 +247,7 @@ window.oldVersion = [
 
 
     <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/">
+    <link rel="canonical" href="https://nulllstack.github.io/2020/05/24/Tilemap%E6%92%95%E8%A3%82%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/">
 
     <!-- ### Structured Data ### -->
     
@@ -257,12 +257,12 @@ window.oldVersion = [
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "url": "https://nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/",
+    "url": "https://nulllstack.github.io/2020/05/24/Tilemap%E6%92%95%E8%A3%82%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/",
     "@type": "BlogPosting",
     "logo": "https://nulllstack.github.io/img/suka-favicon.ico",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/"
+        "@id": "https://nulllstack.github.io/2020/05/24/Tilemap%E6%92%95%E8%A3%82%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/"
     },
     "headline": "Tilemap撕裂问题与解决方式 | 囿",
     
@@ -300,7 +300,7 @@ window.oldVersion = [
     "keywords": ", HaxeFlixel",
     "description": "一点小记，自用，没什么逻辑。
 
-最近在看 Discover ..."
+最近在看 Discover HaxeFlixel， 期间碰上 Tilemap 背景..."
 }
 </script>
 
@@ -310,7 +310,7 @@ window.oldVersion = [
     
 
 
-</head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
     <body>
         
@@ -391,31 +391,29 @@ window.oldVersion = [
                     <article id="post-content">
                         <p>一点小记，自用，没什么逻辑。</p>
 <hr>
-<p>最近在看 <a href="http://discover-haxeflixel.com/" target="_blank" rel="noopener">Discover HaxeFlixel</a>， 期间碰上 Tilemap 背景图像撕裂的问题，经过一番检索之后发现似乎是框架本身的老问题了，用蹩脚的英语向社区大佬一番请教之后也没理明白问题的根源，但是大概也许可能是由于框架底层依赖项的浮点运算的问题导致的。而且似乎 Platformer 类的游戏出现这个问题的概率会更高，随后大佬也给了解决方案，一番折腾下来要是不记上一笔的话感觉这趟就白忙活了，所以趁热。</p>
-<p><a href="http://discover-haxeflixel.com/" target="_blank" rel="noopener">Discover HaxeFlixel</a> 一书中作者使用了 Tiled 创建 Tilemap，但是我改用 Ogmo3 了。</p>
+<p>最近在看 <a target="_blank" rel="noopener" href="http://discover-haxeflixel.com/">Discover HaxeFlixel</a>， 期间碰上 Tilemap 背景图像撕裂的问题，经过一番检索之后发现似乎是框架本身的老问题了，用蹩脚的英语向社区大佬一番请教之后也没理明白问题的根源，但是大概也许可能是由于框架底层依赖项的浮点运算的问题导致的。而且似乎 Platformer 类的游戏出现这个问题的概率会更高，随后大佬也给了解决方案，一番折腾下来要是不记上一笔的话感觉这趟就白忙活了，所以趁热。</p>
+<p><a target="_blank" rel="noopener" href="http://discover-haxeflixel.com/">Discover HaxeFlixel</a> 一书中作者使用了 Tiled 创建 Tilemap，但是我改用 Ogmo3 了。</p>
 <p>所以，书中使用的 Tileset ：</p>
-<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/book_tiles.png" alt></p>
+<p><img src="/2020/05/24/Tilemap%E6%92%95%E8%A3%82%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/book_tiles.png" alt></p>
 <p>为了兼容 Ogmo 的工作流，需要在 Tileset 的第一块瓦片位置放置空白瓦片：</p>
-<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/tiles.png" alt></p>
+<p><img src="/2020/05/24/Tilemap%E6%92%95%E8%A3%82%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/tiles.png" alt></p>
 <p>随后于 FlxState 中对编辑好的关卡进行加载：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mapLoader:<span class="type">FlxOgmo3Loader</span>;</span><br><span class="line"><span class="keyword">var</span> map:<span class="type">FlxTilemap</span>;</span><br><span class="line"><span class="keyword">var</span> background:<span class="type">FlxTilemap</span>;</span><br><span class="line"><span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">create</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;	</span><br><span class="line">	mapLoader = <span class="keyword">new</span> <span class="type">FlxOgmo3Loader</span>(AssetPaths.Map__ogmo, AssetPaths.level1__json);</span><br><span class="line">	map = mapLoader.loadTilemap(AssetPaths.tiles__png, <span class="string">"tiles"</span>);</span><br><span class="line">	background = mapLoader.loadTilemap(AssetPaths.tiles__png, <span class="string">"background"</span>);</span><br><span class="line">	background.solid = <span class="literal">false</span>; <span class="comment">// 设置 background 的 tilemap 的碰撞盒为无碰撞</span></span><br><span class="line">	add(background); <span class="comment">// add()的调用有先后顺序的区别</span></span><br><span class="line">	add(map); <span class="comment">// 被随后 add() 进 state 的对象会遮挡先前 add() 进 state 的对象</span></span><br><span class="line">	map.follow(); <span class="comment">// 刷新碰撞四叉树的大小以匹配当前 tilemap 的大小</span></span><br><span class="line">		</span><br><span class="line">	player = <span class="keyword">new</span> <span class="type">Player</span>(<span class="number">16</span>, <span class="number">16</span>);</span><br><span class="line">	add(player);</span><br><span class="line">	FlxG.camera.follow(player, FlxCameraFollowStyle.PLATFORMER);</span><br><span class="line">	<span class="keyword">super</span>.create();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mapLoader:<span class="type">FlxOgmo3Loader</span>;</span><br><span class="line"><span class="keyword">var</span> map:<span class="type">FlxTilemap</span>;</span><br><span class="line"><span class="keyword">var</span> background:<span class="type">FlxTilemap</span>;</span><br><span class="line"><span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">create</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;	</span><br><span class="line">	mapLoader = <span class="keyword">new</span> <span class="type">FlxOgmo3Loader</span>(AssetPaths.Map__ogmo, AssetPaths.level1__json);</span><br><span class="line">	map = mapLoader.loadTilemap(AssetPaths.tiles__png, <span class="string">&quot;tiles&quot;</span>);</span><br><span class="line">	background = mapLoader.loadTilemap(AssetPaths.tiles__png, <span class="string">&quot;background&quot;</span>);</span><br><span class="line">	background.solid = <span class="literal">false</span>; <span class="comment">// 设置 background 的 tilemap 的碰撞盒为无碰撞</span></span><br><span class="line">	add(background); <span class="comment">// add()的调用有先后顺序的区别</span></span><br><span class="line">	add(map); <span class="comment">// 被随后 add() 进 state 的对象会遮挡先前 add() 进 state 的对象</span></span><br><span class="line">	map.follow(); <span class="comment">// 刷新碰撞四叉树的大小以匹配当前 tilemap 的大小</span></span><br><span class="line">		</span><br><span class="line">	player = <span class="keyword">new</span> <span class="type">Player</span>(<span class="number">16</span>, <span class="number">16</span>);</span><br><span class="line">	add(player);</span><br><span class="line">	FlxG.camera.follow(player, FlxCameraFollowStyle.PLATFORMER);</span><br><span class="line">	<span class="keyword">super</span>.create();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里关于 <code>map.follow()</code> 还想记一笔，默认情况下 Flixel 的碰撞检测只会作用于屏幕大小范围里的对象，比如我的游戏现在以 <code>320px * 180px</code> 的分辨率运行，但是我的 Tilemap 大小为 <code>864px * 240px</code> ，那么 Flixel 的碰撞四叉树只会从坐标原点 <code>(-10,-10)</code> 到坐标 <code>(340,200)</code> 的范围内产生作用（碰撞四叉树高宽默认比游戏分辨率大一圈（10像素）），如图所示：</p>
-<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/gif1.gif" alt></p>
+<p><img src="/2020/05/24/Tilemap%E6%92%95%E8%A3%82%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/gif1.gif" alt></p>
 <p>可以从游戏内置的 debugger 工具的 Log 窗口看到当前输出的碰撞四叉树的状态：原点位于<code>(-10,-10)</code>处，宽度与高度分别是 <code>340px</code> 与 <code>200px</code> ，可以从下方的调试控制台看到 player 在大概位于 x 轴方向 340 像素处无视了所有地面 Tile 的碰撞检测往下掉落。 </p>
 <p>所以通过外部 Tilemap 编辑器创建的 <code>FlxTilemap</code> 对象我们需要对它调用 <code>follow()</code> 函数来重置碰撞四叉树以匹配其地图的大小，该函数同时还会把摄像机的移动范围限制在 Tilemap 的边界处。</p>
-<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/gif2.gif" alt></p>
+<p><img src="/2020/05/24/Tilemap%E6%92%95%E8%A3%82%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/gif2.gif" alt></p>
 <p>通过以下代码：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FlxG.redirectTraces = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">trace</span>(FlxG.worldBounds);</span><br><span class="line">map.follow();</span><br><span class="line"><span class="built_in">trace</span>(FlxG.worldBounds);</span><br></pre></td></tr></table></figure>
-
 <p>可以查看 <code>follow()</code> 调用前后的碰撞四叉树状态的对比：</p>
-<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/Log.png" alt></p>
+<p><img src="/2020/05/24/Tilemap%E6%92%95%E8%A3%82%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/Log.png" alt></p>
 <p>ok, 下面才是正题。</p>
 <p>如果游戏是编译至 Flash 平台，那么运行结果很正常，但是如果是编译至 Windows 平台，那么会出现问题：</p>
-<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/gif3.gif" alt></p>
+<p><img src="/2020/05/24/Tilemap%E6%92%95%E8%A3%82%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/gif3.gif" alt></p>
 <p>如动图所示，当画面垂直移动的时候背景图像会随机出现黑色条纹，这可能是由于底层依赖项的浮点运算出现错误，导致在渲染 Tilemap 的时候瓦片的位置没有被正确渲染。</p>
 <p>有一个很简单有效的方式可以解决这个问题，我们可以为 Tileset 的每一块瓦片的边缘多延伸出一圈像素，使得出现撕裂的时候，裂缝会被瓦片多延伸出来的部分遮挡，如下图所示:</p>
-<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/PaddedTiles.png" alt></p>
+<p><img src="/2020/05/24/Tilemap%E6%92%95%E8%A3%82%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/PaddedTiles.png" alt></p>
 <p>上方是对边缘进行延伸之前的 Tileset 下方为对边缘进行延伸之后的 Tileset。</p>
 <p>Flixel 的 <code>FlxTileFrames</code> 类里面有一个函数 <code>fromBitmapAddSpacesAndBorders()</code> 可以帮我们简化工作，通过调用并传递一个序列图以及其他对应参数，它会为我们返回一个修改好的序列图，这里我们只需要给它传递 4 个参数：</p>
 <ul>
@@ -426,22 +424,19 @@ window.oldVersion = [
 </ul>
 <p>所以我们可以这样写：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FlxTileFrames.fromBitmapAddSpacesAndBorders</span><br><span class="line">(</span><br><span class="line">	AssetPaths.tiles__png, <span class="comment">// 这是我们的 Tileset 序列图</span></span><br><span class="line">	FlxPoint.<span class="keyword">get</span>(<span class="number">16</span>, <span class="number">16</span>), <span class="comment">// 序列图中我们需要每个帧以 16*16 进行显示</span></span><br><span class="line">	FlxPoint.<span class="keyword">get</span>(<span class="number">0</span>, <span class="number">0</span>), <span class="comment">// 但是我们并不需要为每个帧创建间隔</span></span><br><span class="line">	FlxPoint.<span class="keyword">get</span>(<span class="number">2</span>, <span class="number">2</span>) <span class="comment">// 这里我们需要为每个帧的边缘分别延伸 2 个像素</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
 <p>但是为了方便使用，我们把它包装进一个函数通过调用来使用：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPaddedTiles</span></span>(path:<span class="type">flixel</span>.system.FlxAssets.FlxGraphicAsset, padding = <span class="number">2</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> FlxTileFrames.fromBitmapAddSpacesAndBorders</span><br><span class="line">	(</span><br><span class="line">		path,</span><br><span class="line">		FlxPoint.<span class="keyword">get</span>(<span class="number">16</span>, <span class="number">16</span>),</span><br><span class="line">		FlxPoint.<span class="keyword">get</span>(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">		FlxPoint.<span class="keyword">get</span>(padding, padding)</span><br><span class="line">	);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>最后修改一下 FlxState 的 <code>create()</code> ：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">create</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    mapLoader = <span class="keyword">new</span> <span class="type">FlxOgmo3Loader</span>(AssetPaths.Map__ogmo, AssetPaths.level1__json);</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 因为刚体 Tilemap 显示正常所以我想直接传递原始序列进行使用</span></span><br><span class="line">    map = mapLoader.loadTilemap(AssetPaths.tiles__png, <span class="string">"tiles"</span>);</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 这是 Flixel 自带的一个对图像撕裂进行补救的一个小功能，原理和我们使用的差不多，默认是打开的，但是显然不够用，这里我们还是直接禁用掉</span></span><br><span class="line">    map.useScaleHack = <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 作为背景的 Tilemap 有撕裂现象，所以调用 gePaddedTiles() 对原始序列进行修改后再进行加载</span></span><br><span class="line">    background = mapLoader.loadTilemap(getPaddedTiles(AssetPaths.tiles__png), <span class="string">"background"</span>);</span><br><span class="line">    </span><br><span class="line">    background.useScaleHack = <span class="literal">false</span>;</span><br><span class="line">    background.solid = <span class="literal">false</span>;</span><br><span class="line">    add(background);</span><br><span class="line">    add(map);</span><br><span class="line">    map.follow();</span><br><span class="line">    player = <span class="keyword">new</span> <span class="type">Player</span>(<span class="number">16</span>, <span class="number">16</span>);</span><br><span class="line">    add(player);</span><br><span class="line">    FlxG.camera.follow(player, FlxCameraFollowStyle.PLATFORMER);</span><br><span class="line">    <span class="keyword">super</span>.create();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">create</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    mapLoader = <span class="keyword">new</span> <span class="type">FlxOgmo3Loader</span>(AssetPaths.Map__ogmo, AssetPaths.level1__json);</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 因为刚体 Tilemap 显示正常所以我想直接传递原始序列进行使用</span></span><br><span class="line">    map = mapLoader.loadTilemap(AssetPaths.tiles__png, <span class="string">&quot;tiles&quot;</span>);</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 这是 Flixel 自带的一个对图像撕裂进行补救的一个小功能，原理和我们使用的差不多，默认是打开的，但是显然不够用，这里我们还是直接禁用掉</span></span><br><span class="line">    map.useScaleHack = <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 作为背景的 Tilemap 有撕裂现象，所以调用 gePaddedTiles() 对原始序列进行修改后再进行加载</span></span><br><span class="line">    background = mapLoader.loadTilemap(getPaddedTiles(AssetPaths.tiles__png), <span class="string">&quot;background&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    background.useScaleHack = <span class="literal">false</span>;</span><br><span class="line">    background.solid = <span class="literal">false</span>;</span><br><span class="line">    add(background);</span><br><span class="line">    add(map);</span><br><span class="line">    map.follow();</span><br><span class="line">    player = <span class="keyword">new</span> <span class="type">Player</span>(<span class="number">16</span>, <span class="number">16</span>);</span><br><span class="line">    add(player);</span><br><span class="line">    FlxG.camera.follow(player, FlxCameraFollowStyle.PLATFORMER);</span><br><span class="line">    <span class="keyword">super</span>.create();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这样一来问题就解决了。</p>
-<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/gif4.gif" alt></p>
+<p><img src="/2020/05/24/Tilemap%E6%92%95%E8%A3%82%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/gif4.gif" alt></p>
 <p>我们还可以通过内置的 debugger 工具输入命令 <code>viewCache</code> 从缓存里取回修改后的 Tileset 序列进行查看，下图为了便于区分，我修改了参数，为每一帧之间创建了 1 个像素的间距：</p>
-<p><img src="//nulllstack.github.io/2020/05/24/Tilemap撕裂问题与解决方式/viewCache.png" alt></p>
+<p><img src="/2020/05/24/Tilemap%E6%92%95%E8%A3%82%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/viewCache.png" alt></p>
 <hr>
 <p>相关链接：</p>
-<p><a href="http://forum.haxeflixel.com/topic/39/tilemap-tearing-desktop-targets/3" target="_blank" rel="noopener">HaxeFlixel Forum</a></p>
-<p><a href="https://github.com/HaxeFlixel/flixel/issues/911" target="_blank" rel="noopener">HaxeFlixel Github issue #911</a></p>
-<p><a href="https://github.com/HaxeFlixel/flixel/issues/434" target="_blank" rel="noopener">HaxeFlixel Github issue #434</a></p>
+<p><a target="_blank" rel="noopener" href="http://forum.haxeflixel.com/topic/39/tilemap-tearing-desktop-targets/3">HaxeFlixel Forum</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/HaxeFlixel/flixel/issues/911">HaxeFlixel Github issue #911</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/HaxeFlixel/flixel/issues/434">HaxeFlixel Github issue #434</a></p>
 
                     </article>
                     
@@ -488,7 +483,7 @@ window.oldVersion = [
     <!-- Prev Nav -->
     
         <li class="page-item page-prev">
-            <a href="/2020/07/01/苦难不值得追求/" rel="prev">
+            <a href="/2020/07/01/%E8%8B%A6%E9%9A%BE%E4%B8%8D%E5%80%BC%E5%BE%97%E8%BF%BD%E6%B1%82/" rel="prev">
                 <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">苦难不值得追求</div>
             </a>
@@ -498,7 +493,7 @@ window.oldVersion = [
     <!-- Next Nav -->
     
         <li class="page-item page-next">
-            <a href="/2020/05/07/Haxe学习笔记-函数可选参数与可空类型/" rel="next">
+            <a href="/2020/05/07/Haxe%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%87%BD%E6%95%B0%E5%8F%AF%E9%80%89%E5%8F%82%E6%95%B0%E4%B8%8E%E5%8F%AF%E7%A9%BA%E7%B1%BB%E5%9E%8B/" rel="next">
                 <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">Haxe学习笔记:函数可选参数与可空类型</div>
             </a>

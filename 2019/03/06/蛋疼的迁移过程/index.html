@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="zh-CN">
-    <head><meta name="generator" content="Hexo 3.9.0">
+    <head>
     <meta charset="utf-8">
     <!--
         © SukkaW
@@ -90,8 +90,8 @@ window.oldVersion = [
 <meta name="keywords" content=", 学习记录">
 
 <!-- Disable Fucking Bloody Baidu Tranformation -->
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
     <!-- ### Import File ### -->
     
@@ -218,7 +218,7 @@ window.oldVersion = [
 
 <meta property="og:locale" content="zh-CN">
 
-<meta property="og:url" content="https://nulllstack.github.io/2019/03/06/蛋疼的迁移过程/">
+<meta property="og:url" content="https://nulllstack.github.io/2019/03/06/%E8%9B%8B%E7%96%BC%E7%9A%84%E8%BF%81%E7%A7%BB%E8%BF%87%E7%A8%8B/">
 <meta property="og:image" content="https://nulllstack.github.io/img/suka-favicon.ico">
 
 <meta property="og:description" content="因为某些原因想要丢掉原来的GitHub账号还有博客，换身皮囊再继续。
@@ -251,7 +251,7 @@ window.oldVersion = [
 
 
     <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://nulllstack.github.io/2019/03/06/蛋疼的迁移过程/">
+    <link rel="canonical" href="https://nulllstack.github.io/2019/03/06/%E8%9B%8B%E7%96%BC%E7%9A%84%E8%BF%81%E7%A7%BB%E8%BF%87%E7%A8%8B/">
 
     <!-- ### Structured Data ### -->
     
@@ -261,12 +261,12 @@ window.oldVersion = [
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "url": "https://nulllstack.github.io/2019/03/06/蛋疼的迁移过程/",
+    "url": "https://nulllstack.github.io/2019/03/06/%E8%9B%8B%E7%96%BC%E7%9A%84%E8%BF%81%E7%A7%BB%E8%BF%87%E7%A8%8B/",
     "@type": "BlogPosting",
     "logo": "https://nulllstack.github.io/img/suka-favicon.ico",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://nulllstack.github.io/2019/03/06/蛋疼的迁移过程/"
+        "@id": "https://nulllstack.github.io/2019/03/06/%E8%9B%8B%E7%96%BC%E7%9A%84%E8%BF%81%E7%A7%BB%E8%BF%87%E7%A8%8B/"
     },
     "headline": "蛋疼的迁移过程 | 囿",
     
@@ -316,7 +316,7 @@ window.oldVersion = [
     
 
 
-</head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
     <body>
         
@@ -404,17 +404,14 @@ window.oldVersion = [
 <li>重新部署博客（迁移博客配置文件、迁移博客主题配置文件、安装插件等）</li>
 </ol>
 <p>在我做完 1、2 、3 之后我新建了一个文件夹用于重新生成博客（<code>hexo init</code>），之后尝试进行第 4 步操作。结果大概如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">remote: Permission to myNewAccount.git denied to MY_OLD_GITHUB_ACCOUNT</span><br><span class="line">fatal: unable to access &apos;https://github.com/myNewAccount/myNewRepo&apos;: </span><br><span class="line">The requested URL returned error: 403`</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">remote: Permission to myNewAccount.git denied to MY_OLD_GITHUB_ACCOUNT</span><br><span class="line">fatal: unable to access &#39;https:&#x2F;&#x2F;github.com&#x2F;myNewAccount&#x2F;myNewRepo&#39;: </span><br><span class="line">The requested URL returned error: 403&#96;</span><br></pre></td></tr></table></figure>
 <p>似乎是由于部署博客的过程里往仓库 push 的时候被自动使用了旧账号进行操作，在这之后的2个小时里我不断更新 SSH key 、删掉博客的本地文件再 <code>hexo init</code> 反复折腾，最后发现只需要打开 GitHub Desktop 更新账号，把放博客的新 repo 给 clone 下来就行（重启电脑前不行，重启之后再尝试博客就成功部署上去了）</p>
 <p>部署完不算完，因为我以为每次迁移博客都需要重新 <code>hexo init</code> 所以新博客现在是空的，我原来旧的那些文章都还没放进去，虽然都是食之无味弃之可惜，但是。。。弃之可惜嘛。。。所以我把备份好的 <code>.md</code> 文件直接丢到新博客的 post 文件夹里生成。。。结果又出事了，只有靠前的两三篇文章标题正确显示，剩余的全是“no-title”；这个情况在之前也碰上过，但是由于每次码字都累爆，上传又遇上这种情况就会心烦气躁地 “备份-删除-重新上传、复制-粘贴-重新上传” 地折腾个三四十分钟，问题往往莫名其妙地就能解决。但是这次我怀疑的对象不再是文件本身，我怀疑是 hexo 生成的页面会根据 <code>hexo new &quot;article title&quot;</code> 时生成某个文件、保存文章标题来进行显示。然而事实是我想多了。</p>
 <p>事实上每一次的 <code>hexo new &quot;new article&quot;</code> 生成的 <code>.md</code> 文件里都会自动生成出如下内容：</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: 蛋疼的迁移过程</span><br><span class="line">date: 2019-03-06 01:28:15</span><br><span class="line">tags:</span><br></pre></td></tr></table></figure>
-
 <p>估计 hexo 生成的页面就是通过这里的 title 获取文章标题进行显示的（我真的很不乐意学HTML之流，我甚至觉得它们比C++还麻烦 :P ），而我在云端备份的文章里都没把这一段内容放进去，所以生成的页面找不到标题就默认给了 no-title 。</p>
 <p>哦对了，想起来一个事儿，在我直接放 <code>.md</code> 文件生成博客之前我看了 hexo 官网的文档，里头提到迁移文章的一个插件“hexo-migrator-rss” ，需要通过<code>npm install hexo-migrator-rss --save</code> 安装之后使用，他可以从RSS迁移所有文章，命令如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo migrate rss &lt;source&gt;</span><br></pre></td></tr></table></figure>
-
 <p><code>source</code> 可以是文件路径或网址，也就是指向某个“atom.xml”文件就行了，所以我试了一下，结果文章确实都被取回来了，但是都是根据<code>.xml</code>文件的内容生成的，文章内嵌入的图片资源都没能获取到，<strong>原因不明</strong>。似乎很麻烦所以很快就考虑其他解决办法。</p>
 <p>接着我意识到这一切都与是否生成一个新博客不相关的，你要做的只是在博客的配置文件里更改 url、root（可选）、deploy的参数，部署的时候 hexo 只看你的 deploy 参数而已，于是我滚回原来存放博客的文件夹里修改了配置文件，重新部署了一下。。。</p>
 <p>至此迁移工作就完事儿了，挺蛋疼的，30分钟的事情我弄了3个小时，尽管多多少少还是有所收获吧。</p>
@@ -448,7 +445,7 @@ window.oldVersion = [
 <span class="post-tags-list mt-2">
 
 
-<a class="post-tags-list-item" href="/tags/学习记录/" rel="tag">#&nbsp;学习记录</a>
+<a class="post-tags-list-item" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" rel="tag">#&nbsp;学习记录</a>
 
 </span>
 
@@ -462,7 +459,7 @@ window.oldVersion = [
     <!-- Prev Nav -->
     
         <li class="page-item page-prev">
-            <a href="/2019/03/08/HaxeFlixel官方教程9-敌人与基础AI/" rel="prev">
+            <a href="/2019/03/08/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B9-%E6%95%8C%E4%BA%BA%E4%B8%8E%E5%9F%BA%E7%A1%80AI/" rel="prev">
                 <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">HaxeFlixel官方教程9:敌人与基础AI</div>
             </a>
@@ -472,7 +469,7 @@ window.oldVersion = [
     <!-- Next Nav -->
     
         <li class="page-item page-next">
-            <a href="/2019/03/03/作废，迁移/" rel="next">
+            <a href="/2019/03/03/%E4%BD%9C%E5%BA%9F%EF%BC%8C%E8%BF%81%E7%A7%BB/" rel="next">
                 <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">作废，迁移</div>
             </a>

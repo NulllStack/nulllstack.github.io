@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="zh-CN">
-    <head><meta name="generator" content="Hexo 3.9.0">
+    <head>
     <meta charset="utf-8">
     <!--
         © SukkaW
@@ -81,14 +81,14 @@ window.oldVersion = [
 
 <!-- Description -->
 <meta name="description" content="原文
-当你开始运...">
+当你开始运行你的游戏，你将会看到，目前场景内的所有东西看起开都非常非常小...">
 
 <!-- Keywords -->
 <meta name="keywords" content=", HaxeFlixel">
 
 <!-- Disable Fucking Bloody Baidu Tranformation -->
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
     <!-- ### Import File ### -->
     
@@ -215,11 +215,11 @@ window.oldVersion = [
 
 <meta property="og:locale" content="zh-CN">
 
-<meta property="og:url" content="https://nulllstack.github.io/2018/08/02/HaxeFlixel官方教程7-摄像机与缩放/">
+<meta property="og:url" content="https://nulllstack.github.io/2018/08/02/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B7-%E6%91%84%E5%83%8F%E6%9C%BA%E4%B8%8E%E7%BC%A9%E6%94%BE/">
 <meta property="og:image" content="https://nulllstack.github.io/img/suka-favicon.ico">
 
 <meta property="og:description" content="原文
-当你开始运...">
+当你开始运行你的游戏，你将会看到，目前场景内的所有东西看起开都非常非常小...">
 
 <meta name="twitter:card" content="summary">
 
@@ -245,7 +245,7 @@ window.oldVersion = [
 
 
     <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://nulllstack.github.io/2018/08/02/HaxeFlixel官方教程7-摄像机与缩放/">
+    <link rel="canonical" href="https://nulllstack.github.io/2018/08/02/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B7-%E6%91%84%E5%83%8F%E6%9C%BA%E4%B8%8E%E7%BC%A9%E6%94%BE/">
 
     <!-- ### Structured Data ### -->
     
@@ -255,12 +255,12 @@ window.oldVersion = [
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "url": "https://nulllstack.github.io/2018/08/02/HaxeFlixel官方教程7-摄像机与缩放/",
+    "url": "https://nulllstack.github.io/2018/08/02/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B7-%E6%91%84%E5%83%8F%E6%9C%BA%E4%B8%8E%E7%BC%A9%E6%94%BE/",
     "@type": "BlogPosting",
     "logo": "https://nulllstack.github.io/img/suka-favicon.ico",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://nulllstack.github.io/2018/08/02/HaxeFlixel官方教程7-摄像机与缩放/"
+        "@id": "https://nulllstack.github.io/2018/08/02/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B7-%E6%91%84%E5%83%8F%E6%9C%BA%E4%B8%8E%E7%BC%A9%E6%94%BE/"
     },
     "headline": "HaxeFlixel官方教程7:摄像机与缩放 | 囿",
     
@@ -297,7 +297,7 @@ window.oldVersion = [
     
     "keywords": ", HaxeFlixel",
     "description": "原文
-当你开始运..."
+当你开始运行你的游戏，你将会看到，目前场景内的所有东西看起开都非常非常小..."
 }
 </script>
 
@@ -307,7 +307,7 @@ window.oldVersion = [
     
 
 
-</head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
     <body>
         
@@ -386,7 +386,7 @@ window.oldVersion = [
                         
                     
                     <article id="post-content">
-                        <p><a href="http://haxeflixel.com/documentation/zoom-and-cameras/" target="_blank" rel="noopener">原文</a></p>
+                        <p><a target="_blank" rel="noopener" href="http://haxeflixel.com/documentation/zoom-and-cameras/">原文</a></p>
 <p>当你开始运行你的游戏，你将会看到，目前场景内的所有东西看起开都非常非常小，我们将要通过设置缩放来改变游戏内物体的能见度，以此让玩家得以看清角色每个细微的动作。要做到缩放很简单：</p>
 <ol>
 <li><p>打开<code>Main.hx</code>文件，这个类用于游戏的初始化工作，如果你想要的话看看有哪些东西你需要修改的，但这里我们只需要改变其中的几个参数。</p>
@@ -397,14 +397,13 @@ window.oldVersion = [
 </li>
 <li><p>在构造函数内，位于添加player之后，<code>super.create()</code>之前的位置添加以下代码：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FlxG.camera.follow(_player,TOPDOWN,<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
 <p>这样做将会告诉摄像机以<code>TOPDOWN</code>视角跟踪player的位置，以1为取值赋给<code>lerp</code>参数（这样做将会让摄像机的移动更为平滑一些）</p>
 </li>
 </ol>
 <p>完事了！测试游戏的运行结果看看效果如何。</p>
 <div align="center">
 
-<p><img src="//nulllstack.github.io/2018/08/02/HaxeFlixel官方教程7-摄像机与缩放/results.png" alt></p>
+<p><img src="/2018/08/02/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B7-%E6%91%84%E5%83%8F%E6%9C%BA%E4%B8%8E%E7%BC%A9%E6%94%BE/results.png" alt></p>
 <p>下一节，让我们为player添加一些可以在地图内拾起的东西。</p>
 </div>
                     </article>
@@ -452,7 +451,7 @@ window.oldVersion = [
     <!-- Prev Nav -->
     
         <li class="page-item page-prev">
-            <a href="/2018/08/05/HaxeFlixel官方教程8-拾取物品/" rel="prev">
+            <a href="/2018/08/05/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B8-%E6%8B%BE%E5%8F%96%E7%89%A9%E5%93%81/" rel="prev">
                 <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">HaxeFlixel官方教程8:拾取物品</div>
             </a>
@@ -462,7 +461,7 @@ window.oldVersion = [
     <!-- Next Nav -->
     
         <li class="page-item page-next">
-            <a href="/2018/08/02/HaxeFlixel官方教程6-加载Tilemap/" rel="next">
+            <a href="/2018/08/02/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B6-%E5%8A%A0%E8%BD%BDTilemap/" rel="next">
                 <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">HaxeFlixel官方教程6:加载Tilemap</div>
             </a>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="zh-CN">
-    <head><meta name="generator" content="Hexo 3.9.0">
+    <head>
     <meta charset="utf-8">
     <!--
         © SukkaW
@@ -87,8 +87,8 @@ window.oldVersion = [
 <meta name="keywords" content=", HaxeFlixel">
 
 <!-- Disable Fucking Bloody Baidu Tranformation -->
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
     <!-- ### Import File ### -->
     
@@ -215,7 +215,7 @@ window.oldVersion = [
 
 <meta property="og:locale" content="zh-CN">
 
-<meta property="og:url" content="https://nulllstack.github.io/2018/09/05/时隔多日再水一篇/">
+<meta property="og:url" content="https://nulllstack.github.io/2018/09/05/%E6%97%B6%E9%9A%94%E5%A4%9A%E6%97%A5%E5%86%8D%E6%B0%B4%E4%B8%80%E7%AF%87/">
 <meta property="og:image" content="https://nulllstack.github.io/img/suka-favicon.ico">
 
 <meta property="og:description" content="这篇博客本该在几日前写完的，开学前应一老友所需码一篇关于HaxeFlixel开发环境搭建的文章，无奈开学这两天没太适应过来拖延到今晚才开始有心情码字，实际发布时间会晚于tag所标示的时间。
@@ -245,7 +245,7 @@ window.oldVersion = [
 
 
     <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://nulllstack.github.io/2018/09/05/时隔多日再水一篇/">
+    <link rel="canonical" href="https://nulllstack.github.io/2018/09/05/%E6%97%B6%E9%9A%94%E5%A4%9A%E6%97%A5%E5%86%8D%E6%B0%B4%E4%B8%80%E7%AF%87/">
 
     <!-- ### Structured Data ### -->
     
@@ -255,12 +255,12 @@ window.oldVersion = [
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "url": "https://nulllstack.github.io/2018/09/05/时隔多日再水一篇/",
+    "url": "https://nulllstack.github.io/2018/09/05/%E6%97%B6%E9%9A%94%E5%A4%9A%E6%97%A5%E5%86%8D%E6%B0%B4%E4%B8%80%E7%AF%87/",
     "@type": "BlogPosting",
     "logo": "https://nulllstack.github.io/img/suka-favicon.ico",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://nulllstack.github.io/2018/09/05/时隔多日再水一篇/"
+        "@id": "https://nulllstack.github.io/2018/09/05/%E6%97%B6%E9%9A%94%E5%A4%9A%E6%97%A5%E5%86%8D%E6%B0%B4%E4%B8%80%E7%AF%87/"
     },
     "headline": "时隔多日再水一篇 | 囿",
     
@@ -307,7 +307,7 @@ window.oldVersion = [
     
 
 
-</head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
     <body>
         
@@ -385,7 +385,7 @@ window.oldVersion = [
                     
                         
                             <div id="post-toc">
-                                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装Haxe工具集与其他依赖项</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装VisualStudio</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装VisualStudioCode</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-number">4.</span> <span class="post-toc-text">测试项目</span></a></li></ol>
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装Haxe工具集与其他依赖项</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装VisualStudio</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装VisualStudioCode</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link"><span class="post-toc-number">4.</span> <span class="post-toc-text">测试项目</span></a></li></ol>
                             </div>
                         
                     
@@ -404,20 +404,17 @@ window.oldVersion = [
 <li><a href="#third">VisualStudioCode</a></li>
 </ul>
 <p><a name="first"><h2>安装Haxe工具集与其他依赖项</h2></a></p>
-<p>首先，登陆Haxe的官网<a href="https://haxe.org/download/" target="_blank" rel="noopener">haxe.org</a>下载安装包，安装内容包括一个Haxe的跨平台编译器，一个标准库以及一个命令行工具“haxelib”，它是一个包管理工具，可以用于提交和检索可用的库，目前我只用它来安装一些依赖项而已，下面开始安装其他依赖项。</p>
+<p>首先，登陆Haxe的官网<a target="_blank" rel="noopener" href="https://haxe.org/download/">haxe.org</a>下载安装包，安装内容包括一个Haxe的跨平台编译器，一个标准库以及一个命令行工具“haxelib”，它是一个包管理工具，可以用于提交和检索可用的库，目前我只用它来安装一些依赖项而已，下面开始安装其他依赖项。</p>
 <p>打开PowerShell或者CMD，依次执行以下指令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">haxelib install lime</span><br><span class="line">haxelib install openfl</span><br><span class="line">haxelib install flixel</span><br></pre></td></tr></table></figure>
-
 <p>注意：如果下载过程报错中断显示超时，那么搭个梯子试试或者在命令中加入参数<code>haxelib -notimeout &lt;command&gt;</code>以取消超时。</p>
 <p>Lime是OpenFL用于跨平台编译的一个底层支持，主要用于给不同平台（如Flash，HTML5，C++）提供输入，音频，渲染上下文，网络访问提供统一的底层支持，具体的技术细节我也还没搞懂，所以就不多说了。</p>
-<p>Flixel原本是由<a href="http://www.adamatomic.com/" target="_blank" rel="noopener">Adam “Atomic” Saltsman</a>以ActionScript3.0写就的一套Flash平台的游戏开发框架，由于后来Flash平台日渐衰落，所以喜爱Flixel的人就开始考虑把它移植到其他平台去，正巧Haxe社区已经有人做了Flash整个API的移植版本——也就是OpenFL，于是Flixel就顺其自然的被移植到了Haxe平台上，这样既能做到原来Flash平台做不到的跨平台开发（Adobe在Flash衰落的日子里主动放弃了很多跨平台的支持），同时又能让原来Flash平台上的开发者通过熟悉的API快速上手，投入Haxe平台的怀抱。</p>
+<p>Flixel原本是由<a target="_blank" rel="noopener" href="http://www.adamatomic.com/">Adam “Atomic” Saltsman</a>以ActionScript3.0写就的一套Flash平台的游戏开发框架，由于后来Flash平台日渐衰落，所以喜爱Flixel的人就开始考虑把它移植到其他平台去，正巧Haxe社区已经有人做了Flash整个API的移植版本——也就是OpenFL，于是Flixel就顺其自然的被移植到了Haxe平台上，这样既能做到原来Flash平台做不到的跨平台开发（Adobe在Flash衰落的日子里主动放弃了很多跨平台的支持），同时又能让原来Flash平台上的开发者通过熟悉的API快速上手，投入Haxe平台的怀抱。</p>
 <p>好了，一点点介绍说完了，当以上东西都下完之后再执行以下命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">haxelib run lime setup flixel</span><br></pre></td></tr></table></figure>
-
 <p>它会检查你的lime和opemfl是否为最新，以及其他Flixel相关的库（主要是插件，DEMO，UI，模板）。</p>
 <p>如果你跑了以上命令，那么Flixel Tools已经被安装了，但是我们需要启动它：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">haxelib run flixel-tools setup</span><br></pre></td></tr></table></figure>
-
 <p>它将会询问你两个问题：</p>
 <p>是否使用命令别名（用于快捷输入，我都是启用的）：y/n</p>
 <p>使用的默认IDE（我们使用VSCode，设置之后通过命令创建模板后将自动通过所选择的编辑器打开）：这里我们选择VisualStudioCode。</p>
@@ -425,52 +422,51 @@ window.oldVersion = [
 <p>到这里先通过几条指令来检查所有东西是不是都安装正确了：</p>
 <p>依次执行以下指令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lime</span><br><span class="line">flixel</span><br></pre></td></tr></table></figure>
-
 <p>如果如下图所示则表明所需要的东西都安装完毕。</p>
 <div align="center">
 
-<p><img src="//nulllstack.github.io/2018/09/05/时隔多日再水一篇/command.jpg" alt></p>
+<p><img src="/2018/09/05/%E6%97%B6%E9%9A%94%E5%A4%9A%E6%97%A5%E5%86%8D%E6%B0%B4%E4%B8%80%E7%AF%87/command.jpg" alt></p>
 </div>
 
 
 
 <p><a name="second"><h2>安装VisualStudio</h2></a></p>
-<p>若想将游戏编译至C++平台上HaxeFlixel似乎只能用MSVC编译器，所以需要安装这个庞大的东西，那么上官网 <a href="https://visualstudio.microsoft.com/" target="_blank" rel="noopener">VisualStudo</a> ，目前推荐安装最新的 Community 2017 版。</p>
+<p>若想将游戏编译至C++平台上HaxeFlixel似乎只能用MSVC编译器，所以需要安装这个庞大的东西，那么上官网 <a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/">VisualStudo</a> ，目前推荐安装最新的 Community 2017 版。</p>
 <div align="center">
 
-<p><img src="//nulllstack.github.io/2018/09/05/时隔多日再水一篇/VS2017.jpg" alt></p>
+<p><img src="/2018/09/05/%E6%97%B6%E9%9A%94%E5%A4%9A%E6%97%A5%E5%86%8D%E6%B0%B4%E4%B8%80%E7%AF%87/VS2017.jpg" alt></p>
 </div>
 
 <p>下载完打开，然后选中如下图所示的勾选项</p>
 <div align="center">
 
-<p><img src="//nulllstack.github.io/2018/09/05/时隔多日再水一篇/VSInstaller.jpg" alt></p>
+<p><img src="/2018/09/05/%E6%97%B6%E9%9A%94%E5%A4%9A%E6%97%A5%E5%86%8D%E6%B0%B4%E4%B8%80%E7%AF%87/VSInstaller.jpg" alt></p>
 </div>
 
 <p>但其实我们需要的是VC++的编译器，所以也可以只勾选VC++ 2017 工具</p>
 <div align="center">
 
-<p><img src="//nulllstack.github.io/2018/09/05/时隔多日再水一篇/VSInstaller2.jpg" alt></p>
+<p><img src="/2018/09/05/%E6%97%B6%E9%9A%94%E5%A4%9A%E6%97%A5%E5%86%8D%E6%B0%B4%E4%B8%80%E7%AF%87/VSInstaller2.jpg" alt></p>
 </div>
 
 <p>安装完直接把VS关掉就行。</p>
 <p><a name="third"><h2>安装VisualStudioCode</h2></a></p>
-<p>我们使用VisualStudioCode（VSCode）作为我们的代码编辑环境，同样登陆<a href="https://visualstudio.microsoft.com/zh-hans/" target="_blank" rel="noopener">VS官网</a>，点击如下图所示下载VSCode：</p>
+<p>我们使用VisualStudioCode（VSCode）作为我们的代码编辑环境，同样登陆<a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hans/">VS官网</a>，点击如下图所示下载VSCode：</p>
 <div align="center">
 
-<p><img src="//nulllstack.github.io/2018/09/05/时隔多日再水一篇/VSCode.jpg" alt></p>
+<p><img src="/2018/09/05/%E6%97%B6%E9%9A%94%E5%A4%9A%E6%97%A5%E5%86%8D%E6%B0%B4%E4%B8%80%E7%AF%87/VSCode.jpg" alt></p>
 </div>
 
 <p>安装完成后打开VSCode打开左侧边栏中的扩展：</p>
 <div align="center">
 
-<p><img src="//nulllstack.github.io/2018/09/05/时隔多日再水一篇/VSCodeExtension.jpg" alt></p>
+<p><img src="/2018/09/05/%E6%97%B6%E9%9A%94%E5%A4%9A%E6%97%A5%E5%86%8D%E6%B0%B4%E4%B8%80%E7%AF%87/VSCodeExtension.jpg" alt></p>
 </div>
 
 <p>如图所示搜索Haxe，选中Haxe Extension Pack并安装，之后再搜索Lime并安装Lime插件：</p>
 <div align="center">
 
-<p><img src="//nulllstack.github.io/2018/09/05/时隔多日再水一篇/Lime.jpg" alt></p>
+<p><img src="/2018/09/05/%E6%97%B6%E9%9A%94%E5%A4%9A%E6%97%A5%E5%86%8D%E6%B0%B4%E4%B8%80%E7%AF%87/Lime.jpg" alt></p>
 </div>
 
 <p>完成后重启VSCode。</p>
@@ -478,11 +474,10 @@ window.oldVersion = [
 至此万事俱备，我们再次打开PowerShell，输入以下指令新建一个HaxeFlixel项目：
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flixel tpl &quot;default&quot; -n &quot;HelloWorld&quot;</span><br></pre></td></tr></table></figure>
-
 <p>这里使用默认模板，并以”HelloWorld”命名在当前目录创建一个新的项目。命令<code>tpl</code>是<code>template</code>的别名，如果在<code>haxelib run flixel-tools setup</code>时启用了别名则可以使用<code>tpl</code>作为缩写快捷输入，default模板在我们执行<code>haxelib run lime setup</code>的时候下载好了，通过它我们可以在使用Flixel命令行工具创建项目时自动生成所需的配置文件，VSCode的配置文件存放于<code>.vscode</code>文件夹下，具体了解看官网文档，同样模板的自定义我自己也没研究过在这里就不讲了，官网资料或者论坛或者StackOverflow或其他什么方式，<strong>自己动手丰衣足食</strong>。</p>
 <div align="center">
 
-<p><img src="//nulllstack.github.io/2018/09/05/时隔多日再水一篇/Complete.jpg" alt></p>
+<p><img src="/2018/09/05/%E6%97%B6%E9%9A%94%E5%A4%9A%E6%97%A5%E5%86%8D%E6%B0%B4%E4%B8%80%E7%AF%87/Complete.jpg" alt></p>
 </div>
 
 <p>动手检查一下Haxe插件是不是工作正常，主要是看看代码提示和补全，随便在那一行哪一个位置<code>Ctrl+Space</code>可以激活VSCode的IntelliSense，如果出现没有提示的情况，看看界面左下角是不是显示Building Cache，如果是这样的话参考我的上一篇博文。</p>
@@ -533,7 +528,7 @@ window.oldVersion = [
     <!-- Prev Nav -->
     
         <li class="page-item page-prev">
-            <a href="/2019/03/03/作废，迁移/" rel="prev">
+            <a href="/2019/03/03/%E4%BD%9C%E5%BA%9F%EF%BC%8C%E8%BF%81%E7%A7%BB/" rel="prev">
                 <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">作废，迁移</div>
             </a>
@@ -543,7 +538,7 @@ window.oldVersion = [
     <!-- Next Nav -->
     
         <li class="page-item page-next">
-            <a href="/2018/08/16/摸鱼一把/" rel="next">
+            <a href="/2018/08/16/%E6%91%B8%E9%B1%BC%E4%B8%80%E6%8A%8A/" rel="next">
                 <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">摸鱼一把</div>
             </a>

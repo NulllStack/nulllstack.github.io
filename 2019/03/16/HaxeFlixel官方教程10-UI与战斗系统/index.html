@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="zh-CN">
-    <head><meta name="generator" content="Hexo 3.9.0">
+    <head>
     <meta charset="utf-8">
     <!--
         © SukkaW
@@ -81,14 +81,14 @@ window.oldVersion = [
 
 <!-- Description -->
 <meta name="description" content="原文
-由于这次内容涉及...">
+由于这次内容涉及比较多东西，估计摸索的时间会比较长，文本我先翻译完先放上来，之...">
 
 <!-- Keywords -->
 <meta name="keywords" content=", HaxeFlixel">
 
 <!-- Disable Fucking Bloody Baidu Tranformation -->
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
     <!-- ### Import File ### -->
     
@@ -215,11 +215,11 @@ window.oldVersion = [
 
 <meta property="og:locale" content="zh-CN">
 
-<meta property="og:url" content="https://nulllstack.github.io/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/">
+<meta property="og:url" content="https://nulllstack.github.io/2019/03/16/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B10-UI%E4%B8%8E%E6%88%98%E6%96%97%E7%B3%BB%E7%BB%9F/">
 <meta property="og:image" content="https://nulllstack.github.io/img/suka-favicon.ico">
 
 <meta property="og:description" content="原文
-由于这次内容涉及...">
+由于这次内容涉及比较多东西，估计摸索的时间会比较长，文本我先翻译完先放上来，之...">
 
 <meta name="twitter:card" content="summary">
 
@@ -245,7 +245,7 @@ window.oldVersion = [
 
 
     <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://nulllstack.github.io/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/">
+    <link rel="canonical" href="https://nulllstack.github.io/2019/03/16/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B10-UI%E4%B8%8E%E6%88%98%E6%96%97%E7%B3%BB%E7%BB%9F/">
 
     <!-- ### Structured Data ### -->
     
@@ -255,12 +255,12 @@ window.oldVersion = [
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "url": "https://nulllstack.github.io/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/",
+    "url": "https://nulllstack.github.io/2019/03/16/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B10-UI%E4%B8%8E%E6%88%98%E6%96%97%E7%B3%BB%E7%BB%9F/",
     "@type": "BlogPosting",
     "logo": "https://nulllstack.github.io/img/suka-favicon.ico",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://nulllstack.github.io/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/"
+        "@id": "https://nulllstack.github.io/2019/03/16/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B10-UI%E4%B8%8E%E6%88%98%E6%96%97%E7%B3%BB%E7%BB%9F/"
     },
     "headline": "HaxeFlixel官方教程10:UI与战斗系统 | 囿",
     
@@ -297,7 +297,7 @@ window.oldVersion = [
     
     "keywords": ", HaxeFlixel",
     "description": "原文
-由于这次内容涉及..."
+由于这次内容涉及比较多东西，估计摸索的时间会比较长，文本我先翻译完先放上来，之..."
 }
 </script>
 
@@ -307,7 +307,7 @@ window.oldVersion = [
     
 
 
-</head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
     <body>
         
@@ -386,65 +386,55 @@ window.oldVersion = [
                         
                     
                     <article id="post-content">
-                        <p><a href="http://haxeflixel.com/documentation/ui-and-combat/" target="_blank" rel="noopener">原文</a></p>
+                        <p><a target="_blank" rel="noopener" href="http://haxeflixel.com/documentation/ui-and-combat/">原文</a></p>
 <p>由于这次内容涉及比较多东西，估计摸索的时间会比较长，文本我先翻译完先放上来，之后摸索完整理些细节再另外po一篇作为补充。</p>
-<p>现在我们需要让玩家知道他们在游戏中的行为产生了哪些影响。所以我们需要在屏幕中显示一个HUD用于告诉玩家 当前/最大 血量为多少，以及目前收集了多少金币。表示生命值的图标你可以使用这个图形资源：<img src="//nulllstack.github.io/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/health.png" alt>,确保你将图像资源保存至<code>assets/images</code>文件夹下。</p>
+<p>现在我们需要让玩家知道他们在游戏中的行为产生了哪些影响。所以我们需要在屏幕中显示一个HUD用于告诉玩家 当前/最大 血量为多少，以及目前收集了多少金币。表示生命值的图标你可以使用这个图形资源：<img src="/2019/03/16/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B10-UI%E4%B8%8E%E6%88%98%E6%96%97%E7%B3%BB%E7%BB%9F/health.png" alt>,确保你将图像资源保存至<code>assets/images</code>文件夹下。</p>
 <ol>
 <li><p>我们首先新建一个<code>HUD</code>类，它用于保存所有的HUD元素。</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> flixel.FlxSprite;</span><br><span class="line"><span class="keyword">import</span> flixel.text.FlxText;</span><br><span class="line"><span class="keyword">import</span> flixel.FlxSprite;</span><br><span class="line"><span class="keyword">import</span> flixel.group.FlxGroup.FlxTypedGroup;</span><br><span class="line"><span class="keyword">import</span> flixel.util.FlxColor;</span><br><span class="line"><span class="keyword">import</span> flixel.FlxG;</span><br><span class="line"><span class="keyword">using</span> flixel.util.FlxSpriteUtil;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HUD</span> <span class="keyword"><span class="keyword">extends</span> <span class="type">FlxTypedGroup</span></span>&lt;<span class="title">FlxSprite</span>&gt;</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _sprBack:<span class="type">FlxSprite</span>;</span><br><span class="line">    <span class="keyword">var</span> _txtHealth:<span class="type">FlxText</span>;</span><br><span class="line">    <span class="keyword">var</span> _txtMoney:<span class="type">FlxText</span>;</span><br><span class="line">    <span class="keyword">var</span> _sprHealth:<span class="type">FlxSprite</span>;</span><br><span class="line">    <span class="keyword">var</span> _sprMoney:<span class="type">FlxSprite</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">new</span></span>()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        _sprBack = <span class="keyword">new</span> <span class="type">FlxSprite</span>().makeGraphic(FlxG.width, <span class="number">20</span>, FlxColor.BLACK);</span><br><span class="line">        </span><br><span class="line">        _sprBack.drawRect(<span class="number">0</span>, <span class="number">19</span>, FlxG.width, <span class="number">1</span>, FlxColor.WHITE); </span><br><span class="line">        <span class="comment">/*此处技术细节参考：https://www.kancloud.cn/simon_chang/haxe3manual/183635*/</span></span><br><span class="line">        </span><br><span class="line">        _txtHealth = <span class="keyword">new</span> <span class="type">FlxText</span>(<span class="number">16</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="string">"3 / 3"</span>, <span class="number">8</span>);</span><br><span class="line">        _txtHealth.setBorderStyle(SHADOW, FlxColor.GRAY, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        _txtMoney = <span class="keyword">new</span> <span class="type">FlxText</span>(<span class="number">0</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="string">"0"</span>, <span class="number">8</span>);</span><br><span class="line">        _txtMoney.setBorderStyle(SHADOW, FlxColor.GRAY, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        _sprHealth = <span class="keyword">new</span> <span class="type">FlxSprite</span>(<span class="number">4</span>, _txtHealth.y + (_txtHealth.height/<span class="number">2</span>) - <span class="number">4</span>, AssetPaths.health__png);</span><br><span class="line">        _sprMoney = <span class="keyword">new</span> <span class="type">FlxSprite</span>(FlxG.width - <span class="number">12</span>, _txtMoney.y + (_txtMoney.height/<span class="number">2</span>) - <span class="number">4</span>, AssetPaths.coin__png);</span><br><span class="line">        _txtMoney.alignment = RIGHT;</span><br><span class="line">        _txtMoney.x = _sprMoney.x - _txtMoney.width - <span class="number">4</span>;</span><br><span class="line">        add(_sprBack);</span><br><span class="line">        add(_sprHealth);</span><br><span class="line">        add(_sprMoney);</span><br><span class="line">        add(_txtHealth);</span><br><span class="line">        add(_txtMoney);</span><br><span class="line">        </span><br><span class="line">        forEach(<span class="function"><span class="keyword">function</span></span>(spr:<span class="type">FlxSprite</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    spr.scrollFactor.<span class="keyword">set</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">                &#125;);</span><br><span class="line">        <span class="comment">/*注意此处的forEach()函数并非一个迭代语句（iterate statement)，它是声明于FlxGroup类中的一个函数具体细节参考官方API文档*/</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">updateHUD</span></span>(Health:<span class="type">Int </span>= <span class="number">0</span>, Money:<span class="type">Int </span>= <span class="number">0</span>):<span class="type">Void</span></span><br><span class="line"><span class="type">    </span>&#123;</span><br><span class="line">        _txtHealth.text = Std.string(Health) + <span class="string">" / 3"</span>;</span><br><span class="line">        _txtMoney.text = Std.string(Money);</span><br><span class="line">        _txtMoney.x = _sprMoney.x - _txtMoney.width - <span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> flixel.FlxSprite;</span><br><span class="line"><span class="keyword">import</span> flixel.text.FlxText;</span><br><span class="line"><span class="keyword">import</span> flixel.FlxSprite;</span><br><span class="line"><span class="keyword">import</span> flixel.group.FlxGroup.FlxTypedGroup;</span><br><span class="line"><span class="keyword">import</span> flixel.util.FlxColor;</span><br><span class="line"><span class="keyword">import</span> flixel.FlxG;</span><br><span class="line"><span class="keyword">using</span> flixel.util.FlxSpriteUtil;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HUD</span> <span class="keyword"><span class="keyword">extends</span> <span class="type">FlxTypedGroup</span></span>&lt;<span class="title">FlxSprite</span>&gt;</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _sprBack:<span class="type">FlxSprite</span>;</span><br><span class="line">    <span class="keyword">var</span> _txtHealth:<span class="type">FlxText</span>;</span><br><span class="line">    <span class="keyword">var</span> _txtMoney:<span class="type">FlxText</span>;</span><br><span class="line">    <span class="keyword">var</span> _sprHealth:<span class="type">FlxSprite</span>;</span><br><span class="line">    <span class="keyword">var</span> _sprMoney:<span class="type">FlxSprite</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">new</span></span>()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        _sprBack = <span class="keyword">new</span> <span class="type">FlxSprite</span>().makeGraphic(FlxG.width, <span class="number">20</span>, FlxColor.BLACK);</span><br><span class="line">        </span><br><span class="line">        _sprBack.drawRect(<span class="number">0</span>, <span class="number">19</span>, FlxG.width, <span class="number">1</span>, FlxColor.WHITE); </span><br><span class="line">        <span class="comment">/*此处技术细节参考：https://www.kancloud.cn/simon_chang/haxe3manual/183635*/</span></span><br><span class="line">        </span><br><span class="line">        _txtHealth = <span class="keyword">new</span> <span class="type">FlxText</span>(<span class="number">16</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="string">&quot;3 / 3&quot;</span>, <span class="number">8</span>);</span><br><span class="line">        _txtHealth.setBorderStyle(SHADOW, FlxColor.GRAY, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        _txtMoney = <span class="keyword">new</span> <span class="type">FlxText</span>(<span class="number">0</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="string">&quot;0&quot;</span>, <span class="number">8</span>);</span><br><span class="line">        _txtMoney.setBorderStyle(SHADOW, FlxColor.GRAY, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        _sprHealth = <span class="keyword">new</span> <span class="type">FlxSprite</span>(<span class="number">4</span>, _txtHealth.y + (_txtHealth.height/<span class="number">2</span>) - <span class="number">4</span>, AssetPaths.health__png);</span><br><span class="line">        _sprMoney = <span class="keyword">new</span> <span class="type">FlxSprite</span>(FlxG.width - <span class="number">12</span>, _txtMoney.y + (_txtMoney.height/<span class="number">2</span>) - <span class="number">4</span>, AssetPaths.coin__png);</span><br><span class="line">        _txtMoney.alignment = RIGHT;</span><br><span class="line">        _txtMoney.x = _sprMoney.x - _txtMoney.width - <span class="number">4</span>;</span><br><span class="line">        add(_sprBack);</span><br><span class="line">        add(_sprHealth);</span><br><span class="line">        add(_sprMoney);</span><br><span class="line">        add(_txtHealth);</span><br><span class="line">        add(_txtMoney);</span><br><span class="line">        </span><br><span class="line">        forEach(<span class="function"><span class="keyword">function</span></span>(spr:<span class="type">FlxSprite</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    spr.scrollFactor.<span class="keyword">set</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">                &#125;);</span><br><span class="line">        <span class="comment">/*注意此处的forEach()函数并非一个迭代语句（iterate statement)，它是声明于FlxGroup类中的一个函数具体细节参考官方API文档*/</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">updateHUD</span></span>(Health:<span class="type">Int </span>= <span class="number">0</span>, Money:<span class="type">Int </span>= <span class="number">0</span>):<span class="type">Void</span></span><br><span class="line"><span class="type">    </span>&#123;</span><br><span class="line">        _txtHealth.text = Std.string(Health) + <span class="string">&quot; / 3&quot;</span>;</span><br><span class="line">        _txtMoney.text = Std.string(Money);</span><br><span class="line">        _txtMoney.x = _sprMoney.x - _txtMoney.width - <span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这个类继承自<code>FlxTypedGroup&lt;FlxSprite&gt;</code>类所以它可以用于保存我们所有的<code>FlxSprite</code>对象。它由5个部分组成：背景（黑色，底部有一条1像粗细的白色细线），两个<code>FlxText</code>对象（一个用于生命值，一个用于当前金币），两个<code>FlxSprite</code>对象（用于在<code>FlxText</code>对象旁边显示图标）。在构造函数的函数体最后几行里我们调用了<code>forEach()</code>遍历当前Group的所有成员并将它们的<code>scrollFactor.x</code>与<code>scrollFactor.y</code>都设为 0，这么做可以使得摄像机在滚动的时候这些对象的位置也会停留在原地（相对于显示屏幕）。</p>
 <p>最后我们声明了一个函数使得从任意位置调用时告诉<code>HUD</code>应该如何显示。</p>
 </li>
 <li><p>现在我们要让它开始实际工作并在玩家不论何时捡起硬币时更新数据。在<code>PlayState</code>类的顶部添加以下变量：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _hud:<span class="type">HUD</span>;</span><br><span class="line"><span class="keyword">var</span> _money:<span class="type">Int </span>= <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> _health:<span class="type">Int </span>= <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _hud:<span class="type">HUD</span>;</span><br><span class="line"><span class="keyword">var</span> _money:<span class="type">Int </span>= <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> _health:<span class="type">Int </span>= <span class="number">3</span>;</span><br></pre></td></tr></table></figure></li>
 <li><p>在<code>create()</code>函数，于<code>super.create()</code>语句之前的位置添加：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_hud = <span class="keyword">new</span> <span class="type">HUD</span>();</span><br><span class="line">add(_hud);</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_hud = <span class="keyword">new</span> <span class="type">HUD</span>();</span><br><span class="line">add(_hud);</span><br></pre></td></tr></table></figure></li>
 <li><p>最后，在<code>playerTouchCoin()</code>函数体中的<code>if</code>语句中任意位置添加：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_money++;</span><br><span class="line">_hud.updateHUD(_health, _money);</span><br></pre></td></tr></table></figure>
-
+<p>接着测试你的游戏，HUD应该会在你每次拾起硬币的时候更新显示的内容。</p>
 </li>
 </ol>
-<p>接着测试你的游戏，HUD应该会在你每次拾起硬币的时候更新显示的内容。</p>
-<p><img src="//nulllstack.github.io/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/untitled.png" alt></p>
+<p><img src="/2019/03/16/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B10-UI%E4%B8%8E%E6%88%98%E6%96%97%E7%B3%BB%E7%BB%9F/untitled.png" alt></p>
 <p>如果我们有一个使玩家的角色受到伤害的方式，那么我们也需要更新HUD显示的生命值，不过首先我们要确定玩家与敌人战斗的形式。</p>
 <p>现在让我们开始搭建我们的战斗系统。首先，在这里我们并不是要做一个如最终幻想那样庞大的战斗系统，这里只不过是对几个不同的元素如何工作做出一个基本演示。所以我想这里我们要做的是当玩家与敌人发生碰撞时，跳出一个界面，显示玩家与敌人当前的生命值（为了视觉上更为友好，数值显示于一管血条中），并为玩家提供两个选项：<code>战斗</code>或<code>逃跑</code>。</p>
 <p>如果玩家选择了战斗，我们将roll一个随机数用于判断玩家与敌人间的攻击是否击中了对方，如果击中了，将对对方造成一点伤害。如果敌人死亡玩家将脱离战斗状态。而如果玩家选择了逃跑，我们将以同样的方式判断玩家是否成功脱离，如果成功脱离战斗则关闭战斗界面，并使敌人在原地停顿几秒给玩家时间远离它。如果脱离失败了，敌人会乘机攻击玩家。我们还要在战斗界面显示当前攻击是否被闪躲或造成了多少伤害值。</p>
 <p>这些看起来很简单，但实际上这需要几个不同的部分相互协作来实现，他其实是我们到目前为止所作的最复杂的部分。</p>
 <ol>
 <li><p>第一个部分是<code>CombatHUD</code>类。这是一个庞大的类，战斗系统主要的逻辑代码都交由这个类完成。你可以在这里查看完整的源码：</p>
-<p><a href="https://github.com/HaxeFlixel/flixel-demos/blob/dev/Tutorials/TurnBasedRPG/source/CombatHUD.hx" target="_blank" rel="noopener">CombatHUD.hx</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/HaxeFlixel/flixel-demos/blob/dev/Tutorials/TurnBasedRPG/source/CombatHUD.hx">CombatHUD.hx</a></p>
 <p>花点时间完整的查看这个类的源码搞清楚它是如何工作的，之后再将它添加进你的项目里。</p>
-<p>我们现在已经有了供<code>CombatHUD</code>类使用的大部分资源文件，但是我们还需要一个图形文件，用于当玩家做选择时显示的箭头图形。你可以在<a href="https://github.com/HaxeFlixel/flixel-demos/blob/dev/Tutorials/TurnBasedRPG/assets/images/pointer.png" target="_blank" rel="noopener">这里下载</a>（点击download）（或者自己做一个），确保文件名为<code>pointer.png</code>并把它保存至项目文件夹内的<code>assets/images</code>文件夹内。</p>
+<p>我们现在已经有了供<code>CombatHUD</code>类使用的大部分资源文件，但是我们还需要一个图形文件，用于当玩家做选择时显示的箭头图形。你可以在<a target="_blank" rel="noopener" href="https://github.com/HaxeFlixel/flixel-demos/blob/dev/Tutorials/TurnBasedRPG/assets/images/pointer.png">这里下载</a>（点击download）（或者自己做一个），确保文件名为<code>pointer.png</code>并把它保存至项目文件夹内的<code>assets/images</code>文件夹内。</p>
 <p><code>CombatHUD</code>类中还使用了一些我们尚未讨论的东西：<em>声音</em>。我们将会在 “声音与音乐” 章节对此进行更深入的探讨，现在请先将以下这些文件下载<code>assets/sounds</code>文件夹下，这样才能让源码正确编译。</p>
-<p>这我就不单独罗列了，github上有，把链接里全部<code>wav</code>文件都下下来：<a href="https://github.com/HaxeFlixel/flixel-demos/tree/dev/Tutorials/TurnBasedRPG/assets/sounds" target="_blank" rel="noopener">链接</a></p>
+<p>这我就不单独罗列了，github上有，把链接里全部<code>wav</code>文件都下下来：<a target="_blank" rel="noopener" href="https://github.com/HaxeFlixel/flixel-demos/tree/dev/Tutorials/TurnBasedRPG/assets/sounds">链接</a></p>
 </li>
 <li><p>现在你需要为<code>Enemy</code>类添加一个简单的函数：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">changeEnemy</span></span>(EType:<span class="type">Int</span>):<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(etype != EType)</span><br><span class="line">    &#123;</span><br><span class="line">        etype = EType;</span><br><span class="line">        loadGraphic(<span class="string">"assets/images/enemy-"</span> + etype + <span class="string">".png"</span>, <span class="literal">true</span>, <span class="number">16</span>, <span class="number">16</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">changeEnemy</span></span>(EType:<span class="type">Int</span>):<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(etype != EType)</span><br><span class="line">    &#123;</span><br><span class="line">        etype = EType;</span><br><span class="line">        loadGraphic(<span class="string">&quot;assets/images/enemy-&quot;</span> + etype + <span class="string">&quot;.png&quot;</span>, <span class="literal">true</span>, <span class="number">16</span>, <span class="number">16</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>接着我们需要把<code>CombatHUD</code>对象添加进<code>PlayState</code>类中，把以下代码添加至<code>PlayState</code>类的顶部：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _inCombat:<span class="type">Bool </span>= <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> _combatHud:<span class="type">CombatHUD</span>;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _inCombat:<span class="type">Bool </span>= <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> _combatHud:<span class="type">CombatHUD</span>;</span><br></pre></td></tr></table></figure></li>
 <li><p>移动到<code>create()</code>函数的位置，在函数体中，在我们添加（add）HUD之后，调用<code>super.create()</code>之前的位置添加以下代码：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_combatHud = <span class="keyword">new</span> <span class="type">CombatHUD</span>();</span><br><span class="line">add(_combatHud);</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_combatHud = <span class="keyword">new</span> <span class="type">CombatHUD</span>();</span><br><span class="line">add(_combatHud);</span><br></pre></td></tr></table></figure></li>
 <li><p>移动到<code>update()</code>函数的位置，将其修改为<strong>仅当</strong>处于非战斗状态时才进行碰撞与重叠检测。位于<code>super.update()</code>调用之后的所有东西应该如以下代码所示：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!_inCombat)</span><br><span class="line">&#123;</span><br><span class="line">    FlxG.collide(_player, _mWalls);</span><br><span class="line">    FlxG.overlap(_player, _grpCoins, playerTouchCoin);</span><br><span class="line">    FlxG.collide(_grpEnemies, _mWalls);</span><br><span class="line">    _grpEnemies.forEachAlive(checkEnemyVision);</span><br><span class="line">    FlxG,overlap(_player, _grpEnmies, playerTouchEnemy);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(!_combatHud.visible)</span><br><span class="line">    &#123;</span><br><span class="line">        _health = _combatHud.playerHealth;</span><br><span class="line">        _hud.updateHUD(_health, _money);</span><br><span class="line">        <span class="keyword">if</span>(_combatHud.outcome == VICTORY)</span><br><span class="line">        &#123;</span><br><span class="line">            _combatHud.e.kill();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            _combatHud.e.flicker();</span><br><span class="line">        &#125;</span><br><span class="line">        _inCombat = <span class="literal">false</span>;</span><br><span class="line">        _player.active = <span class="literal">true</span>;</span><br><span class="line">        _grpEnemies.active = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>这里我们要添加一个条件检测，用于检查玩家是否碰到一个敌人，如果是则调用回调函数以查看我们是否应该开始战斗。</p>
 <p>如果我们处于战斗阶段，我们就持续检测HUD当前是否为可见的，当它为不可见时我们就知道战斗结束了，之后我们就可以对结果进行结算，当结果为<code>VICTORY</code>（我们的四个枚举值的其中一个）时，我们就杀掉敌人（<code>_combatHud.e.kill()</code>），而当玩家选择了逃跑，我们将使该敌人闪烁，用于表示玩家从这一刻起的一小段时间内将是安全的不会与该敌人再次触发战斗。</p>
 </li>
 <li><p>你可能已经发现了我们的<code>Enemy</code>类并没有<code>flicker()</code>函数（注），这是因为我们将使用<code>FlxSpriteUtil</code>类的一个函数来实现这个功能，Haxe提供了一个很nice的语法特性来帮我们完成这个工作。那么在<code>PlayState</code>类文件的顶部，位于其他导入语句（import）之后，添加一行代码：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> flixel.util.FlxSpriteUtil;</span><br></pre></td></tr></table></figure>
-
-<p>这将使得我们可以使用<code>FlxSpriteUtil</code>的APIs，如<code>flicker()</code>函数，它可以被用于任何<code>FlxObject</code>对象。具体技术细节参考<a href="https://haxe.org/manual/lf-static-extension.html" target="_blank" rel="noopener">官方文档-静态扩展</a>。</p>
-<p><strong>注：<code>_combatHud.e.flicker()</code>的调用使用了Haxe的语法特性-*<a href="https://www.kancloud.cn/simon_chang/haxe3manual/183635" target="_blank" rel="noopener">静态扩展</a>*，使得我们的<code>Enemy</code>类本身即使没有flicker()函数也可以通过外部类进行扩展。</strong></p>
+<p>这将使得我们可以使用<code>FlxSpriteUtil</code>的APIs，如<code>flicker()</code>函数，它可以被用于任何<code>FlxObject</code>对象。具体技术细节参考<a target="_blank" rel="noopener" href="https://haxe.org/manual/lf-static-extension.html">官方文档-静态扩展</a>。</p>
+<p><strong>注：<code>_combatHud.e.flicker()</code>的调用使用了Haxe的语法特性-*<a target="_blank" rel="noopener" href="https://www.kancloud.cn/simon_chang/haxe3manual/183635">静态扩展</a>*，使得我们的<code>Enemy</code>类本身即使没有flicker()函数也可以通过外部类进行扩展。</strong></p>
 </li>
 <li><p>接下来让我们添加一个函数用于处理当玩家触碰到一个敌人的情况：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">playerTouchEnemy</span></span>(P:<span class="type">Player</span>, E:<span class="type">Enemy</span>):<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(P.alive &amp;&amp; P.exists &amp;&amp; E.alive &amp;&amp; E.exists &amp;&amp; !E.isFlickering())</span><br><span class="line">    &#123;</span><br><span class="line">        startCombat(E);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startCombat</span></span>(E:<span class="type">Enemy</span>):<span class="type">Void</span></span><br><span class="line"><span class="type"></span>&#123;</span><br><span class="line">    _inCombat = <span class="literal">true</span>;</span><br><span class="line">    _player.active = <span class="literal">false</span>;</span><br><span class="line">    _grpEnemies.active = <span class="literal">false</span>;</span><br><span class="line">    _combatHud.initCombat(_health, E);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>我们在这里检查玩家与敌人的<code>alive</code>与<code>exists</code>属性是否都为<code>true</code>并且敌人不处于闪烁状态（闪烁状态下的敌人是那些我们刚刚脱离战斗状态的敌人）。如果条件都满足，我们就使之进入战斗状态。</p>
 <p><code>startCombat()</code>函数所做的事情是设置我们的<code>inCombat</code>flag进行赋值（这样做使得我们可以知道是否进行碰撞检测），并使玩家与敌人都进入非活动状态，这样它们将停止逻辑代码的更新（暂停<code>update()</code>的调用）。</p>
 <p>最后我们调用<code>initCombat()</code>函数，使得<code>CombatHUD</code>初始化并开始工作。</p>
@@ -452,13 +442,11 @@ window.oldVersion = [
 <li><p>最后的最后，我们要使闪烁的敌人原地不动，它们应该在玩家逃跑后停顿几秒。</p>
 <p>在<code>Enemy</code>类中，于<code>update()</code>函数体内添加以下代码：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="built_in">this</span>.isFlickering())</span><br><span class="line">	<span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
-
 <p>把这段代码放在函数体的第一行的位置，优先于函数体内其他语句执行。</p>
 <p>注意<code>isFlickering()</code>函数同样来自<code>FlxSpriteUtil</code>类，所以如前面的做法，需要在<code>Enemy</code>类中添加一行<code>using</code>语句：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> flixel.util.FlxSpriteUtil;</span><br></pre></td></tr></table></figure>
-
 <p>这样就ok了，测试游戏确保能如期正常运行！</p>
-<p><img src="//nulllstack.github.io/2019/03/16/HaxeFlixel官方教程10-UI与战斗系统/0020.png" alt></p>
+<p><img src="/2019/03/16/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B10-UI%E4%B8%8E%E6%88%98%E6%96%97%E7%B3%BB%E7%BB%9F/0020.png" alt></p>
 <p>下一节我们将涉及获胜于失败状态（<code>PlayState</code>是游玩状态），并整合我们的所有状态（state）。</p>
 </li>
 </ol>
@@ -508,7 +496,7 @@ window.oldVersion = [
     <!-- Prev Nav -->
     
         <li class="page-item page-prev">
-            <a href="/2019/03/29/HaxeFlixel官方教程11-游戏结束菜单/" rel="prev">
+            <a href="/2019/03/29/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B11-%E6%B8%B8%E6%88%8F%E7%BB%93%E6%9D%9F%E8%8F%9C%E5%8D%95/" rel="prev">
                 <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">HaxeFlixel官方教程11:游戏结束菜单</div>
             </a>
@@ -518,7 +506,7 @@ window.oldVersion = [
     <!-- Next Nav -->
     
         <li class="page-item page-next">
-            <a href="/2019/03/08/HaxeFlixel官方教程9-敌人与基础AI/" rel="next">
+            <a href="/2019/03/08/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B9-%E6%95%8C%E4%BA%BA%E4%B8%8E%E5%9F%BA%E7%A1%80AI/" rel="next">
                 <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">HaxeFlixel官方教程9:敌人与基础AI</div>
             </a>

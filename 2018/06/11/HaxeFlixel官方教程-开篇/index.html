@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="zh-CN">
-    <head><meta name="generator" content="Hexo 3.9.0">
+    <head>
     <meta charset="utf-8">
     <!--
         © SukkaW
@@ -81,14 +81,14 @@ window.oldVersion = [
 
 <!-- Description -->
 <meta name="description" content="原文
-欢迎来到 HaxeFlix...">
+欢迎来到 HaxeFlixel ！在这系列教程中，你将学习如何使用 HaxeFlixel...">
 
 <!-- Keywords -->
 <meta name="keywords" content=", HaxeFlixel">
 
 <!-- Disable Fucking Bloody Baidu Tranformation -->
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
     <!-- ### Import File ### -->
     
@@ -215,11 +215,11 @@ window.oldVersion = [
 
 <meta property="og:locale" content="zh-CN">
 
-<meta property="og:url" content="https://nulllstack.github.io/2018/06/11/HaxeFlixel官方教程-开篇/">
+<meta property="og:url" content="https://nulllstack.github.io/2018/06/11/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B-%E5%BC%80%E7%AF%87/">
 <meta property="og:image" content="https://nulllstack.github.io/img/suka-favicon.ico">
 
 <meta property="og:description" content="原文
-欢迎来到 HaxeFlix...">
+欢迎来到 HaxeFlixel ！在这系列教程中，你将学习如何使用 HaxeFlixel...">
 
 <meta name="twitter:card" content="summary">
 
@@ -245,7 +245,7 @@ window.oldVersion = [
 
 
     <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://nulllstack.github.io/2018/06/11/HaxeFlixel官方教程-开篇/">
+    <link rel="canonical" href="https://nulllstack.github.io/2018/06/11/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B-%E5%BC%80%E7%AF%87/">
 
     <!-- ### Structured Data ### -->
     
@@ -255,12 +255,12 @@ window.oldVersion = [
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "url": "https://nulllstack.github.io/2018/06/11/HaxeFlixel官方教程-开篇/",
+    "url": "https://nulllstack.github.io/2018/06/11/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B-%E5%BC%80%E7%AF%87/",
     "@type": "BlogPosting",
     "logo": "https://nulllstack.github.io/img/suka-favicon.ico",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://nulllstack.github.io/2018/06/11/HaxeFlixel官方教程-开篇/"
+        "@id": "https://nulllstack.github.io/2018/06/11/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B-%E5%BC%80%E7%AF%87/"
     },
     "headline": "HaxeFlixel官方教程:开篇 | 囿",
     
@@ -297,7 +297,7 @@ window.oldVersion = [
     
     "keywords": ", HaxeFlixel",
     "description": "原文
-欢迎来到 HaxeFlix..."
+欢迎来到 HaxeFlixel ！在这系列教程中，你将学习如何使用 HaxeFlixel..."
 }
 </script>
 
@@ -307,7 +307,7 @@ window.oldVersion = [
     
 
 
-</head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
     <body>
         
@@ -386,15 +386,15 @@ window.oldVersion = [
                         
                     
                     <article id="post-content">
-                        <p><a href="http://haxeflixel.com/documentation/tutorial/" target="_blank" rel="noopener">原文</a></p>
+                        <p><a target="_blank" rel="noopener" href="http://haxeflixel.com/documentation/tutorial/">原文</a></p>
 <p>欢迎来到 HaxeFlixel ！在这系列教程中，你将学习如何使用 HaxeFlixel 从头到尾创建一个完整的游戏，每一步骤都会被打碎成小片段以帮助你度过难关。</p>
 <p>这一系列教程可以面向 Flash，Windows，Aandroid 进行构建。但我们多数时候是编译到 Flash 平台。</p>
 <p>我们将要搭建一个 <strong>dungen crawler</strong> 小游戏。</p>
 <p>首先，让我聊一点关于为何你应该选择 HaxeFlixel :</p>
-<p>HaxeFlixel 的由来要追溯到由 <a href="http://www.adamatomic.com/" target="_blank" rel="noopener">Adam ‘Atomic’ Saltsman</a> 开发的 <a href="http://flixel.org/" target="_blank" rel="noopener">AS3 Flixel 框架</a>。如果你有玩过 <a href="http://www.adamatomic.com/canabalt/" target="_blank" rel="noopener">Canabalt</a>，那么你就见过过了这个框架的早期版本。HaxeFlixel 继承了 Flixel 的一般结构，从 Flash 平台分离出来并整合进强大的开源多平台语言 <a href="http://haxe.org/" target="_blank" rel="noopener">Haxe</a> 中，所以你编写的游戏就可以简单的发布到各个平台上（Windows，Flash，iOS，Android等）。</p>
-<p>当你使用 HaxeFlixel 编写代码时尽管有些变化但与编写 AS3 代码没有太多差别。此外它拥有大量的内置特性 - 类，实用程序，以及函数 - 当你碰上一些常见或复杂的事情时它们可以帮你解决。并且因为 HaxeFlixel 是开源的，当你发现某些事情它做不到，那你可以修改它的源码，同时如果你的修改对其他人是有帮助的，可以把它们<a href="http://haxeflixel.com/documentation/contributing/" target="_blank" rel="noopener">添加进 library</a>。</p>
+<p>HaxeFlixel 的由来要追溯到由 <a target="_blank" rel="noopener" href="http://www.adamatomic.com/">Adam ‘Atomic’ Saltsman</a> 开发的 <a target="_blank" rel="noopener" href="http://flixel.org/">AS3 Flixel 框架</a>。如果你有玩过 <a target="_blank" rel="noopener" href="http://www.adamatomic.com/canabalt/">Canabalt</a>，那么你就见过过了这个框架的早期版本。HaxeFlixel 继承了 Flixel 的一般结构，从 Flash 平台分离出来并整合进强大的开源多平台语言 <a target="_blank" rel="noopener" href="http://haxe.org/">Haxe</a> 中，所以你编写的游戏就可以简单的发布到各个平台上（Windows，Flash，iOS，Android等）。</p>
+<p>当你使用 HaxeFlixel 编写代码时尽管有些变化但与编写 AS3 代码没有太多差别。此外它拥有大量的内置特性 - 类，实用程序，以及函数 - 当你碰上一些常见或复杂的事情时它们可以帮你解决。并且因为 HaxeFlixel 是开源的，当你发现某些事情它做不到，那你可以修改它的源码，同时如果你的修改对其他人是有帮助的，可以把它们<a target="_blank" rel="noopener" href="http://haxeflixel.com/documentation/contributing/">添加进 library</a>。</p>
 <p>它是一个简单易用的代码库（library），而且给予了你足够的自由去实现你能够想到的任何事情，却不会被死板的接口而限制住。</p>
-<p>你可以从这里了解到更多有关于 HaxeFlixel ：<a href="http://haxeflixel.com/documentation/about/" target="_blank" rel="noopener">链接</a></p>
+<p>你可以从这里了解到更多有关于 HaxeFlixel ：<a target="_blank" rel="noopener" href="http://haxeflixel.com/documentation/about/">链接</a></p>
 
                     </article>
                     
@@ -439,7 +439,7 @@ window.oldVersion = [
     <!-- Prev Nav -->
     
         <li class="page-item page-prev">
-            <a href="/2018/06/12/HaxeFlixel官方教程2-创建项目/" rel="prev">
+            <a href="/2018/06/12/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B2-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/" rel="prev">
                 <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">HaxeFlixel官方教程2:创建项目</div>
             </a>

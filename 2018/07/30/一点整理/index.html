@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="zh-CN">
-    <head><meta name="generator" content="Hexo 3.9.0">
+    <head>
     <meta charset="utf-8">
     <!--
         © SukkaW
@@ -87,8 +87,8 @@ window.oldVersion = [
 <meta name="keywords" content=", HaxeFlixel, 学习记录">
 
 <!-- Disable Fucking Bloody Baidu Tranformation -->
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
     <!-- ### Import File ### -->
     
@@ -215,7 +215,7 @@ window.oldVersion = [
 
 <meta property="og:locale" content="zh-CN">
 
-<meta property="og:url" content="https://nulllstack.github.io/2018/07/30/一点整理/">
+<meta property="og:url" content="https://nulllstack.github.io/2018/07/30/%E4%B8%80%E7%82%B9%E6%95%B4%E7%90%86/">
 <meta property="og:image" content="https://nulllstack.github.io/img/suka-favicon.ico">
 
 <meta property="og:description" content="对前面学习过程中感到疑惑的部分做了一些研究，在这里把这些东西记上一笔，加深印象同时便于日后查阅。
@@ -245,7 +245,7 @@ window.oldVersion = [
 
 
     <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://nulllstack.github.io/2018/07/30/一点整理/">
+    <link rel="canonical" href="https://nulllstack.github.io/2018/07/30/%E4%B8%80%E7%82%B9%E6%95%B4%E7%90%86/">
 
     <!-- ### Structured Data ### -->
     
@@ -255,12 +255,12 @@ window.oldVersion = [
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "url": "https://nulllstack.github.io/2018/07/30/一点整理/",
+    "url": "https://nulllstack.github.io/2018/07/30/%E4%B8%80%E7%82%B9%E6%95%B4%E7%90%86/",
     "@type": "BlogPosting",
     "logo": "https://nulllstack.github.io/img/suka-favicon.ico",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://nulllstack.github.io/2018/07/30/一点整理/"
+        "@id": "https://nulllstack.github.io/2018/07/30/%E4%B8%80%E7%82%B9%E6%95%B4%E7%90%86/"
     },
     "headline": "一点整理 | 囿",
     
@@ -307,7 +307,7 @@ window.oldVersion = [
     
 
 
-</head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
     <body>
         
@@ -399,11 +399,9 @@ window.oldVersion = [
 <div align="center">![](一点整理/Point.png)
 </div></li>
 <li><p>然后在source文件夹内创建一个新的haxe文件，命名为Player.hx。然后拷贝我下面的代码进去：</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> flixel.FlxSprite;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span> <span class="keyword"><span class="keyword">extends</span> <span class="type">FlxSprite</span></span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">new</span></span>(?X:<span class="type">Float</span>,?Y:<span class="type">Float</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">super</span>(X,Y);</span><br><span class="line">        loadGraphic(AssetPaths.Point__png,<span class="literal">false</span>,<span class="number">16</span>,<span class="number">16</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span></span>(elapsed:<span class="type">Float</span>):<span class="type">Void</span></span><br><span class="line"><span class="type">    </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.update(elapsed);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> flixel.FlxSprite;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span> <span class="keyword"><span class="keyword">extends</span> <span class="type">FlxSprite</span></span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">new</span></span>(?X:<span class="type">Float</span>,?Y:<span class="type">Float</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">super</span>(X,Y);</span><br><span class="line">        loadGraphic(AssetPaths.Point__png,<span class="literal">false</span>,<span class="number">16</span>,<span class="number">16</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span></span>(elapsed:<span class="type">Float</span>):<span class="type">Void</span></span><br><span class="line"><span class="type">    </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.update(elapsed);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>接着修改source文件夹下的PlayState.hx：</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> flixel.FlxState;</span><br><span class="line"><span class="keyword">import</span> flixel.FlxG;</span><br><span class="line"><span class="keyword">import</span> flixel.FlxGame;</span><br><span class="line"><span class="keyword">import</span> flixel.math.FlxPoint;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PlayState</span> <span class="keyword"><span class="keyword">extends</span> <span class="type">FlxState</span></span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> _player:<span class="type">Player</span>;</span><br><span class="line">	<span class="keyword">var</span> blockSet:<span class="type">Array</span>&lt;Player&gt; = <span class="keyword">new</span> <span class="type">Array</span>();</span><br><span class="line">	<span class="keyword">var</span> position:<span class="type">FlxPoint </span>= <span class="keyword">new</span> <span class="type">FlxPoint</span>(FlxG.width/<span class="number">2</span>,FlxG.height/<span class="number">2</span><span class="number">-64</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">create</span></span>():<span class="type">Void</span></span><br><span class="line"><span class="type">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">0.</span>.<span class="number">.4</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			blockSet[i] = <span class="keyword">new</span> <span class="type">Player</span>(position.x,position.y);</span><br><span class="line">			position.rotate(FlxPoint.weak(FlxG.width/<span class="number">2</span>,FlxG.height/<span class="number">2</span>),<span class="number">90</span>);</span><br><span class="line">			<span class="built_in">trace</span>(i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">0.</span>.<span class="number">.4</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			add(blockSet[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">super</span>.create();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span></span>(elapsed:<span class="type">Float</span>):<span class="type">Void</span></span><br><span class="line"><span class="type">	</span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.update(elapsed);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><code>blockSet</code>数组用于存储<code>Player</code>类的实例，<code>position</code>是一个<code>FlxPoint</code>类的实例，用于实例化<code>Player</code>实例的时候传入<code>Player</code>实例的初始坐标。</p>
 <p>第一个循环体是这次实验的关键，创建四个<code>Player</code>实例，初始坐标使用<code>position</code>的<code>x</code>和<code>y</code>值，每个<code>Player</code>实例之间都以画布的中心位置为旋转点对position进行90度旋转。</p>
 </li>
@@ -441,7 +439,7 @@ window.oldVersion = [
 
 <a class="post-tags-list-item" href="/tags/HaxeFlixel/" rel="tag">#&nbsp;HaxeFlixel</a>
 
-<a class="post-tags-list-item" href="/tags/学习记录/" rel="tag">#&nbsp;学习记录</a>
+<a class="post-tags-list-item" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" rel="tag">#&nbsp;学习记录</a>
 
 </span>
 
@@ -455,7 +453,7 @@ window.oldVersion = [
     <!-- Prev Nav -->
     
         <li class="page-item page-prev">
-            <a href="/2018/07/31/HaxeFlixel官方教程5-创建Tilemap/" rel="prev">
+            <a href="/2018/07/31/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B5-%E5%88%9B%E5%BB%BATilemap/" rel="prev">
                 <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">HaxeFlixel官方教程5:创建Tilemap</div>
             </a>
@@ -465,7 +463,7 @@ window.oldVersion = [
     <!-- Next Nav -->
     
         <li class="page-item page-next">
-            <a href="/2018/07/27/HaxeFlixel官方教程4-精灵序列与动画/" rel="next">
+            <a href="/2018/07/27/HaxeFlixel%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B4-%E7%B2%BE%E7%81%B5%E5%BA%8F%E5%88%97%E4%B8%8E%E5%8A%A8%E7%94%BB/" rel="next">
                 <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">HaxeFlixel官方教程4:精灵序列与动画</div>
             </a>
